@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dfe75f0480c6a46bb23fea0e4ef2a9, type: 3}
+  m_Name: AR
+  m_EditorClassIdentifier: 
+  GameName: "\uFECA\uFEE8\uFEBC\uFEE4\uFEDF\uFE8D"
+  Language: "\uFEF2\uFE91\uFEAE\uFECB"
+  LanguageInitials: Ar
+  ConfirmationText: ??
+  PlaceholderNameText: "\uFE8E\uFEE8\uFEEB \uFEDA\uFEE4\uFEB3\uFE8D"
+  StartGame: "\uFE83\uFEAA\uFE91\uFE8D"
+  QuitGame: "\uFE9D\uFEAE\uFEA7\uFE8D"
+  Options: "\uFE95\uFE8D\uFEA9\uFE8D\uFEAA\uFECB\uFE8D"
+  HowToPlay: "\uFE90\uFECC\uFEDF\uFE8D \uFED2\uFEF4\uFEDB"
+  Pause: "\uFEAD\uFE8E\uFEC8\uFE98\uFEE7\uFE8D"
+  MainFont: {fileID: 0}
+  MaleNames: []
+  FemaleNames: []
+  LastNames: []

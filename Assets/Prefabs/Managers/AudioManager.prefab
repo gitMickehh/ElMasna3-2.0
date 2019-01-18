@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4788817568535577192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4788817568535577198}
+  - component: {fileID: 4788817568535577193}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4788817568535577198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788817568535577192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4788817568535577193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788817568535577192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab989785be7fb8408f66be7edd309fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundName: Theme Song
+    clip: {fileID: 8300000, guid: d17c35afbea3dd44983ef63b7f733767, type: 3}
+    volume: 0.2
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: Select B
+    clip: {fileID: 8300000, guid: f5b519c859871a041a2cb778ad487e43, type: 3}
+    volume: 0.8
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: ThemeSong2
+    clip: {fileID: 8300000, guid: 05e433b218d744e4984e8a953aeac78d, type: 3}
+    volume: 0.2
+    pitch: 1
+    looping: 1
+    playOnAwake: 1
+    source: {fileID: 0}

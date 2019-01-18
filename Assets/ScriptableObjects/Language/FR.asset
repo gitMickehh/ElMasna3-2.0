@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dfe75f0480c6a46bb23fea0e4ef2a9, type: 3}
+  m_Name: FR
+  m_EditorClassIdentifier: 
+  GameName: L'Usine
+  Language: French
+  LanguageInitials: Fr
+  ConfirmationText: Oui?
+  PlaceholderNameText: Votre Nom
+  StartGame: "D\xE9but"
+  QuitGame: Quitter
+  Options: Options
+  HowToPlay: Comment jouer
+  Pause: Pause
+  MainFont: {fileID: 0}
+  MaleNames: []
+  FemaleNames: []
+  LastNames: []
