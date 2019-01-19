@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - UIDragable
+  - UILandingDraggable
   layers:
   - Default
   - TransparentFX
