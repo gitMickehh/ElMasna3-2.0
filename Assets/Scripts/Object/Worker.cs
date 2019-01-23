@@ -13,6 +13,8 @@ public enum WorkerState
 
 public class Worker : MonoBehaviour
 {
+    public int ID;
+
     [Header("Randomnes")]
     public bool isRandom = true;
 
@@ -73,7 +75,7 @@ public class Worker : MonoBehaviour
     {
         if (isRandom)
         {
-            GenerateWorker();
+            //GenerateWorker();
             isRandom = false;
             workerState = WorkerState.Idle;
         }
@@ -220,6 +222,24 @@ public class Worker : MonoBehaviour
     //public void PlayerWon()
     //{
     //    SetWorkerState(WorkerState.Winning);
+    //}
+
+    //public void SaveWorker()
+    //{
+    //    SaveSystem.SaveWorker(this);
+    //}
+
+    //public void LoadWorker()
+    //{
+    //    WorkerData data = SaveSystem.LoadWorker();
+
+    //    ID = data.ID;
+    //    FullName = data.FullName;
+    //    gender = (Gender)data.gender;
+    //    level = data.level;
+    //    //emotion = (EmotionalTrait)WorkerStats.EmotionalTraits.ListElements[data.emotion];
+    //    happyMeter = data.happyMeter;
+
     //}
 
 }

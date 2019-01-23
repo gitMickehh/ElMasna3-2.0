@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
+    //public int ID;
+
     //true for testing now
     public bool activeFloor = true;
 
@@ -13,7 +15,9 @@ public class Floor : MonoBehaviour
 
     Rigidbody myBody;
 
-    public Room[] workRooms; 
+    public Room[] workRooms;
+
+    public int noOfMachines;
 
     private void Start()
     {
@@ -41,16 +45,29 @@ public class Floor : MonoBehaviour
         myBody.angularVelocity = Vector3.zero;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.white;
 
-        for (int i = 0; i < workRooms.Length; i++)
-        {
-            for (int j = 0; j < workRooms[i].machinePlaces.Length ; j++)
-            {
-                Gizmos.DrawWireSphere(workRooms[i].machinePlaces[j].machinePosition.position,1f);
-            }
-        }
-    }
+    //    for (int i = 0; i < workRooms.Length; i++)
+    //    {
+    //        for (int j = 0; j < workRooms[i].machinePlaces.Length ; j++)
+    //        {
+    //            Gizmos.DrawWireSphere(workRooms[i].machinePlaces[j].machinePosition.position,1f);
+    //        }
+    //    }
+    //}
+
+    //public void SaveFloor()
+    //{
+    //    SaveSystem.SaveFloor(this);
+    //}
+
+    //public void LoadFloor()
+    //{
+    //    FloorData data = SaveSystem.LoadFloor();
+
+    //    noOfMachines = data.noOfMachines;
+
+    //}
 }
