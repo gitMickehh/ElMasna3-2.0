@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    Touch[] fingers;
     private Vector2 startTouch;
     private Vector2 swipeDelta;
     private bool isDraging;
