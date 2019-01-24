@@ -43,11 +43,12 @@ GameObject:
   - component: {fileID: 1923417157988894091}
   - component: {fileID: 1923417157988894085}
   - component: {fileID: 1923417157988894090}
+  - component: {fileID: 2456785879134787449}
   - component: {fileID: 1923417157988894088}
   - component: {fileID: 1923417157988894089}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   - machinePlaces:
     - machinePosition: {fileID: 7133520673371837166}
       machine: {fileID: 0}
+  noOfMachines: 0
 --- !u!114 &1923417157988894090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +158,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2456785879134787449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923417157988894087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d6a4b51856b914c82e44c2710c4720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1923417157988894088
 MonoBehaviour:
   m_ObjectHideFlags: 0
