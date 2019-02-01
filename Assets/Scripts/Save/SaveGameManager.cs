@@ -6,107 +6,78 @@ using System;
 
 public class SaveGameManager : MonoBehaviour
 {
-    private static SaveGameManager instance;
+    public FloorList listOfFloors;
+    public Floor firstFloor;
 
-    public List<SaveableObject> saveableObjects
+    [Header("Prefab")]
+    public GameObject FloorPrefab;
+
+    private void Awake()
     {
-        get;
-        private set;
-    }
-    //public SaveableObject[] saveableObjectsInScene;
-    //public List<SaveableObject> saveableObjectsInScene
-    //{
-    //    get
-    //    {
-    //        return saveableObjectsInScene;
-    //    }
-    //    private set { }
-    //}
-
-    public static SaveGameManager Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = FindObjectOfType<SaveGameManager>();
-
-            return instance;
-        }
-        set
-        {
-            instance = value;
-        }
+        LoadFloors();
     }
 
-    // Start is called before the first frame update
-    void Awake()
+    private void LoadFloors()
     {
-        saveableObjects = new List<SaveableObject>();
-        //saveableObjectsInScene = new List<SaveableObject>();
-    }
-    //void Start()
-    //{
-    //    saveableObjectsInScene = (SaveableObject[])GameObject.FindObjectsOfType(typeof(SaveableObject));
-    //}
-
-    public void Save()
-    {
-        PlayerPrefs.SetInt(Application.loadedLevel.ToString(), saveableObjects.Count);
-
-        for (int i = 0; i < saveableObjects.Count; i++)
+        if (PlayerPrefs.HasKey("floorCount"))
         {
-            saveableObjects[i].Save(i);  //int id
-        }
-    }
+            int floorCount = PlayerPrefs.GetInt("floorCount");
 
-    public void Load()
-    {
-        foreach (SaveableObject obj in saveableObjects.ToList())
-        {
-            Debug.Log("Here");
-            if(obj != null)
+            firstFloor.savingFloor = 
+                JsonUtility.FromJson<SerializableFloor>(PlayerPrefs.GetString("floor0"));
+            firstFloor.LoadFloor();
+
+            for (int i = 1; i < floorCount; i++)
             {
-                Destroy(obj.gameObject);
-            }
-            saveableObjects.Clear();
-        }
-        int objectCount = PlayerPrefs.GetInt(Application.loadedLevel.ToString()); 
-        for (int i = 0; i < objectCount; i++)
-        {
-            //saveableObjects[i].Load();
-            string[] value = PlayerPrefs.GetString(Application.loadedLevel +"-"+ i.ToString()).Split('_');
+                string retrievedJson = PlayerPrefs.GetString("floor" + i);
 
-            GameObject tmp = null;
+                //floor order isn't checked... We need to check it (later)
+                listOfFloors.Items[i].savingFloor =
+                    JsonUtility.FromJson<SerializableFloor>(retrievedJson);
 
-            switch (value[0])
-            {
-                ////case "Machine":
-                ////    tmp = Instantiate(Resources.Load("Machine") as GameObject);
-                ////    break;
-
-                case "Worker":
-                    tmp = Instantiate(Resources.Load("Worker") as GameObject);
-                    break;
-
-                case "Floor":
-                    Debug.Log("Leh Ma3amalsh instantiate hena");
-                    tmp = Instantiate(Resources.Load("Floor") as GameObject);
-                    break;
-
-                case "Factory":
-                    tmp = Instantiate(Resources.Load("Factory") as GameObject);
-                    break;
-                    
-                    Debug.Log("ra7 ll defalut leeh ya 3naya");
-                   
-            }
-
-            if (tmp != null)
-            {
-                tmp.GetComponent<SaveableObject>().Load(value);
+                listOfFloors.Items[i].LoadFloor();
             }
         }
+        else
+        {
+            Debug.Log("floor count is not saved");
+        }
+
     }
 
+    private void SaveFloors()
+    {
+        for (int i = 0; i < listOfFloors.Items.Count; i++)
+        {
+            listOfFloors.Items[i].FillSerializableFloor();
+            string floorJson = JsonUtility.ToJson(listOfFloors.Items[i].savingFloor);
+
+            PlayerPrefs.SetString("floor" + i, floorJson);
+        }
+
+        //floor.FillSerializableFloor();
+        //string floorJson = JsonUtility.ToJson(floor.savingFloor);
+        //PlayerPrefs.SetString("floor0", floorJson);
+
+        PlayerPrefs.SetInt("floorCount", listOfFloors.Items.Count);
+    }
+
+    public void ClearSave()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    private void SaveAll()
+    {
+        SaveFloors();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveAll();
+
+        //clear any runtime list here
+        listOfFloors.Items.Clear();
+    }
 
 }

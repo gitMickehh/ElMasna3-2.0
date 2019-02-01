@@ -67,7 +67,6 @@ public class Worker : MonoBehaviour
     void Awake()
     {
         skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
-        //workerManager = GameObject.FindGameObjectWithTag("WorkerManager").GetComponent<WorkerManager>();
         workerAnimator = GetComponentInChildren<Animator>();
     }
 

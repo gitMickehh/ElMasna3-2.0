@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
-    //public int ID;
-
     //true for testing now
     public bool activeFloor = true;
+    public FloorList listOfFloors;
+    public PrefabsList MachinesPrefabs;
+
+    //for saving
+    [HideInInspector]
+    public SerializableFloor savingFloor;
 
     [Header("Input")]
     public FloatField swipeMagnitude;
@@ -15,9 +19,13 @@ public class Floor : MonoBehaviour
 
     Rigidbody myBody;
 
+    [Header("Rooms")]
     public Room[] workRooms;
 
-    public int noOfMachines;
+    private void Awake()
+    {
+        listOfFloors.Add(this);
+    }
 
     private void Start()
     {
@@ -35,7 +43,7 @@ public class Floor : MonoBehaviour
     public void RotateFloorLeft()
     {
         if (myBody.angularVelocity.y < 0)
-            myBody.angularVelocity = Vector3.zero;    
+            myBody.angularVelocity = Vector3.zero;
 
         myBody.AddTorque(Vector3.up * torqueMultiplyer * swipeMagnitude.GetValue());
     }
@@ -45,29 +53,47 @@ public class Floor : MonoBehaviour
         myBody.angularVelocity = Vector3.zero;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.white;
+    public void FillSerializableFloor()
+    {
+        SerializableRoom[] savablerooms = new SerializableRoom[workRooms.Length];
+        for (int i = 0; i < workRooms.Length; i++)
+        {
+            savablerooms[i] = workRooms[i].SaveRoom();
+        }
 
-    //    for (int i = 0; i < workRooms.Length; i++)
-    //    {
-    //        for (int j = 0; j < workRooms[i].machinePlaces.Length ; j++)
-    //        {
-    //            Gizmos.DrawWireSphere(workRooms[i].machinePlaces[j].machinePosition.position,1f);
-    //        }
-    //    }
-    //}
+        savingFloor = new SerializableFloor(savablerooms);
+    }
 
-    //public void SaveFloor()
-    //{
-    //    SaveSystem.SaveFloor(this);
-    //}
+    public void LoadFloor()
+    {
+        for (int i = 0; i < savingFloor.rooms.Length; i++)
+        {
+            var machines = savingFloor.rooms[i].machines;
 
-    //public void LoadFloor()
-    //{
-    //    FloorData data = SaveSystem.LoadFloor();
+            for (int j = 0; j < machines.Length; j++)
+            {
+                if(machines[j].machineExists)
+                {
+                    Transform instPos = workRooms[i].machinePlaces[j].machinePosition;
+                    GameObject machPrefab = MachinesPrefabs.GetPrefabByID(machines[j].machineID);
+                    //instantite
+                    var machCreated = Instantiate(machPrefab,instPos);
+                    workRooms[i].machinePlaces[j].machine = machCreated.GetComponent<Machine>();
+                }
+            }
+        }
+    }
 
-    //    noOfMachines = data.noOfMachines;
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
 
-    //}
+        for (int i = 0; i < workRooms.Length; i++)
+        {
+            for (int j = 0; j < workRooms[i].machinePlaces.Length; j++)
+            {
+                Gizmos.DrawWireSphere(workRooms[i].machinePlaces[j].machinePosition.position, 1f);
+            }
+        }
+    }
 }

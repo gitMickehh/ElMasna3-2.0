@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1632761248149477307}
   - component: {fileID: 1632761248149477306}
+  - component: {fileID: 4667257780424462733}
+  - component: {fileID: 5318303127171909607}
   m_Layer: 0
   m_Name: SaveGameManager
   m_TagString: Untagged
@@ -43,3 +45,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43a4a68923dcbb4bbd7544610df4c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
+  firstFloor: {fileID: 0}
+  FloorPrefab: {fileID: 0}
+--- !u!114 &4667257780424462733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632761248149477301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa616cbbfde23d4f85eff267f9b462a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5318303127171909607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632761248149477301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 2369054b1455bf84db9ee777f17700c0, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1632761248149477306}
+        m_MethodName: ClearSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

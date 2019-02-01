@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class HandlingGameState : MonoBehaviour
 {
-    void Start()
-    {
-        SaveGameManager.Instance.Load();
-    }
+    //void Start()
+    //{
+    //    SaveGameManager.Instance.Load();
+    //}
 
-    void OnApplicationQuit()
-    {
-        SaveGameManager.Instance.Save();
-        Debug.Log("Application ending after " + Time.time + " seconds");
-    }
+    //void OnApplicationQuit()
+    //{
+    //    SaveGameManager.Instance.Save();
+    //    Debug.Log("Application ending after " + Time.time + " seconds");
+    //}
 }
