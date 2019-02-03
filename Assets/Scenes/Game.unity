@@ -253,6 +253,11 @@ PrefabInstance:
       propertyPath: CurrentWorker
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8292025577735715553, guid: f99e70fbc3f656f479b04ce43535baee,
+        type: 3}
+      propertyPath: floorOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f99e70fbc3f656f479b04ce43535baee, type: 3}
 --- !u!1 &227064407

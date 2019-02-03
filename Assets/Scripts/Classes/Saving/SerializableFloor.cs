@@ -6,9 +6,11 @@ using UnityEngine;
 public class SerializableFloor
 {
     public SerializableRoom[] rooms;
+    public int floorOrder;
 
-    public SerializableFloor(SerializableRoom[] saveRooms)
+    public SerializableFloor(SerializableRoom[] saveRooms, int fOrder)
     {
         rooms = saveRooms;
+        floorOrder = fOrder;
     }
 }

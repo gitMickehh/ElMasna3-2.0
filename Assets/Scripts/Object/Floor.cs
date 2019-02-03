@@ -6,6 +6,10 @@ public class Floor : MonoBehaviour
 {
     //true for testing now
     public bool activeFloor = true;
+
+    public int floorOrder;
+
+    [Header("Lists")]
     public FloorList listOfFloors;
     public PrefabsList MachinesPrefabs;
 
@@ -61,7 +65,7 @@ public class Floor : MonoBehaviour
             savablerooms[i] = workRooms[i].SaveRoom();
         }
 
-        savingFloor = new SerializableFloor(savablerooms);
+        savingFloor = new SerializableFloor(savablerooms,floorOrder);
     }
 
     public void LoadFloor()
@@ -95,5 +99,15 @@ public class Floor : MonoBehaviour
                 Gizmos.DrawWireSphere(workRooms[i].machinePlaces[j].machinePosition.position, 1f);
             }
         }
+    }
+
+    public int Compare(Floor x, Floor y)
+    {
+        if (x.floorOrder > y.floorOrder)
+            return 1;
+        else if (x.floorOrder == y.floorOrder)
+            return 0;
+        else
+            return -1;
     }
 }

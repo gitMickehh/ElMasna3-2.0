@@ -7,12 +7,12 @@ using System;
 public class SaveGameManager : MonoBehaviour
 {
     public FloorList listOfFloors;
-    public Floor firstFloor;
+    private Floor firstFloor;
 
     [Header("Prefab")]
     public GameObject FloorPrefab;
 
-    private void Awake()
+    private void Start()
     {
         LoadFloors();
     }
@@ -21,21 +21,26 @@ public class SaveGameManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("floorCount"))
         {
-            int floorCount = PlayerPrefs.GetInt("floorCount");
-
-            firstFloor.savingFloor = 
+            //because first floor is always in the scene.
+            firstFloor = listOfFloors.Items[0];
+            firstFloor.savingFloor =
                 JsonUtility.FromJson<SerializableFloor>(PlayerPrefs.GetString("floor0"));
             firstFloor.LoadFloor();
 
+            var heightOfFloor = firstFloor.GetComponentInChildren<Collider>().bounds.max.y;
+            //need to intialize the other floors
+            int floorCount = PlayerPrefs.GetInt("floorCount");
             for (int i = 1; i < floorCount; i++)
             {
                 string retrievedJson = PlayerPrefs.GetString("floor" + i);
 
-                //floor order isn't checked... We need to check it (later)
-                listOfFloors.Items[i].savingFloor =
-                    JsonUtility.FromJson<SerializableFloor>(retrievedJson);
+                //instantiate floor
+                Vector3 position = Vector3.up * heightOfFloor * i;
+                GameObject floor = Instantiate(FloorPrefab,position,new Quaternion());
 
-                listOfFloors.Items[i].LoadFloor();
+                floor.GetComponent<Floor>().savingFloor = 
+                    JsonUtility.FromJson<SerializableFloor>(retrievedJson);
+                floor.GetComponent<Floor>().LoadFloor();
             }
         }
         else
@@ -47,10 +52,14 @@ public class SaveGameManager : MonoBehaviour
 
     private void SaveFloors()
     {
+        listOfFloors.SortFloorList();
+
         for (int i = 0; i < listOfFloors.Items.Count; i++)
         {
             listOfFloors.Items[i].FillSerializableFloor();
             string floorJson = JsonUtility.ToJson(listOfFloors.Items[i].savingFloor);
+
+            Debug.Log(floorJson);
 
             PlayerPrefs.SetString("floor" + i, floorJson);
         }
