@@ -26,7 +26,7 @@ public class Floor : MonoBehaviour
     [Header("Rooms")]
     public Room[] workRooms;
 
-    private void Awake()
+    private void OnEnable()
     {
         listOfFloors.Add(this);
     }
@@ -34,6 +34,11 @@ public class Floor : MonoBehaviour
     private void Start()
     {
         myBody = GetComponent<Rigidbody>();
+    }
+
+    private void OnDisable()
+    {
+        listOfFloors.Remove(this);
     }
 
     public void RotateFloorRight()
@@ -86,6 +91,8 @@ public class Floor : MonoBehaviour
                 }
             }
         }
+
+        floorOrder = savingFloor.floorOrder;
     }
 
     private void OnDrawGizmos()
