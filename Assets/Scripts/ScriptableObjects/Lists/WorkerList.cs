@@ -18,4 +18,8 @@ public class WorkerList : RuntimeList<Worker>
         return null;
     }
 
+    public int GetNewId()
+    {
+        return Items.Count + 1;
+    }
 }

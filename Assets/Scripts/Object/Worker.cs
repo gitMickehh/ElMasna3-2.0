@@ -55,6 +55,7 @@ public class Worker : MonoBehaviour
 
     private void OnEnable()
     {
+        ID = listOfWorkers.GetNewId();
         listOfWorkers.Add(this);
     }
 
