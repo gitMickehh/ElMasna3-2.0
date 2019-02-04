@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0bad74f3ce45346971286f114bc3e0, type: 3}
+  m_Name: FemaleNamesAR
+  m_EditorClassIdentifier: 
+  strings:
+  - "\uFEE2\uFEF4\uFEE8\uFEB4\uFE97"
+  - "\uFEE6\uFEF4\uFED4\uFEF4\uFEE7"
+  - "\u0621\uFE8E\uFEE4\uFEB3\uFE83"
+  - "\uFED5\uFEED\uFEAE\uFEB7"
+  - "\uFE93\uFEED\uFEAE\uFEE3"
+  - "\uFEE2\uFEF3\uFEAE\uFEE3"
+  - "\uFEF0\uFEE8\uFEE3"
+  - "\uFE94\uFEF3\uFE83"
+  - "\uFE93\uFEEE\uFED4\uFEBB"
+  - "\uFE8E\uFEF4\uFEE7\uFE8D\uFEAD"

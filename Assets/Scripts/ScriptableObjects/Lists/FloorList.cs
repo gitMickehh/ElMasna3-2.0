@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[CreateAssetMenu(fileName = "New Floor List", menuName = "ElMasna3/Lists/Floor List")]
+[CreateAssetMenu(fileName = "New Floor List", menuName = "ElMasna3/Lists/Floors RT List")]
 public class FloorList : RuntimeList<Floor>
 {
     public void SortFloorList()

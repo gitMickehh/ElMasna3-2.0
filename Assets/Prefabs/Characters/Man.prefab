@@ -1081,24 +1081,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24ecc6de5d091f48bfef44b4bb6ba37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 345
-  isRandom: 1
-  WorkerStats: {fileID: 0}
-  workerState: 0
+  ID: 0
+  modelID: 1
+  WorkerStats: {fileID: 11400000, guid: 71db6be1766cf29478d68e7a4c4dad4b, type: 2}
+  listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   FullName: 
   gender: 0
   level: 0
-  emotion: {fileID: 0}
-  medicalState: {fileID: 0}
+  emotional: {fileID: 0}
+  medical: {fileID: 0}
+  workerState: 0
   happyMeter: 0
-  coolDownTime: 0
-  decreaseCoolDownTimeBy: 0.01
-  movementSpeed: 0
-  workingSpeed: 0
-  increaseWorkingSpeedBy: 0.05
+  happyDefense: 0
   skinnedMeshRenderers: []
-  workerAnimator: {fileID: 0}
-  machineAssigned: {fileID: 0}
 --- !u!1 &1624406520948892
 GameObject:
   m_ObjectHideFlags: 0

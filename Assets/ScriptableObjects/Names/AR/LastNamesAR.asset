@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0bad74f3ce45346971286f114bc3e0, type: 3}
+  m_Name: LastNamesAR
+  m_EditorClassIdentifier: 
+  strings:
+  - "\uFED2\uFEB3\uFEEE\uFEF3"
+  - "\uFEF0\uFE9F\uFE8E\uFEE7"
+  - "\uFE95\uFEB0\uFECB"
+  - "\uFEE5\uFE8E\uFE92\uFECC\uFEB7"
+  - "\uFEA9\uFE8D\uFEAA\uFEA3"
+  - "\uFEE6\uFEF4\uFEEB\uFE8E\uFEB7"

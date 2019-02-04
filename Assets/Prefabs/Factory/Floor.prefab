@@ -192,11 +192,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0bb90760923844da131af5d752471e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeFloor: 1
+  activeFloor: 0
+  floorOrder: 0
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
+  listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   MachinesPrefabs: {fileID: 11400000, guid: f8af9b0ba77d5ff4cbf95f01ab9bab2b, type: 2}
   savingFloor:
     rooms: []
+    floorOrder: 0
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   torqueMultiplyer: 0.3
   workRooms:
@@ -213,6 +216,7 @@ MonoBehaviour:
   - machinePlaces:
     - machinePosition: {fileID: 4741209027348891345}
       machine: {fileID: 0}
+  WorkersHolder: {fileID: 516371051559589594}
 --- !u!114 &4143921381608493493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +234,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8292025577735715553}
-        m_MethodName: RotateFloorLeft
+        m_MethodName: RotateFloorRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -259,7 +263,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8292025577735715553}
-        m_MethodName: RotateFloorRight
+        m_MethodName: RotateFloorLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -11,6 +11,7 @@ public class Floor : MonoBehaviour
 
     [Header("Lists")]
     public FloorList listOfFloors;
+    public WorkerList listOfWorkers;
     public PrefabsList MachinesPrefabs;
 
     //for saving
@@ -25,6 +26,9 @@ public class Floor : MonoBehaviour
 
     [Header("Rooms")]
     public Room[] workRooms;
+
+    [Header("Workers")]
+    public Transform WorkersHolder;
 
     private void OnEnable()
     {
@@ -43,6 +47,9 @@ public class Floor : MonoBehaviour
 
     public void RotateFloorRight()
     {
+        if (!activeFloor)
+            return;
+
         if (myBody.angularVelocity.y > 0)
             myBody.angularVelocity = Vector3.zero;
 
@@ -51,6 +58,9 @@ public class Floor : MonoBehaviour
 
     public void RotateFloorLeft()
     {
+        if (!activeFloor)
+            return;
+
         if (myBody.angularVelocity.y < 0)
             myBody.angularVelocity = Vector3.zero;
 
@@ -59,6 +69,9 @@ public class Floor : MonoBehaviour
 
     public void StopRotation()
     {
+        if (!activeFloor)
+            return;
+
         myBody.angularVelocity = Vector3.zero;
     }
 
@@ -75,6 +88,8 @@ public class Floor : MonoBehaviour
 
     public void LoadFloor()
     {
+        floorOrder = savingFloor.floorOrder;
+
         for (int i = 0; i < savingFloor.rooms.Length; i++)
         {
             var machines = savingFloor.rooms[i].machines;
@@ -85,14 +100,30 @@ public class Floor : MonoBehaviour
                 {
                     Transform instPos = workRooms[i].machinePlaces[j].machinePosition;
                     GameObject machPrefab = MachinesPrefabs.GetPrefabByID(machines[j].machineID);
-                    //instantite
+                    
+                    //instantite machines
                     var machCreated = Instantiate(machPrefab,instPos);
-                    workRooms[i].machinePlaces[j].machine = machCreated.GetComponent<Machine>();
+                    var machineComponent = machCreated.GetComponent<Machine>();
+
+                    if(machines[j].workerID > 0)
+                    {
+                        GameObject w = listOfWorkers.GetWorkerById(machines[j].workerID).gameObject;
+                        w.transform.SetParent(WorkersHolder);
+
+                        if (w != null)
+                        {
+                            w.transform.position = machineComponent.workerPosition.position;
+                            w.transform.rotation = machineComponent.workerPosition.rotation;
+
+                            machineComponent.CurrentWorker = w;
+                        }
+                    }
+
+                    workRooms[i].machinePlaces[j].machine = machineComponent;
+
                 }
             }
         }
-
-        floorOrder = savingFloor.floorOrder;
     }
 
     private void OnDrawGizmos()

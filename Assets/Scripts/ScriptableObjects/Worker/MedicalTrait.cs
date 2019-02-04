@@ -6,6 +6,7 @@ using UnityEngine;
 public class MedicalTrait : ScriptableObject {
 
     public string Title;
+    public int no;
 
     [TextArea]
     public string Description;

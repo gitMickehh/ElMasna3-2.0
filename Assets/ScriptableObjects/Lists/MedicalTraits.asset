@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311e8d8b704c81349abd08dbf925bce2, type: 3}
+  m_Name: MedicalTraits
+  m_EditorClassIdentifier: 
+  ListElements:
+  - {fileID: 11400000, guid: 77614edb203467143a702403e1b04192, type: 2}
+  - {fileID: 11400000, guid: c7a2af4b31077c1489619dc577969dcd, type: 2}

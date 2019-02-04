@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2857179868289705497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2857179868289705495}
+  - component: {fileID: 2857179868289705496}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: e53a3def055c6d649928dc7efbaa9df1, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2857179868289705495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857179868289705497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2857179868289705496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857179868289705497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913575c15d3ea084296b94f850eb2ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleTapTime: 0.6
+  tap: {fileID: 11400000, guid: cca75e130d7b6134aba7a1c72577549f, type: 2}
+  doubleTap: {fileID: 11400000, guid: 6caa9d171ab552043919d76000c81f42, type: 2}
+  swipeLeft: {fileID: 11400000, guid: 8a93ee89fc739d145b215e9e645b4af5, type: 2}
+  swipeRight: {fileID: 11400000, guid: e6a3bbe935d75b04f88b5f90f01fffd4, type: 2}
+  swipeUp: {fileID: 11400000, guid: 763c2ed54d2751448b2443f489547a5c, type: 2}
+  swipeDown: {fileID: 11400000, guid: 9b1b9a62e60371247aa2ead8a38f2412, type: 2}
+  horizontalSwipeDeadzone: 65
+  VerticalSwipeDeadzone: 25
+  swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
+  PinchMagnitude: {fileID: 11400000, guid: 8efc054dac37f4c48924f47e51e6a327, type: 2}

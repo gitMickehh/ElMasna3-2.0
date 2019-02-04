@@ -14,54 +14,37 @@ public enum WorkerState
 public class Worker : MonoBehaviour
 {
     public int ID;
-
-    [Header("Randomnes")]
-    public bool isRandom = true;
+    public int modelID;
 
     [Header("Management")]
     public WorkerInfo WorkerStats;
-    public WorkerState workerState;
+    public WorkerList listOfWorkers;
 
     [Header("Info")]
     public string FullName;
     public Gender gender;
     public int level;
-    //title for promotion?
 
     [Header("Traits")]
-    public EmotionalTrait emotion;
-    public MedicalTrait medicalState;
+    public EmotionalTrait emotional;
+    public MedicalTrait medical;
+    public WorkerState workerState;
 
-    //public bool workingState;
-
+    [Header("Happiness")]
     [Range(0, 100)]
     public float happyMeter;
-
-    [Header("Cooldown")]
-    public float coolDownTime;
-    public float decreaseCoolDownTimeBy = 0.01f;
-
-    [Header("Speed")]
-    public float movementSpeed;
-    public float workingSpeed;
-    public float increaseWorkingSpeedBy = 0.05f;
+    public float happyDefense;
 
     [Header("Model")]
+    [HideInInspector]
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
 
+    Animator workerAnimator;
+    Machine machineAssigned;
 
-    //[Header("Scriptable Objects")]
-    //public Factory_SO factory_SO;
-
-    public Animator workerAnimator;
-    public Machine machineAssigned;
-
-    public float PlayingToLevelIndivCost
-    {
-        get
-        {
-            return 200 * Mathf.Pow(1.05f, level);
-        }
+    //saving
+    public SerializableWorker WorkerData {
+        get { return GetWorkerData(); }
     }
 
     void Awake()
@@ -70,87 +53,41 @@ public class Worker : MonoBehaviour
         workerAnimator = GetComponentInChildren<Animator>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        if (isRandom)
-        {
-            //GenerateWorker();
-            isRandom = false;
-            workerState = WorkerState.Idle;
-        }
-        else
-        {
-            //load worker
-        }
+        listOfWorkers.Add(this);
     }
 
-    public void GenerateWorker()
+    private void OnDisable()
     {
-        //gender = WorkerStats.RandomizeGender();
+        listOfWorkers.Remove(this);
+    }
+
+    public void RandomizeWorker()
+    {
         FullName = WorkerStats.RandomizeName(gender);
+        emotional = WorkerStats.RandomizeEmotionalTraits();
+        medical = WorkerStats.RandomizeMedicalTraits();
 
-        emotion = WorkerStats.RandomizeEmotionalTraits();
-        medicalState = WorkerStats.RandomizeMedicalTraits();
-
-        coolDownTime = WorkerStats.CooldownTime;
-        movementSpeed = WorkerStats.MovementSpeed;
-
-        happyMeter = 50;
+        happyMeter = 0.5f;
         level = 0;
-        workingSpeed = 1f;
 
-        //shirt color
-        //var workerColor = WorkerStats.RandomizeColorLinker();
-
-        //for (int i = 0; i < skinnedMeshRenderers.Length; i++)
-        //{
-        //    skinnedMeshRenderers[i].material = workerColor.WorkerMaterial;
-        //}
         transform.name = FullName;
     }
 
-    //public void AddComplaint()
-    //{
-    //    SetWorkerState(WorkerState.Complaining);
-    //    Complaints_SO comp = complaintsManager_SO.GenerateRandomWorkerComplaint();
-    //    complaints.Add(comp);
-    //}
-
-    //public void RemoveComplaint(Complaints_SO comp)
-    //{
-    //    if (complaints.Contains(comp))
-    //    {
-    //        complaints.Remove(comp);
-    //    }
-    //}
-
     public void LevelUp()
     {
-        print("LevelUp Event has been invoked");
+        Debug.Log(transform.name + " leveled Up!");
         level++;
 
-        if (coolDownTime != 0.1)
-        {
-            coolDownTime -= decreaseCoolDownTimeBy;
-        }
+        //if (coolDownTime != 0.1)
+        //{
+        //    coolDownTime -= decreaseCoolDownTimeBy;
+        //}
 
-        //when adding machine class 
-        workingSpeed += increaseWorkingSpeedBy;
+        ////when adding machine class 
+        //workingSpeed += increaseWorkingSpeedBy;
     }
-
-    //public void AssignWorker(Machine machine)
-    //{
-    //    machineAssigned = machine;
-    //    machineAssigned.worker = this;
-    //    transform.position = machineAssigned.workerPosition.position;
-    //    transform.rotation = machineAssigned.workerPosition.rotation;
-
-    //    machineAssigned.SetMachineState(MachineState.Working);
-
-    //    if (workerState != WorkerState.InMiniGame)
-    //        SetWorkerState(WorkerState.Working);
-
-    //}
 
     public override string ToString()
     {
@@ -158,7 +95,6 @@ public class Worker : MonoBehaviour
             + "\n level: " + level;
     }
 
-    //happiness
     public void AddHappiness(float percentage)
     {
         happyMeter = Mathf.Clamp(happyMeter + percentage, 0, 100);
@@ -183,20 +119,8 @@ public class Worker : MonoBehaviour
                 break;
 
             case WorkerState.Winning:
-                //print("winning");
                 workerAnimator.SetBool("Working", false);
                 workerAnimator.SetTrigger("WinTrigger");
-                //StartCoroutine(WaitTillWinningFinish());
-                //if ((machineAssigned) && (machineAssigned.machineState == MachineState.Broken))
-                //{
-                //    workerAnimator.SetBool("Working", false);
-                //    workerState = WorkerState.Idle;
-                //}
-                //else
-                //{
-                //    workerAnimator.SetBool("Working", true);
-                //    workerState = WorkerState.Working;
-                //}
                 break;
 
             case WorkerState.Complaining:
@@ -206,39 +130,27 @@ public class Worker : MonoBehaviour
         }
     }
 
-    //IEnumerator WaitTillWinningFinish()
-    //{
-    //    yield return new WaitForSeconds(3.5f);
+    public SerializableWorker GetWorkerData()
+    {
+        SerializableWorker sw = 
+            new SerializableWorker(ID, FullName, gender, modelID, level, emotional.no, medical.no, happyMeter);
 
-    //   //WorkerStats.disappearingParticles.Play();
+        return sw;
+    }
 
-    //    if (workerManager.workersInOrientation.Contains(gameObject))
-    //    {
-    //        gameObject.SetActive(false);
-    //    }
-    //}
+    public void LoadWorkerData(SerializableWorker wData)
+    {
+        ID = wData.WorkerID;
+        modelID = wData.modelID;
 
-    //public void PlayerWon()
-    //{
-    //    SetWorkerState(WorkerState.Winning);
-    //}
+        FullName = wData.fullName;
+        gender = wData.gender;
+        level = wData.level;
 
-    //public void SaveWorker()
-    //{
-    //    SaveSystem.SaveWorker(this);
-    //}
+        emotional = WorkerStats.GetEmotionalTraitByNumber(wData.emotionalTrait);
+        medical = WorkerStats.GetMedicalTraitByNumber(wData.medicalTrait);
 
-    //public void LoadWorker()
-    //{
-    //    WorkerData data = SaveSystem.LoadWorker();
-
-    //    ID = data.ID;
-    //    FullName = data.FullName;
-    //    gender = (Gender)data.gender;
-    //    level = data.level;
-    //    //emotion = (EmotionalTrait)WorkerStats.EmotionalTraits.ListElements[data.emotion];
-    //    happyMeter = data.happyMeter;
-
-    //}
+        happyMeter = wData.happiness;
+    }
 
 }

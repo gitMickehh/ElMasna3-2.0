@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1632761248149477307}
   - component: {fileID: 1632761248149477306}
-  - component: {fileID: 4667257780424462733}
   - component: {fileID: 5318303127171909607}
   m_Layer: 0
   m_Name: SaveGameManager
@@ -46,20 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
+  listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   FloorPrefab: {fileID: 4143921381608493496, guid: f99e70fbc3f656f479b04ce43535baee,
     type: 3}
---- !u!114 &4667257780424462733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632761248149477301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa616cbbfde23d4f85eff267f9b462a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  WorkersPrefabs: {fileID: 11400000, guid: 6cd08f48bacbc8048bd515203ca7a148, type: 2}
 --- !u!114 &5318303127171909607
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLanguageProfile: {fileID: 11400000, guid: df89ad15138481542ae34165321062b6,
     type: 2}
+  dayOfTheWeek: 0
   FirstTimeEver: {fileID: 11400000, guid: 3bb80c53b39a0af4a9e8ed9012da77c3, type: 2}
   LastTimePlayed: {fileID: 11400000, guid: 34806aa1212017243ac31bcae200404d, type: 2}

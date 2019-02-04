@@ -5,25 +5,33 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WorkerStats", menuName = "ElMasna3/Worker Data")]
 public class WorkerInfo : ScriptableObject
 {
-    
+
     [Header("Names")]
-    public ListOfStrings MaleFirstNames;
-    public ListOfStrings FemaleFirstNames;
-    public ListOfStrings LastNames;
+    public GameConfig gameConfigFile;
+
+    public ListOfStrings MaleFirstNames {
+        get { return gameConfigFile.CurrentLanguageProfile.MaleNames; }
+    }
+
+    public ListOfStrings FemaleFirstNames {
+        get { return gameConfigFile.CurrentLanguageProfile.FemaleNames; }
+    }
+
+    public ListOfStrings LastNames {
+        get { return gameConfigFile.CurrentLanguageProfile.LastNames; }
+    }
 
     [Header("Traits")]
     public ScriptableObjectsList EmotionalTraits;
-    public ScriptableObjectsList MedicalState;
-    //Favorite day will be an ENUM randomly generated in Worker Component
+    public ScriptableObjectsList MedicalTraits;
 
-    [Header("Colors")]
-    public ScriptableObjectsList ShirtColorsLinks;
-
-    [Header("Cooldown")]
-    public float CooldownTime;
-    public float MovementSpeed;
+    [Header("Leveling up")]
+    public float workSpeedRate;
+    [Tooltip("This makes the older workers less likely to be sad")]
+    public float happinessDefenseFactor;
 
     [Header("Prefabs")]
+    [Tooltip("This is going to be it's own prefab list and all")]
     public List<GameObject> MalePrefabs;
     public List<GameObject> FemalePrefabs;
 
@@ -36,38 +44,7 @@ public class WorkerInfo : ScriptableObject
 
     public string RandomizeName(Gender g)
     {
-        int no1 = 0;
-        int no2 = Random.Range(0, LastNames.strings.Count);
-
-        string fullName;
-
-        switch (g)
-        {
-            case Gender.MALE:
-                no1 = Random.Range(0, MaleFirstNames.strings.Count);
-                
-                //english
-                //fullName = MaleFirstNames.strings[no1] + " " + LastNames.strings[no2];
-                
-                //arabic:
-                fullName = LastNames.strings[no2] + " " + MaleFirstNames.strings[no1];
-                break;
-            case Gender.FEMALE:
-                no1 = Random.Range(0, FemaleFirstNames.strings.Count);
-
-                //english
-                //fullName = FemaleFirstNames.strings[no1] + " " + LastNames.strings[no2];
-
-                //arabic:
-                fullName = LastNames.strings[no2] + " " + FemaleFirstNames.strings[no1];
-                break;
-            default:
-                fullName = "Hamada Hamda";
-                break;
-        }
-
-        return fullName;
-
+        return gameConfigFile.CurrentLanguageProfile.GetRandomFullName(g);
     }
 
     public EmotionalTrait RandomizeEmotionalTraits()
@@ -79,17 +56,10 @@ public class WorkerInfo : ScriptableObject
 
     public MedicalTrait RandomizeMedicalTraits()
     {
-        int no1 = Random.Range(0, MedicalState.ListElements.Count);
+        int no1 = Random.Range(0, MedicalTraits.ListElements.Count);
 
-        return (MedicalTrait)(MedicalState.ListElements)[no1];
+        return (MedicalTrait)(MedicalTraits.ListElements)[no1];
     }
-
-    //public Day GetRandomFavDay()
-    //{
-    //    int no1 = Random.Range(0, 7);
-
-    //    return (Day)no1;
-    //}
 
     public Gender RandomizeGender()
     {
@@ -98,34 +68,6 @@ public class WorkerInfo : ScriptableObject
         return (Gender)no1;
     }
    
-    //public Color RandomizeColor()
-    //{
-    //    int r = Random.Range(0,ShirtColorsLinks.ListElements.Count);
-
-    //    MiniGameLinker_SO s = (MiniGameLinker_SO)ShirtColorsLinks.ListElements[r];
-    //    return s.ShirtColor;
-    //}
-
-    //public MiniGameLinker_SO RandomizeColorLinker()
-    //{
-    //    int r = Random.Range(0, ShirtColorsLinks.ListElements.Count);
-
-    //    MiniGameLinker_SO s = (MiniGameLinker_SO)ShirtColorsLinks.ListElements[r];
-    //    return s;
-    //}
-
-    /*
-    public void RandomizeWorkerStats()
-    {
-
-    }
-
-    public void RandomizeWorkerLook()
-    {
-
-    }
-    */
-
     public GameObject GetWorkerPrefab(Gender g)
     {
         GameObject model;
@@ -155,5 +97,29 @@ public class WorkerInfo : ScriptableObject
         return (Gender)r;
     }
 
+    public EmotionalTrait GetEmotionalTraitByNumber(int n)
+    {
+        for (int i = 0; i < EmotionalTraits.ListElements.Count; i++)
+        {
+            var et = (EmotionalTrait)EmotionalTraits.ListElements[i];
 
+            if (et.no == n)
+                return et;
+        }
+
+        return (EmotionalTrait)EmotionalTraits.ListElements[0];
+    }
+
+    public MedicalTrait GetMedicalTraitByNumber(int n)
+    {
+        for (int i = 0; i < EmotionalTraits.ListElements.Count; i++)
+        {
+            var mt = (MedicalTrait)MedicalTraits.ListElements[i];
+
+            if (mt.no == n)
+                return mt;
+        }
+
+        return (MedicalTrait)EmotionalTraits.ListElements[0];
+    }
 }
