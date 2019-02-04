@@ -32,6 +32,7 @@ public class Floor : MonoBehaviour
 
     private void OnEnable()
     {
+        floorOrder = listOfFloors.GetFloorOrder();
         listOfFloors.Add(this);
     }
 
@@ -124,6 +125,8 @@ public class Floor : MonoBehaviour
                 }
             }
         }
+
+        transform.name = "Floor " + floorOrder;
     }
 
     private void OnDrawGizmos()

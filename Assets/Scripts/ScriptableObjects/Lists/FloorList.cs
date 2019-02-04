@@ -12,4 +12,9 @@ public class FloorList : RuntimeList<Floor>
              return x.Compare(x, y);
         });
     }
+
+    public int GetFloorOrder()
+    {
+        return Items.Count + 1;
+    }
 }

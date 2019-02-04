@@ -151,6 +151,8 @@ public class Worker : MonoBehaviour
         medical = WorkerStats.GetMedicalTraitByNumber(wData.medicalTrait);
 
         happyMeter = wData.happiness;
+
+        transform.name = FullName;
     }
 
 }
