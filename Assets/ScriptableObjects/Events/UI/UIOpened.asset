@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a89a64c4903255b42b9d1e93ceb70db8, type: 3}
-  m_Name: Floors
+  m_Script: {fileID: 11500000, guid: cf160e56760c3c740856e9098b6192b0, type: 3}
+  m_Name: UIOpened
   m_EditorClassIdentifier: 
-  Items: []
-  AddFloorEvent: {fileID: 11400000, guid: 1900118c697dd66498c86bada6b28050, type: 2}
-  RemoveFloorEvent: {fileID: 11400000, guid: 9f08995bb6ca4894f9481133ce81d159, type: 2}
+  listeners: []

@@ -15,6 +15,7 @@ public class Worker : MonoBehaviour
 {
     public int ID;
     public int modelID;
+    public Machine currentMachine;
 
     [Header("Management")]
     public WorkerInfo WorkerStats;

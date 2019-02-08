@@ -5,10 +5,21 @@ using UnityEngine;
 public class Machine : MonoBehaviour
 {
     public int machineID;
+    public int machineModelID;
 
     [Header("Worker")]
     public GameObject CurrentWorker;
     public Transform workerPosition;
+
+    public int CurrentWorkerID
+    {
+        get {
+            if (CurrentWorker != null)
+                return CurrentWorker.GetComponent<Worker>().ID;
+            else
+                return 0;
+        }
+    }
 
     public SerializableMachine GetSerializableMachine()
     {
@@ -20,6 +31,13 @@ public class Machine : MonoBehaviour
             sm = new SerializableMachine(true,machineID,CurrentWorker.GetComponent<Worker>().ID);
 
         return sm;
+    }
+
+    public void ChangeWorker(Worker w)
+    {
+        CurrentWorker = w.gameObject;
+
+        w.gameObject.transform.position = workerPosition.position;
     }
 
     private void OnDrawGizmosSelected()
