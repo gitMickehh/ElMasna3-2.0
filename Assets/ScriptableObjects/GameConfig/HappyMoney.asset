@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc275bb0d0bb6445b877e1577395d43, type: 3}
   m_Name: HappyMoney
   m_EditorClassIdentifier: 
-  value: 0
+  value: 500
   onChangeEvent: {fileID: 0}
