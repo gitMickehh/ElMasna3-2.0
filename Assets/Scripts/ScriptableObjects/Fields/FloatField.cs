@@ -19,6 +19,14 @@ public class FloatField : ScriptableObject{
             onChangeEvent.Raise();
     }
 
+    public void AddValue(float v)
+    {
+        value += v;
+
+        if (onChangeEvent != null)
+            onChangeEvent.Raise();
+    }
+
     public float GetValue()
     {
         return value;

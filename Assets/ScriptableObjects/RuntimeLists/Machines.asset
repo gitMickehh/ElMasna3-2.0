@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf160e56760c3c740856e9098b6192b0, type: 3}
-  m_Name: RemoveFloor
+  m_Script: {fileID: 11500000, guid: 42ccd5a6a25a666429dbb5eed32b322c, type: 3}
+  m_Name: Machines
   m_EditorClassIdentifier: 
-  listeners: []
+  Items: []

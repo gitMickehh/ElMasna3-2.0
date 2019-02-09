@@ -6,8 +6,34 @@ public class GameManager : MonoBehaviour {
 
     public GameConfig GameConfigFile;
 
-    private void Start()
+    [Header("Factory")]
+    public FloatField FactoryMoney;
+    public FloatField HappyMoney;
+
+    [Header("Building Floors")]
+    public GameObject Floor;
+    public FloorList listOfFloors;
+    public GameEvent BuildSuccess;
+    public GameEvent BuildFailure;
+
+    public void BuildFloor()
     {
-        //Load Game
+        if(FactoryMoney.GetValue() >= GameConfigFile.FloorCost)
+        {
+            FactoryMoney.AddValue(-GameConfigFile.FloorCost);
+
+            var f = Instantiate(Floor, new Vector3(), new Quaternion());
+
+            float heightOfFloor = f.GetComponentInChildren<Collider>().bounds.max.y;
+            Vector3 position = Vector3.up * heightOfFloor * (f.GetComponent<Floor>().floorOrder - 1);
+            f.transform.position = position;
+
+            BuildSuccess.Raise();
+        }
+        else
+        {
+            BuildFailure.Raise();
+        }
+        
     }
 }

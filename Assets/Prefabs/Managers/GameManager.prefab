@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
+  FactoryMoney: {fileID: 11400000, guid: f31364cfb312c8f429c29cf3161ef599, type: 2}
+  HappyMoney: {fileID: 11400000, guid: acc8faa4f589fea4f813164409026aea, type: 2}
+  Floor: {fileID: 4143921381608493496, guid: f99e70fbc3f656f479b04ce43535baee, type: 3}
+  listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
+  BuildSuccess: {fileID: 11400000, guid: 1900118c697dd66498c86bada6b28050, type: 2}
+  BuildFailure: {fileID: 11400000, guid: 9f08995bb6ca4894f9481133ce81d159, type: 2}

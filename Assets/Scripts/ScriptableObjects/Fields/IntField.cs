@@ -19,6 +19,14 @@ public class IntField : ScriptableObject {
             onChangeEvent.Raise();
     }
 
+    public void AddValue(int v)
+    {
+        value += v;
+
+        if (onChangeEvent != null)
+            onChangeEvent.Raise();
+    }
+
     public int GetValue()
     {
         return value;

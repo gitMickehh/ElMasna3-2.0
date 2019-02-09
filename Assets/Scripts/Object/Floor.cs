@@ -100,7 +100,7 @@ public class Floor : MonoBehaviour
                 if(machines[j].machineExists)
                 {
                     Transform instPos = workRooms[i].machinePlaces[j].machinePosition;
-                    GameObject machPrefab = MachinesPrefabs.GetPrefabByID(machines[j].machineID);
+                    GameObject machPrefab = MachinesPrefabs.GetPrefabByID(machines[j].machineModelID);
                     
                     //instantite machines
                     var machCreated = Instantiate(machPrefab,instPos);
@@ -117,6 +117,8 @@ public class Floor : MonoBehaviour
                             w.transform.rotation = machineComponent.workerPosition.rotation;
 
                             machineComponent.CurrentWorker = w;
+
+                            w.GetComponent<Worker>().currentMachine = machineComponent;
                         }
                     }
 

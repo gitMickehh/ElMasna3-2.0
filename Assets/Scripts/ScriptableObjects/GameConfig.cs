@@ -19,7 +19,8 @@ public class GameConfig : ScriptableObject {
     public DateTimeScriptable FirstTimeEver;
     public DateTimeScriptable LastTimePlayed;
 
-
+    [Header("Building")]
+    public float FloorCost;
 
     //[Header("Player")]
     //public string PlayerName;

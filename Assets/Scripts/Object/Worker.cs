@@ -41,7 +41,6 @@ public class Worker : MonoBehaviour
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
 
     Animator workerAnimator;
-    Machine machineAssigned;
 
     //saving
     public SerializableWorker WorkerData {
@@ -135,7 +134,7 @@ public class Worker : MonoBehaviour
     public SerializableWorker GetWorkerData()
     {
         SerializableWorker sw = 
-            new SerializableWorker(ID, FullName, gender, modelID, level, emotional.no, medical.no, happyMeter);
+            new SerializableWorker(ID, FullName, gender, currentMachine.machineID,modelID, level, emotional.no, medical.no, happyMeter);
 
         return sw;
     }
@@ -144,6 +143,7 @@ public class Worker : MonoBehaviour
     {
         ID = wData.WorkerID;
         modelID = wData.modelID;
+        //currentMachine = listofMachines.GetMachineByID(wData.machineID);
 
         FullName = wData.fullName;
         gender = wData.gender;

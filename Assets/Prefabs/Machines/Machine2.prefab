@@ -76,8 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47c88116f236cb4eaf3316920c18e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineID: 2
+  machineID: 0
   machineModelID: 2
+  listOfMahcines: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}
   CurrentWorker: {fileID: 0}
   workerPosition: {fileID: 4166432996256539999}
 --- !u!1 &4166432996256539992

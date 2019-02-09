@@ -6,6 +6,7 @@ public class Machine : MonoBehaviour
 {
     public int machineID;
     public int machineModelID;
+    public MachineList listOfMahcines;
 
     [Header("Worker")]
     public GameObject CurrentWorker;
@@ -21,14 +22,25 @@ public class Machine : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        machineID = listOfMahcines.GetNewId();
+        listOfMahcines.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        listOfMahcines.Remove(this);
+    }
+
     public SerializableMachine GetSerializableMachine()
     {
         SerializableMachine sm;
 
         if (CurrentWorker == null)
-            sm = new SerializableMachine(true,machineID);
+            sm = new SerializableMachine(true,machineID, machineModelID);
         else
-            sm = new SerializableMachine(true,machineID,CurrentWorker.GetComponent<Worker>().ID);
+            sm = new SerializableMachine(true,machineID, machineModelID, CurrentWorker.GetComponent<Worker>().ID);
 
         return sm;
     }
