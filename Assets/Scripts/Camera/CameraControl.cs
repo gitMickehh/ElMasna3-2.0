@@ -17,18 +17,13 @@ public class CameraControl : MonoBehaviour
     private float timeStartedLerping;
     public float lerpTime = 1;
 
-    [Header("Camera Range")]
-    public float minimumHeight;
-    public float maximumHeight;
+    [Header("Camera Properties")]
+    public CameraProperties cameraPorperties;
+
+    //height
     private float clampY;
 
-    [Header("Zoom Orthographic")]
-    public float zoomOutMin;
-    public float zoomOutMax;
-
-    [Header("Zoom Prespective")]
-    public float minimumZoom;
-    public float maximumZoom;
+    //zoom
     private float clampZ;
 
     private IEnumerator Lerping()
@@ -36,17 +31,15 @@ public class CameraControl : MonoBehaviour
         while(shouldLerp)
         {
             transform.position = Lerp(startPosition, endPosition, timeStartedLerping, lerpTime);
+
+            clampY = Mathf.Clamp(transform.position.y, cameraPorperties.minimumHeight, cameraPorperties.maximumHeight);
+            transform.position = new Vector3(transform.position.x, clampY, transform.position.z);
+
+            clampZ = Mathf.Clamp(transform.position.z, cameraPorperties.minimumZoom, cameraPorperties.maximumZoom);
+            transform.position = new Vector3(transform.position.x, transform.position.y, clampZ);
+
             yield return new WaitForEndOfFrame();
         }
-    }
-
-    private void FixedUpdate()
-    {
-        clampY = Mathf.Clamp(transform.position.y,minimumHeight,maximumHeight);
-        transform.position = new Vector3(transform.position.x,clampY,transform.position.z);
-
-        clampZ = Mathf.Clamp(transform.position.z, minimumZoom, maximumZoom);
-        transform.position = new Vector3(transform.position.x, transform.position.y, clampZ);
     }
 
     public void TraverseUp()
@@ -82,7 +75,7 @@ public class CameraControl : MonoBehaviour
         {
             Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - 
                 (pinchMultiplier * pinchMagnitude.GetValue()),
-                zoomOutMin, zoomOutMax);
+                cameraPorperties.zoomOutMin, cameraPorperties.zoomOutMax);
         }
         else
         {
@@ -108,24 +101,24 @@ public class CameraControl : MonoBehaviour
         return result;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(new Vector3(transform.position.x,minimumHeight,transform.position.z),
-            new Vector3(transform.position.x,maximumHeight,transform.position.z));
+        Gizmos.DrawLine(new Vector3(transform.position.x, cameraPorperties.minimumHeight, transform.position.z),
+            new Vector3(transform.position.x, cameraPorperties.maximumHeight,transform.position.z));
 
-        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, minimumZoom),
-            new Vector3(transform.position.x, transform.position.y, maximumZoom));
+        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, cameraPorperties.minimumZoom),
+            new Vector3(transform.position.x, transform.position.y, cameraPorperties.maximumZoom));
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(new Vector3(transform.position.x, minimumHeight, transform.position.z),
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, cameraPorperties.minimumHeight, transform.position.z),
             0.5f);
-        Gizmos.DrawWireSphere(new Vector3(transform.position.x, maximumHeight, transform.position.z),
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, cameraPorperties.maximumHeight, transform.position.z),
             0.5f);
 
-        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y, minimumZoom),
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y, cameraPorperties.minimumZoom),
             0.5f);
-        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y, maximumZoom),
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y, cameraPorperties.maximumZoom),
             0.5f);
     }
 }

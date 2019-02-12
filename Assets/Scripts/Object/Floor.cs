@@ -22,6 +22,10 @@ public class Floor : MonoBehaviour
     public FloatField swipeMagnitude;
     public float torqueMultiplyer;
 
+    [Header("Camera Properties")]
+    public CameraProperties cameraProperties;
+    public float heightToAddToCamera;
+
     Rigidbody myBody;
 
     [Header("Rooms")]
@@ -34,6 +38,8 @@ public class Floor : MonoBehaviour
     {
         floorOrder = listOfFloors.GetFloorOrder();
         listOfFloors.Add(this);
+
+        cameraProperties.maximumHeight += heightToAddToCamera;
     }
 
     private void Start()
@@ -44,6 +50,7 @@ public class Floor : MonoBehaviour
     private void OnDisable()
     {
         listOfFloors.Remove(this);
+        cameraProperties.maximumHeight -= heightToAddToCamera;
     }
 
     public void RotateFloorRight()

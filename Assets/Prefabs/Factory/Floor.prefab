@@ -202,6 +202,8 @@ MonoBehaviour:
     floorOrder: 0
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   torqueMultiplyer: 0.3
+  cameraProperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
+  heightToAddToCamera: 30
   workRooms:
   - machinePlaces:
     - machinePosition: {fileID: 7780279790832862400}

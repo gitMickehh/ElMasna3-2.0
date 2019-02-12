@@ -26,6 +26,7 @@ public class Machine : MonoBehaviour
     {
         machineID = listOfMahcines.GetNewId();
         listOfMahcines.Add(this);
+        transform.name = "Machine " + machineID;
     }
 
     private void OnDisable()
@@ -47,7 +48,13 @@ public class Machine : MonoBehaviour
 
     public void ChangeWorker(Worker w)
     {
-        CurrentWorker = w.gameObject;
+        Debug.Log(gameObject.name +" changed worker");
+
+        if (w.currentMachine != null)
+            w.currentMachine.CurrentWorker = null;
+
+       w.currentMachine = this;
+       CurrentWorker = w.gameObject;
 
         w.gameObject.transform.position = workerPosition.position;
     }

@@ -20,7 +20,6 @@ public class UIFloor : MonoBehaviour
     [Header("Rooms")]
     public UIRoom[] rooms;
 
-
     private void OnEnable()
     {
         UpdateFloor();
@@ -61,6 +60,5 @@ public class UIFloor : MonoBehaviour
             }
         }
     }
-
 
 }
