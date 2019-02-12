@@ -11,6 +11,17 @@ public class UIElementDragger : MonoBehaviour
     public bool MouseInput;
     public GameEvent RefreshUIEvent;
 
+    [Header("Map Scroll Space")]
+    [Range(0, 100)]
+    public float scrollThresholdPercentage;
+    float minScrollPixels;
+    float maxScrollPixels;
+
+    [Header("Scroll")]
+    public GameEvent ScrollUp;
+    public GameEvent ScrollDown;
+    public FloatField ScrollDistance;
+
     private Touch finger;
 
     private bool dragging = false;
@@ -22,6 +33,12 @@ public class UIElementDragger : MonoBehaviour
     //private Transform currentObjectReplaced;
 
     List<RaycastResult> hitObjects = new List<RaycastResult>();
+
+    private void Start()
+    {
+        minScrollPixels = Screen.height * (scrollThresholdPercentage / 100f);
+        maxScrollPixels = Screen.height - minScrollPixels;
+    }
 
     private void Update()
     {
@@ -62,7 +79,12 @@ public class UIElementDragger : MonoBehaviour
                 else
                 {
                     if (objectToDrag != null)
-                        objectToDrag.position = originalPosition;
+                    {
+                        Vector2 newPosition = originalPosition;
+                        newPosition.y += ScrollDistance.GetValue();
+
+                        objectToDrag.position = newPosition;
+                    }
                 }
 
                 if (objectToDragImage != null)
@@ -71,6 +93,7 @@ public class UIElementDragger : MonoBehaviour
                 objectToDrag = null;
                 dragging = false;
                 //RefreshUIEvent.Raise();
+                ScrollDistance.SetValue(0);
             }
 
         }
@@ -109,7 +132,13 @@ public class UIElementDragger : MonoBehaviour
                 else
                 {
                     if (objectToDrag != null)
-                        objectToDrag.position = originalPosition;
+                    {
+                        Vector2 newPosition = originalPosition;
+                        newPosition.y += ScrollDistance.GetValue();
+
+                        objectToDrag.position = newPosition;
+                    }
+                        
                 }
 
                 if (objectToDragImage != null)
@@ -118,20 +147,33 @@ public class UIElementDragger : MonoBehaviour
                 objectToDrag = null;
                 dragging = false;
                 //RefreshUIEvent.Raise();
+
+                ScrollDistance.SetValue(0);
             }
 
         }
 
         if (dragging)
         {
-            if (MouseInput && Input.touchCount == 0)
-                objectToDrag.position = Input.mousePosition;
-
-            if (Input.touchCount == 1)
+            if (objectToDrag != null)
             {
-                if (objectToDrag != null)
+                if (MouseInput && Input.touchCount == 0)
+                    objectToDrag.position = Input.mousePosition;
+
+                if (Input.touchCount == 1)
                 {
                     objectToDrag.position = finger.position;
+                }
+
+                if (objectToDrag.position.y <= minScrollPixels)
+                {
+                    Debug.Log("SCROLL DOWN");
+                    ScrollDown.Raise();
+                }
+                else if (objectToDrag.position.y >= maxScrollPixels)
+                {
+                    Debug.Log("SCROLL UP");
+                    ScrollUp.Raise();
                 }
             }
         }

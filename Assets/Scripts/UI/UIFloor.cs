@@ -20,12 +20,7 @@ public class UIFloor : MonoBehaviour
     [Header("Rooms")]
     public UIRoom[] rooms;
 
-    private void OnEnable()
-    {
-        UpdateFloor();
-    }
-
-    private void UpdateFloor()
+    public void UpdateFloor()
     {
         for (int i = 0; i < realFloor.workRooms.Length; i++)
         {
@@ -59,6 +54,8 @@ public class UIFloor : MonoBehaviour
 
             }
         }
+
+        transform.name = realFloor.name + " UI";
     }
 
 }
