@@ -167,12 +167,10 @@ public class UIElementDragger : MonoBehaviour
 
                 if (objectToDrag.position.y <= minScrollPixels)
                 {
-                    Debug.Log("SCROLL DOWN");
                     ScrollDown.Raise();
                 }
                 else if (objectToDrag.position.y >= maxScrollPixels)
                 {
-                    Debug.Log("SCROLL UP");
                     ScrollUp.Raise();
                 }
             }
