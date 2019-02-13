@@ -282,7 +282,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -334,6 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorPicker: {fileID: 2740228788664945935}
+  UIOnEvent: {fileID: 11400000, guid: 3b172fe06d01ff7458c53adc4041ffb0, type: 2}
+  UIOffEvent: {fileID: 11400000, guid: 52d072e0a34515b45bfe93b8adb175b7, type: 2}
 --- !u!1 &2740228788664927557
 GameObject:
   m_ObjectHideFlags: 0
