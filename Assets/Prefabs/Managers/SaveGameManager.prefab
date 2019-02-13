@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
-  FloorPrefab: {fileID: 4143921381608493496, guid: f99e70fbc3f656f479b04ce43535baee,
+  FloorPrefab: {fileID: 4143921381608493496, guid: 7ae93fe3b74f2824990e8602ff4e1870,
     type: 3}
   WorkersPrefabs: {fileID: 11400000, guid: 6cd08f48bacbc8048bd515203ca7a148, type: 2}
 --- !u!114 &5318303127171909607
