@@ -84,6 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4841647893871945739}
   - component: {fileID: 1138165886904658808}
+  - component: {fileID: 6586786890204652196}
   m_Layer: 0
   m_Name: OrientationBuilding
   m_TagString: Untagged
@@ -122,6 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomCamera: {fileID: 1599678762883325918}
+  workerTemplate: {fileID: 11400000, guid: 71db6be1766cf29478d68e7a4c4dad4b, type: 2}
+  minimumNumberOfWorkersPerDay: 2
   WorkersPositions:
   - position: {fileID: 2573057270375495404}
     worker: {fileID: 0}
@@ -133,6 +136,35 @@ MonoBehaviour:
     worker: {fileID: 0}
   - position: {fileID: 6817775491747124950}
     worker: {fileID: 0}
+--- !u!114 &6586786890204652196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319219452396579615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e798655ea9bf5a44c985c5e0aa263774, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138165886904658808}
+        m_MethodName: NewWorkers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &4927566075082765761
 GameObject:
   m_ObjectHideFlags: 0

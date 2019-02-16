@@ -14,7 +14,56 @@ public class OrientationBuilding : MonoBehaviour
     [Header("Camera")]
     public Transform RoomCamera;
 
-    [Header("Worker Positions")]
+    [Header("Workers")]
+    public WorkerInfo workerTemplate;
+    public int minimumNumberOfWorkersPerDay;
     public OrientationPosition[] WorkersPositions;
+
+    Dictionary<int, float> randomBag; 
+
+    void InstantiateDictionary(int minimum = 2,int numberOfWorkers = 5)
+    {
+        randomBag = new Dictionary<int, float>(numberOfWorkers);
+
+        for (int i = minimum; i <= numberOfWorkers; i++)
+        {
+            randomBag[i] = 0.0f;
+        }
+    }
+
+    int GetRandomNumber()
+    {
+        int r;
+        r = Random.Range(minimumNumberOfWorkersPerDay, WorkersPositions.Length+1);
+        //randomBag[r] += 0.2f;
+        return r;
+    }
+
+    void ClearWorkers()
+    {
+        for (int i = 0; i < WorkersPositions.Length; i++)
+        {
+            if(WorkersPositions[i].worker != null)
+            {
+                Destroy(WorkersPositions[i].worker.gameObject);
+            }
+
+            WorkersPositions[i].worker = null;
+        }
+    }
+
+    public void NewWorkers()
+    {
+        ClearWorkers();
+        int r = GetRandomNumber();
+
+        for (int i = 0; i < r; i++)
+        {
+            var w = workerTemplate.GetWorkerPrefab(workerTemplate.GetGender());
+            GameObject s = Instantiate(w, WorkersPositions[i].position);
+            WorkersPositions[i].worker = s.GetComponent<Worker>();
+            WorkersPositions[i].worker.RandomizeWorker();
+        }
+    }
 
 }
