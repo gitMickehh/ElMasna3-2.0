@@ -31,7 +31,6 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        //tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
         #region doubleTapCheck
         if (currentTimer >= doubleTapTime)
         {

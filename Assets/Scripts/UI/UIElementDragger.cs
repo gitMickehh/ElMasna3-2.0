@@ -25,6 +25,7 @@ public class UIElementDragger : MonoBehaviour
     private Touch finger;
 
     private bool dragging = false;
+    private bool isSwiping = false;
 
     private Vector2 originalPosition;
     private Transform objectToDrag;
