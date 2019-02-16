@@ -19,6 +19,9 @@ public class changeRoom : MonoBehaviour
     [SerializeField]
     bool arrived = false;
 
+    [SerializeField]
+    bool rotateOnce = true;
+
     WayPoint targetWayPoint;
 
     void Awake()
@@ -45,7 +48,7 @@ public class changeRoom : MonoBehaviour
         direction.Normalize();
         direction = new Vector3(direction.x, 0, direction.z);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.15F); //making worker facing the movement
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.15F); //making worker facing the movement
 
         walking = true;
     }
@@ -55,10 +58,17 @@ public class changeRoom : MonoBehaviour
     {
         if (walking == true)
         {
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.15F); //making worker facing the movement
             float distance = Vector3.Distance(targetPos.position, transform.position);
 
             if (distance > 3)
             {
+                if (rotateOnce)
+                {
+                    transform.forward = -wayPointCurrent.doorPosition.forward;
+                    rotateOnce = false;
+                }
+
                 rigidbody.MovePosition(transform.position + (direction * speed));
             }
 
@@ -68,6 +78,8 @@ public class changeRoom : MonoBehaviour
 
                 transform.position = new Vector3(targetWayPoint.doorPosition.position.x, targetWayPoint.doorPosition.position.y
                     , targetWayPoint.doorPosition.position.z);
+
+                transform.forward = targetWayPoint.doorPosition.forward;
 
                 Walk(targetWayPoint.doorPosition, targetWayPoint.WayPointTransform);
 
