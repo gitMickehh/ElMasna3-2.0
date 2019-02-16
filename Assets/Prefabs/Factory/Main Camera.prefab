@@ -13,10 +13,12 @@ GameObject:
   - component: {fileID: 2555753119611847819}
   - component: {fileID: 2555753119611847820}
   - component: {fileID: 2555753119611847816}
+  - component: {fileID: 1860473216428604094}
   - component: {fileID: 2555753119611847862}
   - component: {fileID: 2555753119611847863}
   - component: {fileID: 2555753119611847861}
   - component: {fileID: 2555753119611847860}
+  - component: {fileID: 7697610573019251505}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -114,6 +116,20 @@ MonoBehaviour:
   pinchMultiplier: 0.05
   lerpTime: 0.45
   cameraPorperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
+--- !u!114 &1860473216428604094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555753119611847821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4f716785212bd4f9848957300b5e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTime: 0.7
+  orientationPosition: {fileID: 0}
 --- !u!114 &2555753119611847862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +235,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2555753119611847816}
         m_MethodName: Zoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &7697610573019251505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555753119611847821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: f66ad35ee363c6949ab63f496ff17174, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1860473216428604094}
+        m_MethodName: SwitchView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
