@@ -15,8 +15,11 @@ public class changeRoom : MonoBehaviour
 
     [SerializeField]
     bool walking = false;
-    WayPoint targetPoint;
-    //WorkerState workerState;
+
+    [SerializeField]
+    bool arrived = false;
+
+    WayPoint targetWayPoint;
 
     void Awake()
     {
@@ -26,23 +29,17 @@ public class changeRoom : MonoBehaviour
     public void ChangeRoom(WayPoint wayPointTarget)
     {
         Transform door1 = wayPointCurrent.doorPosition;
-        //Transform door2 = wayPointTarget.doorPosition;
-        targetPoint = wayPointTarget;
+
+        targetWayPoint = wayPointTarget;
 
         Walk(transform, door1);
 
-        //if (!walking)
-        //{
-        //    //transform.position = new Vector3(door2.position.x, door2.position.y, door2.position.z);
-        //    //Walk(door2, wayPointTarget.WayPointTransform);
-        //}
     }
 
 
     public void Walk(Transform startPos, Transform endPos)
     {
         targetPos = endPos;
-        Debug.Log("endPos: " + endPos);
 
         direction = endPos.position - startPos.position;
         direction.Normalize();
@@ -59,23 +56,24 @@ public class changeRoom : MonoBehaviour
         if (walking == true)
         {
             float distance = Vector3.Distance(targetPos.position, transform.position);
-            //Debug.Log("distance: " + distance);
+
             if (distance > 3)
             {
-                Debug.Log("direction: " + direction);
                 rigidbody.MovePosition(transform.position + (direction * speed));
             }
-            else
+
+            else if (!arrived)
             {
                 walking = false;
-                Debug.Log("walking = false");
 
-                transform.position = new Vector3(targetPoint.doorPosition.position.x, targetPoint.doorPosition.position.y
-                    , targetPoint.doorPosition.position.z);
-                Walk(targetPoint.doorPosition, targetPoint.WayPointTransform);
+                transform.position = new Vector3(targetWayPoint.doorPosition.position.x, targetWayPoint.doorPosition.position.y
+                    , targetWayPoint.doorPosition.position.z);
+
+                Walk(targetWayPoint.doorPosition, targetWayPoint.WayPointTransform);
+
+                arrived = true;
 
             }
-            //workerState = WorkerState.Idle;
 
         }
     }
