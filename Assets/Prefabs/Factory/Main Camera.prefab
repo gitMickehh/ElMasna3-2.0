@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2555753119611847820}
   - component: {fileID: 2555753119611847816}
   - component: {fileID: 1860473216428604094}
+  - component: {fileID: 8889290905441748305}
   - component: {fileID: 2555753119611847862}
   - component: {fileID: 2555753119611847863}
   - component: {fileID: 2555753119611847861}
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02344979ffef9bd4b9293c22d2a00a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingCamera: {fileID: 11400000, guid: 0612923cb20abdd4e9922082e02ba037, type: 2}
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   swipeMultiplier: 0.25
   pinchMagnitude: {fileID: 11400000, guid: 8efc054dac37f4c48924f47e51e6a327, type: 2}
@@ -128,8 +130,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4f716785212bd4f9848957300b5e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingCamera: {fileID: 11400000, guid: 0612923cb20abdd4e9922082e02ba037, type: 2}
   lerpTime: 0.7
   orientationPosition: {fileID: 0}
+--- !u!114 &8889290905441748305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555753119611847821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b7b263812125b4981255841050051e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 10
+  moving: {fileID: 11400000, guid: 0612923cb20abdd4e9922082e02ba037, type: 2}
+  listOfRotators: {fileID: 11400000, guid: 25ca98e2c0d49074fb850707e8e7a5e1, type: 2}
 --- !u!114 &2555753119611847862
 MonoBehaviour:
   m_ObjectHideFlags: 0

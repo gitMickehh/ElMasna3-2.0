@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraLerping : MonoBehaviour
 {
+    public BoolField movingCamera;
+
     //lerping
     private bool shouldLerp = false;
     private Vector3 startPosition;
@@ -37,6 +39,8 @@ public class CameraLerping : MonoBehaviour
     {
         StopAllCoroutines();
         shouldLerp = true;
+        movingCamera.BoolValue = true;
+
         timeStartedLerping = Time.time;
         startPosition = transform.position;
 
@@ -76,7 +80,10 @@ public class CameraLerping : MonoBehaviour
         var result = Vector3.Lerp(start, end, percentageComplete);
 
         if (percentageComplete > 0.9f)
+        {
             shouldLerp = false;
+            movingCamera.BoolValue = false;
+        }
 
         return result;
     }

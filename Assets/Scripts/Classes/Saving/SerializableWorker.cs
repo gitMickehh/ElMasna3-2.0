@@ -9,6 +9,7 @@ public class SerializableWorker
     public int modelID;
 
     public int machineID;
+    public bool inOrientation;
 
     public string fullName;
     public Gender gender;
@@ -23,7 +24,8 @@ public class SerializableWorker
     {
         WorkerID = 0;
         modelID = 1;
-        machineID = 0;
+        machineID = -1;
+        inOrientation = true;
 
         fullName = "standard";
         gender = Gender.MALE;
@@ -34,12 +36,12 @@ public class SerializableWorker
         happiness = 0.5f;
     }
 
-    public SerializableWorker(int id, string name, Gender g = Gender.MALE, int machID = 0, int model_id = 1, int lvl = 1, int emotionT = 1, int medicalT = 1, float happyMeter = 0.5f)
+    public SerializableWorker(int id, string name, Gender g = Gender.MALE, bool orientation = true, int model_id = 1, int lvl = 1, int emotionT = 1, int medicalT = 1, float happyMeter = 0.5f, int machID = -1)
     {
         WorkerID = id;
         modelID = model_id;
         machineID = machID;
-
+        inOrientation = orientation;
 
         fullName = name;
         gender = g;

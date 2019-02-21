@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4143921381608493489}
   - component: {fileID: 4143921381608493492}
   - component: {fileID: 8292025577735715553}
+  - component: {fileID: 8923800670507886926}
   - component: {fileID: 4143921381608493493}
   - component: {fileID: 4143921381608493495}
   - component: {fileID: 4143921381608493494}
@@ -200,8 +201,6 @@ MonoBehaviour:
   savingFloor:
     rooms: []
     floorOrder: 0
-  swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
-  torqueMultiplyer: 0.3
   cameraProperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
   heightToAddToCamera: 30
   workRooms:
@@ -219,6 +218,22 @@ MonoBehaviour:
     - machinePosition: {fileID: 4741209027348891345}
       machine: {fileID: 0}
   WorkersHolder: {fileID: 516371051559589594}
+--- !u!114 &8923800670507886926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143921381608493496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b613723c75cf54c8835762c831b8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentActive: 0
+  listOfMes: {fileID: 11400000, guid: 25ca98e2c0d49074fb850707e8e7a5e1, type: 2}
+  swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
+  torqueMultiplyer: 0.3
 --- !u!114 &4143921381608493493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,8 +250,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8292025577735715553}
-        m_MethodName: RotateFloorRight
+      - m_Target: {fileID: 8923800670507886926}
+        m_MethodName: RotateRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -264,8 +279,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8292025577735715553}
-        m_MethodName: RotateFloorLeft
+      - m_Target: {fileID: 8923800670507886926}
+        m_MethodName: RotateLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -293,7 +308,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8292025577735715553}
+      - m_Target: {fileID: 8923800670507886926}
         m_MethodName: StopRotation
         m_Mode: 1
         m_Arguments:

@@ -16,8 +16,17 @@ public class SaveGameManager : MonoBehaviour
     public GameObject FloorPrefab;
     public PrefabsList WorkersPrefabs;
 
+    OrientationBuilding orientation;
+
     private void Start()
     {
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+        orientation = FindObjectOfType<OrientationBuilding>();
         LoadWorkers();
         LoadFloors();
     }
@@ -99,6 +108,22 @@ public class SaveGameManager : MonoBehaviour
                 GameObject workerPrefab = WorkersPrefabs.GetPrefabByID(workerData.modelID);
                 
                 GameObject worker = Instantiate(workerPrefab, new Vector3(), new Quaternion());
+
+                if(workerData.inOrientation)
+                {
+                    for (int j = 0; j < orientation.WorkersPositions.Length; j++)
+                    {
+                        if (orientation.WorkersPositions[j].worker == null)
+                        {
+                            worker.transform.SetParent(orientation.WorkersPositions[j].position);
+                            worker.transform.localPosition = new Vector3();
+                            worker.transform.localRotation = new Quaternion();
+                            orientation.WorkersPositions[j].worker = worker.GetComponent<Worker>();
+                            break;
+                        }
+                    }
+                }
+
                 worker.GetComponent<Worker>().LoadWorkerData(workerData);
             }
         }

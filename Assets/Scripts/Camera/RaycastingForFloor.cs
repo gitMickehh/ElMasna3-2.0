@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class RaycastingForFloor : MonoBehaviour {
 
-    //public FloorManager floorManager;
-    
-    //Vector3 target;
-    public LayerMask floorLayer;
-
+    public float rayLength;
     public BoolField moving;
+    public RotatingObjectsList listOfRotators;
 
     float shootingTime = 0;
 
-    //private void Start()
-    //{
-    //    floorManager = FindObjectOfType<FloorManager>();
-    //}
+    private void OnEnable()
+    {
+        moving.BoolValue = false;
+    }
 
     private void FixedUpdate()
     {
-
         if (moving.BoolValue)
         {
             shootingTime += Time.fixedDeltaTime;
@@ -42,12 +38,14 @@ public class RaycastingForFloor : MonoBehaviour {
         var targetS = new Vector3(Screen.width / 2, Screen.height / 2);
         var r = Camera.main.ScreenPointToRay(targetS);
 
+        r.direction = transform.forward * rayLength;
+
         RaycastHit info;
-        Physics.Raycast(r,out info, 150, floorLayer);
+        Physics.Raycast(r,out info);
         if(info.collider != null)
         {
-            //Debug.Log("hit floor :) -> "+ info.collider.gameObject.name);
-            //floorManager.UpdateFloorSelected(info.collider.gameObject);
+            Debug.Log(info.collider.gameObject.name);
+            listOfRotators.SetActiveRotator(info.collider.gameObject.GetComponent<ControlledRotator>());
         }
 
     }

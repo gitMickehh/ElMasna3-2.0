@@ -18,9 +18,9 @@ public class Floor : MonoBehaviour
     [HideInInspector]
     public SerializableFloor savingFloor;
 
-    [Header("Input")]
-    public FloatField swipeMagnitude;
-    public float torqueMultiplyer;
+    //[Header("Input")]
+    //public FloatField swipeMagnitude;
+    //public float torqueMultiplyer;
 
     [Header("Camera Properties")]
     public CameraProperties cameraProperties;
@@ -53,6 +53,7 @@ public class Floor : MonoBehaviour
         cameraProperties.maximumHeight -= heightToAddToCamera;
     }
 
+    /*
     public void RotateFloorRight()
     {
         if (!activeFloor)
@@ -82,6 +83,7 @@ public class Floor : MonoBehaviour
 
         myBody.angularVelocity = Vector3.zero;
     }
+    */
 
     public void FillSerializableFloor()
     {

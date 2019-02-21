@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    public BoolField movingCamera;
+
     [Header("Input Senstivity")]
     public FloatField swipeMagnitude;
     public float swipeMultiplier = 0.15f;
@@ -16,6 +18,9 @@ public class CameraControl : MonoBehaviour
     private Vector3 endPosition;
     private float timeStartedLerping;
     public float lerpTime = 1;
+
+    //raycasting
+    RaycastingForFloor rcaster;
 
     [Header("Camera Properties")]
     public CameraProperties cameraPorperties;
@@ -59,6 +64,7 @@ public class CameraControl : MonoBehaviour
         startPosition = transform.position;
         endPosition = transform.position + (Vector3.up * -swipeMultiplier * swipeMagnitude.GetValue());
         shouldLerp = true;
+        movingCamera.BoolValue = true;
 
         StopAllCoroutines();
         StartCoroutine(Lerping());
@@ -96,7 +102,10 @@ public class CameraControl : MonoBehaviour
         var result = Vector3.Lerp(start,end,percentageComplete);
 
         if (percentageComplete > 0.9f)
+        {
+            movingCamera.BoolValue = true;
             shouldLerp = false;
+        }
 
         return result;
     }

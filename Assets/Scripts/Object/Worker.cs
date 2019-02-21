@@ -16,6 +16,7 @@ public class Worker : MonoBehaviour
     public int ID;
     public int modelID;
     public Machine currentMachine;
+    public bool inOrientation;
 
     [Header("Management")]
     public WorkerInfo WorkerStats;
@@ -66,6 +67,8 @@ public class Worker : MonoBehaviour
 
     public void RandomizeWorker()
     {
+        inOrientation = true;
+
         FullName = WorkerStats.RandomizeName(gender);
         emotional = WorkerStats.RandomizeEmotionalTraits();
         medical = WorkerStats.RandomizeMedicalTraits();
@@ -133,8 +136,12 @@ public class Worker : MonoBehaviour
 
     public SerializableWorker GetWorkerData()
     {
-        SerializableWorker sw = 
-            new SerializableWorker(ID, FullName, gender, currentMachine.machineID,modelID, level, emotional.no, medical.no, happyMeter);
+        SerializableWorker sw;
+
+        if (currentMachine != null)
+            sw = new SerializableWorker(ID, FullName, gender, inOrientation,modelID, level, emotional.no, medical.no, happyMeter, currentMachine.machineID);
+        else
+            sw = new SerializableWorker(ID, FullName, gender, inOrientation, modelID, level, emotional.no, medical.no, happyMeter);
 
         return sw;
     }
@@ -144,6 +151,7 @@ public class Worker : MonoBehaviour
         ID = wData.WorkerID;
         modelID = wData.modelID;
         //currentMachine = listofMachines.GetMachineByID(wData.machineID);
+        inOrientation = wData.inOrientation;
 
         FullName = wData.fullName;
         gender = wData.gender;
