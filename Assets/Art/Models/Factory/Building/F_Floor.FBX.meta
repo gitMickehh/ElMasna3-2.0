@@ -1,15 +1,79 @@
 fileFormatVersion: 2
-guid: 7c94c5117db1e2e4ca00a37d7d47f134
+guid: e5bd2b6c95187d044bfa702f492fd81f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: New Factory
+    100004: Wall Machine1
+    100006: Wall Machine3
+    100008: Wall Machine4
     400000: //RootNode
-    2100000: 'Material #2'
-    2300000: //RootNode
-    3300000: //RootNode
+    400002: New Factory
+    400004: Wall Machine1
+    400006: Wall Machine3
+    400008: Wall Machine4
+    2100000: CenterTube_
+    2100002: RoomsOut
+    2100004: AllFactory
+    2100006: FactoryFloor
+    2100008: FactorySeiling
+    2100010: FactoryWallFace
+    2100012: FactoryWalls
+    2100014: Assets
+    2300000: New Factory
+    2300002: Wall Machine1
+    2300004: Wall Machine3
+    2300006: Wall Machine4
+    3300000: New Factory
+    3300002: Wall Machine1
+    3300004: Wall Machine3
+    3300006: Wall Machine4
     4300000: New Factory
-  externalObjects: {}
+    4300002: Wall Machine4
+    4300004: Wall Machine3
+    4300006: Wall Machine1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AllFactory
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Assets
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CenterTube_
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FactoryFloor
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FactorySeiling
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FactoryWallFace
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FactoryWalls
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RoomsOut
+    second: {fileID: 2100000, guid: db7a616e9c1c22544a01186616379bd8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

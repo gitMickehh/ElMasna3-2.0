@@ -17,12 +17,14 @@ public class SaveGameManager : MonoBehaviour
     public PrefabsList WorkersPrefabs;
 
     OrientationBuilding orientation;
+    GameManager gManager;
 
 #if UNITY_EDITOR
     [Header("Editor Options")]
     public bool save;
     public bool load;
 #endif
+
     private void Start()
     {
         StartCoroutine(LateStart());
@@ -32,12 +34,16 @@ public class SaveGameManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         orientation = FindObjectOfType<OrientationBuilding>();
+
+        //because the game manager finds the timer at the end of the first frame
+        yield return new WaitForEndOfFrame();
+        gManager = FindObjectOfType<GameManager>();
+
 #if UNITY_EDITOR
         if (load)
         {
 #endif
-            LoadWorkers();
-            LoadFloors();
+            LoadAll();
 #if UNITY_EDITOR
         }
 #endif
@@ -145,10 +151,41 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
+    private void SaveTime()
+    {
+        var gTime = gManager.GetGameTime();
+        var timeString = JsonUtility.ToJson(gTime);
+
+        PlayerPrefs.SetString("time", timeString);
+    }
+
+    private void LoadTime()
+    {
+        if(PlayerPrefs.HasKey("time"))
+        {
+            string timeString = PlayerPrefs.GetString("time");
+            GameTime gTime = JsonUtility.FromJson<GameTime>(timeString);
+
+            gManager.LoadTime(gTime);
+        }
+        else
+        {
+            Debug.LogWarning("You have no previous saved time!");
+        }
+    }
+
+    private void LoadAll()
+    {
+        LoadWorkers();
+        LoadFloors();
+        LoadTime();
+    }
+
     private void SaveAll()
     {
         SaveFloors();
         SaveWorkers();
+        SaveTime();
     }
 
     private void OnApplicationQuit()
