@@ -18,6 +18,11 @@ public class SaveGameManager : MonoBehaviour
 
     OrientationBuilding orientation;
 
+#if UNITY_EDITOR
+    [Header("Editor Options")]
+    public bool save;
+    public bool load;
+#endif
     private void Start()
     {
         StartCoroutine(LateStart());
@@ -27,8 +32,15 @@ public class SaveGameManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         orientation = FindObjectOfType<OrientationBuilding>();
-        LoadWorkers();
-        LoadFloors();
+#if UNITY_EDITOR
+        if (load)
+        {
+#endif
+            LoadWorkers();
+            LoadFloors();
+#if UNITY_EDITOR
+        }
+#endif
     }
 
     private void SaveFloors()
@@ -59,7 +71,7 @@ public class SaveGameManager : MonoBehaviour
             firstFloor.LoadFloor();
 
             var heightOfFloor = firstFloor.GetComponentInChildren<Collider>().bounds.max.y;
-            
+
             //need to intialize the other floors
             int floorCount = PlayerPrefs.GetInt("floorCount");
             for (int i = 1; i < floorCount; i++)
@@ -89,7 +101,7 @@ public class SaveGameManager : MonoBehaviour
             string workerJson = JsonUtility.ToJson(listOfWorkers.Items[i].GetWorkerData());
             Debug.Log(workerJson);
 
-            PlayerPrefs.SetString("worker"+i,workerJson);
+            PlayerPrefs.SetString("worker" + i, workerJson);
         }
 
         PlayerPrefs.SetInt("workersCount", listOfWorkers.Items.Count);
@@ -104,12 +116,12 @@ public class SaveGameManager : MonoBehaviour
             for (int i = 0; i < workersCount; i++)
             {
                 string retrievedJson = PlayerPrefs.GetString("worker" + i);
-                var workerData =  JsonUtility.FromJson<SerializableWorker>(retrievedJson);
+                var workerData = JsonUtility.FromJson<SerializableWorker>(retrievedJson);
                 GameObject workerPrefab = WorkersPrefabs.GetPrefabByID(workerData.modelID);
-                
+
                 GameObject worker = Instantiate(workerPrefab, new Vector3(), new Quaternion());
 
-                if(workerData.inOrientation)
+                if (workerData.inOrientation)
                 {
                     for (int j = 0; j < orientation.WorkersPositions.Length; j++)
                     {
@@ -141,7 +153,14 @@ public class SaveGameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveAll();
+#if UNITY_EDITOR
+        if (save)
+        {
+#endif
+            SaveAll();
+#if UNITY_EDITOR
+        }
+#endif
     }
 
     public void ClearSave()

@@ -49,6 +49,8 @@ MonoBehaviour:
   FloorPrefab: {fileID: 4143921381608493496, guid: 7ae93fe3b74f2824990e8602ff4e1870,
     type: 3}
   WorkersPrefabs: {fileID: 11400000, guid: 6cd08f48bacbc8048bd515203ca7a148, type: 2}
+  save: 1
+  load: 1
 --- !u!114 &5318303127171909607
 MonoBehaviour:
   m_ObjectHideFlags: 0

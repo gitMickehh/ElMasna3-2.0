@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaycastingForFloor : MonoBehaviour {
+public class RaycastingForFloor : MonoBehaviour
+{
 
     public float rayLength;
     public BoolField moving;
     public RotatingObjectsList listOfRotators;
 
-    float shootingTime = 0;
 
     private void OnEnable()
     {
@@ -19,17 +19,8 @@ public class RaycastingForFloor : MonoBehaviour {
     {
         if (moving.BoolValue)
         {
-            shootingTime += Time.fixedDeltaTime;
+            ShootRaysFixedUpdate();
 
-            if (shootingTime >= 0.5f)
-            {
-                moving.BoolValue = false;
-                shootingTime = 0;
-            }
-            else
-            {
-                ShootRaysFixedUpdate();
-            }
         }
     }
 
@@ -41,8 +32,8 @@ public class RaycastingForFloor : MonoBehaviour {
         r.direction = transform.forward * rayLength;
 
         RaycastHit info;
-        Physics.Raycast(r,out info);
-        if(info.collider != null)
+        Physics.Raycast(r, out info);
+        if (info.collider != null)
         {
             Debug.Log(info.collider.gameObject.name);
             listOfRotators.SetActiveRotator(info.collider.gameObject.GetComponent<ControlledRotator>());
