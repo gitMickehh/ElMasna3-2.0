@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeRoom : MonoBehaviour
+public class SeekRoom : MonoBehaviour
 {
     public WayPoint wayPointCurrent;
-    public float speed = 5f;
+    public float speed = 0.05f;
 
     Rigidbody myBody;
     Vector3 direction;
@@ -44,7 +44,6 @@ public class ChangeRoom : MonoBehaviour
 
     }
 
-
     public void Walk(Transform startPos, Transform endPos)
     {
         targetPos = endPos;
@@ -53,17 +52,13 @@ public class ChangeRoom : MonoBehaviour
         direction.Normalize();
         direction = new Vector3(direction.x, 0, direction.z);
 
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.15F); //making worker facing the movement
-
         walking = true;
     }
-
 
     void FixedUpdate()
     {
         if (walking == true)
         {
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.15F); //making worker facing the movement
             float distance = Vector3.Distance(targetPos.position, transform.position);
 
             if (distance > 3)
@@ -89,9 +84,14 @@ public class ChangeRoom : MonoBehaviour
                 Walk(targetWayPoint.doorPosition, targetWayPoint.WayPointTransform);
 
                 arrived = true;
-
+                //walking = false;
             }
 
+        }
+        else if (!walking && arrived)
+        {
+            wayPointCurrent = targetWayPoint;
+            arrived = false;
         }
     }
 

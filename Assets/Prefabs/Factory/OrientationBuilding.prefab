@@ -360,6 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5197408810300128781}
+  - component: {fileID: 74730486664866107}
   m_Layer: 0
   m_Name: P3
   m_TagString: Untagged
@@ -381,6 +382,20 @@ Transform:
   m_Father: {fileID: 2350151982705167585}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &74730486664866107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927566075082765761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 8596992385451545995}
+  WayPointTransform: {fileID: 5197408810300128781}
 --- !u!1 &5959474913878034206
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2573057270375495404}
+  - component: {fileID: 2609989079330291068}
   m_Layer: 0
   m_Name: P1
   m_TagString: Untagged
@@ -411,6 +427,20 @@ Transform:
   m_Father: {fileID: 2350151982705167585}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2609989079330291068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5959474913878034206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 8596992385451545995}
+  WayPointTransform: {fileID: 2573057270375495404}
 --- !u!1 &6400401885855046793
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6657317833125126057}
+  - component: {fileID: 2557267057020788884}
   m_Layer: 0
   m_Name: P2
   m_TagString: Untagged
@@ -441,6 +472,20 @@ Transform:
   m_Father: {fileID: 2350151982705167585}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2557267057020788884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400401885855046793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 8596992385451545995}
+  WayPointTransform: {fileID: 6657317833125126057}
 --- !u!1 &7812328905954693429
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5353097313344219005}
+  - component: {fileID: 386244762471136111}
   m_Layer: 0
   m_Name: P4
   m_TagString: Untagged
@@ -471,6 +517,20 @@ Transform:
   m_Father: {fileID: 2350151982705167585}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &386244762471136111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812328905954693429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 8596992385451545995}
+  WayPointTransform: {fileID: 5353097313344219005}
 --- !u!1 &8122721978300537575
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6817775491747124950}
+  - component: {fileID: 7910071216963329966}
   m_Layer: 0
   m_Name: P5
   m_TagString: Untagged
@@ -536,6 +597,20 @@ Transform:
   m_Father: {fileID: 2350151982705167585}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7910071216963329966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486326763796087578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 8596992385451545995}
+  WayPointTransform: {fileID: 6817775491747124950}
 --- !u!1001 &2117360385275001640
 PrefabInstance:
   m_ObjectHideFlags: 0

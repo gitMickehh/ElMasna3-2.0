@@ -18,10 +18,6 @@ public class Floor : MonoBehaviour
     [HideInInspector]
     public SerializableFloor savingFloor;
 
-    //[Header("Input")]
-    //public FloatField swipeMagnitude;
-    //public float torqueMultiplyer;
-
     [Header("Camera Properties")]
     public CameraProperties cameraProperties;
     public float heightToAddToCamera;
@@ -52,38 +48,6 @@ public class Floor : MonoBehaviour
         listOfFloors.Remove(this);
         cameraProperties.maximumHeight -= heightToAddToCamera;
     }
-
-    /*
-    public void RotateFloorRight()
-    {
-        if (!activeFloor)
-            return;
-
-        if (myBody.angularVelocity.y > 0)
-            myBody.angularVelocity = Vector3.zero;
-
-        myBody.AddTorque(Vector3.down * torqueMultiplyer * swipeMagnitude.GetValue());
-    }
-
-    public void RotateFloorLeft()
-    {
-        if (!activeFloor)
-            return;
-
-        if (myBody.angularVelocity.y < 0)
-            myBody.angularVelocity = Vector3.zero;
-
-        myBody.AddTorque(Vector3.up * torqueMultiplyer * swipeMagnitude.GetValue());
-    }
-
-    public void StopRotation()
-    {
-        if (!activeFloor)
-            return;
-
-        myBody.angularVelocity = Vector3.zero;
-    }
-    */
 
     public void FillSerializableFloor()
     {
@@ -126,13 +90,14 @@ public class Floor : MonoBehaviour
                             w.transform.rotation = machineComponent.workerPosition.rotation;
 
                             machineComponent.CurrentWorker = w;
-
+                            w.GetComponent<SeekRoom>().wayPointCurrent = workRooms[i].machinePlaces[j].machinePosition.GetComponent<WayPoint>();
                             w.GetComponent<Worker>().currentMachine = machineComponent;
                         }
                     }
 
                     workRooms[i].machinePlaces[j].machine = machineComponent;
-
+                    workRooms[i].machinePlaces[j].machinePosition.GetComponent<WayPoint>().WayPointTransform = 
+                        workRooms[i].machinePlaces[j].machine.workerPosition;
                 }
             }
         }

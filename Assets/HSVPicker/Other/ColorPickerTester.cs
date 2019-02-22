@@ -9,19 +9,23 @@ public class ColorPickerTester : MonoBehaviour
     //public Color Color = Color.red;
     public Color Color;
 
-	// Use this for initialization
 	void Start () 
     {
-        Color = renderer.material.color;
-        picker.onValueChanged.AddListener(color =>
+        if(renderer !=null)
         {
-            renderer.material.color = color;
-            Color = color;
-        });
+            Color = renderer.material.color;
+            renderer.material.color = picker.CurrentColor;
 
-		renderer.material.color = picker.CurrentColor;
+            picker.onValueChanged.AddListener(color =>
+            {
+                renderer.material.color = color;
+                Color = color;
+            });
 
-        picker.CurrentColor = Color;
+
+            picker.CurrentColor = Color;
+        }
+        
     }
 	
 }

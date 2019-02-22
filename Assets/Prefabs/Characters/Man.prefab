@@ -1049,6 +1049,8 @@ GameObject:
   - component: {fileID: 4459281503261932288}
   - component: {fileID: 75291340862592357}
   - component: {fileID: 7299250825185966233}
+  - component: {fileID: 1745133130275199220}
+  - component: {fileID: 1451856149485738861}
   m_Layer: 0
   m_Name: Man
   m_TagString: Untagged
@@ -1115,6 +1117,7 @@ MonoBehaviour:
   ID: 0
   modelID: 1
   currentMachine: {fileID: 0}
+  inOrientation: 0
   WorkerStats: {fileID: 11400000, guid: 71db6be1766cf29478d68e7a4c4dad4b, type: 2}
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   FullName: 
@@ -1126,6 +1129,53 @@ MonoBehaviour:
   happyMeter: 0
   happyDefense: 0
   skinnedMeshRenderers: []
+--- !u!114 &1745133130275199220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595664551687248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec4a637588152244ab33d829202e7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPointCurrent: {fileID: 0}
+  speed: 0.05
+  targetPos: {fileID: 0}
+  walking: 0
+  arrived: 0
+  rotateOnce: 1
+--- !u!114 &1451856149485738861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595664551687248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: b7b21b175e2ecf74c8413b9420f40f5d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1745133130275199220}
+        m_MethodName: SwitchRoom
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: WayPoint, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1624406520948892
 GameObject:
   m_ObjectHideFlags: 0

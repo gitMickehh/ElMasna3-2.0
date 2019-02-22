@@ -12,6 +12,7 @@ public class MachinePosition
 [System.Serializable]
 public class Room
 {
+    public Transform Door;  
     public MachinePosition[] machinePlaces;
 
     public SerializableRoom SaveRoom()
