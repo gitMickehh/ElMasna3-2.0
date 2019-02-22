@@ -86,12 +86,18 @@ public class SeekRoom : MonoBehaviour
                 arrived = true;
                 //walking = false;
             }
+            else if (arrived)
+            {
+                //wayPointCurrent = targetWayPoint;
+                walking = false;
+            }
 
         }
         else if (!walking && arrived)
         {
             wayPointCurrent = targetWayPoint;
             arrived = false;
+            rotateOnce = true;
         }
     }
 
