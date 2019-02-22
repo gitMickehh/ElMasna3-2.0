@@ -56,7 +56,10 @@ public class Machine : MonoBehaviour
        w.currentMachine = this;
        CurrentWorker = w.gameObject;
 
-        w.gameObject.transform.position = workerPosition.position;
+        //w.gameObject.transform.position = workerPosition.position;
+
+        WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
+        w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
     }
 
     private void OnDrawGizmosSelected()
