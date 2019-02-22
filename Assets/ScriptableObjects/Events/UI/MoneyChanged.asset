@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75228f33cff1cc4cbda3c93eb51a1de, type: 3}
-  m_Name: RealMoney
+  m_Script: {fileID: 11500000, guid: cf160e56760c3c740856e9098b6192b0, type: 3}
+  m_Name: MoneyChanged
   m_EditorClassIdentifier: 
-  money: 1111111
+  listeners: []

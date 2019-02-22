@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class UIMoney : MonoBehaviour
 {
-    public Currencies realMoney;
-    public Currencies happyMoney;
+    public FloatField realMoney;
+    public FloatField happyMoney;
 
     public Text realMoneyText;
     public Text happyMoneyText;
 
     public void OnRealMoneyChanged()
     {
-        realMoneyText.text = realMoney.money.ToString();
+        realMoneyText.text = realMoney.GetValue().ToString();
     }
 
     public void OnHappyMoneyChanged()
     {
-        happyMoneyText.text = happyMoney.money.ToString();
+        happyMoneyText.text = happyMoney.GetValue().ToString();
     }
 }

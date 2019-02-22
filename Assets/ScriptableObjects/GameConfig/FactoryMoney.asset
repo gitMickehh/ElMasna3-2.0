@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FactoryMoney
   m_EditorClassIdentifier: 
   value: 500
-  onChangeEvent: {fileID: 0}
+  onChangeEvent: {fileID: 11400000, guid: 595b5730e3853b94fb57ecdf5969d387, type: 2}

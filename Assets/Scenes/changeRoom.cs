@@ -1,35 +1,40 @@
-﻿using System.Collections;
+﻿using Attributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class changeRoom : MonoBehaviour
+public class ChangeRoom : MonoBehaviour
 {
     public WayPoint wayPointCurrent;
     public float speed = 5f;
 
-    Rigidbody rigidbody;
+    Rigidbody myBody;
     Vector3 direction;
 
     [SerializeField]
+    [GreyOut]
     Transform targetPos;
 
     [SerializeField]
+    [GreyOut]
     bool walking = false;
 
     [SerializeField]
+    [GreyOut]
     bool arrived = false;
 
     [SerializeField]
+    [GreyOut]
     bool rotateOnce = true;
 
     WayPoint targetWayPoint;
 
     void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        myBody = GetComponent<Rigidbody>();
     }
 
-    public void ChangeRoom(WayPoint wayPointTarget)
+    public void SwitchRoom(WayPoint wayPointTarget)
     {
         Transform door1 = wayPointCurrent.doorPosition;
 
@@ -69,7 +74,7 @@ public class changeRoom : MonoBehaviour
                     rotateOnce = false;
                 }
 
-                rigidbody.MovePosition(transform.position + (direction * speed));
+                myBody.MovePosition(transform.position + (direction * speed));
             }
 
             else if (!arrived)

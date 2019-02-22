@@ -6,11 +6,5 @@ public class WayPoint : MonoBehaviour
 {
     public Transform doorPosition;
 
-    public Transform WayPointTransform
-    {
-        get
-        {
-            return transform;
-        }
-    }
+    public Transform WayPointTransform;
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -263,7 +263,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1128493537}
-        m_MethodName: ChangeRoom
+        m_MethodName: SwitchRoom
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1192032543}
@@ -308,6 +308,7 @@ MonoBehaviour:
   targetPos: {fileID: 0}
   walking: 0
   arrived: 0
+  rotateOnce: 1
 --- !u!136 &1128493538
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -484,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorPosition: {fileID: 841189118}
+  WayPointTransform: {fileID: 1138333110}
 --- !u!65 &1138333107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -589,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorPosition: {fileID: 1623321554}
+  WayPointTransform: {fileID: 1192032548}
 --- !u!65 &1192032545
 BoxCollider:
   m_ObjectHideFlags: 0
