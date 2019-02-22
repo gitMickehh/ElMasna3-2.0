@@ -8,7 +8,8 @@ public enum WorkerState
     Working,
     InMiniGame,
     Winning,
-    Complaining
+    Complaining,
+    Walking
 }
 
 public class Worker : MonoBehaviour
@@ -164,5 +165,6 @@ public class Worker : MonoBehaviour
 
         transform.name = FullName;
     }
+
 
 }
