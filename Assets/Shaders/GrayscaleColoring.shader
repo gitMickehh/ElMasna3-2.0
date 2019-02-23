@@ -1,4 +1,4 @@
-﻿Shader "Unlit/Grayscale Coloring"
+﻿Shader "ElMasna3/Unlit Grayscale Coloring"
 {
     Properties
     {
