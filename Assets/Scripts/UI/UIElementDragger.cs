@@ -24,8 +24,12 @@ public class UIElementDragger : MonoBehaviour
 
     private Touch finger;
 
-    private bool dragging = false;
+    public bool dragging = false;
     private bool isSwiping = false;
+
+    private Vector2 swipeDelta;
+    private Vector2 startTouch;
+
 
     private Vector2 originalPosition;
     private Transform objectToDrag;
@@ -47,6 +51,8 @@ public class UIElementDragger : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                startTouch = Input.mousePosition;
+
                 objectToDrag = GetDraggableTransformUnderMouse();
 
                 if (objectToDrag != null)
@@ -61,11 +67,20 @@ public class UIElementDragger : MonoBehaviour
                     //if (currentObjectReplaced != null)
                     //    currentObjectReplaced.GetComponent<DraggableUI>().OnThisOne = false;
                 }
+                else
+                {
+                    dragging = true;
+                }
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                Transform objectToReplace = GetDraggableLandingTransformUnderMouse();
+               Reset();
+
+                Transform objectToReplace = null;
+
+                if (objectToDrag != null)
+                    objectToReplace = GetDraggableLandingTransformUnderMouse();
 
                 if (objectToReplace != null && objectToDrag != null)
                 {
@@ -86,6 +101,14 @@ public class UIElementDragger : MonoBehaviour
 
                         objectToDrag.position = newPosition;
                     }
+                    //else
+                    //{
+                    //    dragging = true;
+                    //}
+                    //else
+                    //{
+                    //    Reset();
+                    //}
                 }
 
                 if (objectToDragImage != null)
@@ -101,6 +124,8 @@ public class UIElementDragger : MonoBehaviour
 
         if (Input.touchCount == 1)
         {
+            startTouch = Input.touches[0].position;
+
             finger = Input.touches[0];
 
             if (finger.phase == TouchPhase.Began)
@@ -119,6 +144,8 @@ public class UIElementDragger : MonoBehaviour
             }
             else if (finger.phase == TouchPhase.Ended || finger.phase == TouchPhase.Canceled)
             {
+               Reset();
+
                 Transform objectToReplace = GetDraggableLandingTransformUnderMouse();
 
                 if (objectToReplace != null && objectToDrag != null)
@@ -156,6 +183,8 @@ public class UIElementDragger : MonoBehaviour
 
         if (dragging)
         {
+            swipeDelta = Vector2.zero;
+
             if (objectToDrag != null)
             {
                 if (MouseInput && Input.touchCount == 0)
@@ -174,6 +203,28 @@ public class UIElementDragger : MonoBehaviour
                 {
                     ScrollUp.Raise();
                 }
+            }
+
+            else
+            {
+                if (Input.touchCount == 1)
+                    swipeDelta = Input.touches[0].position - startTouch;
+                else if (Input.GetMouseButton(0))
+                    swipeDelta = (Vector2)Input.mousePosition - startTouch;
+
+                if (swipeDelta.y > 0)
+                {
+                    ScrollDown.Raise();
+                    Debug.Log("swipeDelta.y: " + swipeDelta.y);
+                }
+                else if(swipeDelta.y < 0)
+                {
+                    ScrollUp.Raise();
+                    Debug.Log("swipeDelta.y: " + swipeDelta.y);
+
+                }
+
+                 Reset();
             }
         }
     }
@@ -201,7 +252,7 @@ public class UIElementDragger : MonoBehaviour
     {
         GameObject clickedObject = GetObjectUnderMouse();
 
-        if (clickedObject.GetComponent<WorkerUIIcon>() == null)
+        if ((clickedObject) && (clickedObject.GetComponent<WorkerUIIcon>() == null))
             return null;
 
         //if(clickedObject != null && clickedObject.tag == DRAGGABLE_TAG)
@@ -227,6 +278,12 @@ public class UIElementDragger : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void Reset()
+    {
+
+       swipeDelta = Vector2.zero;
     }
 
 }

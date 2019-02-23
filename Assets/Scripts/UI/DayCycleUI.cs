@@ -15,7 +15,7 @@ public class DayCycleUI : MonoBehaviour
 
     private void Update()
     {
-        timerSlider.value = timerValue.GetValue();
+        //timerSlider.value = timerValue.GetValue();
     }
 
 }
