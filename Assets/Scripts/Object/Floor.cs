@@ -5,7 +5,7 @@ using UnityEngine;
 public class Floor : MonoBehaviour
 {
     //true for testing now
-    public bool activeFloor = true;
+    //public bool activeFloor = true;
 
     public int floorOrder;
 
@@ -36,6 +36,7 @@ public class Floor : MonoBehaviour
         listOfFloors.Add(this);
 
         cameraProperties.maximumHeight += heightToAddToCamera;
+        gameObject.name = "Floor " + floorOrder;
     }
 
     private void Start()
