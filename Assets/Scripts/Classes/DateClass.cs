@@ -25,4 +25,15 @@ public class DateClass
         Year = year;
     }
 
+    public DateClass(System.DateTime dt)
+    {
+        Hour = dt.Hour;
+        Minute = dt.Minute;
+        Second = dt.Second;
+
+        Day = dt.Day;
+        Month = dt.Month;
+        Year = dt.Year;
+    }
+
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     public GameConfig GameConfigFile;
 
     [Header("Factory")]
@@ -23,7 +22,7 @@ public class GameManager : MonoBehaviour
     [GreyOut]
     [SerializeField]
     TimeManagerUPDATE timer;
-    System.DateTime firstTimePlayed;
+    DateClass firstTimePlayed;
 
     private void Start()
     {
@@ -58,21 +57,23 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public System.DateTime GetFirstTimePlayed()
+    public DateClass GetFirstTimePlayed()
     {
         return firstTimePlayed;
     }
 
     public GameTime GetGameTime()
     {
-        return new GameTime(timer.GetRunningTime(), GameDay, System.DateTime.Now);
+
+        DateClass dateNow = new DateClass(System.DateTime.Now);
+        return new GameTime(timer.GetRunningTime(), GameDay, dateNow);
     }
 
     public void LoadTime(GameTime gt)
     {
         float LastTimeTimer = gt.time;
         Day savedDay = gt.day;
-        System.DateTime lastTime = gt.dTime;
+        DateClass lastTime = gt.dTime;
         var timeNow = System.DateTime.Now;
 
         //days
@@ -89,6 +90,9 @@ public class GameManager : MonoBehaviour
         var deltaSeconds = Mathf.Abs(lastTime.Second - timeNow.Second) + deltaMinute;
 
         Debug.Log("time difference: " + deltaSeconds);
+
+        Debug.Log("Time now:\n" + timeNow);
+        Debug.Log("last time:\n" + lastTime);
     }
 
 }

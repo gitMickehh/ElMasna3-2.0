@@ -19,9 +19,9 @@ public class GameTime
     public float time;
     public Day day;
 
-    public DateTime dTime;
+    public DateClass dTime;
 
-    public GameTime(float t, Day d, DateTime dt)
+    public GameTime(float t, Day d, DateClass dt)
     {
         time = t;
         day = d;

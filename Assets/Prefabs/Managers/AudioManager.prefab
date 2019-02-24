@@ -48,8 +48,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d17c35afbea3dd44983ef63b7f733767, type: 3}
     volume: 0.2
     pitch: 1
-    looping: 0
-    playOnAwake: 0
+    looping: 1
+    playOnAwake: 1
     source: {fileID: 0}
   - soundName: Select B
     clip: {fileID: 8300000, guid: f5b519c859871a041a2cb778ad487e43, type: 3}
@@ -62,6 +62,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 05e433b218d744e4984e8a953aeac78d, type: 3}
     volume: 0.2
     pitch: 1
-    looping: 1
-    playOnAwake: 1
+    looping: 0
+    playOnAwake: 0
     source: {fileID: 0}
