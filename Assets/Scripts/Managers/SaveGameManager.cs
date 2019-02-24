@@ -156,6 +156,7 @@ public class SaveGameManager : MonoBehaviour
         var gTime = gManager.GetGameTime();
         var timeString = JsonUtility.ToJson(gTime);
 
+        Debug.Log(timeString);
         PlayerPrefs.SetString("time", timeString);
     }
 

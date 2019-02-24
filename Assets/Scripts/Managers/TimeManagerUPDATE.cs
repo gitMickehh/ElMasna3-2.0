@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TimeManagerUPDATE : MonoBehaviour
 {
-
     [Header("Timer")]
 
     [Tooltip("The whole day in game (In Minutes)")]
@@ -56,5 +55,10 @@ public class TimeManagerUPDATE : MonoBehaviour
     public float GetRunningTime()
     {
         return runningTime;
+    }
+
+    public float GetWholeDayInSeconds()
+    {
+        return wholeDayInSeconds;
     }
 }

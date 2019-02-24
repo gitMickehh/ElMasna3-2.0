@@ -80,16 +80,15 @@ public class GameManager : MonoBehaviour
         days += ((Mathf.Abs(lastTime.Year - timeNow.Year) * 12) * 30);
         days += ((Mathf.Abs(lastTime.Month - timeNow.Month) % 12) * 30);
         days += (Mathf.Abs(lastTime.Day - timeNow.Day) % 7);
-        GameDay = (Day)((int)savedDay + days);
+        GameDay = (Day)(((int)savedDay + days) % 7);
 
-        //Seconds
-        float lastTimeInSeconds = 0;
-        float deltaMinutes = Mathf.Abs(lastTime.Minute - timeNow.Minute) % 60;
-        lastTimeInSeconds = (deltaMinutes * 60) + lastTime.Second;
-        //crazy shit
-        float NewTimerValue = Mathf.Abs(lastTimeInSeconds - LastTimeTimer) % 60;
+        Debug.Log(GameDay);
+        Debug.Log("last timer: " + LastTimeTimer);
 
-        timer.LoadTimer(NewTimerValue);
+        var deltaMinute = Mathf.Abs(lastTime.Minute - timeNow.Minute) * 60;
+        var deltaSeconds = Mathf.Abs(lastTime.Second - timeNow.Second) + deltaMinute;
+
+        Debug.Log("time difference: " + deltaSeconds);
     }
 
 }
