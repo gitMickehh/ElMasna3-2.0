@@ -78,9 +78,10 @@ public class GameManager : MonoBehaviour
 
         //days
         int days = 0;
-        days += ((Mathf.Abs(lastTime.Year - timeNow.Year) * 12) * 30);
-        days += ((Mathf.Abs(lastTime.Month - timeNow.Month) % 12) * 30);
-        days += (Mathf.Abs(lastTime.Day - timeNow.Day) % 7);
+        days += ((Mathf.Abs(lastTime.Year - timeNow.Year) * 12) * 30 * 24);
+        days += ((Mathf.Abs(lastTime.Month - timeNow.Month) % 12) * 30 * 24);
+        days += ((Mathf.Abs(lastTime.Day - timeNow.Day) % 7) * 24);
+        //hours here 
         GameDay = (Day)(((int)savedDay + days) % 7);
 
         Debug.Log(GameDay);
@@ -89,10 +90,12 @@ public class GameManager : MonoBehaviour
         var deltaMinute = Mathf.Abs(lastTime.Minute - timeNow.Minute) * 60;
         var deltaSeconds = Mathf.Abs(lastTime.Second - timeNow.Second) + deltaMinute;
 
-        Debug.Log("time difference: " + deltaSeconds);
+        Debug.Log("time difference: " + deltaSeconds + " seconds.");
 
         Debug.Log("Time now:\n" + timeNow);
         Debug.Log("last time:\n" + lastTime);
+
+        timer.LoadTimer(deltaSeconds + LastTimeTimer);
     }
 
 }

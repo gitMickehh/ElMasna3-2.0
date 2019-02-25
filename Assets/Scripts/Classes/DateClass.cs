@@ -36,4 +36,8 @@ public class DateClass
         Year = dt.Year;
     }
 
+    public override string ToString()
+    {
+        return "(" + Day + "/" + Month + "/" + Year + ") " + Hour + ":" + Minute + ":" + Second + ".";
+    }
 }
