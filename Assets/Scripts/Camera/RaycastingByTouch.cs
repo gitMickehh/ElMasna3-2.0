@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RayCastingForWorker : MonoBehaviour
+public class RaycastingByTouch : MonoBehaviour
 {
     public float rayLength = 100;
 
-    public void RayCastForWorker()
+    [Header("Layer Masks")]
+    public LayerMask WorkerLayerMask;
+    public LayerMask MachineLayerMask;
+    public LayerMask VFXEmptyMachineLayerMask;
+
+    public void RaycastingFromScreenPoint()
     {
         if (Input.touchCount == 1)
         {

@@ -15,12 +15,12 @@ GameObject:
   - component: {fileID: 2555753119611847816}
   - component: {fileID: 1860473216428604094}
   - component: {fileID: 8889290905441748305}
+  - component: {fileID: 5640582804482905982}
   - component: {fileID: 2555753119611847862}
   - component: {fileID: 2555753119611847863}
   - component: {fileID: 2555753119611847861}
   - component: {fileID: 2555753119611847860}
   - component: {fileID: 7697610573019251505}
-  - component: {fileID: 5640582804482905982}
   - component: {fileID: 7158074593871149407}
   m_Layer: 0
   m_Name: Main Camera
@@ -150,6 +150,28 @@ MonoBehaviour:
   rayLength: 10
   moving: {fileID: 11400000, guid: 0612923cb20abdd4e9922082e02ba037, type: 2}
   listOfRotators: {fileID: 11400000, guid: 25ca98e2c0d49074fb850707e8e7a5e1, type: 2}
+--- !u!114 &5640582804482905982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555753119611847821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cdf253a85b7b7409f783974552b8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 100
+  WorkerLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  MachineLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  VFXEmptyMachineLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &2555753119611847862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,19 +317,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5640582804482905982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2555753119611847821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5cdf253a85b7b7409f783974552b8d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayLength: 100
 --- !u!114 &7158074593871149407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +334,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5640582804482905982}
-        m_MethodName: RayCastForWorker
+        m_MethodName: RaycastingFromScreenPoint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

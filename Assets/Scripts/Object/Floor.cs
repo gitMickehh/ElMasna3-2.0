@@ -18,8 +18,6 @@ public class Floor : MonoBehaviour
     public CameraProperties cameraProperties;
     public float heightToAddToCamera;
 
-    Rigidbody myBody;
-
     [Header("Rooms")]
     public Room[] workRooms;
     public Room breakRoom;
@@ -37,11 +35,6 @@ public class Floor : MonoBehaviour
 
         cameraProperties.maximumHeight += heightToAddToCamera;
         gameObject.name = "Floor " + floorOrder;
-    }
-
-    private void Start()
-    {
-        myBody = GetComponent<Rigidbody>();
     }
 
     private void OnDisable()

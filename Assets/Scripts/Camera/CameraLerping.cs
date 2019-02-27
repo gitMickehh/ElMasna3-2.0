@@ -18,13 +18,18 @@ public class CameraLerping : MonoBehaviour
 
     //old position
     Vector3 originalPosition;
-    public Transform orientationPosition;
+    [SerializeField]
+    [Attributes.GreyOut]
+    private Transform orientationPosition;
     bool atOrientation;
+
+    CameraControl camControlScript;
 
     private void Start()
     {
         originalPosition = transform.position;
         lerpTimeTemp = lerpTime;
+        camControlScript = GetComponent<CameraControl>();
 
         StartCoroutine(FindOrientationPosition());
     }

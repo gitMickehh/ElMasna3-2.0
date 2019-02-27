@@ -9,10 +9,14 @@ public class RaycastingForFloor : MonoBehaviour
     public BoolField moving;
     public RotatingObjectsList listOfRotators;
 
-
     private void OnEnable()
     {
         moving.BoolValue = false;
+    }
+
+    private void Start()
+    {
+        ShootRaysFixedUpdate();
     }
 
     private void FixedUpdate()
@@ -20,7 +24,6 @@ public class RaycastingForFloor : MonoBehaviour
         if (moving.BoolValue)
         {
             ShootRaysFixedUpdate();
-
         }
     }
 

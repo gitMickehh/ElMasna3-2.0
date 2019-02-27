@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     [GreyOut]
     [SerializeField]
     TimeManagerUPDATE timer;
-    DateClass firstTimePlayed;
 
     private void Start()
     {
@@ -59,11 +58,6 @@ public class GameManager : MonoBehaviour
             BuildFailure.Raise();
         }
 
-    }
-
-    public DateClass GetFirstTimePlayed()
-    {
-        return firstTimePlayed;
     }
 
     public GameTime GetGameTime()
