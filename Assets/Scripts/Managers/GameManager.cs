@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Time")]
     public Day GameDay;
+    [GreyOut]
     public int DayInMonth = 0;
+    [GreyOut]
     public int DifferenceInDays = 0;
     [GreyOut]
     [SerializeField]

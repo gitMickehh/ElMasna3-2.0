@@ -6,6 +6,7 @@ using System.Linq;
 [CreateAssetMenu(fileName = "New Floor List", menuName = "ElMasna3/Lists/Floors RT List")]
 public class FloorList : RuntimeList<Floor>
 {
+    [Header("Floor List Events")]
     public GameEvent AddFloorEvent;
     public GameEvent RemoveFloorEvent;
 
@@ -31,6 +32,14 @@ public class FloorList : RuntimeList<Floor>
     public int GetFloorOrder()
     {
         return Items.Count + 1;
+    }
+
+    public void ActivateAvailableMachinePlaces()
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            Items[i].ShowAvailablePlaces();
+        }
     }
 
 }

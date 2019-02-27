@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3882214859167106374}
   - component: {fileID: 7889437373511579077}
   - component: {fileID: 302551071}
+  - component: {fileID: 2899597240737095089}
   m_Layer: 0
   m_Name: EmptyMachinePlace
   m_TagString: Untagged
@@ -62,6 +63,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &2899597240737095089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882214859167106375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b5f66c406cafb4ea12c912449d80af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emptyMachinesList: {fileID: 11400000, guid: 81fea3cb723b8324bb323da515755efe, type: 2}
 --- !u!1001 &3882214858104800565
 PrefabInstance:
   m_ObjectHideFlags: 0

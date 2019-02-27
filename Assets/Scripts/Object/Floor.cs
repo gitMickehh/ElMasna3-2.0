@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
-    //true for testing now
-    //public bool activeFloor = true;
-
     public int floorOrder;
 
     [Header("Lists")]
@@ -14,7 +11,6 @@ public class Floor : MonoBehaviour
     public WorkerList listOfWorkers;
     public PrefabsList MachinesPrefabs;
 
-    //for saving
     [HideInInspector]
     public SerializableFloor savingFloor;
 
@@ -26,9 +22,13 @@ public class Floor : MonoBehaviour
 
     [Header("Rooms")]
     public Room[] workRooms;
+    public Room breakRoom;
 
     [Header("Workers")]
     public Transform WorkersHolder;
+
+    [Header("Machine Mods")]
+    public GameObject EmptyMachineVFX;
 
     private void OnEnable()
     {
@@ -58,7 +58,7 @@ public class Floor : MonoBehaviour
             savablerooms[i] = workRooms[i].SaveRoom();
         }
 
-        savingFloor = new SerializableFloor(savablerooms,floorOrder);
+        savingFloor = new SerializableFloor(savablerooms, floorOrder);
     }
 
     public void LoadFloor()
@@ -71,16 +71,16 @@ public class Floor : MonoBehaviour
 
             for (int j = 0; j < machines.Length; j++)
             {
-                if(machines[j].machineExists)
+                if (machines[j].machineExists)
                 {
                     Transform instPos = workRooms[i].machinePlaces[j].machinePosition;
                     GameObject machPrefab = MachinesPrefabs.GetPrefabByID(machines[j].machineModelID);
-                    
+
                     //instantite machines
-                    var machCreated = Instantiate(machPrefab,instPos);
+                    var machCreated = Instantiate(machPrefab, instPos);
                     var machineComponent = machCreated.GetComponent<Machine>();
 
-                    if(machines[j].workerID > 0)
+                    if (machines[j].workerID > 0)
                     {
                         GameObject w = listOfWorkers.GetWorkerById(machines[j].workerID).gameObject;
                         w.transform.SetParent(WorkersHolder);
@@ -97,7 +97,7 @@ public class Floor : MonoBehaviour
                     }
 
                     workRooms[i].machinePlaces[j].machine = machineComponent;
-                    workRooms[i].machinePlaces[j].machinePosition.GetComponent<WayPoint>().WayPointTransform = 
+                    workRooms[i].machinePlaces[j].machinePosition.GetComponent<WayPoint>().WayPointTransform =
                         workRooms[i].machinePlaces[j].machine.workerPosition;
                 }
             }
@@ -128,4 +128,18 @@ public class Floor : MonoBehaviour
         else
             return -1;
     }
+
+    public void ShowAvailablePlaces()
+    {
+        for (int i = 0; i < workRooms.Length; i++)
+        {
+            for (int j = 0; j < workRooms[i].machinePlaces.Length; j++)
+            {
+                if(workRooms[i].machinePlaces[j].machine == null)
+                    Instantiate(EmptyMachineVFX, workRooms[i].machinePlaces[j].machinePosition);
+            }
+        }
+
+    }
+
 }
