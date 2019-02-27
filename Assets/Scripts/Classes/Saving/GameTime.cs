@@ -18,13 +18,15 @@ public class GameTime
 {
     public float time;
     public Day day;
+    public int numberOfDays;
 
     public DateClass dTime;
 
-    public GameTime(float t, Day d, DateClass dt)
+    public GameTime(float t, Day d, int nOfDays, DateClass dt)
     {
         time = t;
         day = d;
+        numberOfDays = nOfDays;
         dTime = dt;
     }
 }

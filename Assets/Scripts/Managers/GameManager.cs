@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Time")]
     public Day GameDay;
+    public int DayInMonth = 0;
+    public int DifferenceInDays = 0;
     [GreyOut]
     [SerializeField]
     TimeManagerUPDATE timer;
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
 
         DateClass dateNow = new DateClass(System.DateTime.Now);
-        return new GameTime(timer.GetRunningTime(), GameDay, dateNow);
+        return new GameTime(timer.GetRunningTime(), GameDay, DayInMonth, dateNow);
     }
 
     public void LoadTime(GameTime gt)
@@ -81,21 +83,24 @@ public class GameManager : MonoBehaviour
         days += ((Mathf.Abs(lastTime.Year - timeNow.Year) * 12) * 30 * 24);
         days += ((Mathf.Abs(lastTime.Month - timeNow.Month) % 12) * 30 * 24);
         days += ((Mathf.Abs(lastTime.Day - timeNow.Day) % 7) * 24);
-        //hours here 
-        GameDay = (Day)(((int)savedDay + days) % 7);
+        days += ((Mathf.Abs(lastTime.Hour - timeNow.Hour) % 24));
+        DifferenceInDays = days;
 
-        Debug.Log(GameDay);
-        Debug.Log("last timer: " + LastTimeTimer);
+        GameDay = (Day)(((int)savedDay + days) % 7);
+        //Debug.Log("Difference in days: " + DifferenceInDays + ", It was " + savedDay +
+        //    "\n Today: " + GameDay);
+
+        //Debug.Log("Last timer: " + LastTimeTimer);
 
         var deltaMinute = Mathf.Abs(lastTime.Minute - timeNow.Minute) * 60;
         var deltaSeconds = Mathf.Abs(lastTime.Second - timeNow.Second) + deltaMinute;
 
-        Debug.Log("time difference: " + deltaSeconds + " seconds.");
+        //Debug.Log("time difference: " + deltaSeconds + " seconds.");
 
-        Debug.Log("Time now:\n" + timeNow);
-        Debug.Log("last time:\n" + lastTime);
+        //Debug.Log("Time now:\n" + timeNow);
+        //Debug.Log("last time:\n" + lastTime);
 
-        timer.LoadTimer(deltaSeconds + LastTimeTimer);
+        timer.LoadTimer((deltaSeconds + LastTimeTimer) % timer.GetWholeDayInSeconds());
     }
 
 }
