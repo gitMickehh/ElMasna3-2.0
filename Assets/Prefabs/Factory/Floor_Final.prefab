@@ -319,14 +319,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorOrder: 0
-  GameConfigFile: {fileID: 0}
+  GameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   savingFloor:
     rooms: []
     floorOrder: 0
   cameraProperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
-  heightToAddToCamera: 30
+  heightToAddToCamera: 35
   workRooms:
   - Door: {fileID: 6928572773426465534}
     machinePlaces:
