@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
         days += ((Mathf.Abs(lastTime.Hour - timeNow.Hour) % 24));
         DifferenceInDays = days;
 
+        if (days > 0)
+            timer.StartDay.Raise();
+
         GameDay = (Day)(((int)savedDay + days) % 7);
         //Debug.Log("Difference in days: " + DifferenceInDays + ", It was " + savedDay +
         //    "\n Today: " + GameDay);

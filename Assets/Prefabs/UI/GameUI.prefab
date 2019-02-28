@@ -397,7 +397,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3505897694752179977}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c3ac74690fd0ac744bc0901513d5fcd5, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &4849188943433132247
@@ -594,6 +605,7 @@ MonoBehaviour:
   happyMoney: {fileID: 11400000, guid: acc8faa4f589fea4f813164409026aea, type: 2}
   realMoneyText: {fileID: 3413456304735950063}
   happyMoneyText: {fileID: 593395654199803133}
+  moneyIconSize: 0
 --- !u!114 &837363148
 MonoBehaviour:
   m_ObjectHideFlags: 0

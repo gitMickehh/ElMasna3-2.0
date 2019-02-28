@@ -40,8 +40,8 @@ public class CameraControl : MonoBehaviour
             clampY = Mathf.Clamp(transform.position.y, cameraPorperties.minimumHeight, cameraPorperties.maximumHeight);
             transform.position = new Vector3(transform.position.x, clampY, transform.position.z);
 
-            clampZ = Mathf.Clamp(transform.position.z, cameraPorperties.minimumZoom, cameraPorperties.maximumZoom);
-            transform.position = new Vector3(transform.position.x, transform.position.y, clampZ);
+            //clampZ = Mathf.Clamp(transform.position.z, cameraPorperties.minimumZoom, cameraPorperties.maximumZoom);
+            //transform.position = new Vector3(transform.position.x, transform.position.y, clampZ);
 
             yield return new WaitForEndOfFrame();
         }
@@ -85,10 +85,6 @@ public class CameraControl : MonoBehaviour
         }
         else
         {
-            //transform.position = new Vector3(transform.position.x, transform.position.y,
-            //    Mathf.Clamp(transform.position.z + (pinchMultiplier * pinchMagnitude.GetValue()),
-            //    minimumZoom, maximumZoom));
-
             transform.position = new Vector3(transform.position.x, transform.position.y,
                 transform.position.z + (pinchMultiplier * pinchMagnitude.GetValue()));
         }

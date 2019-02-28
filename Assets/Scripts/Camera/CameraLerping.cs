@@ -63,6 +63,7 @@ public class CameraLerping : MonoBehaviour
             lerpTime = lerpTimeTemp;
 
             atOrientation = true;
+            //camControlScript;
         }
 
         StartCoroutine(Lerping());
