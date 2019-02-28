@@ -319,9 +319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorOrder: 0
+  GameConfigFile: {fileID: 0}
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
-  MachinesPrefabs: {fileID: 11400000, guid: f8af9b0ba77d5ff4cbf95f01ab9bab2b, type: 2}
   savingFloor:
     rooms: []
     floorOrder: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b613723c75cf54c8835762c831b8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActive: 1
+  currentActive: 0
   listOfMes: {fileID: 11400000, guid: 25ca98e2c0d49074fb850707e8e7a5e1, type: 2}
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   torqueMultiplyer: 0.3
