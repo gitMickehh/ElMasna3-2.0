@@ -22,6 +22,11 @@ public class GameConfig : ScriptableObject {
     [Header("Building")]
     public float FloorCost;
 
+    [Header("Prefabs")]
+    public GameObject FloorPrefab;
+    public PrefabsList WorkersPrefabs;
+    public PrefabsList MachinesPrefabs;
+
     //[Header("Player")]
     //public string PlayerName;
     //public int PlayerLevel;

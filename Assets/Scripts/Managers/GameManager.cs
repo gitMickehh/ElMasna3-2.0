@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public FloatField HappyMoney;
 
     [Header("Building Floors")]
-    public GameObject Floor;
     public FloorList listOfFloors;
     public GameEvent BuildSuccess;
     public GameEvent BuildFailure;
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             FactoryMoney.AddValue(-GameConfigFile.FloorCost);
 
-            var f = Instantiate(Floor, new Vector3(), new Quaternion());
+            var f = Instantiate(GameConfigFile.FloorPrefab, new Vector3(), new Quaternion());
 
             float heightOfFloor = f.GetComponentInChildren<Collider>().bounds.max.y;
             Vector3 position = Vector3.up * heightOfFloor * (f.GetComponent<Floor>().floorOrder - 1);

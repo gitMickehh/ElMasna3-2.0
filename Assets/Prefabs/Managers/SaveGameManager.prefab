@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1632761248149477307}
   - component: {fileID: 1632761248149477306}
-  - component: {fileID: 5318303127171909607}
   m_Layer: 0
   m_Name: SaveGameManager
   m_TagString: Untagged
@@ -46,37 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
-  FloorPrefab: {fileID: 4143921381608493496, guid: 7ae93fe3b74f2824990e8602ff4e1870,
+  FloorPrefab: {fileID: 4143921381608493496, guid: d1b2dd82bdad47543a74bedd51cd9672,
     type: 3}
   WorkersPrefabs: {fileID: 11400000, guid: 6cd08f48bacbc8048bd515203ca7a148, type: 2}
   save: 1
   load: 1
---- !u!114 &5318303127171909607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632761248149477301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 2369054b1455bf84db9ee777f17700c0, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1632761248149477306}
-        m_MethodName: ClearSave
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null

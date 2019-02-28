@@ -12,9 +12,8 @@ public class SaveGameManager : MonoBehaviour
 
     private Floor firstFloor;
 
-    [Header("Prefabs")]
-    public GameObject FloorPrefab;
-    public PrefabsList WorkersPrefabs;
+    [Header("Game Config File")]
+    public GameConfig GameConfigFile;
 
     OrientationBuilding orientation;
     GameManager gManager;
@@ -86,7 +85,7 @@ public class SaveGameManager : MonoBehaviour
 
                 //instantiate floor
                 Vector3 position = Vector3.up * heightOfFloor * i;
-                GameObject floor = Instantiate(FloorPrefab, position, new Quaternion());
+                GameObject floor = Instantiate(GameConfigFile.FloorPrefab, position, new Quaternion());
 
                 floor.GetComponent<Floor>().savingFloor =
                     JsonUtility.FromJson<SerializableFloor>(retrievedJson);
@@ -123,7 +122,7 @@ public class SaveGameManager : MonoBehaviour
             {
                 string retrievedJson = PlayerPrefs.GetString("worker" + i);
                 var workerData = JsonUtility.FromJson<SerializableWorker>(retrievedJson);
-                GameObject workerPrefab = WorkersPrefabs.GetPrefabByID(workerData.modelID);
+                GameObject workerPrefab = GameConfigFile.WorkersPrefabs.GetPrefabByID(workerData.modelID);
 
                 GameObject worker = Instantiate(workerPrefab, new Vector3(), new Quaternion());
 

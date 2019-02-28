@@ -914,11 +914,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor_Final
       objectReference: {fileID: 0}
-    - target: {fileID: 4143921381608493496, guid: d1b2dd82bdad47543a74bedd51cd9672,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4143921381608493499, guid: d1b2dd82bdad47543a74bedd51cd9672,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -973,11 +968,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8923800670507886926, guid: d1b2dd82bdad47543a74bedd51cd9672,
-        type: 3}
-      propertyPath: currentActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1b2dd82bdad47543a74bedd51cd9672, type: 3}
@@ -1317,27 +1307,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1632761248149477301, guid: b5dc24396b0b2fa41be48e7f417ace1f,
         type: 3}
       propertyPath: m_Name
       value: SaveGameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632761248149477301, guid: b5dc24396b0b2fa41be48e7f417ace1f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1632761248149477307, guid: b5dc24396b0b2fa41be48e7f417ace1f,
         type: 3}
@@ -1396,14 +1369,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1632761248149477306, guid: b5dc24396b0b2fa41be48e7f417ace1f,
         type: 3}
-      propertyPath: floor
+      propertyPath: GameConfigFile
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632761248149477306, guid: b5dc24396b0b2fa41be48e7f417ace1f,
-        type: 3}
-      propertyPath: firstFloor
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5dc24396b0b2fa41be48e7f417ace1f, type: 3}
 --- !u!1001 &2555753118181454743

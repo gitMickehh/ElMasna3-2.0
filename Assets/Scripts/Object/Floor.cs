@@ -7,9 +7,9 @@ public class Floor : MonoBehaviour
     public int floorOrder;
 
     [Header("Lists")]
+    public GameConfig GameConfigFile;
     public FloorList listOfFloors;
     public WorkerList listOfWorkers;
-    public PrefabsList MachinesPrefabs;
 
     [HideInInspector]
     public SerializableFloor savingFloor;
@@ -67,7 +67,7 @@ public class Floor : MonoBehaviour
                 if (machines[j].machineExists)
                 {
                     Transform instPos = workRooms[i].machinePlaces[j].machinePosition;
-                    GameObject machPrefab = MachinesPrefabs.GetPrefabByID(machines[j].machineModelID);
+                    GameObject machPrefab = GameConfigFile.MachinesPrefabs.GetPrefabByID(machines[j].machineModelID);
 
                     //instantite machines
                     var machCreated = Instantiate(machPrefab, instPos);
