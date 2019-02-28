@@ -21,7 +21,10 @@ public class CameraLerping : MonoBehaviour
     [SerializeField]
     [Attributes.GreyOut]
     private Transform orientationPosition;
-    bool atOrientation;
+
+    [SerializeField]
+    [Attributes.GreyOut]
+    private bool atOrientation;
 
     CameraControl camControlScript;
 
@@ -63,9 +66,9 @@ public class CameraLerping : MonoBehaviour
             lerpTime = lerpTimeTemp;
 
             atOrientation = true;
-            //camControlScript;
         }
 
+        camControlScript.TraverseVertical(!atOrientation);
         StartCoroutine(Lerping());
     }
 

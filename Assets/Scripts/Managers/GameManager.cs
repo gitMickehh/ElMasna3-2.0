@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public GameEvent BuildFailure;
 
     [Header("Time")]
-    public Day GameDay;
     [GreyOut]
     public int DayInMonth = 0;
     [GreyOut]
@@ -63,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
 
         DateClass dateNow = new DateClass(System.DateTime.Now);
-        return new GameTime(timer.GetRunningTime(), GameDay, DayInMonth, dateNow);
+        return new GameTime(timer.GetRunningTime(), timer.GameDay, DayInMonth, dateNow);
     }
 
     public void LoadTime(GameTime gt)
@@ -84,7 +83,7 @@ public class GameManager : MonoBehaviour
         if (days > 0)
             timer.StartDay.Raise();
 
-        GameDay = (Day)(((int)savedDay + days) % 7);
+        timer.GameDay = (Day)(((int)savedDay + days) % 7);
         //Debug.Log("Difference in days: " + DifferenceInDays + ", It was " + savedDay +
         //    "\n Today: " + GameDay);
 

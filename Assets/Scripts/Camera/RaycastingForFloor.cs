@@ -38,7 +38,7 @@ public class RaycastingForFloor : MonoBehaviour
         Physics.Raycast(r, out info);
         if (info.collider != null)
         {
-            Debug.Log(info.collider.gameObject.name);
+            //Debug.Log(info.collider.gameObject.name);
             listOfRotators.SetActiveRotator(info.collider.gameObject.GetComponent<ControlledRotator>());
         }
 

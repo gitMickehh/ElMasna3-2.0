@@ -27,6 +27,7 @@ public class CameraControl : MonoBehaviour
 
     //height
     private float clampY;
+    private bool traverseVertical = true;
 
     //zoom
     private float clampZ;
@@ -40,34 +41,42 @@ public class CameraControl : MonoBehaviour
             clampY = Mathf.Clamp(transform.position.y, cameraPorperties.minimumHeight, cameraPorperties.maximumHeight);
             transform.position = new Vector3(transform.position.x, clampY, transform.position.z);
 
-            //clampZ = Mathf.Clamp(transform.position.z, cameraPorperties.minimumZoom, cameraPorperties.maximumZoom);
-            //transform.position = new Vector3(transform.position.x, transform.position.y, clampZ);
-
             yield return new WaitForEndOfFrame();
         }
     }
 
     public void TraverseUp()
     {
-        timeStartedLerping = Time.time;
-        startPosition = transform.position;
-        endPosition = transform.position + (Vector3.up * swipeMultiplier * swipeMagnitude.GetValue());
-        shouldLerp = true;
+        if(traverseVertical)
+        {
+            timeStartedLerping = Time.time;
+            startPosition = transform.position;
+            endPosition = transform.position + (Vector3.up * swipeMultiplier * swipeMagnitude.GetValue());
+            shouldLerp = true;
 
-        StopAllCoroutines();
-        StartCoroutine(Lerping());
+            StopAllCoroutines();
+            StartCoroutine(Lerping());
+        }
     }
 
     public void TraverseDown()
     {
-        timeStartedLerping = Time.time;
-        startPosition = transform.position;
-        endPosition = transform.position + (Vector3.up * -swipeMultiplier * swipeMagnitude.GetValue());
-        shouldLerp = true;
-        movingCamera.BoolValue = true;
+        if(traverseVertical)
+        {
+            timeStartedLerping = Time.time;
+            startPosition = transform.position;
+            endPosition = transform.position + (Vector3.up * -swipeMultiplier * swipeMagnitude.GetValue());
+            shouldLerp = true;
+            movingCamera.BoolValue = true;
 
-        StopAllCoroutines();
-        StartCoroutine(Lerping());
+            StopAllCoroutines();
+            StartCoroutine(Lerping());
+        }
+    }
+
+    public void TraverseVertical(bool cond)
+    {
+        traverseVertical = cond;
     }
 
     public void StopTraversing()
@@ -85,8 +94,12 @@ public class CameraControl : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y,
+            Vector3 DesiredPosition = new Vector3(transform.position.x, transform.position.y,
                 transform.position.z + (pinchMultiplier * pinchMagnitude.GetValue()));
+
+            clampZ = Mathf.Clamp(DesiredPosition.z, cameraPorperties.minimumZoom, cameraPorperties.maximumZoom);
+            transform.position = new Vector3(transform.position.x, transform.position.y, clampZ);
+            Debug.Log(clampZ);
         }
     }
 

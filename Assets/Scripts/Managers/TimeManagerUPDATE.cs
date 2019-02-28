@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class TimeManagerUPDATE : MonoBehaviour
 {
+    [Header("Day")]
+    public Day GameDay;
+
     [Header("Timer")]
 
     [Tooltip("The whole day in game (In Minutes)")]
@@ -39,7 +42,14 @@ public class TimeManagerUPDATE : MonoBehaviour
 
     private void CalculatePercentage()
     {
-        dayPercentage.SetValue((wholeDayInSeconds - runningTime) / wholeDayInSeconds);
+        float percentage = (wholeDayInSeconds - runningTime) / wholeDayInSeconds;
+        dayPercentage.SetValue(percentage);
+
+        if (runningTime >= wholeDayInSeconds)
+        {
+            StartDay.Raise();
+            GameDay = (Day)(((int)GameDay + 1) % 7);
+        }
     }
 
     void ResetTimer()

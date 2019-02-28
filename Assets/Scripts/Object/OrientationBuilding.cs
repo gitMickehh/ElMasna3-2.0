@@ -68,9 +68,10 @@ public class OrientationBuilding : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.white;
+
         for (int i = 0; i < WorkersPositions.Length; i++)
         {
-            Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(WorkersPositions[i].position.position,0.5f);
         }
     }
