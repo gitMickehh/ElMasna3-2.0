@@ -11,13 +11,29 @@ public class UIMoney : MonoBehaviour
     public Text realMoneyText;
     public Text happyMoneyText;
 
+    [Attributes.GreyOut]
+    public float moneyIconSize;
+
+    private void Start()
+    {
+        moneyIconSize = realMoneyText.GetComponentInChildren<Image>().rectTransform.rect.width;
+        OnRealMoneyChanged();
+        OnHappyMoneyChanged();
+    }
+
     public void OnRealMoneyChanged()
     {
         realMoneyText.text = realMoney.GetValue().ToString();
+
+        realMoneyText.GetComponent<RectTransform>().sizeDelta =
+            new Vector2((realMoneyText.fontSize * (realMoneyText.text.Length-1)) + moneyIconSize, realMoneyText.GetComponent<RectTransform>().rect.height);
     }
 
     public void OnHappyMoneyChanged()
     {
         happyMoneyText.text = happyMoney.GetValue().ToString();
+
+        happyMoneyText.GetComponent<RectTransform>().sizeDelta =
+            new Vector2((happyMoneyText.fontSize * (happyMoneyText.text.Length-1))+ moneyIconSize, happyMoneyText.GetComponent<RectTransform>().rect.height);
     }
 }
