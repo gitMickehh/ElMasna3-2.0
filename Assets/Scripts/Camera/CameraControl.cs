@@ -34,7 +34,7 @@ public class CameraControl : MonoBehaviour
 
     private IEnumerator Lerping()
     {
-        while(shouldLerp)
+        while (shouldLerp)
         {
             transform.position = Lerp(startPosition, endPosition, timeStartedLerping, lerpTime);
 
@@ -47,7 +47,7 @@ public class CameraControl : MonoBehaviour
 
     public void TraverseUp()
     {
-        if(traverseVertical)
+        if (traverseVertical)
         {
             timeStartedLerping = Time.time;
             startPosition = transform.position;
@@ -61,7 +61,7 @@ public class CameraControl : MonoBehaviour
 
     public void TraverseDown()
     {
-        if(traverseVertical)
+        if (traverseVertical)
         {
             timeStartedLerping = Time.time;
             startPosition = transform.position;
@@ -86,9 +86,9 @@ public class CameraControl : MonoBehaviour
 
     public void Zoom()
     {
-        if(Camera.main.orthographic)
+        if (Camera.main.orthographic)
         {
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - 
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize -
                 (pinchMultiplier * pinchMagnitude.GetValue()),
                 cameraPorperties.zoomOutMin, cameraPorperties.zoomOutMax);
         }
@@ -108,7 +108,7 @@ public class CameraControl : MonoBehaviour
         float timeSinceStarted = Time.time - timeStartedLerping;
         float percentageComplete = timeSinceStarted / lerpTime;
 
-        var result = Vector3.Lerp(start,end,percentageComplete);
+        var result = Vector3.Lerp(start, end, percentageComplete);
 
         if (percentageComplete > 0.9f)
         {
@@ -123,7 +123,7 @@ public class CameraControl : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(new Vector3(transform.position.x, cameraPorperties.minimumHeight, transform.position.z),
-            new Vector3(transform.position.x, cameraPorperties.maximumHeight,transform.position.z));
+            new Vector3(transform.position.x, cameraPorperties.maximumHeight, transform.position.z));
 
         Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y, cameraPorperties.minimumZoom),
             new Vector3(transform.position.x, transform.position.y, cameraPorperties.maximumZoom));

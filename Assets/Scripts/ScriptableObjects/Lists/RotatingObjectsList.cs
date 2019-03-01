@@ -15,4 +15,17 @@ public class RotatingObjectsList : RuntimeList<ControlledRotator>
                 Items[i].currentActive = false;
         }
     }
+
+    public ControlledRotator GetActiveRotator()
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            if (Items[i].currentActive)
+            {
+                return Items[i];
+            }
+        }
+
+        return null;
+    }
 }
