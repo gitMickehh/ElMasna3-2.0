@@ -5,6 +5,9 @@ using UnityEngine;
 public class EmptyMachinePlace : MonoBehaviour
 {
     public EmptyMachinePlaceList emptyMachinesList;
+    Floor parentFloor;
+    int roomNumber;
+    int placeInRoom;
 
     private void OnEnable()
     {
@@ -14,5 +17,19 @@ public class EmptyMachinePlace : MonoBehaviour
     private void OnDisable()
     {
         emptyMachinesList.Remove(this);
+    }
+
+    public void SetParentFloor(Floor f, int i, int j)
+    {
+        parentFloor = f;
+        roomNumber = i;
+        placeInRoom = j;
+    }
+
+    public void PlaceMachine(GameObject go)
+    {
+        var machineGameObject = Instantiate(go, transform.parent);
+        parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machine = machineGameObject.GetComponent<Machine>();
+        Destroy(gameObject);
     }
 }

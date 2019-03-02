@@ -11,6 +11,9 @@ public class RaycastingByTouch : MonoBehaviour
     public LayerMask MachineLayerMask;
     public LayerMask VFXEmptyMachineLayerMask;
 
+    [Header("Machine Placement")]
+    public GameObjectField machineHeld;
+
     public void RaycastingFromScreenPoint()
     {
         if (Input.touchCount == 1)
@@ -31,6 +34,7 @@ public class RaycastingByTouch : MonoBehaviour
                 else if (Physics.Raycast(ray, out hit, rayLength, VFXEmptyMachineLayerMask))
                 {
                     Debug.Log("Empty Machine " + hit.collider.name);
+                    hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
                 }
 
             }
@@ -39,7 +43,7 @@ public class RaycastingByTouch : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-             
+
             if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
             {
                 Debug.Log("Worker " + hit.collider.name);
@@ -51,8 +55,14 @@ public class RaycastingByTouch : MonoBehaviour
             else if (Physics.Raycast(ray, out hit, rayLength, VFXEmptyMachineLayerMask))
             {
                 Debug.Log("Empty Machine " + hit.collider.name);
+                hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
             }
 
         }
+    }
+
+    private void OnDisable()
+    {
+        machineHeld.gameObjectReference = null;
     }
 }

@@ -128,8 +128,11 @@ public class Floor : MonoBehaviour
         {
             for (int j = 0; j < workRooms[i].machinePlaces.Length; j++)
             {
-                if(workRooms[i].machinePlaces[j].machine == null)
-                    Instantiate(EmptyMachineVFX, workRooms[i].machinePlaces[j].machinePosition);
+                if (workRooms[i].machinePlaces[j].machine == null)
+                {
+                    var vfxObj = Instantiate(EmptyMachineVFX, workRooms[i].machinePlaces[j].machinePosition);
+                    vfxObj.GetComponent<EmptyMachinePlace>().SetParentFloor(this,i,j);
+                }
             }
         }
 
