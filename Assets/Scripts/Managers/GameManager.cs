@@ -39,9 +39,9 @@ public class GameManager : MonoBehaviour
 
     public void BuildFloor()
     {
-        if (FactoryMoney.GetValue() >= GameConfigFile.FloorCost)
+        if (CheckBalance(GameConfigFile.FloorCost,Currency.RealMoney))
         {
-            FactoryMoney.AddValue(-GameConfigFile.FloorCost);
+            WithdrawMoney(GameConfigFile.FloorCost,Currency.RealMoney);
 
             var f = Instantiate(GameConfigFile.FloorPrefab, new Vector3(), new Quaternion());
 
@@ -56,6 +56,70 @@ public class GameManager : MonoBehaviour
             BuildFailure.Raise();
         }
 
+    }
+
+    public bool CheckBalance(float money, Currency currency)
+    {
+        switch (currency)
+        {
+            case Currency.RealMoney:
+                if (money >= FactoryMoney.GetValue())
+                    return true;
+                else
+                    return false;
+            case Currency.HappyMoney:
+                if (money >= HappyMoney.GetValue())
+                    return true;
+                else
+                    return false;
+        }
+
+        return false;
+    }
+
+    public bool WithdrawMoney(float money, Currency currency)
+    {
+        if (currency == Currency.RealMoney)
+        {
+            if (money >= FactoryMoney.GetValue())
+            {
+                FactoryMoney.AddValue(-money);
+                return true;
+            }
+            else
+            {
+                Debug.LogWarning("Real Money isn't enough!");
+                return false;
+            }
+        }
+        else
+        {
+            if (money >= HappyMoney.GetValue())
+            {
+                HappyMoney.AddValue(-money);
+                return true;
+            }
+            else
+            {
+                Debug.LogWarning("Happy Money isn't enough!");
+                return false;
+            }
+        }
+    }
+
+    public void DepositMoney(float money, Currency currency)
+    {
+        if (money < 0)
+            return;
+
+        if(currency == Currency.RealMoney)
+        {
+            FactoryMoney.AddValue(money);
+        }
+        else
+        {
+            HappyMoney.AddValue(money);
+        }
     }
 
     public GameTime GetGameTime()
