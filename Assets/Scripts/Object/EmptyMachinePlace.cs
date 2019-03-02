@@ -33,6 +33,7 @@ public class EmptyMachinePlace : MonoBehaviour
     {
         var machineGameObject = Instantiate(go, transform.parent);
         parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machine = machineGameObject.GetComponent<Machine>();
+        parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machinePosition.GetComponent<WayPoint>().WayPointTransform = machineGameObject.GetComponent<Machine>().workerPosition;
         placeMachineEvent.Raise();
         Destroy(gameObject);
     }
