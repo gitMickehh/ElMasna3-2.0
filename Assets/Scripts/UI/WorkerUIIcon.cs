@@ -10,12 +10,12 @@ public class WorkerUIIcon : MonoBehaviour
     public int workerID;
     public UIMachine machine;
 
-    Image UIImage;
+    //Image UIImage;
 
-    private void Start()
-    {
-        UIImage = GetComponent<Image>();
-    }
+    //private void Start()
+    //{
+    //    UIImage = GetComponent<Image>();
+    //}
 
 }
 

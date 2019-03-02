@@ -19,9 +19,14 @@ public class StorePanel : MonoBehaviour
     [Header("Events")]
     public GameEvent ToPlaceMachine;
 
+    [Header("Game Manager")]
+    [Attributes.GreyOut]
+    public GameManager gameManager;
+
     public void Start()
     {
         FillInMachines();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void FillInMachines()
@@ -38,8 +43,16 @@ public class StorePanel : MonoBehaviour
     public void BuyObject(UIStoreObject sObject)
     {
         ObjectToBuy.gameObjectReference = sObject.ReferencePrefab;
-        ToPlaceMachine.Raise();
-        MachineStorePage.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+
+        if (gameManager.CheckBalance(sObject.itemCost, sObject.currency))
+        {
+            gameManager.WithdrawMoney(sObject.itemCost, sObject.currency);
+            ToPlaceMachine.Raise();
+            MachineStorePage.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+        else {
+            Debug.LogWarning("price is too high");
+        }
     }
 }

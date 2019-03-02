@@ -159,7 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 1796949198250469475}
   currencyImage: {fileID: 1796949196933475162}
-  itemCost: {fileID: 1796949198043744530}
+  itemCostText: {fileID: 1796949198043744530}
+  currency: 0
+  itemCost: 0
   ReferencePrefab: {fileID: 0}
   description: 
   storePanel: {fileID: 0}

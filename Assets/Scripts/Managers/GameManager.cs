@@ -63,12 +63,12 @@ public class GameManager : MonoBehaviour
         switch (currency)
         {
             case Currency.RealMoney:
-                if (money >= FactoryMoney.GetValue())
+                if (money <= FactoryMoney.GetValue())
                     return true;
                 else
                     return false;
             case Currency.HappyMoney:
-                if (money >= HappyMoney.GetValue())
+                if (money <= HappyMoney.GetValue())
                     return true;
                 else
                     return false;
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         if (currency == Currency.RealMoney)
         {
-            if (money >= FactoryMoney.GetValue())
+            if (money <= FactoryMoney.GetValue())
             {
                 FactoryMoney.AddValue(-money);
                 return true;
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (money >= HappyMoney.GetValue())
+            if (money <= HappyMoney.GetValue())
             {
                 HappyMoney.AddValue(-money);
                 return true;

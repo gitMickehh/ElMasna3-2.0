@@ -8,7 +8,9 @@ public class UIStoreObject : MonoBehaviour
     [Header("Representation")]
     public Image itemImage;
     public Image currencyImage;
-    public Text itemCost;
+    public Text itemCostText;
+    public Currency currency;
+    public float itemCost;
 
     [Header("InGame")]
     [Attributes.GreyOut]
@@ -28,8 +30,10 @@ public class UIStoreObject : MonoBehaviour
 #endif
 
         itemImage.sprite = sItem.storeIcon;
-        itemCost.text = sItem.price.ToString();
+        itemCost = sItem.price;
+        itemCostText.text = sItem.price.ToString();
         currencyImage.sprite = machineImage;
+        currency = sItem.Currency;
 
         description = sItem.description;
 
