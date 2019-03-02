@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emptyMachinesList: {fileID: 11400000, guid: 81fea3cb723b8324bb323da515755efe, type: 2}
+  placeMachineEvent: {fileID: 11400000, guid: ab683533d21a55543ac14e0efcb86261, type: 2}
 --- !u!1001 &3882214858104800565
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ TextureImporter:
     21300024: Btn_Store
     21300026: MachineWorkingIcon
     21300028: MachineBrokenIcon
+    21300030: Indicator_Right
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -369,7 +370,7 @@ TextureImporter:
         width: 1286
         height: 1049
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -389,7 +390,7 @@ TextureImporter:
         width: 1096
         height: 1145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -409,13 +410,33 @@ TextureImporter:
         width: 1276
         height: 1176
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 5fddc7638deb1f941ba235a258fd6dbd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Indicator_Right
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 597
+        width: 2433
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ffb98392b75a514f9f3aef3173d98c7
       vertices: []
       indices: 
       edges: []

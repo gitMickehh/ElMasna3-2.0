@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52edc163384a984591b6c0e46cbcac7, type: 3}
+  m_Name: StoreScheme
+  m_EditorClassIdentifier: 
+  RealMoneyIcon: {fileID: 21300002, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
+  HappyMoneyIcon: {fileID: 21300000, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
+  PartyCost: 560
+  Machines:
+  - name: Machine L1
+    Prefab: {fileID: 4166432995667429784, guid: ab1df2d96ff4596429678afecb91e064,
+      type: 3}
+    storeIcon: {fileID: 21300004, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    Currency: 0
+    price: 80
+    description: This Machine brings you money that you can buy.
+  - name: Machine L2
+    Prefab: {fileID: 4166432995667429784, guid: ae37845a3a77ab846bc65273f00c1ff5,
+      type: 3}
+    storeIcon: {fileID: 21300002, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    Currency: 0
+    price: 120
+    description: This Machine brings you money that you can buy.
+  - name: Machine L3
+    Prefab: {fileID: 4166432995667429784, guid: 705e59d2efa62b04a8f953f9e74a96a5,
+      type: 3}
+    storeIcon: {fileID: 21300000, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    Currency: 0
+    price: 160
+    description: This Machine brings you money that you can buy.
+  - name: Machine R1
+    Prefab: {fileID: 4166432995667429784, guid: 450c76eca1152774aadab815e0835cd2,
+      type: 3}
+    storeIcon: {fileID: 21300010, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    Currency: 0
+    price: 80
+    description: This Machine brings you happy money that you can buy.
+  - name: Machine R2
+    Prefab: {fileID: 4166432995667429784, guid: caf5e397c173a4643b0aaa0b93c314c9,
+      type: 3}
+    storeIcon: {fileID: 21300008, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    Currency: 0
+    price: 160
+    description: This Machine brings you happy money that you can buy.
+  - name: Machine R3
+    Prefab: {fileID: 4166432995667429784, guid: 984dfc37a001f7d4dacdd70381d24ff9,
+      type: 3}
+    storeIcon: {fileID: 21300006, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    Currency: 0
+    price: 220
+    description: This Machine brings you happy money that you can buy.

@@ -135,6 +135,7 @@ MonoBehaviour:
   movingCamera: {fileID: 11400000, guid: 0612923cb20abdd4e9922082e02ba037, type: 2}
   lerpTime: 0.7
   orientationPosition: {fileID: 0}
+  atOrientation: 0
 --- !u!114 &8889290905441748305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +173,7 @@ MonoBehaviour:
   VFXEmptyMachineLayerMask:
     serializedVersion: 2
     m_Bits: 4096
+  machineHeld: {fileID: 11400000, guid: d68c18be2e4ae2444a6ee302be85423d, type: 2}
 --- !u!114 &2555753119611847862
 MonoBehaviour:
   m_ObjectHideFlags: 0

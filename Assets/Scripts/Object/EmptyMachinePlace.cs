@@ -9,6 +9,9 @@ public class EmptyMachinePlace : MonoBehaviour
     int roomNumber;
     int placeInRoom;
 
+    [Header("Events")]
+    public GameEvent placeMachineEvent;
+
     private void OnEnable()
     {
         emptyMachinesList.Add(this);
@@ -30,6 +33,7 @@ public class EmptyMachinePlace : MonoBehaviour
     {
         var machineGameObject = Instantiate(go, transform.parent);
         parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machine = machineGameObject.GetComponent<Machine>();
+        placeMachineEvent.Raise();
         Destroy(gameObject);
     }
 }
