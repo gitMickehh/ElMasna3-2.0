@@ -215,12 +215,12 @@ public class UIElementDragger : MonoBehaviour
                 if (swipeDelta.y > 0)
                 {
                     ScrollDown.Raise();
-                    Debug.Log("swipeDelta.y: " + swipeDelta.y);
+                    //Debug.Log("swipeDelta.y: " + swipeDelta.y);
                 }
                 else if(swipeDelta.y < 0)
                 {
                     ScrollUp.Raise();
-                    Debug.Log("swipeDelta.y: " + swipeDelta.y);
+                    //Debug.Log("swipeDelta.y: " + swipeDelta.y);
 
                 }
 
