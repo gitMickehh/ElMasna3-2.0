@@ -14,6 +14,10 @@ public class RaycastingByTouch : MonoBehaviour
     [Header("Machine Placement")]
     public GameObjectField machineHeld;
 
+    [Header("Worker Click")]
+    public WorkerField clickedWorker;
+    public GameEvent ClickedOnWorker;
+
     public void RaycastingFromScreenPoint()
     {
         if (Input.touchCount == 1)
@@ -26,6 +30,8 @@ public class RaycastingByTouch : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
                 {
                     Debug.Log("Worker " + hit.collider.name);
+                    clickedWorker.worker = hit.collider.gameObject.GetComponent<Worker>();
+                    ClickedOnWorker.Raise();
                 }
                 else if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
                 {
@@ -47,6 +53,8 @@ public class RaycastingByTouch : MonoBehaviour
             if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
             {
                 Debug.Log("Worker " + hit.collider.name);
+                clickedWorker.worker = hit.collider.gameObject.GetComponent<Worker>();
+                ClickedOnWorker.Raise();
             }
             else if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
             {
@@ -64,5 +72,6 @@ public class RaycastingByTouch : MonoBehaviour
     private void OnDisable()
     {
         machineHeld.gameObjectReference = null;
+        clickedWorker.worker = null;
     }
 }

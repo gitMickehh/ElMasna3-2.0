@@ -230,6 +230,8 @@ GameObject:
   - component: {fileID: 2127390715988670350}
   - component: {fileID: 7667979216697220321}
   - component: {fileID: 6646586057021964207}
+  - component: {fileID: 3358421552676107443}
+  - component: {fileID: 6411625759196508107}
   m_Layer: 5
   m_Name: CharacterProfile
   m_TagString: Untagged
@@ -333,7 +335,68 @@ MonoBehaviour:
   CharacterLevel: {fileID: 1536340666628880410}
   CharacterHappienss: {fileID: 8181725898689556401}
   CharacterHealth: {fileID: 5964006499105289813}
-  WorkerRefernce: {fileID: 0}
+  UICamera: {fileID: 0}
+  SelectedWorkerRefernce: {fileID: 11400000, guid: 4ae7918a1fc64cf418df5e66e8964d29,
+    type: 2}
+  animator: {fileID: 7667979216697220321}
+--- !u!114 &3358421552676107443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568134794108909315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 491e224836aec0d42bfbacd1d131c2fc, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6646586057021964207}
+        m_MethodName: GetWorkerProfile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &6411625759196508107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568134794108909315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 763c2ed54d2751448b2443f489547a5c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6646586057021964207}
+        m_MethodName: ClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1439671813329067496
 GameObject:
   m_ObjectHideFlags: 0
