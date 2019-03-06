@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ee60a3e6d246f448e0c5b3a1c2f31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameDay: 0
   wholeDayInGame: 60
   wholeDayInSeconds: 0
   runningTime: 0

@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b613723c75cf54c8835762c831b8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActive: 0
+  currentActive: 1
   listOfMes: {fileID: 11400000, guid: 25ca98e2c0d49074fb850707e8e7a5e1, type: 2}
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   torqueMultiplyer: 0.3

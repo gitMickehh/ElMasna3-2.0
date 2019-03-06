@@ -451,9 +451,9 @@ TextureImporter:
       name: Happy_1
       rect:
         serializedVersion: 2
-        x: 3788
+        x: 3796
         y: 88
-        width: 277
+        width: 267
         height: 258
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

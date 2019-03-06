@@ -49,6 +49,7 @@ public class TimeManagerUPDATE : MonoBehaviour
         {
             StartDay.Raise();
             GameDay = (Day)(((int)GameDay + 1) % 7);
+            runningTime = 0;
         }
     }
 

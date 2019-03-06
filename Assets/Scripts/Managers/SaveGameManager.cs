@@ -174,10 +174,29 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
+    private void SaveFactoryData()
+    {
+        PlayerPrefs.SetFloat("RealMoney",gManager.FactoryMoney.GetValue());
+        PlayerPrefs.SetFloat("HappyMoney",gManager.HappyMoney.GetValue());
+
+        Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
+            "\n"+ gManager.HappyMoney.GetValue() +" Happy Money.");
+    }
+
+    private void LoadFactoryData()
+    {
+        if(PlayerPrefs.HasKey("RealMoney"))
+            gManager.FactoryMoney.SetValue(PlayerPrefs.GetFloat("RealMoney"));
+
+        if(PlayerPrefs.HasKey("HappyMoney"))
+            gManager.HappyMoney.SetValue(PlayerPrefs.GetFloat("HappyMoney"));
+    }
+
     private void LoadAll()
     {
         LoadWorkers();
         LoadFloors();
+        LoadFactoryData();
         LoadTime();
     }
 
@@ -185,6 +204,7 @@ public class SaveGameManager : MonoBehaviour
     {
         SaveFloors();
         SaveWorkers();
+        SaveFactoryData();
         SaveTime();
     }
 

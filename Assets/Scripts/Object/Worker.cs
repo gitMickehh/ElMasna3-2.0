@@ -42,6 +42,9 @@ public class Worker : MonoBehaviour
     [HideInInspector]
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
 
+    [Header("UI Camera")]
+    public Transform UICameraPosition;
+
     Animator workerAnimator;
 
     //saving

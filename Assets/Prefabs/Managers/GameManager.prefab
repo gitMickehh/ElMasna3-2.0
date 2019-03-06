@@ -52,7 +52,6 @@ MonoBehaviour:
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   BuildSuccess: {fileID: 11400000, guid: 1900118c697dd66498c86bada6b28050, type: 2}
   BuildFailure: {fileID: 11400000, guid: 9f08995bb6ca4894f9481133ce81d159, type: 2}
-  GameDay: 0
   DayInMonth: 0
   DifferenceInDays: 0
   timer: {fileID: 0}
