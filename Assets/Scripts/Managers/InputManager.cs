@@ -57,13 +57,20 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //tap = true;
-            tap.Raise();
+            //tap.Raise();
             isDraging = true;
             tapCounter++;
             startTouch = Input.mousePosition;
         }
         else if(Input.GetMouseButtonUp(0))
         {
+            //release tap
+            if (tapCounter == 1)
+            {
+                Debug.Log("Tap");
+                tap.Raise();
+            }
+
             Reset();
         }
         #endregion
@@ -73,14 +80,24 @@ public class InputManager : MonoBehaviour
             if (Input.touches[0].phase == TouchPhase.Began)
             {
                 //tap = true;
-                tap.Raise();
                 isDraging = true;
                 tapCounter++;
                 startTouch = Input.touches[0].position;
             }
-            else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
+            else if (Input.touches[0].phase == TouchPhase.Ended)
             {
+                //release tap
+                if (tapCounter == 1)
+                {
+                    Debug.Log("Tap");
+                    tap.Raise();
+                } 
+
                 Reset();
+            }
+            else if(Input.touches[0].phase == TouchPhase.Canceled)
+            {
+
             }
         }
         else if(Input.touchCount > 1)
@@ -150,7 +167,6 @@ public class InputManager : MonoBehaviour
 
         //zoom mouse
         //PinchMagnitude.SetValue(Input.GetAxis("Mouse ScrollWheel") * 20);
-        
     }
 
     private void Reset()
