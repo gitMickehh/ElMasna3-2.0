@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,9 +26,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TimeManagerUPDATE timer;
 
+    //Modal Panel
+    private ModalPanel modalPanel;
+    private UnityAction BuildFloorAction;
+
     private void Start()
     {
         StartCoroutine(lateStart());
+        modalPanel = ModalPanel.Instance();
+
+        BuildFloorAction = new UnityAction(ConfirmBuildFloor);
     }
 
     IEnumerator lateStart()
@@ -37,11 +45,17 @@ public class GameManager : MonoBehaviour
         timer = FindObjectOfType<TimeManagerUPDATE>();
     }
 
-    public void BuildFloor()
+    public void BuildFloorButton()
     {
-        if (CheckBalance(GameConfigFile.FloorCost,Currency.RealMoney))
+        string question = GameConfigFile.CurrentLanguageProfile.AreYouSure + " " + GameConfigFile.FloorCost.ToString("0") + " " + GameConfigFile.CurrentLanguageProfile.QuestionMark;
+        modalPanel.Choice(question, BuildFloorAction);  
+    }
+
+    private void ConfirmBuildFloor()
+    {
+        if (CheckBalance(GameConfigFile.FloorCost, Currency.RealMoney))
         {
-            WithdrawMoney(GameConfigFile.FloorCost,Currency.RealMoney);
+            WithdrawMoney(GameConfigFile.FloorCost, Currency.RealMoney);
 
             var f = Instantiate(GameConfigFile.FloorPrefab, new Vector3(), new Quaternion());
 
@@ -55,7 +69,6 @@ public class GameManager : MonoBehaviour
         {
             BuildFailure.Raise();
         }
-
     }
 
     public bool CheckBalance(float money, Currency currency)
