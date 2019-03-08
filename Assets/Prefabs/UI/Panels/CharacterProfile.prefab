@@ -335,16 +335,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b963aa466af0b634e86d2900e5890831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
   CharacterName: {fileID: 1912785870278805558}
   CharacterLevel: {fileID: 1536340666628880410}
   CharacterHappienss: {fileID: 8181725898689556401}
   CharacterHealth: {fileID: 5964006499105289813}
   InOrientationButtons: {fileID: 6237358979743126542}
   InFactoryButtons: {fileID: 1626003163585989594}
-  HireButton: {fileID: 5394122344265365646}
-  CustomizeButton: {fileID: 8149015108746235260}
-  ConverseButton: {fileID: 8826219498259452303}
-  BreakButton: {fileID: 2296782505466523376}
   CameraPrefab: {fileID: 5041679232849917349, guid: d31e170b85d17514594b651126398221,
     type: 3}
   UICamera: {fileID: 0}
@@ -2213,7 +2210,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 389256979381871865}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6646586057021964207}
+        m_MethodName: GiveBreakClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &7084736361544574072

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UICharacterProfile : MonoBehaviour
 {
+    public GameConfig gameConfigFile;
+
     [Header("UI Objects")]
     public Text CharacterName;
     public Text CharacterLevel;
@@ -14,11 +16,11 @@ public class UICharacterProfile : MonoBehaviour
     public GameObject InOrientationButtons;
     public GameObject InFactoryButtons;
 
-    [Header("UI Buttons")]
-    public Button HireButton;
-    public Button CustomizeButton;
-    public Button ConverseButton;
-    public Button BreakButton;
+    //[Header("UI Buttons")]
+    //public Button HireButton;
+    //public Button CustomizeButton;
+    //public Button ConverseButton;
+    //public Button BreakButton;
 
     bool opened;
 
@@ -37,6 +39,7 @@ public class UICharacterProfile : MonoBehaviour
     //Modal Panel Options
     private ModalPanel modalPanel;
     private UnityAction HireAction;
+    private UnityAction GiveBreakAction;
 
     private void Start()
     {
@@ -44,6 +47,7 @@ public class UICharacterProfile : MonoBehaviour
         modalPanel = ModalPanel.Instance();
 
         HireAction = new UnityAction(HireWorker);
+        GiveBreakAction = new UnityAction(GiveBreakToWorker);
     }
 
     private void FillWorkerData(Worker w)
@@ -86,12 +90,25 @@ public class UICharacterProfile : MonoBehaviour
 
     public void HireClick()
     {
-        modalPanel.Choice("Do you want to hire this?", HireAction);
+        string s = gameConfigFile.CurrentLanguageProfile.HireWorker + gameConfigFile.CurrentLanguageProfile.QuestionMark;
+        modalPanel.Choice(s, HireAction);
     }
 
-    public void HireWorker()
+    public void GiveBreakClick()
+    {
+        string s = gameConfigFile.CurrentLanguageProfile.GiveWorkerBreak + gameConfigFile.CurrentLanguageProfile.QuestionMark;
+        modalPanel.Choice(s, GiveBreakAction);
+    }
+
+    private void HireWorker()
     {
         Debug.Log("Hiring " + SelectedWorkerRefernce.worker.FullName);
+        //SelectedWorkerRefernce.worker.Hire();
+    }
+
+    private void GiveBreakToWorker()
+    {
+        Debug.Log("Giving a break to " + SelectedWorkerRefernce.worker.FullName);
         //SelectedWorkerRefernce.worker.Hire();
     }
 
