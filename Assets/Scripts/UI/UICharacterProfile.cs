@@ -109,7 +109,7 @@ public class UICharacterProfile : MonoBehaviour
     private void GiveBreakToWorker()
     {
         Debug.Log("Giving a break to " + SelectedWorkerRefernce.worker.FullName);
-        //SelectedWorkerRefernce.worker.Hire();
+        //SelectedWorkerRefernce.worker.Break();
     }
 
 
