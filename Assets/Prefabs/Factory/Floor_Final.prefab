@@ -326,7 +326,7 @@ MonoBehaviour:
     rooms: []
     floorOrder: 0
   cameraProperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
-  heightToAddToCamera: 35
+  heightToAddToCamera: 40
   workRooms:
   - Door: {fileID: 6928572773426465534}
     machinePlaces:

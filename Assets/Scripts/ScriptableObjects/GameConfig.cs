@@ -16,8 +16,10 @@ public class GameConfig : ScriptableObject {
 
     [Header("Dates")]
     public Day dayOfTheWeek;
-    public DateTimeScriptable FirstTimeEver;
-    public DateTimeScriptable LastTimePlayed;
+
+    [Header("Wallet")]
+    public FloatField FactoryMoney;
+    public FloatField HappyMoney;
 
     [Header("Building")]
     public float FloorCost;

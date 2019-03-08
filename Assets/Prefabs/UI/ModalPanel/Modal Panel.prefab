@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4949cf01bc758d5439f8098c0619d6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
   question: {fileID: 4787712902947649320}
   iconImage: {fileID: 1129684060177380989}
   yesButton: {fileID: 5714448960705407415}

@@ -15,15 +15,19 @@ MonoBehaviour:
   GameName: "\uFECA\uFEE8\uFEBC\uFEE4\uFEDF\uFE8D"
   Language: "\uFEF2\uFE91\uFEAE\uFECB"
   LanguageInitials: Ar
-  ConfirmationText: ??
+  ConfirmationText: "\uFEAA\uFEDB\uFE84\uFE98\uFEE3 \uFE96\uFEE7\uFE83 \uFEDE\uFEEB"
   PlaceholderNameText: "\uFE8E\uFEE8\uFEEB \uFEDA\uFEE4\uFEB3\uFE8D"
   StartGame: "\uFE83\uFEAA\uFE91\uFE8D"
   QuitGame: "\uFE9D\uFEAE\uFEA7\uFE8D"
   Options: "\uFE95\uFE8D\uFEA9\uFE8D\uFEAA\uFECB\uFE8D"
   HowToPlay: "\uFE90\uFECC\uFEDF\uFE8D \uFED2\uFEF4\uFEDB"
   Pause: "\uFEAD\uFE8E\uFEC8\uFE98\uFEE7\uFE8D"
-  MainFont: {fileID: 0}
+  MainFont: {fileID: 12800000, guid: b1153972fed915b4097b357bdec0d480, type: 3}
   MaleNames: {fileID: 11400000, guid: dfc6ded4bdb627b419bb2b56291e0759, type: 2}
   FemaleNames: {fileID: 11400000, guid: 471ce06fd3db4484d9c96670e524eb0f, type: 2}
   LastNames: {fileID: 11400000, guid: d900c00ac80567a4e98c046367060194, type: 2}
   LeftToRight: 0
+  QuestionMark: "\u061F"
+  HireWorker: "\uFEE6\uFEF4\uFECB"
+  GiveWorkerBreak: "\uFEF0\uFEDF\uFE8D \uFE94\uFEA3\uFE8D\uFEAD \uFEF2\uFEC4\uFECB\uFE8D "
+  AreYouSure: "\uFEAA\uFEDB\uFE84\uFE98\uFEE3 \uFE96\uFEE7\uFE83 \uFEDE\uFEEB"

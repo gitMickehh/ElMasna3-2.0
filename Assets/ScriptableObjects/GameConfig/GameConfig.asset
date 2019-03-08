@@ -15,9 +15,9 @@ MonoBehaviour:
   CurrentLanguageProfile: {fileID: 11400000, guid: df89ad15138481542ae34165321062b6,
     type: 2}
   dayOfTheWeek: 0
-  FirstTimeEver: {fileID: 11400000, guid: 3bb80c53b39a0af4a9e8ed9012da77c3, type: 2}
-  LastTimePlayed: {fileID: 11400000, guid: 34806aa1212017243ac31bcae200404d, type: 2}
-  FloorCost: 20
+  FactoryMoney: {fileID: 0}
+  HappyMoney: {fileID: 0}
+  FloorCost: 450
   FloorPrefab: {fileID: 4143921381608493496, guid: d1b2dd82bdad47543a74bedd51cd9672,
     type: 3}
   WorkersPrefabs: {fileID: 11400000, guid: 6cd08f48bacbc8048bd515203ca7a148, type: 2}

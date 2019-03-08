@@ -27,3 +27,7 @@ MonoBehaviour:
   FemaleNames: {fileID: 11400000, guid: c39a6055d190e1b428b334aa2c9bba0c, type: 2}
   LastNames: {fileID: 11400000, guid: af91b072e9ed90242993a5fb9e619738, type: 2}
   LeftToRight: 1
+  QuestionMark: '?'
+  HireWorker: 'Do you want to hire '
+  GiveWorkerBreak: 'Give break to '
+  AreYouSure: Are you sure

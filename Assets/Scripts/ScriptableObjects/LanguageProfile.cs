@@ -32,6 +32,15 @@ public class LanguageProfile : ScriptableObject {
     [Tooltip("This is true if the name is written from left to right")]
     public bool LeftToRight = true;
 
+    [Header("Quesitons")]
+    public string QuestionMark;
+    [TextArea]
+    public string HireWorker;
+    [TextArea]
+    public string GiveWorkerBreak;
+    [TextArea]
+    public string AreYouSure;
+
     public string GetRandomFullName(Gender g)
     {
         int no1 = Random.Range(0, MaleNames.strings.Count);

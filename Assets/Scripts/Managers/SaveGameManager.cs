@@ -178,6 +178,7 @@ public class SaveGameManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("RealMoney",gManager.FactoryMoney.GetValue());
         PlayerPrefs.SetFloat("HappyMoney",gManager.HappyMoney.GetValue());
+        PlayerPrefs.SetFloat("FloorCost", gManager.GameConfigFile.FloorCost);
 
         Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
             "\n"+ gManager.HappyMoney.GetValue() +" Happy Money.");
@@ -190,6 +191,9 @@ public class SaveGameManager : MonoBehaviour
 
         if(PlayerPrefs.HasKey("HappyMoney"))
             gManager.HappyMoney.SetValue(PlayerPrefs.GetFloat("HappyMoney"));
+
+        if (PlayerPrefs.HasKey("FloorCost"))
+            gManager.GameConfigFile.FloorCost = PlayerPrefs.GetFloat("FloorCost");
     }
 
     private void LoadAll()
