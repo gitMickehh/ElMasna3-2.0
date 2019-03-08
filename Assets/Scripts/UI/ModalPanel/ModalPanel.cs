@@ -9,7 +9,6 @@ public class ModalPanel : MonoBehaviour
     public Text question;
     public Image iconImage;
     public Button yesButton;
-    public Button noButton;
     public Button cancelButton;
     public GameObject modalPanelObject;
 
@@ -28,17 +27,13 @@ public class ModalPanel : MonoBehaviour
         return modalPanel;
     }
 
-    public void Choice(string question, UnityAction yesEvent, UnityAction noEvent, UnityAction cancelEvent)
+    public void Choice(string question, UnityAction yesEvent, UnityAction cancelEvent)
     {
         modalPanelObject.SetActive(true);
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(yesEvent);
         yesButton.onClick.AddListener(ClosePanel);
-
-        noButton.onClick.RemoveAllListeners();
-        noButton.onClick.AddListener(noEvent);
-        noButton.onClick.AddListener(ClosePanel);
 
         cancelButton.onClick.RemoveAllListeners();
         cancelButton.onClick.AddListener(cancelEvent);
@@ -48,7 +43,6 @@ public class ModalPanel : MonoBehaviour
 
         this.iconImage.gameObject.SetActive(false);
         yesButton.gameObject.SetActive(true);
-        noButton.gameObject.SetActive(true);
         cancelButton.gameObject.SetActive(true);
 
     }

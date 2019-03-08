@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class StorePanel : MonoBehaviour
 {
     [Header("Holder")]
     public GameObjectField ObjectToBuy;
+    UIStoreObject UIobjectToBuy;
 
     [Header("Store Scheme")]
     public StoreScriptableObject storeScheme;
@@ -23,10 +25,21 @@ public class StorePanel : MonoBehaviour
     [Attributes.GreyOut]
     public GameManager gameManager;
 
+    //Modal Panel
+    private ModalPanel modalPanel;
+    private UnityAction myYesAction;
+    private UnityAction myCancelAction;
+
     public void Start()
     {
         FillInMachines();
         gameManager = FindObjectOfType<GameManager>();
+
+        modalPanel = ModalPanel.Instance();
+
+        myYesAction = new UnityAction(ConfirmBuy);
+        myCancelAction = new UnityAction(CancelBuy);
+
     }
 
     private void FillInMachines()
@@ -42,17 +55,29 @@ public class StorePanel : MonoBehaviour
 
     public void BuyObject(UIStoreObject sObject)
     {
-        ObjectToBuy.gameObjectReference = sObject.ReferencePrefab;
+        UIobjectToBuy = sObject;
+        ObjectToBuy.gameObjectReference = UIobjectToBuy.ReferencePrefab;
 
-        if (gameManager.CheckBalance(sObject.itemCost, sObject.currency))
+        modalPanel.Choice("Would you buy this?",myYesAction,myCancelAction);
+    }
+    
+    public void ConfirmBuy()
+    {
+        if (gameManager.CheckBalance(UIobjectToBuy.itemCost, UIobjectToBuy.currency))
         {
-            gameManager.WithdrawMoney(sObject.itemCost, sObject.currency);
+            gameManager.WithdrawMoney(UIobjectToBuy.itemCost, UIobjectToBuy.currency);
             ToPlaceMachine.Raise();
             MachineStorePage.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
-        else {
+        else
+        {
             Debug.LogWarning("price is too high");
         }
+    }
+
+    public void CancelBuy()
+    {
+        UIobjectToBuy = null;
     }
 }
