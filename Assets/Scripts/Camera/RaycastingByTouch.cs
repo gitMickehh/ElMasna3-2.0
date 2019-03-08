@@ -25,7 +25,7 @@ public class RaycastingByTouch : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
                 {
@@ -45,7 +45,7 @@ public class RaycastingByTouch : MonoBehaviour
 
             }
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

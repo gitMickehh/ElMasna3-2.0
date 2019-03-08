@@ -11,21 +11,22 @@ public class InputManager : MonoBehaviour
     private float currentTimer = 0;
     public float doubleTapTime = 0.6f;
 
-    [Header("Input Events")] 
+    [Header("Input Events")]
     public GameEvent tap;
     public GameEvent doubleTap;
     public GameEvent swipeLeft;
     public GameEvent swipeRight;
     public GameEvent swipeUp;
     public GameEvent swipeDown;
-    
+
     [Header("Input Senstivity")]
     [Tooltip("In Pixels")]
-    [Range(0,180)]
+    [Range(0, 180)]
     public int horizontalSwipeDeadzone = 65;
     [Tooltip("In Pixels")]
     [Range(0, 180)]
     public int VerticalSwipeDeadzone = 25;
+    public float tapForgiveness = 10; //the area a finger can move and still counts as tap
     public FloatField swipeMagnitude;
     public FloatField PinchMagnitude;
 
@@ -45,7 +46,7 @@ public class InputManager : MonoBehaviour
         {
             currentTimer += Time.deltaTime;
         }
-        else if(tapCounter >= 2)
+        else if (tapCounter >= 2)
         {
             doubleTap.Raise();
             tapCounter = 0;
@@ -57,13 +58,26 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //tap = true;
-            tap.Raise();
+            //tap.Raise();
             isDraging = true;
             tapCounter++;
             startTouch = Input.mousePosition;
         }
-        else if(Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
         {
+            //release tap
+            if (tapCounter == 1)
+            {
+                if (Mathf.Abs(Input.mousePosition.x) <= Mathf.Abs(startTouch.x) + tapForgiveness &&
+                    Mathf.Abs(Input.mousePosition.x) >= Mathf.Abs(startTouch.x) - tapForgiveness &&
+                    Mathf.Abs(Input.mousePosition.y) <= Mathf.Abs(startTouch.y) + tapForgiveness &&
+                    Mathf.Abs(Input.mousePosition.y) >= Mathf.Abs(startTouch.y) - tapForgiveness)
+                {
+                    Debug.Log("Tap");
+                    tap.Raise();
+                }
+            }
+
             Reset();
         }
         #endregion
@@ -73,23 +87,40 @@ public class InputManager : MonoBehaviour
             if (Input.touches[0].phase == TouchPhase.Began)
             {
                 //tap = true;
-                tap.Raise();
+                //tap.Raise();
                 isDraging = true;
                 tapCounter++;
                 startTouch = Input.touches[0].position;
             }
-            else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
+            else if (Input.touches[0].phase == TouchPhase.Ended)
             {
+                //release tap
+                if (tapCounter == 1)
+                {
+                    if (Mathf.Abs(Input.touches[0].position.x) <= Mathf.Abs(startTouch.x) + tapForgiveness &&
+                    Mathf.Abs(Input.touches[0].position.x) >= Mathf.Abs(startTouch.x) - tapForgiveness &&
+                    Mathf.Abs(Input.touches[0].position.y) <= Mathf.Abs(startTouch.y) + tapForgiveness &&
+                    Mathf.Abs(Input.touches[0].position.y) >= Mathf.Abs(startTouch.y) - tapForgiveness)
+                    {
+                        Debug.Log("Tap");
+                        tap.Raise();
+                    }
+                }
+
                 Reset();
             }
+            else if (Input.touches[0].phase == TouchPhase.Canceled)
+            {
+
+            }
         }
-        else if(Input.touchCount > 1)
+        else if (Input.touchCount > 1)
             isDraging = false;
         #endregion
 
         //calculate the distance
         swipeDelta = Vector2.zero;
-        if(isDraging)
+        if (isDraging)
         {
             if (Input.touchCount == 1)
                 swipeDelta = Input.touches[0].position - startTouch;
@@ -99,7 +130,7 @@ public class InputManager : MonoBehaviour
         }
 
         //deadzone
-        if (Mathf.Abs(swipeDelta.x) >= horizontalSwipeDeadzone || 
+        if (Mathf.Abs(swipeDelta.x) >= horizontalSwipeDeadzone ||
             Mathf.Abs(swipeDelta.y) >= VerticalSwipeDeadzone)
         {
             swipeMagnitude.SetValue(swipeDelta.magnitude);
@@ -107,7 +138,7 @@ public class InputManager : MonoBehaviour
             float x = swipeDelta.x;
             float y = swipeDelta.y;
 
-            if(Mathf.Abs(x) > Mathf.Abs(y))
+            if (Mathf.Abs(x) > Mathf.Abs(y))
             {
                 //Left or Right
                 if (x < 0)
@@ -150,7 +181,6 @@ public class InputManager : MonoBehaviour
 
         //zoom mouse
         //PinchMagnitude.SetValue(Input.GetAxis("Mouse ScrollWheel") * 20);
-        
     }
 
     private void Reset()

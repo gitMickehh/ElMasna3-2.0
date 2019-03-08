@@ -40,7 +40,10 @@ public class UICharacterProfile : MonoBehaviour
     public void GetWorkerProfile()
     {
         FillWorkerData(SelectedWorkerRefernce.worker);
+
+        if(!opened)
+            animator.SetTrigger("TriggerUI");
+
         opened = true;
-        animator.SetTrigger("TriggerUI");
     }
 }
