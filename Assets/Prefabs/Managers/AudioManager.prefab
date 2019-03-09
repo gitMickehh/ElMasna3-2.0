@@ -68,7 +68,7 @@ MonoBehaviour:
     source: {fileID: 0}
   buttonsSounds:
   - soundName: Select B
-    clip: {fileID: 8300000, guid: f5b519c859871a041a2cb778ad487e43, type: 3}
+    clip: {fileID: 8300000, guid: 9cf7d1e77cc3adc4fa86872c7bae8cd0, type: 3}
     volume: 0.8
     pitch: 1
     looping: 0
@@ -76,13 +76,6 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: Select B2
     clip: {fileID: 8300000, guid: 58856a830a503bf48b60faa518ce4248, type: 3}
-    volume: 0.8
-    pitch: 1
-    looping: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - soundName: Select B3
-    clip: {fileID: 8300000, guid: 9cf7d1e77cc3adc4fa86872c7bae8cd0, type: 3}
     volume: 0.8
     pitch: 1
     looping: 0

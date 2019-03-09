@@ -18,6 +18,7 @@ TextureImporter:
     21300026: MachineWorkingIcon
     21300028: MachineBrokenIcon
     21300030: Indicator_Right
+    21300032: Btn_Return
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -430,13 +431,33 @@ TextureImporter:
         width: 2433
         height: 462
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 6ffb98392b75a514f9f3aef3173d98c7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Btn_Return
+      rect:
+        serializedVersion: 2
+        x: 4170
+        y: 2881
+        width: 758
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458e959a6c04ec84893748c7a7967392
       vertices: []
       indices: 
       edges: []

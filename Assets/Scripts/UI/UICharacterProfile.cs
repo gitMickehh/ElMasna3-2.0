@@ -87,7 +87,7 @@ public class UICharacterProfile : MonoBehaviour
 
     public void GetWorkerProfile()
     {
-        if(workerID != SelectedWorkerRefernce.worker.ID)
+        if (workerID != SelectedWorkerRefernce.worker.ID || !opened)
         {
             FillWorkerData(SelectedWorkerRefernce.worker);
 
@@ -121,7 +121,5 @@ public class UICharacterProfile : MonoBehaviour
         Debug.Log("Giving a break to " + SelectedWorkerRefernce.worker.FullName);
         //SelectedWorkerRefernce.worker.Break();
     }
-
-
 
 }
