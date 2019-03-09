@@ -194,6 +194,7 @@ MonoBehaviour:
   FloorUIParent: {fileID: 4822444951645099690}
   FloorUIPanel: {fileID: 4842384455837854442, guid: b2adaf6f4a8038b42be5bc31e30deef5,
     type: 3}
+  parentWorkerObject: {fileID: 0}
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   scrollSpeed: 10
   scrollDistance: {fileID: 11400000, guid: 4f99eb9f7cd5f754ba040204b0d8d3eb, type: 2}
@@ -428,6 +429,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 11400000, guid: cf98b02f6a40744409b5b26b9862d688, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4822444952384606663}
         m_MethodName: SetActive
         m_Mode: 6

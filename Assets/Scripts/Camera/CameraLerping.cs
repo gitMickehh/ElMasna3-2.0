@@ -25,6 +25,7 @@ public class CameraLerping : MonoBehaviour
     [SerializeField]
     [Attributes.GreyOut]
     private bool atOrientation;
+    private OrientationButtonIcon orientationButton;
 
     CameraControl camControlScript;
 
@@ -41,6 +42,7 @@ public class CameraLerping : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         orientationPosition = FindObjectOfType<OrientationBuilding>().RoomCamera;
+        orientationButton = FindObjectOfType<OrientationButtonIcon>();
     }
 
     public void SwitchView()
@@ -92,6 +94,8 @@ public class CameraLerping : MonoBehaviour
         {
             shouldLerp = false;
             movingCamera.BoolValue = false;
+
+            orientationButton.SwitchButtonIcon(atOrientation);
         }
 
         return result;

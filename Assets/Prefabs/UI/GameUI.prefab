@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8697437923809510417}
   - component: {fileID: 2415915971249360494}
   - component: {fileID: 9068080050683708580}
+  - component: {fileID: 7241588438109441898}
   m_Layer: 5
   m_Name: OrientationView
   m_TagString: Untagged
@@ -139,6 +140,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7241588438109441898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552411224695975150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3546abf7b35cadd469ec22a16ed1e5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OrientationButton: {fileID: 21300020, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
+  BackButton: {fileID: 21300032, guid: 12f9fe6cd36218b4a855b3eee51b31e6, type: 3}
+  myButton: {fileID: 2415915971249360494}
 --- !u!1 &1168478346852019737
 GameObject:
   m_ObjectHideFlags: 0

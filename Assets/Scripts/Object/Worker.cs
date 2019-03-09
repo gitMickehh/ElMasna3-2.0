@@ -77,7 +77,8 @@ public class Worker : MonoBehaviour
         emotional = WorkerStats.RandomizeEmotionalTraits();
         medical = WorkerStats.RandomizeMedicalTraits();
 
-        happyMeter = 0.5f;
+        happyMeter = 50;
+        happyDefense = Random.Range(0.0f,1.0f);
         level = 0;
 
         transform.name = FullName;

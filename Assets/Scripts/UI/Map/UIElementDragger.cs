@@ -60,7 +60,9 @@ public class UIElementDragger : MonoBehaviour
                     dragging = true;
                     objectToDrag.SetAsLastSibling();
 
-                    originalPosition = objectToDrag.position;
+                    //originalPosition = objectToDrag.position;
+                    originalPosition = objectToDrag.localPosition;
+
                     objectToDragImage = objectToDrag.GetComponent<Image>();
                     objectToDragImage.raycastTarget = false;
 
@@ -96,10 +98,13 @@ public class UIElementDragger : MonoBehaviour
                 {
                     if (objectToDrag != null)
                     {
-                        Vector2 newPosition = originalPosition;
-                        newPosition.y += ScrollDistance.GetValue();
+                        //Vector2 newPosition = originalPosition;
+                        //newPosition.y += ScrollDistance.GetValue();
 
-                        objectToDrag.position = newPosition;
+                        //objectToDrag.position = newPosition;
+                        
+                        //objectToDrag.position = originalPosition;
+                        objectToDrag.localPosition = originalPosition;
                     }
                     //else
                     //{
@@ -137,7 +142,9 @@ public class UIElementDragger : MonoBehaviour
                     dragging = true;
                     objectToDrag.SetAsLastSibling();
 
-                    originalPosition = objectToDrag.position;
+                    //originalPosition = objectToDrag.position;
+                    originalPosition = objectToDrag.localPosition;
+
                     objectToDragImage = objectToDrag.GetComponent<Image>();
                     objectToDragImage.raycastTarget = false;
                 }
@@ -161,12 +168,15 @@ public class UIElementDragger : MonoBehaviour
                 {
                     if (objectToDrag != null)
                     {
-                        Vector2 newPosition = originalPosition;
-                        newPosition.y += ScrollDistance.GetValue();
+                        //Vector2 newPosition = originalPosition;
+                        //newPosition.y += ScrollDistance.GetValue();
 
-                        objectToDrag.position = newPosition;
+                        //objectToDrag.position = newPosition;
+                        //objectToDrag.position = originalPosition;
+
+                        objectToDrag.localPosition = originalPosition;
                     }
-                        
+
                 }
 
                 if (objectToDragImage != null)
@@ -258,6 +268,9 @@ public class UIElementDragger : MonoBehaviour
         //if(clickedObject != null && clickedObject.tag == DRAGGABLE_TAG)
         if (clickedObject != null && clickedObject.GetComponent<WorkerUIIcon>().UIDraggableType.draggable)
         {
+            //clickedObject.transform.SetParent(parentWorkerObject);
+            clickedObject.transform.parent.parent.SetAsLastSibling();
+
             return clickedObject.transform;
         }
 

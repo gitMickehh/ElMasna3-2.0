@@ -24,6 +24,7 @@ TextureImporter:
     21300038: Happy_4
     21300040: Happy_5
     21300042: HealthIcon
+    21300044: SliderKnob
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -451,8 +452,8 @@ TextureImporter:
       name: Happy_1
       rect:
         serializedVersion: 2
-        x: 3796
-        y: 88
+        x: 3861
+        y: 63
         width: 267
         height: 258
       alignment: 0
@@ -563,6 +564,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 77c171a32487de64c838fd8835ff2636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderKnob
+      rect:
+        serializedVersion: 2
+        x: 7133
+        y: 109
+        width: 55
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397e158887989804dbcb71512d2700d7
       vertices: []
       indices: 
       edges: []
