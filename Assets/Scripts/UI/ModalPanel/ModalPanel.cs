@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ModalPanel : MonoBehaviour
 {
     public GameConfig ConfigFile;
+    public GameEvent ButtonSoundEvent;
 
     [Header("UI")]
     public Text question;
@@ -36,10 +37,12 @@ public class ModalPanel : MonoBehaviour
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(yesEvent);
+        yesButton.onClick.AddListener(RaiseButtonSound);
         yesButton.onClick.AddListener(ClosePanel);
 
         cancelButton.onClick.RemoveAllListeners();
         cancelButton.onClick.AddListener(cancelEvent);
+        cancelButton.onClick.AddListener(RaiseButtonSound);
         cancelButton.onClick.AddListener(ClosePanel);
 
         this.question.text = question;
@@ -56,9 +59,11 @@ public class ModalPanel : MonoBehaviour
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(yesEvent);
+        yesButton.onClick.AddListener(RaiseButtonSound);
         yesButton.onClick.AddListener(ClosePanel);
 
         cancelButton.onClick.RemoveAllListeners();
+        cancelButton.onClick.AddListener(RaiseButtonSound);
         cancelButton.onClick.AddListener(ClosePanel);
 
         this.question.text = question;
@@ -67,6 +72,11 @@ public class ModalPanel : MonoBehaviour
         yesButton.gameObject.SetActive(true);
         cancelButton.gameObject.SetActive(true);
 
+    }
+
+    void RaiseButtonSound()
+    {
+        ButtonSoundEvent.Raise();
     }
 
     void ClosePanel()

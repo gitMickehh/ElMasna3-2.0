@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
+    [Attributes.GreyOut]
     public int floorOrder;
 
     [Header("Lists")]
@@ -72,6 +73,7 @@ public class Floor : MonoBehaviour
                     //instantite machines
                     var machCreated = Instantiate(machPrefab, instPos);
                     var machineComponent = machCreated.GetComponent<Machine>();
+                    machineComponent.parentFloor = this;
 
                     if (machines[j].workerID > 0)
                     {
@@ -138,4 +140,11 @@ public class Floor : MonoBehaviour
 
     }
 
+    public void PlaceMachine(Machine m, int roomNumber, int machinePosition)
+    {
+        workRooms[roomNumber].machinePlaces[machinePosition].machine = m;
+        m.parentFloor = this;
+
+        workRooms[roomNumber].machinePlaces[machinePosition].machinePosition.GetComponent<WayPoint>().WayPointTransform = m.workerPosition;
+    }
 }

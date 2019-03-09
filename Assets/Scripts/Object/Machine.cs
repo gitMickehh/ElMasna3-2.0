@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Machine : MonoBehaviour
 {
+    [Attributes.GreyOut]
+    public Floor parentFloor;
+
+    [Header("Machine")]
     public int machineID;
     public int machineModelID;
     public MachineList listOfMahcines;

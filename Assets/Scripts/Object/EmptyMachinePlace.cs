@@ -32,8 +32,10 @@ public class EmptyMachinePlace : MonoBehaviour
     public void PlaceMachine(GameObject go)
     {
         var machineGameObject = Instantiate(go, transform.parent);
-        parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machine = machineGameObject.GetComponent<Machine>();
-        parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machinePosition.GetComponent<WayPoint>().WayPointTransform = machineGameObject.GetComponent<Machine>().workerPosition;
+        //parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machine = machineGameObject.GetComponent<Machine>();
+        //parentFloor.workRooms[roomNumber].machinePlaces[placeInRoom].machinePosition.GetComponent<WayPoint>().WayPointTransform = machineGameObject.GetComponent<Machine>().workerPosition;
+        parentFloor.PlaceMachine(machineGameObject.GetComponent<Machine>(), roomNumber, placeInRoom);
+
         placeMachineEvent.Raise();
         Destroy(gameObject);
     }

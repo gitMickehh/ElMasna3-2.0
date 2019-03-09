@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4788817568535577198}
   - component: {fileID: 4788817568535577193}
+  - component: {fileID: 7479792392087905266}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -65,3 +66,54 @@ MonoBehaviour:
     looping: 0
     playOnAwake: 0
     source: {fileID: 0}
+  buttonsSounds:
+  - soundName: Select B
+    clip: {fileID: 8300000, guid: f5b519c859871a041a2cb778ad487e43, type: 3}
+    volume: 0.8
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: Select B2
+    clip: {fileID: 8300000, guid: 58856a830a503bf48b60faa518ce4248, type: 3}
+    volume: 0.8
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: Select B3
+    clip: {fileID: 8300000, guid: 9cf7d1e77cc3adc4fa86872c7bae8cd0, type: 3}
+    volume: 0.8
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+--- !u!114 &7479792392087905266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788817568535577192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: cf98b02f6a40744409b5b26b9862d688, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4788817568535577193}
+        m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

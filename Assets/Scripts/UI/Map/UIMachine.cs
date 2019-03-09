@@ -18,7 +18,15 @@ public class UIMachine : MonoBehaviour
     public void ChangeWorker(GameObject w)
     {
         if (w.GetComponent<WorkerUIIcon>().machine != null)
+        {
+            if (workerImage != null)
+            {
+
+            }
             w.GetComponent<WorkerUIIcon>().machine.workerImage = null;
+        }
+
+
 
         workerImage = w;
         w.GetComponent<WorkerUIIcon>().machine = this;

@@ -6,9 +6,14 @@ public class AudioManager : MonoBehaviour {
 
     //singleton
     public static AudioManager instance;
+
     public Sound[] sounds;
     [Header("Buttons")]
     public Sound[] buttonsSounds;
+
+    //random button sound
+    private int lengthOfButtons;
+    private int randomButton;
 
     private void Awake()
     {
@@ -56,6 +61,9 @@ public class AudioManager : MonoBehaviour {
             if (s.playOnAwake == true)
                 s.source.Play();
         }
+
+        lengthOfButtons = buttonsSounds.Length;
+        randomButton = UnityEngine.Random.Range(0,lengthOfButtons);
     }
 
     public void Play(string soundName)
@@ -73,7 +81,18 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayButton()
     {
-        //randomize button sound
+        Sound s = buttonsSounds[randomButton];
+
+        if (s == null)
+        {
+            Debug.LogWarning("button index is not included in the manager, Please check if it is a typo.");
+            return;
+        }
+
+        s.source.Play();
+
+        //next buton sound
+        randomButton = UnityEngine.Random.Range(0, lengthOfButtons);
     }
 
 }

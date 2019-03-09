@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UICharacterProfile : MonoBehaviour
 {
     public GameConfig gameConfigFile;
+    private int workerID;
 
     [Header("UI Objects")]
     public Text CharacterName;
@@ -52,6 +53,8 @@ public class UICharacterProfile : MonoBehaviour
 
     private void FillWorkerData(Worker w)
     {
+        workerID = w.ID;
+
         CharacterName.text = w.FullName;
         CharacterLevel.text = w.level.ToString();
         CharacterHappienss.value = (w.happyMeter / 100.0f);
@@ -75,17 +78,24 @@ public class UICharacterProfile : MonoBehaviour
     public void ClosePanel()
     {
         if (opened)
+        {
             animator.SetTrigger("TriggerUI");
+            opened = false;
+            SelectedWorkerRefernce.worker = null;
+        }
     }
 
     public void GetWorkerProfile()
     {
-        FillWorkerData(SelectedWorkerRefernce.worker);
+        if(workerID != SelectedWorkerRefernce.worker.ID)
+        {
+            FillWorkerData(SelectedWorkerRefernce.worker);
 
-        if (!opened)
-            animator.SetTrigger("TriggerUI");
+            if (!opened)
+                animator.SetTrigger("TriggerUI");
 
-        opened = true;
+            opened = true;
+        }
     }
 
     public void HireClick()
