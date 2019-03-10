@@ -2,11 +2,9 @@
 
 public class ColorPickerTester : MonoBehaviour 
 {
-
     public new Renderer renderer;
     public ColorPicker picker;
 
-    //public Color Color = Color.red;
     public Color Color;
 
 	void Start () 
