@@ -41,5 +41,40 @@ public class FloorList : RuntimeList<Floor>
             Items[i].ShowAvailablePlaces();
         }
     }
+    
+    public Machine GetFirstAvailableMachine()
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            for (int j = 0; j < Items[i].workRooms.Length; j++)
+            {
+                for (int k = 0; k < Items[i].workRooms[j].machinePlaces.Length; k++)
+                {
+                    if(Items[i].workRooms[j].machinePlaces[k].machine.CurrentWorker == null)
+                    {
+                        return Items[i].workRooms[j].machinePlaces[k].machine;
+                    }
+                }
+            }
+        }
 
+        return null;
+    }
+
+    public WayPoint GetFirstAvailableBreakSpace()
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            for (int j = 0; j < Items[i].breakRoom.Length; j++)
+            {
+                if(Items[i].breakRoom[j].IsEmpty)
+                {
+                    return Items[i].breakRoom[j].position;
+                }
+            }
+        }
+
+        //the factory has no space left
+        return null;
+    }
 }

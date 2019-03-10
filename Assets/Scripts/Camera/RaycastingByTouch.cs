@@ -22,11 +22,11 @@ public class RaycastingByTouch : MonoBehaviour
     {
         if (Input.touchCount == 1)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+
                 if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
                 {
                     Debug.Log("Worker " + hit.collider.name);
@@ -42,7 +42,6 @@ public class RaycastingByTouch : MonoBehaviour
                     Debug.Log("Empty Machine " + hit.collider.name);
                     hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
                 }
-
             }
         }
         if (Input.GetMouseButtonUp(0))

@@ -21,7 +21,7 @@ public class Floor : MonoBehaviour
 
     [Header("Rooms")]
     public Room[] workRooms;
-    public Room breakRoom;
+    public BreakRoomPlace[] breakRoom;
 
     [Header("Workers")]
     public Transform WorkersHolder;

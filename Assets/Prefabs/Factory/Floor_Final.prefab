@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &456718757072707070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7575722790195672016}
+  - component: {fileID: 2721241160755284200}
+  m_Layer: 0
+  m_Name: Chair1
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7575722790195672016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456718757072707070}
+  m_LocalRotation: {x: 0, y: 0.33873788, z: 0, w: 0.94088084}
+  m_LocalPosition: {x: 7.55, y: 4.89, z: -12.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4202345262347417583}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 39.6, z: 0}
+--- !u!114 &2721241160755284200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456718757072707070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 2604461567051238684}
+  WayPointTransform: {fileID: 7575722790195672016}
 --- !u!1 &731476700738670955
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +154,51 @@ Transform:
   m_Father: {fileID: 4143921381608493499}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1172416123609318328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4980478069992450477}
+  - component: {fileID: 8446683345059044304}
+  m_Layer: 0
+  m_Name: P4
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4980478069992450477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172416123609318328}
+  m_LocalRotation: {x: 0, y: 0.98939943, z: 0, w: 0.1452197}
+  m_LocalPosition: {x: 10.441, y: 4.89, z: -3.565}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4202345262347417583}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 163.3, z: 0}
+--- !u!114 &8446683345059044304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172416123609318328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 2604461567051238684}
+  WayPointTransform: {fileID: 4980478069992450477}
 --- !u!1 &1327550933013770771
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +325,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorPosition: {fileID: 6928572773426465534}
   WayPointTransform: {fileID: 0}
+--- !u!1 &3673108966346520016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4202345262347417583}
+  m_Layer: 0
+  m_Name: BreakRoomPositions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4202345262347417583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3673108966346520016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7575722790195672016}
+  - {fileID: 2332973800319597184}
+  - {fileID: 9056149482011708279}
+  - {fileID: 4980478069992450477}
+  - {fileID: 6645137576668794533}
+  m_Father: {fileID: 4143921381608493499}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3885228412985882252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2332973800319597184}
+  - component: {fileID: 8534805706718922366}
+  m_Layer: 0
+  m_Name: Chair2
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2332973800319597184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3885228412985882252}
+  m_LocalRotation: {x: 0, y: 0.7933534, z: 0, w: 0.6087614}
+  m_LocalPosition: {x: 6.89, y: 4.89, z: 7.25}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
+  m_Children: []
+  m_Father: {fileID: 4202345262347417583}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 105, z: 0}
+--- !u!114 &8534805706718922366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3885228412985882252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 2604461567051238684}
+  WayPointTransform: {fileID: 2332973800319597184}
 --- !u!1 &4143921381608493496
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +443,7 @@ Transform:
   - {fileID: 5928378092613184671}
   - {fileID: 106905499990833964}
   - {fileID: 124056770600896623}
+  - {fileID: 4202345262347417583}
   - {fileID: 516371051559589594}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -326,7 +497,7 @@ MonoBehaviour:
     rooms: []
     floorOrder: 0
   cameraProperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
-  heightToAddToCamera: 40
+  heightToAddToCamera: 45
   workRooms:
   - Door: {fileID: 6928572773426465534}
     machinePlaces:
@@ -345,8 +516,16 @@ MonoBehaviour:
     - machinePosition: {fileID: 4741209027348891345}
       machine: {fileID: 0}
   breakRoom:
-    Door: {fileID: 2604461567051238684}
-    machinePlaces: []
+  - position: {fileID: 2721241160755284200}
+    worker: {fileID: 0}
+  - position: {fileID: 8534805706718922366}
+    worker: {fileID: 0}
+  - position: {fileID: 2080179726155393483}
+    worker: {fileID: 0}
+  - position: {fileID: 8446683345059044304}
+    worker: {fileID: 0}
+  - position: {fileID: 1621455735970318860}
+    worker: {fileID: 0}
   WorkersHolder: {fileID: 516371051559589594}
   EmptyMachineVFX: {fileID: 3882214859167106375, guid: 2aa6d527385c7c243aa81e89a6e7455b,
     type: 3}
@@ -531,6 +710,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorPosition: {fileID: 6928572773426465534}
   WayPointTransform: {fileID: 0}
+--- !u!1 &4915866658452229660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9056149482011708279}
+  - component: {fileID: 2080179726155393483}
+  m_Layer: 0
+  m_Name: Chair3
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9056149482011708279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915866658452229660}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 10.01, y: 4.89, z: 9.23}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
+  m_Children: []
+  m_Father: {fileID: 4202345262347417583}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2080179726155393483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915866658452229660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 2604461567051238684}
+  WayPointTransform: {fileID: 9056149482011708279}
 --- !u!1 &5158761230874167502
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +953,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4143921381608493499}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7515099341698946126
 GameObject:
@@ -775,6 +999,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.645147, y: 0.8116455, z: 24.985752}
   m_Center: {x: 5.890544, y: -1.104393, z: -3.8932877}
+--- !u!1 &7600408424673549629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6645137576668794533}
+  - component: {fileID: 1621455735970318860}
+  m_Layer: 0
+  m_Name: P5
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6645137576668794533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600408424673549629}
+  m_LocalRotation: {x: 0, y: 0.21303032, z: 0, w: 0.9770456}
+  m_LocalPosition: {x: 12.17, y: 4.89, z: -0.01}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 4202345262347417583}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 24.6, z: 0}
+--- !u!114 &1621455735970318860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600408424673549629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bca9ac320ffb744809cee9fc75e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPosition: {fileID: 2604461567051238684}
+  WayPointTransform: {fileID: 6645137576668794533}
 --- !u!1 &7673222234920682539
 GameObject:
   m_ObjectHideFlags: 0

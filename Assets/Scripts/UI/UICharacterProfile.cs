@@ -33,6 +33,7 @@ public class UICharacterProfile : MonoBehaviour
 
     [Header("Worker")]
     public WorkerField SelectedWorkerRefernce;
+    public FloorList floorList;
 
     [Header("Animator")]
     public Animator animator;
@@ -114,6 +115,9 @@ public class UICharacterProfile : MonoBehaviour
     {
         Debug.Log("Hiring " + SelectedWorkerRefernce.worker.FullName);
         //SelectedWorkerRefernce.worker.Hire();
+
+
+
     }
 
     private void GiveBreakToWorker()

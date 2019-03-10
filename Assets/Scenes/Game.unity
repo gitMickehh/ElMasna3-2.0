@@ -1457,6 +1457,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8292025577735715553, guid: d1b2dd82bdad47543a74bedd51cd9672,
+        type: 3}
+      propertyPath: breakRoom.machinePlaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1b2dd82bdad47543a74bedd51cd9672, type: 3}
 --- !u!1001 &1355442424
