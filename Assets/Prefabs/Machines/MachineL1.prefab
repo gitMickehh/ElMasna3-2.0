@@ -85,6 +85,7 @@ MonoBehaviour:
   CurrentWorker: {fileID: 0}
   workerPosition: {fileID: 4166432996256539999}
   scheme: {fileID: 11400000, guid: a01534e4350b4a94eaf203bb58dddb15, type: 2}
+  machineTimeSlider: {fileID: 7384725924058204022}
 --- !u!1 &4166432996256539992
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,3 +318,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5578466525986072967}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7384725924058204022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3103367883306381041, guid: e401d5c7a51c43a4b98aafe851b3188a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5578466525986072967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -55,34 +55,8 @@ public class InputManager : MonoBehaviour
         }
         #endregion
 
-        #region Standalone Input
-        if (Input.GetMouseButtonDown(0))
-        {
-            //tap = true;
-            //tap.Raise();
-            isDraging = true;
-            tapCounter++;
-            startTouch = Input.mousePosition;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            //release tap
-            if (tapCounter == 1)
-            {
-                if (Mathf.Abs(Input.mousePosition.x) <= Mathf.Abs(startTouch.x) + tapForgiveness &&
-                    Mathf.Abs(Input.mousePosition.x) >= Mathf.Abs(startTouch.x) - tapForgiveness &&
-                    Mathf.Abs(Input.mousePosition.y) <= Mathf.Abs(startTouch.y) + tapForgiveness &&
-                    Mathf.Abs(Input.mousePosition.y) >= Mathf.Abs(startTouch.y) - tapForgiveness)
-                {
-                    Debug.Log("Tap");
-                    tap.Raise();
-                }
-            }
-
-            Reset();
-        }
-        #endregion
         #region Mobile Input
+#if UNITY_ANDROID
         if (Input.touchCount == 1)
         {
             if (Input.touches[0].phase == TouchPhase.Began)
@@ -96,28 +70,58 @@ public class InputManager : MonoBehaviour
             else if (Input.touches[0].phase == TouchPhase.Ended)
             {
                 //release tap
-                if (tapCounter == 1)
+                var t = Input.touches[0].position;
+                tapPosition.SetVector2(t);
+
+                Debug.Log("touches ended\n" + "position is: " + t);
+
+                Debug.Log("Start touch: " + startTouch);
+
+                if (Mathf.Abs(t.x - startTouch.x) <= tapForgiveness && Mathf.Abs(t.y - startTouch.y) <= tapForgiveness)
                 {
-                    if (Mathf.Abs(Input.touches[0].position.x) <= Mathf.Abs(startTouch.x) + tapForgiveness &&
-                    Mathf.Abs(Input.touches[0].position.x) >= Mathf.Abs(startTouch.x) - tapForgiveness &&
-                    Mathf.Abs(Input.touches[0].position.y) <= Mathf.Abs(startTouch.y) + tapForgiveness &&
-                    Mathf.Abs(Input.touches[0].position.y) >= Mathf.Abs(startTouch.y) - tapForgiveness)
-                    {
-                        Debug.Log("Tap");
-                        tapPosition.vector2 = Input.touches[0].position;
-                        tap.Raise();
-                    }
+                    Debug.Log("Tap touch Mobile Input");
+                    tap.Raise();
                 }
 
                 Reset();
             }
-            //else if (Input.touches[0].phase == TouchPhase.Canceled)
-            //{
-
-            //}
         }
         else if (Input.touchCount > 1)
             isDraging = false;
+#endif
+        #endregion
+
+        #region Standalone Input
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0))
+        {
+            //tap = true;
+            //tap.Raise();
+            isDraging = true;
+            tapCounter++;
+            startTouch = Input.mousePosition;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            //release tap
+            if (tapCounter == 1)
+            {
+                Debug.Log("mouse button ended\n" + "position is: " + Input.mousePosition);
+
+                Debug.Log("Start touch: " + startTouch);
+
+
+                if (Mathf.Abs(Input.mousePosition.x - startTouch.x) <= tapForgiveness &&
+                    Mathf.Abs(Input.mousePosition.y - startTouch.y) <= tapForgiveness)
+                {
+                    Debug.Log("Tap touch mouse Input");
+                    tap.Raise();
+                }
+            }
+
+            Reset();
+        }
+#endif
         #endregion
 
         //calculate the distance
@@ -181,8 +185,6 @@ public class InputManager : MonoBehaviour
             Reset();
         }
 
-        //zoom mouse
-        //PinchMagnitude.SetValue(Input.GetAxis("Mouse ScrollWheel") * 20);
     }
 
     private void Reset()

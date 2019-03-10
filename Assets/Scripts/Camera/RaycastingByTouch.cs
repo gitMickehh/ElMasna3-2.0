@@ -25,7 +25,7 @@ public class RaycastingByTouch : MonoBehaviour
     {
         if(touch)
         {
-            Debug.Log("touch is "+ touch);
+            Debug.Log("touch is true");
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(vector2Touch.vector2);
@@ -71,7 +71,6 @@ public class RaycastingByTouch : MonoBehaviour
 
             }
         }
-
     }
 
     private void OnDisable()

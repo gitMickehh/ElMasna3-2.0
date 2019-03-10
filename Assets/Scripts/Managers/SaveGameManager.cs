@@ -67,8 +67,6 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadFloors()
     {
-        Debug.Log("Load Floors");
-
         if (PlayerPrefs.HasKey("floorCount"))
         {
             //because first floor is always in the scene.
@@ -116,8 +114,6 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadWorkers()
     {
-        Debug.Log("Load Workers");
-
         if (PlayerPrefs.HasKey("workersCount"))
         {
             int workersCount = PlayerPrefs.GetInt("workersCount");
@@ -165,8 +161,6 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadTime()
     {
-        Debug.Log("Load Time");
-
         if (PlayerPrefs.HasKey("time"))
         {
             string timeString = PlayerPrefs.GetString("time");
@@ -193,8 +187,6 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadFactoryData()
     {
-        Debug.Log("Load Factory Data");
-
         if (PlayerPrefs.HasKey("RealMoney"))
             gManager.FactoryMoney.SetValue(PlayerPrefs.GetFloat("RealMoney"));
 

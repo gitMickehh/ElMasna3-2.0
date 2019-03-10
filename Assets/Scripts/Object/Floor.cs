@@ -85,15 +85,18 @@ public class Floor : MonoBehaviour
                             w.transform.position = machineComponent.workerPosition.position;
                             w.transform.rotation = machineComponent.workerPosition.rotation;
 
-                            machineComponent.CurrentWorker = w;
+                            machineComponent.SetWorker(w.GetComponent<Worker>());
                             w.GetComponent<SeekRoom>().wayPointCurrent = workRooms[i].machinePlaces[j].machinePosition.GetComponent<WayPoint>();
                             w.GetComponent<Worker>().currentMachine = machineComponent;
                         }
                     }
 
                     workRooms[i].machinePlaces[j].machine = machineComponent;
+                    workRooms[i].machinePlaces[j].machine.SliderToggle();
                     workRooms[i].machinePlaces[j].machinePosition.GetComponent<WayPoint>().WayPointTransform =
                         workRooms[i].machinePlaces[j].machine.workerPosition;
+
+                    workRooms[i].machinePlaces[j].machine.SetTimer(machines[j].runningTime);
                 }
             }
         }

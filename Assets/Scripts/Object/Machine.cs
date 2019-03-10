@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Machine : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Machine : MonoBehaviour
     //Machine Work
     [Header("Machine Scheme")]
     public MachineScheme scheme;
+    public Slider machineTimeSlider;
     private float timeOfCycle;
     private float moneyInCycle;
     private Currency moneyCurrency;
@@ -65,8 +67,9 @@ public class Machine : MonoBehaviour
             else
             {
                 runningTime += Time.deltaTime;
-
+                machineTimeSlider.value = 1 - (runningTime / timeOfCycle);
             }
+
         }
     }
 
@@ -84,12 +87,25 @@ public class Machine : MonoBehaviour
 
     public void LoadMachine(SerializableMachine machineSaved)
     {
-
+        IsWorking = false;
+        runningTime = machineSaved.runningTime;
+        machineID = machineSaved.machineID;
+        SliderToggle();
     }
 
     public void LoadMachine(SerializableMachine machineSaved, Worker w)
     {
+        IsWorking = true;
+        runningTime = machineSaved.runningTime;
+        machineID = machineSaved.machineID;
+        CurrentWorker = w.gameObject;
 
+        SliderToggle();
+    }
+
+    public void SetTimer(float timerValue)
+    {
+        runningTime = timerValue;
     }
 
     public void ChangeWorker(Worker w)
@@ -105,6 +121,8 @@ public class Machine : MonoBehaviour
             else
             {
                 w.currentMachine.CurrentWorker = null;
+                w.currentMachine.IsWorking = false;
+                w.currentMachine.SliderToggle();
             }
         }
 
@@ -118,6 +136,29 @@ public class Machine : MonoBehaviour
 
         WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
         w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
+
+        IsWorking = true;
+        w.currentMachine.SliderToggle();
+    }
+
+    public void SetWorker(Worker w)
+    {
+        CurrentWorker = w.gameObject;
+        IsWorking = true;
+        SliderToggle();
+    }
+
+    public void SetUpMachine(Worker w, float timerValue)
+    {
+        CurrentWorker = w.gameObject;
+        IsWorking = true;
+        SliderToggle();
+        runningTime = timerValue;
+    }
+
+    public void SliderToggle()
+    {
+        machineTimeSlider.gameObject.SetActive(IsWorking);
     }
 
     private void OnDrawGizmosSelected()
