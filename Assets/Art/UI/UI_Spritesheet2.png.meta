@@ -17,8 +17,9 @@ TextureImporter:
     21300024: Btn_Store
     21300026: MachineWorkingIcon
     21300028: MachineBrokenIcon
-    21300030: Indicator_Right
+    21300030: MoneyIndicator_Right
     21300032: Btn_Return
+    21300034: MoneyIndicator_Left
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -423,13 +424,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Indicator_Right
+      name: MoneyIndicator_Right
       rect:
         serializedVersion: 2
-        x: 98
-        y: 597
-        width: 2433
-        height: 462
+        x: 255
+        y: 530
+        width: 1695
+        height: 373
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,13 +452,33 @@ TextureImporter:
         width: 758
         height: 793
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 458e959a6c04ec84893748c7a7967392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoneyIndicator_Left
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1142
+        width: 1695
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 436b41698343a074c8ac564a2d88fd0d
       vertices: []
       indices: 
       edges: []
