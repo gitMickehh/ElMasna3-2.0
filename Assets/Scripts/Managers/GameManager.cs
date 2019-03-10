@@ -135,6 +135,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StartNewDay()
+    {
+        timer.StartDay.Raise();
+    }
+
     public GameTime GetGameTime()
     {
 

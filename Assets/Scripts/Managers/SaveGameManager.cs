@@ -171,6 +171,7 @@ public class SaveGameManager : MonoBehaviour
         else
         {
             Debug.LogWarning("You have no previous saved time!");
+            gManager.StartNewDay();
         }
     }
 
