@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayLength: 100
+  touch: 1
+  vector2Touch: {fileID: 11400000, guid: 2efaff9c481ce4f4981dd0dadfdabdb2, type: 2}
   WorkerLayerMask:
     serializedVersion: 2
     m_Bits: 2048

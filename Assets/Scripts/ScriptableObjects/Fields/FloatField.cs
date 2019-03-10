@@ -6,7 +6,7 @@ using UnityEngine;
 public class FloatField : ScriptableObject{
 
     [SerializeField]
-    float value;
+    float value = 0.0f;
 
     [Tooltip("You don't have to use it!")]
     public GameEvent onChangeEvent;

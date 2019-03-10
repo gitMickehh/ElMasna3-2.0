@@ -99,7 +99,6 @@ public class CameraControl : MonoBehaviour
 
             clampZ = Mathf.Clamp(DesiredPosition.z, cameraPorperties.minimumZoom, cameraPorperties.maximumZoom);
             transform.position = new Vector3(transform.position.x, transform.position.y, clampZ);
-            Debug.Log(clampZ);
         }
     }
 

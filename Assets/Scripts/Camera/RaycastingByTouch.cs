@@ -5,6 +5,8 @@ using UnityEngine;
 public class RaycastingByTouch : MonoBehaviour
 {
     public float rayLength = 100;
+    public bool touch = true;
+    public Vector2Field vector2Touch;
 
     [Header("Layer Masks")]
     public LayerMask WorkerLayerMask;
@@ -18,36 +20,15 @@ public class RaycastingByTouch : MonoBehaviour
     public WorkerField clickedWorker;
     public GameEvent ClickedOnWorker;
 
+
     public void RaycastingFromScreenPoint()
     {
-        if (Input.touchCount == 1)
+        if(touch)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Debug.Log("touch is "+ touch);
 
-                if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
-                {
-                    Debug.Log("Worker " + hit.collider.name);
-                    clickedWorker.worker = hit.collider.gameObject.GetComponent<Worker>();
-                    ClickedOnWorker.Raise();
-                }
-                else if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
-                {
-                    Debug.Log("Machine " + hit.collider.name);
-                }
-                else if (Physics.Raycast(ray, out hit, rayLength, VFXEmptyMachineLayerMask))
-                {
-                    Debug.Log("Empty Machine " + hit.collider.name);
-                    hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
-                }
-            }
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(vector2Touch.vector2);
 
             if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
             {
@@ -64,8 +45,33 @@ public class RaycastingByTouch : MonoBehaviour
                 Debug.Log("Empty Machine " + hit.collider.name);
                 hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
             }
-
         }
+        else
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
+                {
+                    Debug.Log("Worker " + hit.collider.name);
+                    clickedWorker.worker = hit.collider.gameObject.GetComponent<Worker>();
+                    ClickedOnWorker.Raise();
+                }
+                else if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
+                {
+                    Debug.Log("Machine " + hit.collider.name);
+                }
+                else if (Physics.Raycast(ray, out hit, rayLength, VFXEmptyMachineLayerMask))
+                {
+                    Debug.Log("Empty Machine " + hit.collider.name);
+                    hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
+                }
+
+            }
+        }
+
     }
 
     private void OnDisable()

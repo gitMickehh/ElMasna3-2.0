@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
     public float tapForgiveness = 10; //the area a finger can move and still counts as tap
     public FloatField swipeMagnitude;
     public FloatField PinchMagnitude;
+    public Vector2Field tapPosition;
 
     private void Update()
     {
@@ -103,16 +104,17 @@ public class InputManager : MonoBehaviour
                     Mathf.Abs(Input.touches[0].position.y) >= Mathf.Abs(startTouch.y) - tapForgiveness)
                     {
                         Debug.Log("Tap");
+                        tapPosition.vector2 = Input.touches[0].position;
                         tap.Raise();
                     }
                 }
 
                 Reset();
             }
-            else if (Input.touches[0].phase == TouchPhase.Canceled)
-            {
+            //else if (Input.touches[0].phase == TouchPhase.Canceled)
+            //{
 
-            }
+            //}
         }
         else if (Input.touchCount > 1)
             isDraging = false;

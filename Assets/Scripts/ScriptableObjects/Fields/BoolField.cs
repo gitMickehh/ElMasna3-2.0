@@ -9,7 +9,7 @@ public class BoolField : ScriptableObject
     public GameEvent onFalse;
 
     [SerializeField]
-    private bool boolvalue;
+    private bool boolvalue = false;
 
     public bool BoolValue {
         get

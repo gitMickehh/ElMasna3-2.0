@@ -6,7 +6,7 @@ using UnityEngine;
 public class IntField : ScriptableObject {
 
     [SerializeField]
-    int value;
+    int value = 0;
 
     [Tooltip("You don't have to use it!")]
     public GameEvent onChangeEvent;

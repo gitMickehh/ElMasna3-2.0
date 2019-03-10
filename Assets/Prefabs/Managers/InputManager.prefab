@@ -55,8 +55,10 @@ MonoBehaviour:
   swipeDown: {fileID: 11400000, guid: 9b1b9a62e60371247aa2ead8a38f2412, type: 2}
   horizontalSwipeDeadzone: 65
   VerticalSwipeDeadzone: 25
+  tapForgiveness: 10
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   PinchMagnitude: {fileID: 11400000, guid: 8efc054dac37f4c48924f47e51e6a327, type: 2}
+  tapPosition: {fileID: 11400000, guid: 2efaff9c481ce4f4981dd0dadfdabdb2, type: 2}
 --- !u!114 &5485074364071836629
 MonoBehaviour:
   m_ObjectHideFlags: 0

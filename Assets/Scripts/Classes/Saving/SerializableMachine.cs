@@ -11,11 +11,14 @@ public class SerializableMachine
     public int machineModelID;
     public int workerID;
 
-    public SerializableMachine(bool exists = false,int mchId = -1, int modelID = 1, int wId = -1)
+    public float runningTime;
+
+    public SerializableMachine(bool exists = false, int mchId = -1, int modelID = 1, int wId = -1, float currentTime = 0)
     {
         machineExists = exists;
         machineID = mchId;
         machineModelID = modelID;
         workerID = wId;
+        runningTime = currentTime;
     }
 }

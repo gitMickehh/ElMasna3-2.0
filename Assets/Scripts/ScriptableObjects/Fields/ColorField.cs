@@ -6,7 +6,7 @@ using UnityEngine;
 public class ColorField : ScriptableObject {
 
     [SerializeField]
-    Color value;
+    Color value = Color.red;
 
     [Tooltip("You don't have to use it!")]
     public GameEvent onChangeEvent;

@@ -11,14 +11,25 @@ public class Machine : MonoBehaviour
     public int machineID;
     public int machineModelID;
     public MachineList listOfMahcines;
+    [Attributes.GreyOut]
+    public bool IsWorking;
 
     [Header("Worker")]
     public GameObject CurrentWorker;
     public Transform workerPosition;
 
+    //Machine Work
+    [Header("Machine Scheme")]
+    public MachineScheme scheme;
+    private float timeOfCycle;
+    private float moneyInCycle;
+    private Currency moneyCurrency;
+    private float runningTime = 0;
+
     public int CurrentWorkerID
     {
-        get {
+        get
+        {
             if (CurrentWorker != null)
                 return CurrentWorker.GetComponent<Worker>().ID;
             else
@@ -31,6 +42,10 @@ public class Machine : MonoBehaviour
         machineID = listOfMahcines.GetNewId();
         listOfMahcines.Add(this);
         transform.name = "Machine " + machineID;
+
+        timeOfCycle = scheme.timeOfCycle;
+        moneyInCycle = scheme.moneyInCycle;
+        moneyCurrency = scheme.moneyCurrency;
     }
 
     private void OnDisable()
@@ -38,29 +53,68 @@ public class Machine : MonoBehaviour
         listOfMahcines.Remove(this);
     }
 
+    private void Update()
+    {
+        if (IsWorking)
+        {
+            if (runningTime >= timeOfCycle)
+            {
+                runningTime = 0;
+
+            }
+            else
+            {
+                runningTime += Time.deltaTime;
+
+            }
+        }
+    }
+
     public SerializableMachine GetSerializableMachine()
     {
         SerializableMachine sm;
 
         if (CurrentWorker == null)
-            sm = new SerializableMachine(true,machineID, machineModelID);
+            sm = new SerializableMachine(true, machineID, machineModelID);
         else
-            sm = new SerializableMachine(true,machineID, machineModelID, CurrentWorker.GetComponent<Worker>().ID);
+            sm = new SerializableMachine(true, machineID, machineModelID, CurrentWorker.GetComponent<Worker>().ID, runningTime);
 
         return sm;
     }
 
+    public void LoadMachine(SerializableMachine machineSaved)
+    {
+
+    }
+
+    public void LoadMachine(SerializableMachine machineSaved, Worker w)
+    {
+
+    }
+
     public void ChangeWorker(Worker w)
     {
-        Debug.Log(gameObject.name +" changed worker");
+        Debug.Log(gameObject.name + " changed worker");
 
         if (w.currentMachine != null)
-            w.currentMachine.CurrentWorker = null;
+        {
+            if (CurrentWorker != null)
+            {
+                w.currentMachine.CurrentWorker = CurrentWorker;
+            }
+            else
+            {
+                w.currentMachine.CurrentWorker = null;
+            }
+        }
 
-       w.currentMachine = this;
-       CurrentWorker = w.gameObject;
+        if (parentFloor.floorOrder == w.currentMachine.parentFloor.floorOrder)
+        {
+            w.transform.SetParent(parentFloor.WorkersHolder);
+        }
 
-        //w.gameObject.transform.position = workerPosition.position;
+        w.currentMachine = this;
+        CurrentWorker = w.gameObject;
 
         WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
         w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);

@@ -18,11 +18,11 @@ public class SaveGameManager : MonoBehaviour
     OrientationBuilding orientation;
     GameManager gManager;
 
-#if UNITY_EDITOR
+    //#if UNITY_EDITOR
     [Header("Editor Options")]
     public bool save;
     public bool load;
-#endif
+    //#endif
 
     private void Start()
     {
@@ -38,14 +38,14 @@ public class SaveGameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         gManager = FindObjectOfType<GameManager>();
 
-#if UNITY_EDITOR
+        //#if UNITY_EDITOR
         if (load)
         {
-#endif
+            //#endif
             LoadAll();
-#if UNITY_EDITOR
+            //#if UNITY_EDITOR
         }
-#endif
+        //#endif
     }
 
     private void SaveFloors()
@@ -67,6 +67,8 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadFloors()
     {
+        Debug.Log("Load Floors");
+
         if (PlayerPrefs.HasKey("floorCount"))
         {
             //because first floor is always in the scene.
@@ -114,6 +116,8 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadWorkers()
     {
+        Debug.Log("Load Workers");
+
         if (PlayerPrefs.HasKey("workersCount"))
         {
             int workersCount = PlayerPrefs.GetInt("workersCount");
@@ -161,7 +165,9 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadTime()
     {
-        if(PlayerPrefs.HasKey("time"))
+        Debug.Log("Load Time");
+
+        if (PlayerPrefs.HasKey("time"))
         {
             string timeString = PlayerPrefs.GetString("time");
             GameTime gTime = JsonUtility.FromJson<GameTime>(timeString);
@@ -177,20 +183,22 @@ public class SaveGameManager : MonoBehaviour
 
     private void SaveFactoryData()
     {
-        PlayerPrefs.SetFloat("RealMoney",gManager.FactoryMoney.GetValue());
-        PlayerPrefs.SetFloat("HappyMoney",gManager.HappyMoney.GetValue());
+        PlayerPrefs.SetFloat("RealMoney", gManager.FactoryMoney.GetValue());
+        PlayerPrefs.SetFloat("HappyMoney", gManager.HappyMoney.GetValue());
         PlayerPrefs.SetFloat("FloorCost", gManager.GameConfigFile.FloorCost);
 
         Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
-            "\n"+ gManager.HappyMoney.GetValue() +" Happy Money.");
+            "\n" + gManager.HappyMoney.GetValue() + " Happy Money.");
     }
 
     private void LoadFactoryData()
     {
-        if(PlayerPrefs.HasKey("RealMoney"))
+        Debug.Log("Load Factory Data");
+
+        if (PlayerPrefs.HasKey("RealMoney"))
             gManager.FactoryMoney.SetValue(PlayerPrefs.GetFloat("RealMoney"));
 
-        if(PlayerPrefs.HasKey("HappyMoney"))
+        if (PlayerPrefs.HasKey("HappyMoney"))
             gManager.HappyMoney.SetValue(PlayerPrefs.GetFloat("HappyMoney"));
 
         if (PlayerPrefs.HasKey("FloorCost"))
@@ -199,6 +207,8 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadAll()
     {
+        Debug.Log("Loading all");
+
         LoadWorkers();
         LoadFloors();
         LoadFactoryData();
@@ -215,14 +225,29 @@ public class SaveGameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-#if UNITY_EDITOR
+        //#if UNITY_EDITOR
         if (save)
         {
-#endif
+            //#endif
             SaveAll();
-#if UNITY_EDITOR
+            //#if UNITY_EDITOR
         }
-#endif
+        //#endif
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            //#if UNITY_EDITOR
+            if (save)
+            {
+                //#endif
+                SaveAll();
+                //#if UNITY_EDITOR
+            }
+            //#endif
+        }
     }
 
     public void ClearSave()

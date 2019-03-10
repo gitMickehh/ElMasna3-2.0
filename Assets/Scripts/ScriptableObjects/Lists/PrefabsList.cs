@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class PrefabReference
 {
-    public int referenceID;
-    public GameObject prefab;
+    public int referenceID = 0;
+    public GameObject prefab = null;
 }
 
 [CreateAssetMenu(fileName = "New Prefabs list", menuName = "ElMasna3/Lists/Prefabs")]
