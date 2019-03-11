@@ -5,7 +5,7 @@ using UnityEngine;
 public class RaycastingByTouch : MonoBehaviour
 {
     public float rayLength = 100;
-    public bool touch = true;
+    //public bool touch = true;
     public Vector2Field vector2Touch;
 
     [Header("Layer Masks")]
@@ -23,9 +23,10 @@ public class RaycastingByTouch : MonoBehaviour
 
     public void RaycastingFromScreenPoint()
     {
-        if(touch)
+        //if(touch)
+        if(Input.touchCount == 1)
         {
-            Debug.Log("touch is true");
+            Debug.Log("touchCount == 1 is true");
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(vector2Touch.vector2);

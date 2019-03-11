@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87a157d7bebe243b7e2de42dcba333, type: 3}
+  m_Name: TallMale_Body
+  m_EditorClassIdentifier: 
+  Items:
+  - id: 0
+    happyAdd: 50
+    item: {fileID: 100000, guid: 4d694a8d68e1e2345931c864a0b20824, type: 3}
+    type: 2
+    price: 200
+  - id: 1
+    happyAdd: 50
+    item: {fileID: 100000, guid: 8c4320cfc89ae7f4cb6eb682a056eb2c, type: 3}
+    type: 2
+    price: 300
+  - id: 2
+    happyAdd: 50
+    item: {fileID: 100000, guid: ed3e75d420fa85f458989ddf9030b424, type: 3}
+    type: 2
+    price: 150
+  - id: 3
+    happyAdd: 50
+    item: {fileID: 100000, guid: 1e03ef2f2760e204ea43fba3db677f43, type: 3}
+    type: 2
+    price: 200

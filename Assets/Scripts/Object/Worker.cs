@@ -41,6 +41,7 @@ public class Worker : MonoBehaviour
     [Header("Model")]
     [HideInInspector]
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
+    public WorkerCustomization customization;
 
     [Header("UI Camera")]
     public Transform UICameraPosition;
@@ -56,6 +57,7 @@ public class Worker : MonoBehaviour
     {
         skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         workerAnimator = GetComponentInChildren<Animator>();
+        customization = GetComponent<WorkerCustomization>();
     }
 
     private void OnEnable()

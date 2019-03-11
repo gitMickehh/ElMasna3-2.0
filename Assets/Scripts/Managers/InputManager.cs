@@ -73,13 +73,8 @@ public class InputManager : MonoBehaviour
                 var t = Input.touches[0].position;
                 tapPosition.SetVector2(t);
 
-                Debug.Log("touches ended\n" + "position is: " + t);
-
-                Debug.Log("Start touch: " + startTouch);
-
                 if (Mathf.Abs(t.x - startTouch.x) <= tapForgiveness && Mathf.Abs(t.y - startTouch.y) <= tapForgiveness)
                 {
-                    Debug.Log("Tap touch Mobile Input");
                     tap.Raise();
                 }
 
@@ -106,15 +101,9 @@ public class InputManager : MonoBehaviour
             //release tap
             if (tapCounter == 1)
             {
-                Debug.Log("mouse button ended\n" + "position is: " + Input.mousePosition);
-
-                Debug.Log("Start touch: " + startTouch);
-
-
                 if (Mathf.Abs(Input.mousePosition.x - startTouch.x) <= tapForgiveness &&
                     Mathf.Abs(Input.mousePosition.y - startTouch.y) <= tapForgiveness)
                 {
-                    Debug.Log("Tap touch mouse Input");
                     tap.Raise();
                 }
             }

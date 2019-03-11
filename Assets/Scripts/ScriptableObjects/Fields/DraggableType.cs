@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Draggable UI", menuName = "ElMasna3/Draggable UI")]
+[CreateAssetMenu(fileName = "New Draggable UI", menuName = "ElMasna3/UI/Draggable UI")]
 public class DraggableType : ScriptableObject
 {
     public bool draggable = false;

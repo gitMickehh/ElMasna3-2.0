@@ -8,20 +8,7 @@ public enum Currency
     HappyMoney
 }
 
-[System.Serializable]
-public class StoreItem
-{
-    public string name;
-    public GameObject Prefab;
-    public Sprite storeIcon;
-    public Currency Currency;
-    public float price;
-
-    [TextArea]
-    public string description;
-}
-
-[CreateAssetMenu(fileName = "New Store Scheme", menuName = "ElMasna3/Store Scheme")]
+[CreateAssetMenu(fileName = "New Store Scheme", menuName = "ElMasna3/UI/Store Scheme")]
 public class StoreScriptableObject : ScriptableObject
 {
     public Sprite RealMoneyIcon;

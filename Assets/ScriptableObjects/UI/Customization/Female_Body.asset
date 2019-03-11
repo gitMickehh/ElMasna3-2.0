@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87a157d7bebe243b7e2de42dcba333, type: 3}
+  m_Name: Female_Body
+  m_EditorClassIdentifier: 
+  Items:
+  - id: 0
+    happyAdd: 50
+    item: {fileID: 100000, guid: 31c5ba2866cd0f54da815c5232fac40c, type: 3}
+    type: 2
+    price: 450
+  - id: 1
+    happyAdd: 50
+    item: {fileID: 100000, guid: 40dfe4c7a6f44a14099cdb4a7d7c2a28, type: 3}
+    type: 2
+    price: 500
+  - id: 2
+    happyAdd: 50
+    item: {fileID: 100000, guid: 1fb4648bbe7b2d54a819888615bca6d1, type: 3}
+    type: 2
+    price: 400
+  - id: 3
+    happyAdd: 50
+    item: {fileID: 100000, guid: 37fda5c2025bca147ae53d74aaba228b, type: 3}
+    type: 2
+    price: 500

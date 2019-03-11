@@ -14,11 +14,6 @@ public class RaycastingForFloor : MonoBehaviour
         moving.BoolValue = false;
     }
 
-    private void Start()
-    {
-        ShootRaysFixedUpdate();
-    }
-
     private void FixedUpdate()
     {
         if (moving.BoolValue)

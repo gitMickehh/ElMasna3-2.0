@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87a157d7bebe243b7e2de42dcba333, type: 3}
+  m_Name: Female_Head
+  m_EditorClassIdentifier: 
+  Items:
+  - id: 0
+    happyAdd: 50
+    item: {fileID: 100000, guid: 31ef2f951f87b9b46b4c8c94294fca0e, type: 3}
+    type: 0
+    price: 50
+  - id: 1
+    happyAdd: 50
+    item: {fileID: 100000, guid: b28e8130f87d6bb40a8e9e39ea6e22a8, type: 3}
+    type: 0
+    price: 60
+  - id: 2
+    happyAdd: 50
+    item: {fileID: 100000, guid: f5d0ace0ecd13cf48a3b1a3a4e2a977a, type: 3}
+    type: 0
+    price: 150
+  - id: 3
+    happyAdd: 50
+    item: {fileID: 100000, guid: b74cc8a13b503804390845f1d6c83f42, type: 3}
+    type: 0
+    price: 500
+  - id: 4
+    happyAdd: 50
+    item: {fileID: 100000, guid: bdeb3d0ba41a05a448107554b5ea8f49, type: 3}
+    type: 0
+    price: 450
+  - id: 5
+    happyAdd: 50
+    item: {fileID: 100000, guid: 2f71a6a7c1f98e74ab851c02bbbcffec, type: 3}
+    type: 0
+    price: 560
+  - id: 6
+    happyAdd: 50
+    item: {fileID: 100000, guid: e173bad1f0bbe5c4694388ca9e939866, type: 3}
+    type: 0
+    price: 450
+  - id: 7
+    happyAdd: 50
+    item: {fileID: 100000, guid: d043734158e1cbc4c8d2a5a4ffae804b, type: 3}
+    type: 0
+    price: 650
+  - id: 8
+    happyAdd: 50
+    item: {fileID: 100000, guid: 81ed6717c1e78b34b962c79265cc0766, type: 3}
+    type: 0
+    price: 800
+  - id: 9
+    happyAdd: 50
+    item: {fileID: 100000, guid: e78eba9bb96591649acb5806e5212842, type: 3}
+    type: 0
+    price: 50
+  - id: 10
+    happyAdd: 50
+    item: {fileID: 100000, guid: 2e3c0421882dec547a99cd23772b26ca, type: 3}
+    type: 0
+    price: 200
+  - id: 11
+    happyAdd: 50
+    item: {fileID: 100000, guid: d1168f21514496049968105e7211aed8, type: 3}
+    type: 0
+    price: 750
+  - id: 12
+    happyAdd: 50
+    item: {fileID: 100000, guid: 6acdfca00fefda746a42b8a5af7bf125, type: 3}
+    type: 0
+    price: 500
+  - id: 13
+    happyAdd: 50
+    item: {fileID: 100000, guid: e8eea481addaf1f4b8cd1558377eb0f0, type: 3}
+    type: 0
+    price: 450

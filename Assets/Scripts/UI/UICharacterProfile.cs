@@ -17,12 +17,6 @@ public class UICharacterProfile : MonoBehaviour
     public GameObject InOrientationButtons;
     public GameObject InFactoryButtons;
 
-    //[Header("UI Buttons")]
-    //public Button HireButton;
-    //public Button CustomizeButton;
-    //public Button ConverseButton;
-    //public Button BreakButton;
-
     bool opened;
 
     [Header("Camera")]
@@ -31,9 +25,10 @@ public class UICharacterProfile : MonoBehaviour
     [SerializeField]
     private Camera UICamera;
 
+    public WorkerCustomizationPanel customizationPanel;
+
     [Header("Worker")]
     public WorkerField SelectedWorkerRefernce;
-    public FloorList floorList;
 
     [Header("Animator")]
     public Animator animator;
@@ -97,6 +92,11 @@ public class UICharacterProfile : MonoBehaviour
 
             opened = true;
         }
+    }
+
+    public void CustomizationPanel()
+    {
+        customizationPanel.gameObject.SetActive(true);
     }
 
     public void HireClick()

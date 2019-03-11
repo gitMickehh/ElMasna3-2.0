@@ -41,6 +41,22 @@ public class UIStoreObject : MonoBehaviour
         storePanel = s;
     }
 
+    public void FillInObject(StoreItem sItem, Sprite CurrencyImage)
+    {
+#if UNITY_EDITOR
+        transform.name = sItem.name;
+#endif
+
+        itemImage.sprite = sItem.storeIcon;
+        itemCost = sItem.price;
+        itemCostText.text = sItem.price.ToString();
+        currencyImage.sprite = CurrencyImage;
+        currency = sItem.Currency;
+
+        description = sItem.description;
+        ReferencePrefab = sItem.Prefab;
+    }
+
     public void BuyItem()
     {
         storePanel.BuyObject(this);
