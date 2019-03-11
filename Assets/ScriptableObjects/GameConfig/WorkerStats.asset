@@ -18,9 +18,10 @@ MonoBehaviour:
   workSpeedRate: 1
   happinessDefenseFactor: 0.25
   MalePrefabs:
-  - {fileID: 1595664551687248, guid: df49fe76977bf654aadc16bef9d5c62b, type: 3}
+  - {fileID: 1595664551687248, guid: 29644c7d0003648458ed6cf58ef2fb42, type: 3}
+  - {fileID: 1595664551687248, guid: 66bf44ba840e0c5429201e25fbf62a33, type: 3}
   FemalePrefabs:
-  - {fileID: 1892572420009892, guid: 2a80f9563ed5c984bb425ac4ea4790e8, type: 3}
+  - {fileID: 1595664551687248, guid: a8efe36adf218d644b4151ccb7b14093, type: 3}
   HairPrefabs: []
   FacialHairPrefabs: []
   GlassesPrefabs: []
