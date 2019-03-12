@@ -146,9 +146,12 @@ public class Worker : MonoBehaviour
         SerializableWorker sw;
 
         if (currentMachine != null)
-            sw = new SerializableWorker(ID, FullName, gender, inOrientation,modelID, level, emotional.no, medical.no, happyMeter, currentMachine.machineID);
+            sw = new SerializableWorker(ID, FullName, gender, inOrientation,modelID, level, emotional.no, medical.no, happyMeter,happyDefense, currentMachine.machineID);
         else
-            sw = new SerializableWorker(ID, FullName, gender, inOrientation, modelID, level, emotional.no, medical.no, happyMeter);
+            sw = new SerializableWorker(ID, FullName, gender, inOrientation, modelID, level, emotional.no, medical.no, happyMeter, happyDefense);
+
+        sw.AddCustomization(customization.GetCustomizationDataArray());
+        //sw.AddCustomization(customization.GetCustomizationData());
 
         return sw;
     }
@@ -168,6 +171,9 @@ public class Worker : MonoBehaviour
         medical = WorkerStats.GetMedicalTraitByNumber(wData.medicalTrait);
 
         happyMeter = wData.happiness;
+        happyDefense = wData.happinessDefense;
+
+        customization.LoadCustomizationData(wData.CustomizationDataIDs);
 
         transform.name = FullName;
     }

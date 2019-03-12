@@ -19,6 +19,10 @@ public class SerializableWorker
     public int medicalTrait;
 
     public float happiness;
+    public float happinessDefense;
+
+    //public WorkerCustomizationSerializable CustomizationData;
+    public int[] CustomizationDataIDs;
 
     public SerializableWorker()
     {
@@ -34,9 +38,13 @@ public class SerializableWorker
         emotionalTrait = 1;
         medicalTrait = 1;
         happiness = 0.5f;
+        happinessDefense = 0.2f;
+
+        //CustomizationData = new WorkerCustomizationSerializable();
+        CustomizationDataIDs = new int[3] {-1,-1,-1};
     }
 
-    public SerializableWorker(int id, string name, Gender g = Gender.MALE, bool orientation = true, int model_id = 1, int lvl = 1, int emotionT = 1, int medicalT = 1, float happyMeter = 0.5f, int machID = -1)
+    public SerializableWorker(int id, string name, Gender g = Gender.MALE, bool orientation = true, int model_id = 1, int lvl = 1, int emotionT = 1, int medicalT = 1, float happyMeter = 0.5f, float happyDef = 0.2f, int machID = -1)
     {
         WorkerID = id;
         modelID = model_id;
@@ -50,6 +58,26 @@ public class SerializableWorker
         emotionalTrait = emotionT;
         medicalTrait = medicalT;
         happiness = happyMeter;
+
+        happinessDefense = happyDef;
+        CustomizationDataIDs = new int[3] { -1, -1, -1 };
     }
 
+    /// <summary>
+    /// <list type="bullet">
+    ///     <item>0 for Head </item>
+    ///     <item>1 for Face </item>
+    ///     <item>2 for Body </item>
+    /// </list>
+    /// </summary>
+    /// <param name="cDataArray"></param>
+    public void AddCustomization(int[] cDataArray)
+    {
+        CustomizationDataIDs = cDataArray;
+    }
+
+    //public void AddCustomization(WorkerCustomizationSerializable cData)
+    //{
+    //    CustomizationData = cData;
+    //}
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311e8d8b704c81349abd08dbf925bce2, type: 3}
+  m_Name: FemaleCustomizationItems
+  m_EditorClassIdentifier: 
+  ListElements:
+  - {fileID: 11400000, guid: bed0bf4424afc744f8f87f7e05eeb33d, type: 2}
+  - {fileID: 11400000, guid: 5cd672bac36da8d4e96dab9459b4e1cb, type: 2}
+  - {fileID: 11400000, guid: c84b3dd95faa23149b28688740feba8e, type: 2}

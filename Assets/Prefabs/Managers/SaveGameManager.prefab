@@ -45,6 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
+  MaleCustomizations: {fileID: 11400000, guid: 9b8b8744a248cc1418e81ddec5b0c171, type: 2}
+  FemaleCustomizations: {fileID: 11400000, guid: 712ca89990160fd429f390b0b1ff370d,
+    type: 2}
   GameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
   save: 1
   load: 1

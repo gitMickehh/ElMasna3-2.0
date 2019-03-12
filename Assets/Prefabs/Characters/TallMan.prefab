@@ -110,10 +110,8 @@ MonoBehaviour:
   SpineBone: {fileID: 8568460192939277220}
   HeadPlace: {fileID: 8568460192939763598}
   BodyPlace: {fileID: 8568460192939763584}
-  CustomizaitonPrefab: {fileID: 0}
-  HeadItems: {fileID: 11400000, guid: 5ab33170cac4d4b4f9b6cdbd5208123b, type: 2}
-  FaceItems: {fileID: 11400000, guid: 144793f929c39cd498d20fd14c6baa98, type: 2}
-  BodyItems: {fileID: 11400000, guid: 3a93b932a44c1744c972d4cd7a9c874a, type: 2}
+  CustomizaitonSchemes: {fileID: 11400000, guid: 9b8b8744a248cc1418e81ddec5b0c171,
+    type: 2}
   HeadItem: {fileID: 7484317031217701444}
   FaceItem: {fileID: 9057614745271094802}
   BodyItem: {fileID: 7562851275127901725}

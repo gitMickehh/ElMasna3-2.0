@@ -24,8 +24,11 @@ public class SaveGameManager : MonoBehaviour
     public bool load;
     //#endif
 
+    private bool loadedAll;
+
     private void Start()
     {
+        loadedAll = false;
         StartCoroutine(LateStart());
     }
 
@@ -205,10 +208,15 @@ public class SaveGameManager : MonoBehaviour
         LoadFloors();
         LoadFactoryData();
         LoadTime();
+
+        loadedAll = true;
     }
 
     private void SaveAll()
     {
+        if (!loadedAll)
+            return;
+
         SaveFloors();
         SaveWorkers();
         SaveFactoryData();
@@ -226,6 +234,7 @@ public class SaveGameManager : MonoBehaviour
         }
         //#endif
     }
+
 
     private void OnApplicationFocus(bool focus)
     {
