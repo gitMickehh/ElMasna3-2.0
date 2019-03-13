@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public GameEvent BuildSuccess;
     public GameEvent BuildFailure;
 
+    [Header("Selected Worker")]
+    public WorkerField SelectedWorker;
+
     [Header("Time")]
     [GreyOut]
     public int DayInMonth = 0;
@@ -193,4 +196,43 @@ public class GameManager : MonoBehaviour
         timer.LoadTimer((deltaSeconds + LastTimeTimer) % timer.GetWholeDayInSeconds());
     }
 
+    public void HireWorker()
+    {
+
+        if (!listOfFloors.CheckAvailability())
+        {
+            //no place for worker
+            Debug.LogWarning("No room for the worker");
+            return;
+        }
+
+        var worker = SelectedWorker.worker;
+        worker.inOrientation = false;
+
+        var machine = listOfFloors.GetFirstAvailableMachine();
+
+        if (machine == null)
+        {
+            var emptyWaypoint = listOfFloors.GetFirstAvailableBreakSpace();
+
+            if (emptyWaypoint == null)
+            {
+                //no place for worker
+                Debug.LogWarning("No room for the worker!\n[CheckAvailability() in list of floors didn't work]");
+                return;
+            }
+
+            //send worker to empty break room
+            worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(emptyWaypoint);
+            worker.transform.SetParent(emptyWaypoint.GetComponentInParent<Floor>().WorkersHolder);
+
+            return;
+        }
+
+        //send worker to empty machine
+        machine.SetWorker(worker);
+        worker.transform.SetParent(machine.parentFloor.WorkersHolder);
+        WayPoint wayPointTarget = machine.gameObject.GetComponentInParent<WayPoint>();
+        worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
+    }
 }

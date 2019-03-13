@@ -76,7 +76,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: Select B2
     clip: {fileID: 8300000, guid: 58856a830a503bf48b60faa518ce4248, type: 3}
-    volume: 0.8
+    volume: 0.826
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: Select B3
+    clip: {fileID: 8300000, guid: d9af101e21156ca4ca638d58c25e62f0, type: 3}
+    volume: 0.832
     pitch: 1
     looping: 0
     playOnAwake: 0

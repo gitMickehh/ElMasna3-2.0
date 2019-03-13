@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7227205324660242775}
   - component: {fileID: 1321046061}
   - component: {fileID: 1444809108628809842}
+  - component: {fileID: 4051945820453857599}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   BuildSuccess: {fileID: 11400000, guid: 1900118c697dd66498c86bada6b28050, type: 2}
   BuildFailure: {fileID: 11400000, guid: 9f08995bb6ca4894f9481133ce81d159, type: 2}
+  SelectedWorker: {fileID: 11400000, guid: 4ae7918a1fc64cf418df5e66e8964d29, type: 2}
   DayInMonth: 0
   DifferenceInDays: 0
   timer: {fileID: 0}
@@ -132,6 +134,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 81fea3cb723b8324bb323da515755efe, type: 2}
         m_MethodName: DestroyAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &4051945820453857599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851844109672730317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 4978685f5898724499b7d63637ce3543, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5851844109672730316}
+        m_MethodName: HireWorker
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

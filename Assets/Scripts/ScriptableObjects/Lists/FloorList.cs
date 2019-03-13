@@ -52,9 +52,10 @@ public class FloorList : RuntimeList<Floor>
             {
                 for (int k = 0; k < Items[i].workRooms[j].machinePlaces.Length; k++)
                 {
-                    if(Items[i].workRooms[j].machinePlaces[k].machine.CurrentWorker == null)
+                    if(Items[i].workRooms[j].machinePlaces[k].machine != null)
                     {
-                        return Items[i].workRooms[j].machinePlaces[k].machine;
+                        if(Items[i].workRooms[j].machinePlaces[k].machine.CurrentWorker == null)
+                            return Items[i].workRooms[j].machinePlaces[k].machine;
                     }
                 }
             }
@@ -78,5 +79,23 @@ public class FloorList : RuntimeList<Floor>
 
         //the factory has no space left
         return null;
+    }
+
+    /// <summary>
+    /// checks if there is a room for a new worker.
+    /// </summary>
+    /// <returns></returns>
+    public bool CheckAvailability()
+    {
+        Machine m = GetFirstAvailableMachine();
+
+        if (m == null)
+            return false;
+
+        WayPoint w = GetFirstAvailableBreakSpace();
+        if (w == null)
+            return false;
+
+        return true;
     }
 }

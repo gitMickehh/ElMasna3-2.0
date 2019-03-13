@@ -33,6 +33,9 @@ public class UICharacterProfile : MonoBehaviour
     [Header("Animator")]
     public Animator animator;
 
+    [Header("Events")]
+    public GameEvent HireSelectedWorker;
+
     //Modal Panel Options
     private ModalPanel modalPanel;
     private UnityAction HireAction;
@@ -114,10 +117,7 @@ public class UICharacterProfile : MonoBehaviour
     private void HireWorker()
     {
         Debug.Log("Hiring " + SelectedWorkerRefernce.worker.FullName);
-        //SelectedWorkerRefernce.worker.Hire();
-
-
-
+        HireSelectedWorker.Raise();
     }
 
     private void GiveBreakToWorker()
