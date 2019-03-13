@@ -5,36 +5,45 @@ using UnityEngine.UI;
 
 public class WorkerCustomizationPanel : MonoBehaviour
 {
+    [Header("Scriptable Objects")]
+    public GameObjectField gameManager;
     public GameConfig gameConfigFile;
-    public Sprite happyMoneyImage;
-    public GameObject storeItem;
     public WorkerField workerSelected;
+    public ColorsList ListOfColors;
+    public ColorField CurrentUniformColor;
+
+    [Header("Prefabs")]
+    public GameObject storeItem;
+    public GameObject UICameraPrefab;
+    public GameObject colorButtonPrefab;
+    public Material WorkersUniformMaterial;
 
     [Header("Preview Schemes")]
+    [Attributes.GreyOut]
     public CustomizationPanelScheme headScheme;
+    [Attributes.GreyOut]
     public CustomizationPanelScheme faceScheme;
+    [Attributes.GreyOut]
     public CustomizationPanelScheme bodyScheme;
 
     private bool filledUp;
 
     [Header("Camera Preview")]
     public RenderTexture renderImage;
-    public GameObject UICameraPrefab;
     private Camera UICamera;
 
     [Header("UI Elements")]
+    public Sprite happyMoneyImage;
     public Transform HeadPanel;
     public Transform BodyPanel;
     public Transform FacePanel;
+    public Transform ColorPanel;
     public Button confirmationButton;
 
     private List<GameObject> HeadItems = new List<GameObject>();
     private List<GameObject> BodyItems = new List<GameObject>();
-    private List<GameObject> FacesItems = new List<GameObject>();
-
-    [Header("Game Manager")]
-    [Attributes.GreyOut]
-    public GameManager gameManager;
+    private List<GameObject> FaceItems = new List<GameObject>();
+    private List<GameObject> ColorsButtons = new List<GameObject>();
 
     //Modal Panel
     private ModalPanel modalPanel;
@@ -46,9 +55,12 @@ public class WorkerCustomizationPanel : MonoBehaviour
         confirmationButton.gameObject.SetActive(false);
 
         updateScheme();
+
         HeadItems = FillItems(HeadPanel, headScheme.Items);
-        FacesItems = FillItems(FacePanel, faceScheme.Items);
+        FaceItems = FillItems(FacePanel, faceScheme.Items);
         BodyItems = FillItems(BodyPanel, bodyScheme.Items);
+        FillColorButtons();
+
 
         UICamera = Instantiate(UICameraPrefab, new Vector3(), new Quaternion()).GetComponent<Camera>();
         UICamera.targetTexture = renderImage;
@@ -59,11 +71,8 @@ public class WorkerCustomizationPanel : MonoBehaviour
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
         modalPanel = ModalPanel.Instance();
-
         ConfirmAction = new UnityAction(ConfirmPreviews);
-
     }
 
     private List<GameObject> FillItems(Transform panel, List<CustomizationItem> items)
@@ -96,14 +105,20 @@ public class WorkerCustomizationPanel : MonoBehaviour
             Destroy(BodyItems[i]);
         }
 
-        for (int i = 0; i < FacesItems.Count; i++)
+        for (int i = 0; i < FaceItems.Count; i++)
         {
-            Destroy(FacesItems[i]);
+            Destroy(FaceItems[i]);
+        }
+
+        for (int i = 0; i < ColorsButtons.Count; i++)
+        {
+            Destroy(ColorsButtons[i]);
         }
 
         HeadItems.Clear();
-        FacesItems.Clear();
+        FaceItems.Clear();
         BodyItems.Clear();
+        ColorsButtons.Clear();
     }
 
     private void updateScheme()
@@ -131,6 +146,7 @@ public class WorkerCustomizationPanel : MonoBehaviour
     private void ConfirmPreviews()
     {
         workerSelected.worker.customization.ConfirmPreview();
+        UniformChanged();
         //pay here
     }
 
@@ -141,11 +157,12 @@ public class WorkerCustomizationPanel : MonoBehaviour
 
     public void OnBackButtonPressed()
     {
-        if (HeadPanel.gameObject.activeSelf || BodyPanel.gameObject.activeSelf || FacePanel.gameObject.activeSelf)
+        if (HeadPanel.gameObject.activeSelf || BodyPanel.gameObject.activeSelf || FacePanel.gameObject.activeSelf || ColorPanel.gameObject.activeSelf)
         {
             HeadPanel.gameObject.SetActive(false);
             BodyPanel.gameObject.SetActive(false);
             FacePanel.gameObject.SetActive(false);
+            ColorPanel.gameObject.SetActive(false);
         }
         else
         {
@@ -158,4 +175,19 @@ public class WorkerCustomizationPanel : MonoBehaviour
         confirmationButton.gameObject.SetActive(dirty);
     }
 
+    public void FillColorButtons()
+    {
+        for (int i = 0; i < ListOfColors.Count; i++)
+        {
+            var c = Instantiate(colorButtonPrefab,ColorPanel);
+            c.GetComponent<Image>().color = ListOfColors.colors[i];
+
+            ColorsButtons.Add(c);
+        }
+    }
+
+    private void UniformChanged()
+    {
+        CurrentUniformColor.SetValue(WorkersUniformMaterial.color);
+    }
 }

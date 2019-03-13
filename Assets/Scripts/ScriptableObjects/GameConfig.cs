@@ -29,6 +29,17 @@ public class GameConfig : ScriptableObject {
     public PrefabsList WorkersPrefabs;
     public PrefabsList MachinesPrefabs;
 
+    [Header("Player Data")]
+    public ColorField uniformColor;
+    [SerializeField]
+    private Material uniformMaterial;
+
+    public void SetColorField(Color c)
+    {
+        uniformColor.SetValue(c);
+        uniformMaterial.color = c;
+    }
+
     //[Header("Player")]
     //public string PlayerName;
     //public int PlayerLevel;

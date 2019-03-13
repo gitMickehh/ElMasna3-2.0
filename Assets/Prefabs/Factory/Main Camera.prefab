@@ -120,6 +120,7 @@ MonoBehaviour:
   pinchMultiplier: 0.05
   lerpTime: 0.45
   cameraPorperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
+  zoomEnabled: 1
 --- !u!114 &1860473216428604094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayLength: 100
-  touch: 1
   vector2Touch: {fileID: 11400000, guid: 2efaff9c481ce4f4981dd0dadfdabdb2, type: 2}
   WorkerLayerMask:
     serializedVersion: 2

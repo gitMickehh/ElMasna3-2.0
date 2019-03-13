@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
+  gameManagerField: {fileID: 11400000, guid: 5f3ec13a0350a2f42afa600adae1ba34, type: 2}
   FactoryMoney: {fileID: 11400000, guid: f31364cfb312c8f429c29cf3161ef599, type: 2}
   HappyMoney: {fileID: 11400000, guid: acc8faa4f589fea4f813164409026aea, type: 2}
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}

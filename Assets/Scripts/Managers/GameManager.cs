@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public GameConfig GameConfigFile;
+    public GameObjectField gameManagerField;
 
     [Header("Factory")]
     public FloatField FactoryMoney;
@@ -29,6 +30,16 @@ public class GameManager : MonoBehaviour
     //Modal Panel
     private ModalPanel modalPanel;
     private UnityAction BuildFloorAction;
+
+    private void OnEnable()
+    {
+        gameManagerField.gameObjectReference = gameObject;
+    }
+
+    private void OnDisable()
+    {
+        gameManagerField.gameObjectReference = null;
+    }
 
     private void Start()
     {

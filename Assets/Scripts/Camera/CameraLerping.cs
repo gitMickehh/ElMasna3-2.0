@@ -60,6 +60,8 @@ public class CameraLerping : MonoBehaviour
             atOrientation = false;
             lerpTimeTemp = lerpTime;
             lerpTime /= 2;
+
+            camControlScript.zoomEnabled = true;
         }
         else
         {
@@ -68,6 +70,7 @@ public class CameraLerping : MonoBehaviour
             lerpTime = lerpTimeTemp;
 
             atOrientation = true;
+            camControlScript.zoomEnabled = false;
         }
 
         camControlScript.TraverseVertical(!atOrientation);

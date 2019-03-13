@@ -44,6 +44,8 @@ public class FloorList : RuntimeList<Floor>
     
     public Machine GetFirstAvailableMachine()
     {
+        SortFloorList();
+
         for (int i = 0; i < Items.Count; i++)
         {
             for (int j = 0; j < Items[i].workRooms.Length; j++)

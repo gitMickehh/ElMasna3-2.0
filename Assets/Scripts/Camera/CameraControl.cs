@@ -24,6 +24,8 @@ public class CameraControl : MonoBehaviour
 
     [Header("Camera Properties")]
     public CameraProperties cameraPorperties;
+    [Attributes.GreyOut]
+    public bool zoomEnabled = true;
 
     //height
     private float clampY;
@@ -86,6 +88,9 @@ public class CameraControl : MonoBehaviour
 
     public void Zoom()
     {
+        if (!zoomEnabled)
+            return;
+
         if (Camera.main.orthographic)
         {
             Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize -

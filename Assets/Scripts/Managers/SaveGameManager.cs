@@ -184,8 +184,12 @@ public class SaveGameManager : MonoBehaviour
         PlayerPrefs.SetFloat("HappyMoney", gManager.HappyMoney.GetValue());
         PlayerPrefs.SetFloat("FloorCost", gManager.GameConfigFile.FloorCost);
 
+        string jsonColor = JsonUtility.ToJson(GameConfigFile.uniformColor.GetValue());
+        PlayerPrefs.SetString("UniformColor", jsonColor);
+
         Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
-            "\n" + gManager.HappyMoney.GetValue() + " Happy Money.");
+            "\n" + gManager.HappyMoney.GetValue() + " Happy Money."+ 
+            "\n" + jsonColor + " Uniform Color.");
     }
 
     private void LoadFactoryData()
@@ -198,6 +202,13 @@ public class SaveGameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("FloorCost"))
             gManager.GameConfigFile.FloorCost = PlayerPrefs.GetFloat("FloorCost");
+
+        if (PlayerPrefs.HasKey("UniformColor"))
+        {
+            Color c = JsonUtility.FromJson<Color>(PlayerPrefs.GetString("UniformColor"));
+            GameConfigFile.SetColorField(c);
+        }
+
     }
 
     private void LoadAll()
@@ -234,8 +245,7 @@ public class SaveGameManager : MonoBehaviour
         }
         //#endif
     }
-
-
+    
     private void OnApplicationFocus(bool focus)
     {
         if (!focus)

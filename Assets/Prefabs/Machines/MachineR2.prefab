@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentFloor: {fileID: 0}
+  gameManagerObject: {fileID: 11400000, guid: 5f3ec13a0350a2f42afa600adae1ba34, type: 2}
   machineID: 0
   machineModelID: 5
   listOfMahcines: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}

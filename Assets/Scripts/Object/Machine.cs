@@ -7,6 +7,7 @@ public class Machine : MonoBehaviour
 {
     [Attributes.GreyOut]
     public Floor parentFloor;
+    public GameObjectField gameManagerObject;
 
     [Header("Machine")]
     public int machineID;
@@ -24,8 +25,6 @@ public class Machine : MonoBehaviour
     public MachineScheme scheme;
     public Slider machineTimeSlider;
     private float timeOfCycle;
-    private float moneyInCycle;
-    private Currency moneyCurrency;
     private float runningTime = 0;
 
     public int CurrentWorkerID
@@ -46,8 +45,6 @@ public class Machine : MonoBehaviour
         transform.name = "Machine " + machineID;
 
         timeOfCycle = scheme.timeOfCycle;
-        moneyInCycle = scheme.moneyInCycle;
-        moneyCurrency = scheme.moneyCurrency;
     }
 
     private void OnDisable()
@@ -62,7 +59,8 @@ public class Machine : MonoBehaviour
             if (runningTime >= timeOfCycle)
             {
                 runningTime = 0;
-
+                var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
+                gm.DepositMoney(scheme.moneyInCycle,scheme.moneyCurrency);
             }
             else
             {
