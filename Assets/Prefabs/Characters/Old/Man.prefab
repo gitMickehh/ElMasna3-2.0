@@ -1130,6 +1130,7 @@ MonoBehaviour:
   happyMeter: 0
   happyDefense: 0
   skinnedMeshRenderers: []
+  customization: {fileID: 0}
   UICameraPosition: {fileID: 450730375257086663}
 --- !u!114 &1745133130275199220
 MonoBehaviour:
@@ -1144,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPointCurrent: {fileID: 0}
-  speed: 0.05
+  speed: 1
   targetPos: {fileID: 0}
   walking: 0
   arrived: 0

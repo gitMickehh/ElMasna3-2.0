@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 7835394793542408438}
   - component: {fileID: 7707925065465942060}
   m_Layer: 11
-  m_Name: Woman
+  m_Name: WomanOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1261,6 +1261,7 @@ MonoBehaviour:
   happyMeter: 0
   happyDefense: 0
   skinnedMeshRenderers: []
+  customization: {fileID: 0}
   UICameraPosition: {fileID: 5019554551230351280}
 --- !u!114 &7707925065465942060
 MonoBehaviour:
@@ -1275,7 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPointCurrent: {fileID: 0}
-  speed: 0.05
+  speed: 1
   targetPos: {fileID: 0}
   walking: 0
   arrived: 0

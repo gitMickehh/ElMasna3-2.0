@@ -6,10 +6,9 @@ using UnityEngine;
 public class SeekRoom : MonoBehaviour
 {
     public WayPoint wayPointCurrent;
-    public float speed = 0.05f;
+    public float speed = 1f;
 
     Rigidbody myBody;
-    Vector3 direction;
 
     [SerializeField]
     [GreyOut]
@@ -47,11 +46,6 @@ public class SeekRoom : MonoBehaviour
     public void Walk(Transform startPos, Transform endPos)
     {
         targetPos = endPos;
-
-        direction = endPos.position - startPos.position;
-        direction.Normalize();
-        direction = new Vector3(direction.x, 0, direction.z);
-
         walking = true;
     }
 
@@ -59,17 +53,20 @@ public class SeekRoom : MonoBehaviour
     {
         if (walking == true)
         {
+
             float distance = Vector3.Distance(targetPos.position, transform.position);
+
+            if (rotateOnce)
+            {
+                transform.forward = -wayPointCurrent.doorPosition.forward;
+                rotateOnce = false;
+            }
 
             if (distance > 3)
             {
-                if (rotateOnce)
-                {
-                    transform.forward = -wayPointCurrent.doorPosition.forward;
-                    rotateOnce = false;
-                }
+                float step = speed * Time.deltaTime; // calculate distance to move
+                transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
 
-                myBody.MovePosition(transform.position + (direction * speed));
             }
 
             else if (!arrived)
@@ -84,11 +81,9 @@ public class SeekRoom : MonoBehaviour
                 Walk(targetWayPoint.doorPosition, targetWayPoint.WayPointTransform);
 
                 arrived = true;
-                //walking = false;
             }
             else if (arrived)
             {
-                //wayPointCurrent = targetWayPoint;
                 walking = false;
             }
 
