@@ -45,6 +45,7 @@ public class Machine : MonoBehaviour
         transform.name = "Machine " + machineID;
 
         timeOfCycle = scheme.timeOfCycle;
+        SliderToggle();
     }
 
     private void OnDisable()
@@ -108,8 +109,6 @@ public class Machine : MonoBehaviour
 
     public void ChangeWorker(Worker w)
     {
-        Debug.Log(gameObject.name + " changed worker");
-
         if (w.currentMachine != null)
         {
             if (CurrentWorker != null)
@@ -124,7 +123,7 @@ public class Machine : MonoBehaviour
             }
         }
 
-        if (parentFloor.floorOrder == w.currentMachine.parentFloor.floorOrder)
+        if (parentFloor.floorOrder != w.currentMachine.parentFloor.floorOrder)
         {
             w.transform.SetParent(parentFloor.WorkersHolder);
         }
@@ -142,6 +141,10 @@ public class Machine : MonoBehaviour
     public void SetWorker(Worker w)
     {
         CurrentWorker = w.gameObject;
+        //CurrentWorker.transform.SetParent(parentFloor.WorkersHolder);
+        //WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
+        //w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
+
         IsWorking = true;
         SliderToggle();
     }

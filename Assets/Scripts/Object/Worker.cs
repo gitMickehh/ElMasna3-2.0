@@ -111,8 +111,6 @@ public class Worker : MonoBehaviour
         happyMeter = Mathf.Clamp(happyMeter + percentage, 0, 100);
     }
 
-
-
     public void DecreaseHappiness(float percentage)
     {
         happyMeter = Mathf.Clamp(happyMeter - percentage, 0, 100);

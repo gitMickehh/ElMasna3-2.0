@@ -63,6 +63,8 @@ public class OrientationBuilding : MonoBehaviour
             GameObject s = Instantiate(w, WorkersPositions[i].position);
             WorkersPositions[i].worker = s.GetComponent<Worker>();
             WorkersPositions[i].worker.RandomizeWorker();
+
+            WorkersPositions[i].worker.gameObject.GetComponent<SeekRoom>().wayPointCurrent = WorkersPositions[i].position.GetComponent<WayPoint>();
         }
     }
 

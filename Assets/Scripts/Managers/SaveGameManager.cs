@@ -22,6 +22,7 @@ public class SaveGameManager : MonoBehaviour
     [Header("Editor Options")]
     public bool save;
     public bool load;
+    public bool focusSave;
     //#endif
 
     private bool loadedAll;
@@ -248,6 +249,9 @@ public class SaveGameManager : MonoBehaviour
     
     private void OnApplicationFocus(bool focus)
     {
+        if (!focusSave)
+            return;
+
         if (!focus)
         {
             //#if UNITY_EDITOR

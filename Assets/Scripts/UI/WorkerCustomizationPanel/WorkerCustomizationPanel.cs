@@ -49,6 +49,9 @@ public class WorkerCustomizationPanel : MonoBehaviour
     private ModalPanel modalPanel;
     private UnityAction ConfirmAction;
 
+    private float totalCost;
+
+
     private void OnEnable()
     {
         ClearAll();
@@ -139,15 +142,20 @@ public class WorkerCustomizationPanel : MonoBehaviour
 
     public void ConfirmButton()
     {
+        //totalCost = 
         string s = gameConfigFile.CurrentLanguageProfile.AreYouSure + gameConfigFile.CurrentLanguageProfile.QuestionMark;
-        modalPanel.Choice(s,ConfirmAction);
+        modalPanel.Choice(s, ConfirmAction);
     }
 
     private void ConfirmPreviews()
     {
         workerSelected.worker.customization.ConfirmPreview();
         UniformChanged();
+
+        CloseAllPanels();
+
         //pay here
+        //withdraw totalCost
     }
 
     public void CancelPreview()
@@ -170,6 +178,15 @@ public class WorkerCustomizationPanel : MonoBehaviour
         }
     }
 
+    private void CloseAllPanels()
+    {
+        HeadPanel.gameObject.SetActive(false);
+        BodyPanel.gameObject.SetActive(false);
+        FacePanel.gameObject.SetActive(false);
+        ColorPanel.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
     public void SetDirty(bool dirty)
     {
         confirmationButton.gameObject.SetActive(dirty);
@@ -179,7 +196,7 @@ public class WorkerCustomizationPanel : MonoBehaviour
     {
         for (int i = 0; i < ListOfColors.Count; i++)
         {
-            var c = Instantiate(colorButtonPrefab,ColorPanel);
+            var c = Instantiate(colorButtonPrefab, ColorPanel);
             c.GetComponent<Image>().color = ListOfColors.colors[i];
 
             ColorsButtons.Add(c);

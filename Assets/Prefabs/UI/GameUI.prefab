@@ -2664,6 +2664,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6646586057021964207, guid: 6d3a84cb0237b594c82afeb3f0908a0e,
+        type: 3}
+      propertyPath: customizationPanel
+      value: 
+      objectReference: {fileID: 4513349035094859256}
     - target: {fileID: 4275332852971767882, guid: 6d3a84cb0237b594c82afeb3f0908a0e,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3619,6 +3624,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7248491432375454197}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4513349035094859256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6500228653725373453, guid: 9d9a699311c083046b13991e1169e2b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7248491432375454197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513349035094859260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf793194ed328a46a2077baebaa66a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7880880883680126563
 PrefabInstance:
   m_ObjectHideFlags: 0
