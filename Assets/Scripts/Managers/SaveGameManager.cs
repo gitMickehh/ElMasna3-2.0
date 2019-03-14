@@ -140,11 +140,15 @@ public class SaveGameManager : MonoBehaviour
                             worker.transform.localPosition = new Vector3();
                             worker.transform.localRotation = new Quaternion();
                             orientation.WorkersPositions[j].worker = worker.GetComponent<Worker>();
+
+                            WayPoint orWaypoint= orientation.WorkersPositions[j].position.GetComponent<WayPoint>();
+                            orientation.WorkersPositions[j].worker.GetComponent<SeekRoom>().wayPointCurrent = orWaypoint;
                             break;
                         }
                     }
                 }
 
+                Debug.Log("worker" + i + ": " + retrievedJson);
                 worker.GetComponent<Worker>().LoadWorkerData(workerData);
             }
         }
@@ -189,7 +193,7 @@ public class SaveGameManager : MonoBehaviour
         PlayerPrefs.SetString("UniformColor", jsonColor);
 
         Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
-            "\n" + gManager.HappyMoney.GetValue() + " Happy Money."+ 
+            "\n" + gManager.HappyMoney.GetValue() + " Happy Money." +
             "\n" + jsonColor + " Uniform Color.");
     }
 
@@ -241,12 +245,13 @@ public class SaveGameManager : MonoBehaviour
         if (save)
         {
             //#endif
-            SaveAll();
+            if (loadedAll)
+                SaveAll();
             //#if UNITY_EDITOR
         }
         //#endif
     }
-    
+
     private void OnApplicationFocus(bool focus)
     {
         if (!focusSave)
@@ -258,7 +263,8 @@ public class SaveGameManager : MonoBehaviour
             if (save)
             {
                 //#endif
-                SaveAll();
+                if (loadedAll)
+                    SaveAll();
                 //#if UNITY_EDITOR
             }
             //#endif

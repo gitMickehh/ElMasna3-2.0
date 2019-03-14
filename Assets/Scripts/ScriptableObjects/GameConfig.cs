@@ -28,6 +28,7 @@ public class GameConfig : ScriptableObject {
     public GameObject FloorPrefab;
     public PrefabsList WorkersPrefabs;
     public PrefabsList MachinesPrefabs;
+    public float HiringCost = 100.0f;
 
     [Header("Player Data")]
     public ColorField uniformColor;

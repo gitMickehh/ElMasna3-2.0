@@ -225,6 +225,8 @@ public class GameManager : MonoBehaviour
             //send worker to empty break room
             worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(emptyWaypoint);
             worker.transform.SetParent(emptyWaypoint.GetComponentInParent<Floor>().WorkersHolder);
+            var bR = emptyWaypoint.GetComponentInParent<Floor>().GetBreakRoomPlace(emptyWaypoint);
+            bR.worker = worker;
 
             return;
         }

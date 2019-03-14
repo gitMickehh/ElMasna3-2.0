@@ -52,7 +52,17 @@ public class Floor : MonoBehaviour
             savablerooms[i] = workRooms[i].SaveRoom();
         }
 
-        savingFloor = new SerializableFloor(savablerooms, floorOrder);
+        //BreakRoomSave[] breakrooms = new BreakRoomSave[breakRoom.Length];
+        int[] breakroomIds = new int[breakRoom.Length];
+        for (int i = 0; i < breakRoom.Length; i++)
+        {
+            if (breakRoom[i].worker != null)
+                breakroomIds[i] = breakRoom[i].worker.ID;
+            else
+                breakroomIds[i] = -1;
+        }
+
+        savingFloor = new SerializableFloor(savablerooms, breakroomIds, floorOrder);
     }
 
     public void LoadFloor()
@@ -101,7 +111,31 @@ public class Floor : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < savingFloor.breakRoomWorkersIDs.Length; i++)
+        {
+            if(savingFloor.breakRoomWorkersIDs[i] >= 0)
+            {
+                //get worker
+                var workerId = savingFloor.breakRoomWorkersIDs[i];
+                GameObject w = listOfWorkers.GetWorkerById(workerId).gameObject;
+                w.transform.SetParent(WorkersHolder);
+                breakRoom[i].worker = w.GetComponent<Worker>();
+                breakRoom[i].worker.SetState(WorkerState.InBreak);
+            }
+        }
+
         transform.name = "Floor " + floorOrder;
+    }
+
+    public BreakRoomPlace GetBreakRoomPlace(WayPoint p)
+    {
+        for (int i = 0; i < breakRoom.Length; i++)
+        {
+            if (breakRoom[i].position == p)
+                return breakRoom[i];
+        }
+
+        return null;
     }
 
     private void OnDrawGizmos()

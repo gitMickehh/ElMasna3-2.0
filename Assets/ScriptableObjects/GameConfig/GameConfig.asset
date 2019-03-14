@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777f98815de920748969b2aade9a668d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  CurrentLanguageProfile: {fileID: 11400000, guid: df89ad15138481542ae34165321062b6,
+  CurrentLanguageProfile: {fileID: 11400000, guid: 360fc7d4c727ed24e809dd1e06f366cc,
     type: 2}
   dayOfTheWeek: 0
   FactoryMoney: {fileID: 11400000, guid: f31364cfb312c8f429c29cf3161ef599, type: 2}
@@ -22,5 +22,6 @@ MonoBehaviour:
     type: 3}
   WorkersPrefabs: {fileID: 11400000, guid: 6cd08f48bacbc8048bd515203ca7a148, type: 2}
   MachinesPrefabs: {fileID: 11400000, guid: f8af9b0ba77d5ff4cbf95f01ab9bab2b, type: 2}
+  HiringCost: 100
   uniformColor: {fileID: 11400000, guid: 294a8f966a869534f956c8744e03bd1b, type: 2}
   uniformMaterial: {fileID: 2100000, guid: e5e7a2e14e0593741b8312a0b099d6e7, type: 2}

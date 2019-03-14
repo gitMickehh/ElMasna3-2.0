@@ -6,9 +6,8 @@ public enum WorkerState
 {
     Idle,
     Working,
-    InMiniGame,
+    InBreak,
     Winning,
-    Complaining,
     Walking
 }
 
@@ -133,12 +132,16 @@ public class Worker : MonoBehaviour
                 workerAnimator.SetBool("Working", false);
                 workerAnimator.SetTrigger("WinTrigger");
                 break;
-
-            case WorkerState.Complaining:
-                GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-                break;
-
+            //case WorkerState.Complaining:
+            //    GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+            //    break;
         }
+    }
+
+    public void SetState(WorkerState state)
+    {
+        workerState = state;
+        //do stuff
     }
 
     public SerializableWorker GetWorkerData()

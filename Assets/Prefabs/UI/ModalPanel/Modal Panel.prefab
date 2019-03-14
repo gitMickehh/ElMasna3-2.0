@@ -288,6 +288,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
   ButtonSoundEvent: {fileID: 11400000, guid: cf98b02f6a40744409b5b26b9862d688, type: 2}
+  UIOpenedEvent: {fileID: 11400000, guid: 3b172fe06d01ff7458c53adc4041ffb0, type: 2}
+  UIClosedButton: {fileID: 11400000, guid: 52d072e0a34515b45bfe93b8adb175b7, type: 2}
   question: {fileID: 4787712902947649320}
   iconImage: {fileID: 1129684060177380989}
   yesButton: {fileID: 5714448960705407415}

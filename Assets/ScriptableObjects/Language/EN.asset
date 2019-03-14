@@ -31,3 +31,7 @@ MonoBehaviour:
   HireWorker: 'Do you want to hire '
   GiveWorkerBreak: 'Give break to '
   AreYouSure: Are you sure
+  NoPlaceForWorkers: You do not have a place for new workers
+  YouWillPay: 'You will pay '
+  ExeclamationMark: '!'
+  WelcomeText: Welcome to your factory
