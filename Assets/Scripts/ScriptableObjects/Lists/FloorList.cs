@@ -90,11 +90,12 @@ public class FloorList : RuntimeList<Floor>
         Machine m = GetFirstAvailableMachine();
 
         if (m == null)
-            return false;
+        {
+            WayPoint w = GetFirstAvailableBreakSpace();
 
-        WayPoint w = GetFirstAvailableBreakSpace();
-        if (w == null)
-            return false;
+            if (w == null)
+                return false;
+        }
 
         return true;
     }

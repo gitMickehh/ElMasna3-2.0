@@ -15,7 +15,7 @@ MonoBehaviour:
   GameName: L'Usine
   Language: French
   LanguageInitials: Fr
-  ConfirmationText: Oui?
+  ConfirmationText: "\xCAtes-vous s\xFBr de vouloir continuer en fran\xE7ais?"
   PlaceholderNameText: Votre Nom
   StartGame: "D\xE9but"
   QuitGame: Quitter
@@ -28,6 +28,11 @@ MonoBehaviour:
   LastNames: {fileID: 11400000, guid: af91b072e9ed90242993a5fb9e619738, type: 2}
   LeftToRight: 1
   QuestionMark: '?'
-  HireWorker: Hi3'e
-  GiveWorkerBreak: Restte
-  AreYouSure: Si
+  HireWorker: Voulez-vous embaucher
+  GiveWorkerBreak: "Donner une pause \xE0"
+  AreYouSure: "\xCAtes-vous s\xFBr"
+  NoPlaceForWorkers: Vous n'avez pas de place pour les nouveaux travailleurs
+  YouWillPay: Tu paieras
+  NotEnoughMoney: Vous n'avez pas assez de ressources
+  ExeclamationMark: '!'
+  WelcomeText: Bienvenue dans votre usine

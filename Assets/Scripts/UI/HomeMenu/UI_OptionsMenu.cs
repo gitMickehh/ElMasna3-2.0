@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UI_HomeMenu : MonoBehaviour
+public class UI_OptionsMenu : MonoBehaviour
 {
     public GameConfig gameConfigFile;
 
     //Modal Panel
     private ModalPanel modalPanel;
     private UnityAction clearSaveAction;
+
+    [Header("Options Panel")]
+    public ScriptableObjectsList LanguagesList;
+
 
     private void Start()
     {
@@ -21,6 +25,11 @@ public class UI_HomeMenu : MonoBehaviour
     {
         string s = gameConfigFile.CurrentLanguageProfile.AreYouSure + gameConfigFile.CurrentLanguageProfile.QuestionMark;
         modalPanel.Choice(s, clearSaveAction);
+    }
+
+    public void ChangeLanguage(int i)
+    {
+        gameConfigFile.CurrentLanguageProfile = (LanguageProfile)LanguagesList.ListElements[i];
     }
 
     private void ClearSaves()

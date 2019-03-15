@@ -8,6 +8,8 @@ public class ModalPanel : MonoBehaviour
 {
     public GameConfig ConfigFile;
     public GameEvent ButtonSoundEvent;
+    public GameEvent UIOpenedEvent;
+    public GameEvent UIClosedButton;
 
     [Header("UI")]
     public Text question;
@@ -33,6 +35,7 @@ public class ModalPanel : MonoBehaviour
 
     public void Choice(string question, UnityAction yesEvent, UnityAction cancelEvent)
     {
+        UIOpenedEvent.Raise();
         modalPanelObject.SetActive(true);
 
         yesButton.onClick.RemoveAllListeners();
@@ -53,30 +56,69 @@ public class ModalPanel : MonoBehaviour
 
     }
 
-    public void Choice(string question, UnityAction yesEvent)
+    public void Choice(string question, UnityAction yesEvent, Sprite messageIcon = null)
     {
+        UIOpenedEvent.Raise();
         modalPanelObject.SetActive(true);
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(yesEvent);
         yesButton.onClick.AddListener(RaiseButtonSound);
+        yesButton.onClick.AddListener(RaiseUIClose);
         yesButton.onClick.AddListener(ClosePanel);
 
         cancelButton.onClick.RemoveAllListeners();
         cancelButton.onClick.AddListener(RaiseButtonSound);
+        cancelButton.onClick.AddListener(RaiseUIClose);
         cancelButton.onClick.AddListener(ClosePanel);
 
         this.question.text = question;
 
-        this.iconImage.gameObject.SetActive(false);
+        if (messageIcon == null)
+            iconImage.gameObject.SetActive(false);
+        else
+        {
+            iconImage.sprite = messageIcon;
+            iconImage.gameObject.SetActive(true);
+        }
+
         yesButton.gameObject.SetActive(true);
         cancelButton.gameObject.SetActive(true);
+
+    }
+
+    public void Message(string ConfirmationMessage,Sprite messageIcon = null)
+    {
+        UIOpenedEvent.Raise();
+        modalPanelObject.SetActive(true);
+
+        yesButton.onClick.RemoveAllListeners();
+        yesButton.onClick.AddListener(RaiseButtonSound);
+        yesButton.onClick.AddListener(RaiseUIClose);
+        yesButton.onClick.AddListener(ClosePanel);
+
+        question.text = ConfirmationMessage;
+
+        if(messageIcon == null)
+            iconImage.gameObject.SetActive(false);
+        else
+        {
+            iconImage.sprite = messageIcon;
+            iconImage.gameObject.SetActive(true);
+        }
+
+        yesButton.gameObject.SetActive(true);
 
     }
 
     void RaiseButtonSound()
     {
         ButtonSoundEvent.Raise();
+    }
+
+    void RaiseUIClose()
+    {
+        UIClosedButton.Raise();
     }
 
     void ClosePanel()

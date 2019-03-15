@@ -483,8 +483,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6646586057021964207}
-        m_MethodName: ClosePanel
+      - m_Target: {fileID: 11400000, guid: 4978685f5898724499b7d63637ce3543, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -963,8 +963,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6646586057021964207}
-        m_MethodName: HireClick
+      - m_Target: {fileID: 11400000, guid: 4978685f5898724499b7d63637ce3543, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1431,6 +1431,17 @@ MonoBehaviour:
         m_CallState: 0
       - m_Target: {fileID: 11400000, guid: 3b172fe06d01ff7458c53adc4041ffb0, type: 2}
         m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6646586057021964207}
+        m_MethodName: CustomizationPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

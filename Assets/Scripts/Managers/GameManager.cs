@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     public void BuildFloorButton()
     {
         string question = GameConfigFile.CurrentLanguageProfile.AreYouSure + " " + GameConfigFile.FloorCost.ToString("0") + " " + GameConfigFile.CurrentLanguageProfile.QuestionMark;
-        modalPanel.Choice(question, BuildFloorAction);  
+        modalPanel.Choice(question, BuildFloorAction);
     }
 
     private void ConfirmBuildFloor()
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
         if (money < 0)
             return;
 
-        if(currency == Currency.RealMoney)
+        if (currency == Currency.RealMoney)
         {
             FactoryMoney.AddValue(money);
         }
@@ -196,8 +196,37 @@ public class GameManager : MonoBehaviour
         timer.LoadTimer((deltaSeconds + LastTimeTimer) % timer.GetWholeDayInSeconds());
     }
 
-    public void HireWorker()
+    public void HireConfirmation()
     {
+        if (SelectedWorker.worker == null)
+            return;
+
+        LanguageProfile lang = GameConfigFile.CurrentLanguageProfile;
+        string[] qs = new string[] {
+            lang.HireWorker,
+            SelectedWorker.worker.FullName,
+        };
+
+        string[] statement = new string[] {
+            "\n",
+            lang.YouWillPay,
+            GameConfigFile.HiringCost.ToString("0")
+        };
+
+        string message = lang.GetQuestion(qs);
+        message += lang.GetStatement(statement);
+
+        modalPanel.Choice(message, new UnityAction(HireWorker), GameConfigFile.icons[0]);
+    }
+
+    private void HireWorker()
+    {
+
+        if(!CheckBalance(GameConfigFile.HiringCost,Currency.RealMoney))
+        {
+            modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney);
+            return;
+        }
 
         if (!listOfFloors.CheckAvailability())
         {
@@ -225,6 +254,8 @@ public class GameManager : MonoBehaviour
             //send worker to empty break room
             worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(emptyWaypoint);
             worker.transform.SetParent(emptyWaypoint.GetComponentInParent<Floor>().WorkersHolder);
+            var bR = emptyWaypoint.GetComponentInParent<Floor>().GetBreakRoomPlace(emptyWaypoint);
+            bR.worker = worker;
 
             return;
         }
@@ -234,5 +265,7 @@ public class GameManager : MonoBehaviour
         worker.transform.SetParent(machine.parentFloor.WorkersHolder);
         WayPoint wayPointTarget = machine.gameObject.GetComponentInParent<WayPoint>();
         worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
+
+        WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
     }
 }

@@ -12,15 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777f98815de920748969b2aade9a668d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  CurrentLanguageProfile: {fileID: 11400000, guid: df89ad15138481542ae34165321062b6,
+  CurrentLanguageProfile: {fileID: 11400000, guid: 360fc7d4c727ed24e809dd1e06f366cc,
     type: 2}
   dayOfTheWeek: 0
   FactoryMoney: {fileID: 11400000, guid: f31364cfb312c8f429c29cf3161ef599, type: 2}
   HappyMoney: {fileID: 11400000, guid: acc8faa4f589fea4f813164409026aea, type: 2}
   FloorCost: 500
+  HiringCost: 100
   FloorPrefab: {fileID: 4143921381608493496, guid: d1b2dd82bdad47543a74bedd51cd9672,
     type: 3}
   WorkersPrefabs: {fileID: 11400000, guid: 6cd08f48bacbc8048bd515203ca7a148, type: 2}
   MachinesPrefabs: {fileID: 11400000, guid: f8af9b0ba77d5ff4cbf95f01ab9bab2b, type: 2}
   uniformColor: {fileID: 11400000, guid: 294a8f966a869534f956c8744e03bd1b, type: 2}
   uniformMaterial: {fileID: 2100000, guid: e5e7a2e14e0593741b8312a0b099d6e7, type: 2}
+  icons:
+  - {fileID: 21300002, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
+  - {fileID: 21300000, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}

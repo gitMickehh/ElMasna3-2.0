@@ -18,6 +18,7 @@ public class OrientationBuilding : MonoBehaviour
     public WorkerInfo workerTemplate;
     public int minimumNumberOfWorkersPerDay;
     public OrientationPosition[] WorkersPositions;
+    public int numberOfWorkers = 0;
 
     Dictionary<int, float> randomBag; 
 
@@ -41,14 +42,17 @@ public class OrientationBuilding : MonoBehaviour
 
     void ClearWorkers()
     {
-        for (int i = 0; i < WorkersPositions.Length; i++)
+        if(numberOfWorkers > 0)
         {
-            if(WorkersPositions[i].worker != null)
+            for (int i = 0; i < WorkersPositions.Length; i++)
             {
-                Destroy(WorkersPositions[i].worker.gameObject);
-            }
+                if (WorkersPositions[i].worker != null)
+                {
+                    Destroy(WorkersPositions[i].worker.gameObject);
+                }
 
-            WorkersPositions[i].worker = null;
+                WorkersPositions[i].worker = null;
+            }
         }
     }
 

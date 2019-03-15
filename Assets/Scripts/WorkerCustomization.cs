@@ -124,17 +124,24 @@ public class WorkerCustomization : MonoBehaviour
         {
             previewHead.transform.SetParent(HeadItem.gameObject.transform);
             HeadItem.myself = previewHeadInfo;
+            HeadItem.myself.item = previewHead;
             //give happiness to myWorker
+            GetComponent<Worker>().AddHappiness(HeadItem.myself.happyAdd);
         }
         if (previewFace != null)
         {
             previewFace.transform.SetParent(FaceItem.gameObject.transform);
             FaceItem.myself = previewFaceInfo;
+            FaceItem.myself.item = previewFace;
+            GetComponent<Worker>().AddHappiness(FaceItem.myself.happyAdd);
+
         }
         if (previewBody != null)
         {
             previewBody.transform.SetParent(BodyItem.gameObject.transform);
             BodyItem.myself = previewBodyInfo;
+            BodyItem.myself.item = previewBody;
+            GetComponent<Worker>().AddHappiness(BodyItem.myself.happyAdd);
         }
 
         dirty = false;
@@ -235,7 +242,6 @@ public class WorkerCustomization : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("No Items found with that ID");
                     return false;
                 }
             });
@@ -246,6 +252,10 @@ public class WorkerCustomization : MonoBehaviour
                 var headPiece = Instantiate(headItem.item, HeadPlace);
                 headPiece.layer = 11;
                 HeadItem.myself.item = headPiece;
+            }
+            else
+            {
+                Debug.LogWarning("No Head Items found with ID (" + cData[0] + ").");
             }
         }
 
@@ -260,7 +270,7 @@ public class WorkerCustomization : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("No Items found with that ID");
+                    Debug.LogWarning("No Face Items found with ID (" + cData[1] + ").");
                     return false;
                 }
             });
@@ -283,7 +293,7 @@ public class WorkerCustomization : MonoBehaviour
                     return c.item;
                 else
                 {
-                    Debug.LogWarning("No Items found with that ID");
+                    Debug.LogWarning("No Body Items found with ID (" + cData[2] + ").");
                     return false;
                 }
             });
