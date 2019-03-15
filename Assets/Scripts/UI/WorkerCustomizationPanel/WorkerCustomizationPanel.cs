@@ -51,7 +51,6 @@ public class WorkerCustomizationPanel : MonoBehaviour
 
     private float totalCost;
 
-
     private void OnEnable()
     {
         ClearAll();
@@ -142,6 +141,7 @@ public class WorkerCustomizationPanel : MonoBehaviour
 
     public void ConfirmButton()
     {
+
         //totalCost = 
         string s = gameConfigFile.CurrentLanguageProfile.AreYouSure + gameConfigFile.CurrentLanguageProfile.QuestionMark;
         modalPanel.Choice(s, ConfirmAction);

@@ -62,6 +62,7 @@ public class WorkerCustomization : MonoBehaviour
                     Destroy(previewHead);
 
                 previewHead = Instantiate(item.item, HeadPlace);
+                item.item = previewHead;
                 previewHead.layer = 11;
                 previewHeadInfo = item;
                 break;
@@ -75,6 +76,7 @@ public class WorkerCustomization : MonoBehaviour
                     Destroy(previewFace);
 
                 previewFace = Instantiate(item.item, HeadPlace);
+                item.item = previewFace;
                 previewFace.layer = 11;
                 previewFaceInfo = item;
                 break;
@@ -88,6 +90,7 @@ public class WorkerCustomization : MonoBehaviour
                     Destroy(previewBody);
 
                 previewBody = Instantiate(item.item, BodyPlace);
+                item.item = previewBody;
                 previewBody.layer = 11;
                 previewBodyInfo = item;
                 break;
@@ -248,10 +251,7 @@ public class WorkerCustomization : MonoBehaviour
 
             if (headItem.item != null)
             {
-                HeadItem.myself = headItem;
-                var headPiece = Instantiate(headItem.item, HeadPlace);
-                headPiece.layer = 11;
-                HeadItem.myself.item = headPiece;
+                HeadItem.loadObject(headItem,HeadPlace);
             }
             else
             {
@@ -276,10 +276,7 @@ public class WorkerCustomization : MonoBehaviour
             });
             if (faceItem != null)
             {
-                FaceItem.myself = faceItem;
-                var facePiece = Instantiate(faceItem.item, HeadPlace);
-                facePiece.layer = 11;
-                FaceItem.myself.item = facePiece;
+                FaceItem.loadObject(faceItem, HeadPlace);
             }
         }
 
@@ -300,10 +297,7 @@ public class WorkerCustomization : MonoBehaviour
 
             if (BodyObj != null)
             {
-                BodyItem.myself = BodyObj;
-                var BodyPiece = Instantiate(BodyObj.item, BodyPlace);
-                BodyPiece.layer = 11;
-                BodyItem.myself.item = BodyPiece;
+                BodyItem.loadObject(BodyObj,BodyPlace);
             }
         }
 
