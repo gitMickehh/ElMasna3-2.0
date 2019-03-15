@@ -33,5 +33,6 @@ MonoBehaviour:
   AreYouSure: "\xCAtes-vous s\xFBr"
   NoPlaceForWorkers: Vous n'avez pas de place pour les nouveaux travailleurs
   YouWillPay: Tu paieras
+  NotEnoughMoney: Vous n'avez pas assez de ressources
   ExeclamationMark: '!'
   WelcomeText: Bienvenue dans votre usine

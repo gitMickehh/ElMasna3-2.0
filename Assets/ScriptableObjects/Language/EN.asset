@@ -33,5 +33,6 @@ MonoBehaviour:
   AreYouSure: Are you sure
   NoPlaceForWorkers: You do not have a place for new workers
   YouWillPay: 'You will pay '
+  NotEnoughMoney: You don't have enough resources
   ExeclamationMark: '!'
   WelcomeText: Welcome to your factory

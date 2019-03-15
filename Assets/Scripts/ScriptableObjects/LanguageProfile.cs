@@ -45,6 +45,8 @@ public class LanguageProfile : ScriptableObject
     public string NoPlaceForWorkers;
     [TextArea]
     public string YouWillPay;
+    [TextArea]
+    public string NotEnoughMoney;
 
     [Header("Tutorial Statements")]
     public string ExeclamationMark;
@@ -96,7 +98,7 @@ public class LanguageProfile : ScriptableObject
 
     }
 
-    public string GetStatement(string[] s)
+    public string GetQuestion(string[] qs)
     {
         string question;
 
@@ -104,12 +106,43 @@ public class LanguageProfile : ScriptableObject
         {
             string bigS = "";
 
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < qs.Length; i++)
             {
-                bigS += s[i];
+                bigS += qs[i] + " ";
             }
 
-            question = bigS + ExeclamationMark;
+            question = bigS + QuestionMark;
+        }
+        else
+        {
+            string bigS = "";
+
+            for (int i = qs.Length - 1; i >= 0; i--)
+            {
+                bigS += qs[i] + " ";
+            }
+
+            question = QuestionMark + bigS;
+        }
+
+        return question;
+
+    }
+
+    public string GetStatement(string[] s)
+    {
+        string statement;
+
+        if (LeftToRight)
+        {
+            string bigS = "";
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                bigS += s[i] + " ";
+            }
+
+            statement = bigS + ExeclamationMark;
         }
         else
         {
@@ -117,13 +150,13 @@ public class LanguageProfile : ScriptableObject
 
             for (int i = s.Length - 1; i >= 0; i--)
             {
-                bigS += s[i];
+                bigS += s[i] + " ";
             }
 
-            question = ExeclamationMark + bigS;
+            statement = ExeclamationMark + bigS;
         }
 
-        return question;
+        return statement;
 
     }
 

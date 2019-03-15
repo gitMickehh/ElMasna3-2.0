@@ -21,19 +21,22 @@ public class GameConfig : ScriptableObject {
     public FloatField FactoryMoney;
     public FloatField HappyMoney;
 
-    [Header("Building")]
+    [Header("Costs")]
     public float FloorCost;
+    public float HiringCost = 100.0f;
 
     [Header("Prefabs")]
     public GameObject FloorPrefab;
     public PrefabsList WorkersPrefabs;
     public PrefabsList MachinesPrefabs;
-    public float HiringCost = 100.0f;
 
     [Header("Player Data")]
     public ColorField uniformColor;
     [SerializeField]
     private Material uniformMaterial;
+
+    [Header("Modal Panel Icons")]
+    public Sprite[] icons;
 
     public void SetColorField(Color c)
     {

@@ -242,7 +242,6 @@ public class WorkerCustomization : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("No Body Items found with ID (" + cData[0] + ").");
                     return false;
                 }
             });
@@ -253,6 +252,10 @@ public class WorkerCustomization : MonoBehaviour
                 var headPiece = Instantiate(headItem.item, HeadPlace);
                 headPiece.layer = 11;
                 HeadItem.myself.item = headPiece;
+            }
+            else
+            {
+                Debug.LogWarning("No Head Items found with ID (" + cData[0] + ").");
             }
         }
 

@@ -162,7 +162,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5851844109672730316}
-        m_MethodName: HireWorker
+        m_MethodName: HireConfirmation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

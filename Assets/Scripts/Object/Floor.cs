@@ -119,6 +119,10 @@ public class Floor : MonoBehaviour
                 var workerId = savingFloor.breakRoomWorkersIDs[i];
                 GameObject w = listOfWorkers.GetWorkerById(workerId).gameObject;
                 w.transform.SetParent(WorkersHolder);
+
+                w.transform.position = breakRoom[i].position.transform.position;
+                w.transform.rotation = breakRoom[i].position.transform.rotation;
+
                 breakRoom[i].worker = w.GetComponent<Worker>();
                 breakRoom[i].worker.SetState(WorkerState.InBreak);
             }

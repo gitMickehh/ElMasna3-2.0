@@ -38,7 +38,6 @@ public class UICharacterProfile : MonoBehaviour
 
     //Modal Panel Options
     private ModalPanel modalPanel;
-    private UnityAction HireAction;
     private UnityAction GiveBreakAction;
 
     private void Start()
@@ -46,7 +45,6 @@ public class UICharacterProfile : MonoBehaviour
         UICamera = Instantiate(CameraPrefab, new Vector3(), new Quaternion()).GetComponent<Camera>();
         modalPanel = ModalPanel.Instance();
 
-        HireAction = new UnityAction(HireWorker);
         GiveBreakAction = new UnityAction(GiveBreakToWorker);
     }
 
@@ -102,22 +100,10 @@ public class UICharacterProfile : MonoBehaviour
         customizationPanel.gameObject.SetActive(true);
     }
 
-    public void HireClick()
-    {
-        string s = gameConfigFile.CurrentLanguageProfile.HireWorker + gameConfigFile.CurrentLanguageProfile.QuestionMark;
-        modalPanel.Choice(s, HireAction);
-    }
-
     public void GiveBreakClick()
     {
         string s = gameConfigFile.CurrentLanguageProfile.GiveWorkerBreak + gameConfigFile.CurrentLanguageProfile.QuestionMark;
         modalPanel.Choice(s, GiveBreakAction);
-    }
-
-    private void HireWorker()
-    {
-        Debug.Log("Hiring " + SelectedWorkerRefernce.worker.FullName);
-        HireSelectedWorker.Raise();
     }
 
     private void GiveBreakToWorker()
