@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MachBase_L_1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 061e6edc2edc67648bd19359a109ff4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 061e6edc2edc67648bd19359a109ff4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
