@@ -141,6 +141,9 @@ public class Machine : MonoBehaviour
     public void SetWorker(Worker w)
     {
         CurrentWorker = w.gameObject;
+        w.currentMachine = this;
+        w.SetWorking(true);
+
         //CurrentWorker.transform.SetParent(parentFloor.WorkersHolder);
         //WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
         //w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);

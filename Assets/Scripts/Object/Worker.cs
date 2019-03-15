@@ -8,7 +8,7 @@ public enum WorkerState
     Working,
     InBreak,
     Winning,
-    Walking
+    Walking 
 }
 
 public class Worker : MonoBehaviour
@@ -108,11 +108,14 @@ public class Worker : MonoBehaviour
     public void AddHappiness(float percentage)
     {
         happyMeter = Mathf.Clamp(happyMeter + percentage, 0, 100);
+        workerAnimator.SetFloat("Happiness", happyMeter / 100.0f);
     }
 
     public void DecreaseHappiness(float percentage)
     {
         happyMeter = Mathf.Clamp(happyMeter - percentage, 0, 100);
+        workerAnimator.SetFloat("Happiness", happyMeter / 100.0f);
+
     }
 
     public void SetWorkerState(WorkerState state)
@@ -124,18 +127,46 @@ public class Worker : MonoBehaviour
                 workerAnimator.SetBool("Working", false);
                 break;
 
-            case WorkerState.Working:
-                workerAnimator.SetBool("Working", true);
-                break;
+            //case WorkerState.Working:
+            //    workerAnimator.SetBool("Working", true);
+            //    break;
 
             case WorkerState.Winning:
-                workerAnimator.SetBool("Working", false);
-                workerAnimator.SetTrigger("WinTrigger");
+                //workerAnimator.SetBool("Working", false);
+                workerAnimator.SetTrigger("Winning");
                 break;
-            //case WorkerState.Complaining:
-            //    GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+
+            //case WorkerState.Walking:
+            //    workerAnimator.SetBool("Walking", true);
             //    break;
+
         }
+    }
+
+    public void SetBreak(BreakObject breakObject)
+    {
+        switch (breakObject)
+        {
+            case BreakObject.Sit:
+                workerAnimator.SetBool("Sit", true);
+                break;
+
+            case BreakObject.Talk:
+                workerAnimator.SetBool("Talking", true);
+                break;
+
+        }       
+    }
+
+    public void SetWorking(bool state)
+    {
+        workerAnimator.SetBool("Working", state);
+    }
+
+    public void SetWalking(bool state)
+    {
+        workerAnimator.SetBool("Walking", state);
+        //SetWorking(false);
     }
 
     public void SetState(WorkerState state)

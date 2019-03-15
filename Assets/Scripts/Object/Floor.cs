@@ -98,6 +98,7 @@ public class Floor : MonoBehaviour
                             machineComponent.SetWorker(w.GetComponent<Worker>());
                             w.GetComponent<SeekRoom>().wayPointCurrent = workRooms[i].machinePlaces[j].machinePosition.GetComponent<WayPoint>();
                             w.GetComponent<Worker>().currentMachine = machineComponent;
+                            //w.GetComponent<Worker>().SetWorking(true);
                         }
                     }
 
@@ -124,7 +125,8 @@ public class Floor : MonoBehaviour
                 w.transform.rotation = breakRoom[i].position.transform.rotation;
 
                 breakRoom[i].worker = w.GetComponent<Worker>();
-                breakRoom[i].worker.SetState(WorkerState.InBreak);
+                //breakRoom[i].worker.SetState(WorkerState.InBreak);
+                breakRoom[i].worker.SetBreak(breakRoom[i].breakObject);
             }
         }
 

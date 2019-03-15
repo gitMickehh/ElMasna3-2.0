@@ -27,10 +27,12 @@ public class SeekRoom : MonoBehaviour
     bool rotateOnce = true;
 
     WayPoint targetWayPoint;
+    Worker worker;
 
     void Awake()
     {
         myBody = GetComponent<Rigidbody>();
+        worker = GetComponent<Worker>();
     }
 
     public void SwitchRoom(WayPoint wayPointTarget)
@@ -53,6 +55,7 @@ public class SeekRoom : MonoBehaviour
     {
         if (walking == true)
         {
+            worker.SetWalking(true);
 
             float distance = Vector3.Distance(targetPos.position, transform.position);
 
@@ -93,6 +96,7 @@ public class SeekRoom : MonoBehaviour
             wayPointCurrent = targetWayPoint;
             arrived = false;
             rotateOnce = true;
+            worker.SetWalking(false);
         }
     }
 
