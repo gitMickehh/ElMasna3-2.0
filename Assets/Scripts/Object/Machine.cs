@@ -26,6 +26,8 @@ public class Machine : MonoBehaviour
     public Slider machineTimeSlider;
     private float timeOfCycle;
     private float runningTime = 0;
+    [SerializeField]
+    private Animator machineAnimator;
 
     public int CurrentWorkerID
     {
@@ -38,6 +40,11 @@ public class Machine : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        //machineAnimator = GetComponentInChildren<Animator>();
+    }
+
     private void OnEnable()
     {
         machineID = listOfMahcines.GetNewId();
@@ -45,6 +52,8 @@ public class Machine : MonoBehaviour
         transform.name = "Machine " + machineID;
 
         timeOfCycle = scheme.timeOfCycle;
+
+        machineAnimator = GetComponentInChildren<Animator>();
         SliderToggle();
     }
 
@@ -163,6 +172,7 @@ public class Machine : MonoBehaviour
     public void SliderToggle()
     {
         machineTimeSlider.gameObject.SetActive(IsWorking);
+        machineAnimator.SetBool("IsWorking", IsWorking);
     }
 
     private void OnDrawGizmosSelected()
