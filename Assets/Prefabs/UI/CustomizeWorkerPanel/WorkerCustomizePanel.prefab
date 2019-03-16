@@ -1090,13 +1090,13 @@ MonoBehaviour:
   m_Padding:
     m_Left: 15
     m_Right: 15
-    m_Top: 15
-    m_Bottom: 15
+    m_Top: 25
+    m_Bottom: 160
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 150, y: 200}
-  m_Spacing: {x: 75, y: 75}
+  m_CellSize: {x: 120, y: 160}
+  m_Spacing: {x: 90, y: 90}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &6500228652726986008
@@ -1615,13 +1615,13 @@ MonoBehaviour:
   m_Padding:
     m_Left: 15
     m_Right: 15
-    m_Top: 15
-    m_Bottom: 15
+    m_Top: 25
+    m_Bottom: 160
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 150, y: 200}
-  m_Spacing: {x: 75, y: 75}
+  m_CellSize: {x: 120, y: 160}
+  m_Spacing: {x: 90, y: 90}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &6500228653671492621
@@ -1714,13 +1714,13 @@ MonoBehaviour:
   m_Padding:
     m_Left: 15
     m_Right: 15
-    m_Top: 15
-    m_Bottom: 15
+    m_Top: 25
+    m_Bottom: 160
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 150, y: 200}
-  m_Spacing: {x: 75, y: 75}
+  m_CellSize: {x: 120, y: 160}
+  m_Spacing: {x: 90, y: 90}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &6500228653725373449
@@ -1843,6 +1843,7 @@ MonoBehaviour:
   FacePanel: {fileID: 6500228653640383906}
   ColorPanel: {fileID: 1179807994625421862}
   confirmationButton: {fileID: 6500228653099550950}
+  totalCost: {fileID: 11400000, guid: e76c88f9501d6ee418946e1489773da7, type: 2}
 --- !u!1 &6500228653878830094
 GameObject:
   m_ObjectHideFlags: 0

@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpineBone: {fileID: 8568460192939277220}
+  HeadBone: {fileID: 8568460192939277284}
   HeadPlace: {fileID: 8568460192939763598}
   BodyPlace: {fileID: 8568460192939763584}
   CustomizaitonSchemes: {fileID: 11400000, guid: 9b8b8744a248cc1418e81ddec5b0c171,
@@ -115,6 +116,7 @@ MonoBehaviour:
   HeadItem: {fileID: 7484317031217701444}
   FaceItem: {fileID: 9057614745271094802}
   BodyItem: {fileID: 7562851275127901725}
+  costOfPreviewed: {fileID: 11400000, guid: e76c88f9501d6ee418946e1489773da7, type: 2}
 --- !u!114 &1745133130275199220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +183,7 @@ MonoBehaviour:
     id: -1
     happyAdd: 50
     item: {fileID: 0}
+    UIicon: {fileID: 0}
     type: 0
     price: 0
 --- !u!1 &3676909573709818929
@@ -260,6 +263,7 @@ MonoBehaviour:
     id: -1
     happyAdd: 50
     item: {fileID: 0}
+    UIicon: {fileID: 0}
     type: 1
     price: 0
 --- !u!1 &5169708485041892420
@@ -309,6 +313,7 @@ MonoBehaviour:
     id: -1
     happyAdd: 50
     item: {fileID: 0}
+    UIicon: {fileID: 0}
     type: 2
     price: 0
 --- !u!137 &2295702588028041207
@@ -477,6 +482,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: f549cd2d30ca25243bba7e9ec11830bd, type: 3}
       propertyPath: m_Name
       value: HairBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f549cd2d30ca25243bba7e9ec11830bd, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f549cd2d30ca25243bba7e9ec11830bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -859,6 +868,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8568460192939375942}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &8568460192939763684 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400034, guid: 220f4ed4bb17fa947a82a56a400dda4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8568460192939375942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8568460192939763654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 220f4ed4bb17fa947a82a56a400dda4d,
@@ -985,9 +1000,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8568460192939375942}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8568460192939763684 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400034, guid: 220f4ed4bb17fa947a82a56a400dda4d,
+--- !u!1 &8568460192939277284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 220f4ed4bb17fa947a82a56a400dda4d,
     type: 3}
   m_PrefabInstance: {fileID: 8568460192939375942}
   m_PrefabAsset: {fileID: 0}

@@ -14,22 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items:
   - id: 0
-    happyAdd: 50
+    happyAdd: 60
     item: {fileID: 100000, guid: 7852688d7e5b4144c871141a0b1b9740, type: 3}
+    UIicon: {fileID: 21300050, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 1
-    price: 200
+    price: 120
   - id: 1
-    happyAdd: 50
+    happyAdd: 15
     item: {fileID: 100000, guid: 167cf37fd7735004d9ad1ef989c3545c, type: 3}
+    UIicon: {fileID: 21300028, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 1
-    price: 100
+    price: 40
   - id: 2
-    happyAdd: 50
+    happyAdd: 25
     item: {fileID: 100000, guid: b4dfcbee302d2db4cb252fb7f89575f0, type: 3}
+    UIicon: {fileID: 21300026, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 1
-    price: 500
+    price: 50
   - id: 3
-    happyAdd: 50
+    happyAdd: 15
     item: {fileID: 100000, guid: 9dba9350a62644c4cb3c40bad7ba3a55, type: 3}
+    UIicon: {fileID: 21300024, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 1
-    price: 300
+    price: 40

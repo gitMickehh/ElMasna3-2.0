@@ -5,6 +5,7 @@ using UnityEngine;
 public class WorkerCustomization : MonoBehaviour
 {
     public GameObject SpineBone;
+    public GameObject HeadBone;
 
     public Transform HeadPlace;
     public Transform BodyPlace;
@@ -35,17 +36,29 @@ public class WorkerCustomization : MonoBehaviour
     public CustomizationObject FaceItem;
     public CustomizationObject BodyItem;
 
-    private GameObject previewHead;
-    private GameObject previewFace;
-    private GameObject previewBody;
+    //private GameObject previewHead;
+    //private GameObject previewFace;
+    //private GameObject previewBody;
     private CustomizationItem previewHeadInfo;
     private CustomizationItem previewFaceInfo;
     private CustomizationItem previewBodyInfo;
 
+    [Header("Cost")]
+    public FloatField costOfPreviewed;
+
     private void Start()
     {
-        HeadPlace.SetParent(SpineBone.transform);
+        HeadPlace.SetParent(HeadBone.transform);
         BodyPlace.SetParent(SpineBone.transform);
+
+        previewHeadInfo = new CustomizationItem();
+        previewFaceInfo = new CustomizationItem();
+        previewBodyInfo = new CustomizationItem();
+    }
+
+    private void OnEnable()
+    {
+        costOfPreviewed.SetValue(0);
     }
 
     public void PreviewItem(CustomizationItem item)
@@ -58,13 +71,16 @@ public class WorkerCustomization : MonoBehaviour
                     HeadItem.gameObject.SetActive(false);
                 }
 
-                if (previewHead != null)
-                    Destroy(previewHead);
+                //if (previewHead != null)
+                if (previewHeadInfo.item != null)
+                {
+                    Destroy(previewHeadInfo.item);
+                    costOfPreviewed.AddValue(-previewHeadInfo.price);
+                }
 
-                previewHead = Instantiate(item.item, HeadPlace);
-                item.item = previewHead;
-                previewHead.layer = 11;
-                previewHeadInfo = item;
+                previewHeadInfo.item = Instantiate(item.item, HeadPlace);
+                previewHeadInfo.item.layer = 11;
+                previewHeadInfo.FillData(item);
                 break;
             case CustomizationType.FACE:
                 if (FaceItem.myself.id > -1)
@@ -72,13 +88,17 @@ public class WorkerCustomization : MonoBehaviour
                     FaceItem.gameObject.SetActive(false);
                 }
 
-                if (previewFace != null)
-                    Destroy(previewFace);
+                //if (previewFace != null)
+                if (previewFaceInfo.item != null)
+                {
+                    Destroy(previewFaceInfo.item);
+                    costOfPreviewed.AddValue(-previewFaceInfo.price);
 
-                previewFace = Instantiate(item.item, HeadPlace);
-                item.item = previewFace;
-                previewFace.layer = 11;
-                previewFaceInfo = item;
+                }
+
+                previewFaceInfo.item = Instantiate(item.item, HeadPlace);
+                previewFaceInfo.item.layer = 11;
+                previewFaceInfo.FillData(item);
                 break;
             case CustomizationType.BODY:
                 if (BodyItem.myself.id > -1)
@@ -86,17 +106,24 @@ public class WorkerCustomization : MonoBehaviour
                     BodyItem.gameObject.SetActive(false);
                 }
 
-                if (previewBody != null)
-                    Destroy(previewBody);
+                //if (previewBody != null)
+                if (previewBodyInfo.item != null)
+                {
+                    Destroy(previewBodyInfo.item);
+                    costOfPreviewed.AddValue(-previewBodyInfo.price);
+                }
 
-                previewBody = Instantiate(item.item, BodyPlace);
-                item.item = previewBody;
-                previewBody.layer = 11;
-                previewBodyInfo = item;
+                previewBodyInfo.item = Instantiate(item.item, BodyPlace);
+                previewBodyInfo.item.layer = 11;
+                //previewBodyInfo = item;
+                //previewBodyInfo.item = previewBody;
+                previewBodyInfo.FillData(item);
                 break;
             default:
                 break;
         }
+
+        costOfPreviewed.AddValue(item.price);
 
         dirty = true;
     }
@@ -105,45 +132,45 @@ public class WorkerCustomization : MonoBehaviour
     {
         if (dirty)
         {
-            if (previewHead != null)
-                Destroy(previewHead);
-            if (previewFace != null)
-                Destroy(previewFace);
-            if (previewBody != null)
-                Destroy(previewBody);
+            if (previewHeadInfo.item != null)
+                Destroy(previewHeadInfo.item);
+            if (previewFaceInfo.item != null)
+                Destroy(previewFaceInfo.item);
+            if (previewBodyInfo.item != null)
+                Destroy(previewBodyInfo.item);
 
             HeadItem.gameObject.SetActive(true);
             BodyItem.gameObject.SetActive(true);
             FaceItem.gameObject.SetActive(true);
         }
-
+        costOfPreviewed.SetValue(0);
     }
 
     public void ConfirmPreview()
     {
         Worker myWorker = GetComponent<Worker>();
 
-        if (previewHead != null)
+        if (previewHeadInfo.item != null)
         {
-            previewHead.transform.SetParent(HeadItem.gameObject.transform);
+            previewHeadInfo.item.transform.SetParent(HeadItem.gameObject.transform);
             HeadItem.myself = previewHeadInfo;
-            HeadItem.myself.item = previewHead;
+            HeadItem.myself.item = Instantiate(previewHeadInfo.item, HeadPlace);
             //give happiness to myWorker
             GetComponent<Worker>().AddHappiness(HeadItem.myself.happyAdd);
         }
-        if (previewFace != null)
+        if (previewFaceInfo.item != null)
         {
-            previewFace.transform.SetParent(FaceItem.gameObject.transform);
+            previewFaceInfo.item.transform.SetParent(FaceItem.gameObject.transform);
             FaceItem.myself = previewFaceInfo;
-            FaceItem.myself.item = previewFace;
+            FaceItem.myself.item = Instantiate(previewFaceInfo.item, HeadPlace);
             GetComponent<Worker>().AddHappiness(FaceItem.myself.happyAdd);
 
         }
-        if (previewBody != null)
+        if (previewBodyInfo.item != null)
         {
-            previewBody.transform.SetParent(BodyItem.gameObject.transform);
+            previewBodyInfo.item.transform.SetParent(BodyItem.gameObject.transform);
             BodyItem.myself = previewBodyInfo;
-            BodyItem.myself.item = previewBody;
+            BodyItem.myself.item = Instantiate(previewBodyInfo.item, BodyPlace);
             GetComponent<Worker>().AddHappiness(BodyItem.myself.happyAdd);
         }
 
@@ -251,7 +278,7 @@ public class WorkerCustomization : MonoBehaviour
 
             if (headItem.item != null)
             {
-                HeadItem.loadObject(headItem,HeadPlace);
+                HeadItem.loadObject(headItem, HeadPlace);
             }
             else
             {
@@ -297,7 +324,7 @@ public class WorkerCustomization : MonoBehaviour
 
             if (BodyObj != null)
             {
-                BodyItem.loadObject(BodyObj,BodyPlace);
+                BodyItem.loadObject(BodyObj, BodyPlace);
             }
         }
 

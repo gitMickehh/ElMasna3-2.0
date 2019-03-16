@@ -66,6 +66,20 @@ MonoBehaviour:
     looping: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - soundName: Ka-Ching
+    clip: {fileID: 8300000, guid: 3f1214fda7e2aac44ae0834332d3d676, type: 3}
+    volume: 0.2
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: Notify
+    clip: {fileID: 8300000, guid: f5b519c859871a041a2cb778ad487e43, type: 3}
+    volume: 0.2
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
   buttonsSounds:
   - soundName: Select B
     clip: {fileID: 8300000, guid: 9cf7d1e77cc3adc4fa86872c7bae8cd0, type: 3}

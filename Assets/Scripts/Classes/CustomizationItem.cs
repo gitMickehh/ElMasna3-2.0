@@ -18,7 +18,17 @@ public class CustomizationItem
     public float happyAdd = 50;
 
     public GameObject item;
+    public Sprite UIicon;
     public CustomizationType type;
     public float price;
+
+    public void FillData(CustomizationItem cItem)
+    {
+        happyAdd = cItem.happyAdd;
+        id = cItem.id;
+        UIicon = cItem.UIicon;
+        price = cItem.price;
+        type = cItem.type;
+    }
 
 }

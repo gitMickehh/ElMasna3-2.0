@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
         {
             if (money <= FactoryMoney.GetValue())
             {
+                AudioManager.instance.Play("Ka-Ching");
                 FactoryMoney.AddValue(-money);
                 return true;
             }
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour
         {
             if (money <= HappyMoney.GetValue())
             {
+                AudioManager.instance.Play("Ka-Ching");
                 HappyMoney.AddValue(-money);
                 return true;
             }
