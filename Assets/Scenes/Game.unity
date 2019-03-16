@@ -2718,7 +2718,7 @@ PrefabInstance:
     - target: {fileID: 1632761248149477306, guid: b5dc24396b0b2fa41be48e7f417ace1f,
         type: 3}
       propertyPath: focusSave
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1632761248149477306, guid: b5dc24396b0b2fa41be48e7f417ace1f,
         type: 3}

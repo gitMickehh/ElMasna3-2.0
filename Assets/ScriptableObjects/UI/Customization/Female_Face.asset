@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items:
   - id: 0
-    happyAdd: 50
+    happyAdd: 60
     item: {fileID: 100000, guid: cff8c50f3e70a2644ba4938f1afa6bb0, type: 3}
+    UIicon: {fileID: 21300050, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 1
-    price: 400
+    price: 120

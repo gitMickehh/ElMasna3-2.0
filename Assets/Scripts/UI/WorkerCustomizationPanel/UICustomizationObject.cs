@@ -32,6 +32,7 @@ public class UICustomizationObject : MonoBehaviour
     {
         myItem = sItem;
 
+        itemImage.sprite = sItem.UIicon;
         itemCost = sItem.price;
         itemCostText.text = sItem.price.ToString("0");
 

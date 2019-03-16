@@ -49,8 +49,8 @@ public class WorkerCustomizationPanel : MonoBehaviour
     private ModalPanel modalPanel;
     private UnityAction ConfirmAction;
 
-    private float totalCost;
-
+    [Header("Cost")]
+    public FloatField totalCost;
 
     private void OnEnable()
     {
@@ -142,20 +142,36 @@ public class WorkerCustomizationPanel : MonoBehaviour
 
     public void ConfirmButton()
     {
-        //totalCost = 
-        string s = gameConfigFile.CurrentLanguageProfile.AreYouSure + gameConfigFile.CurrentLanguageProfile.QuestionMark;
-        modalPanel.Choice(s, ConfirmAction);
+        var lang = gameConfigFile.CurrentLanguageProfile;
+
+        string[] qArr = new string[3]
+        {
+            lang.YouWillPay,
+            totalCost.GetValue().ToString("0"),
+            lang.AreYouSure
+        };
+
+        string message = lang.GetQuestion(qArr);
+        modalPanel.Choice(message, ConfirmAction);
     }
 
     private void ConfirmPreviews()
     {
+        var gManager = gameManager.gameObjectReference.GetComponent<GameManager>();
+        var lang = gameConfigFile.CurrentLanguageProfile;
+
+        if (!gManager.CheckBalance(totalCost.GetValue(),Currency.HappyMoney))
+        {
+            //No Money
+            modalPanel.Message(lang.NotEnoughMoney,gameConfigFile.icons[1]);
+            return;
+        }
+
+        gManager.WithdrawMoney(totalCost.GetValue(), Currency.HappyMoney);
+
         workerSelected.worker.customization.ConfirmPreview();
         UniformChanged();
-
         CloseAllPanels();
-
-        //pay here
-        //withdraw totalCost
     }
 
     public void CancelPreview()

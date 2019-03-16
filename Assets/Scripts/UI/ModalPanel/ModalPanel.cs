@@ -89,6 +89,7 @@ public class ModalPanel : MonoBehaviour
 
     public void Message(string ConfirmationMessage,Sprite messageIcon = null)
     {
+        AudioManager.instance.Play("Notify");
         UIOpenedEvent.Raise();
         modalPanelObject.SetActive(true);
 
