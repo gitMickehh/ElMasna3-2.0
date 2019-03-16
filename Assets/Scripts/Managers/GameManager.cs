@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     private ModalPanel modalPanel;
     private UnityAction BuildFloorAction;
 
+    public WorkerList workerList;
+
     private void OnEnable()
     {
         gameManagerField.gameObjectReference = gameObject;
@@ -269,5 +271,10 @@ public class GameManager : MonoBehaviour
         worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
 
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
+    }
+
+    public void PartyHandling()
+    {
+        workerList.AddPartyHappiness(GameConfigFile.happinessPercentage);
     }
 }

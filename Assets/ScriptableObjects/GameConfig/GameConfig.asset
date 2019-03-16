@@ -28,3 +28,4 @@ MonoBehaviour:
   icons:
   - {fileID: 21300002, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
   - {fileID: 21300000, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
+  happinessPercentage: 30

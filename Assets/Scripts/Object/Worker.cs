@@ -45,7 +45,7 @@ public class Worker : MonoBehaviour
     [Header("UI Camera")]
     public Transform UICameraPosition;
 
-    Animator workerAnimator;
+    public Animator workerAnimator;
 
     //saving
     public SerializableWorker WorkerData {
