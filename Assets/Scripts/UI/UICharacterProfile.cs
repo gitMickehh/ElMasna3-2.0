@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UICharacterProfile : MonoBehaviour
 {
     public GameConfig gameConfigFile;
+    public GameObjectField gameManager;
     private int workerID;
 
     [Header("UI Objects")]

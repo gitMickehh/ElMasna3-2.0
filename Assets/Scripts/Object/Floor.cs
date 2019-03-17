@@ -190,4 +190,18 @@ public class Floor : MonoBehaviour
 
         workRooms[roomNumber].machinePlaces[machinePosition].machinePosition.GetComponent<WayPoint>().WayPointTransform = m.workerPosition;
     }
+
+    public int GetBreakRoomIndex(WayPoint wp)
+    {
+        for (int i = 0; i < breakRoom.Length; i++)
+        {
+            if(breakRoom[i].position == wp)
+            {
+                return i;
+            }
+        }
+
+        Debug.LogWarning("No WayPoint like this in here :)");
+        return -1;
+    }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MaleNamesAR
   m_EditorClassIdentifier: 
   strings:
-  - "\uFEE7\uFEA9\uFE8E\uFEE7"
+  - "\uFEAD\uFEA9\uFE8E\uFEE7"
   - "\uFEE2\uFEF3\uFEAE\uFEDB"
   - "\uFEE1\uFE8E\uFEBC\uFECB"
   - "\uFEDE\uFEDC\uFEF3\uFE8E\uFEE3"
@@ -23,3 +23,8 @@ MonoBehaviour:
   - "\uFEED\uFEAE\uFEE4\uFECB"
   - "\u0621\uFEFC\uFECB"
   - "\uFEF0\uFED4\uFEC4\uFEBC\uFEE3"
+  - "\uFEAE\uFEB3\uFE8E\uFEF3"
+  - "\uFE94\uFEE3\uFE8E\uFEB3\uFE8D"
+  - "\uFEAA\uFEDF\uFE8E\uFEA7"
+  - "\uFE8E\uFEBF\uFEAD"
+  - "\uFEE5\uFE8E\uFEC0\uFEE3\uFEAD"

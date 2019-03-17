@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class UIElementDragger : MonoBehaviour
 {
-    //public const string DRAGGABLE_TAG = "UIDragable";
-    //public const string LANDING_DRAGGABLE_TAG = "UILandingDraggable";
     public bool MouseInput;
     public GameEvent RefreshUIEvent;
 
@@ -35,8 +33,6 @@ public class UIElementDragger : MonoBehaviour
     private Transform objectToDrag;
     private Image objectToDragImage;
 
-    //private Transform currentObjectReplaced;
-
     List<RaycastResult> hitObjects = new List<RaycastResult>();
 
     private void Start()
@@ -60,14 +56,11 @@ public class UIElementDragger : MonoBehaviour
                     dragging = true;
                     objectToDrag.SetAsLastSibling();
 
-                    //originalPosition = objectToDrag.position;
                     originalPosition = objectToDrag.localPosition;
 
                     objectToDragImage = objectToDrag.GetComponent<Image>();
                     objectToDragImage.raycastTarget = false;
 
-                    //if (currentObjectReplaced != null)
-                    //    currentObjectReplaced.GetComponent<DraggableUI>().OnThisOne = false;
                 }
                 else
                 {
@@ -77,7 +70,7 @@ public class UIElementDragger : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-               Reset();
+                Reset();
 
                 Transform objectToReplace = null;
 
@@ -87,33 +80,14 @@ public class UIElementDragger : MonoBehaviour
                 if (objectToReplace != null && objectToDrag != null)
                 {
                     objectToDrag.position = objectToReplace.position;
-                    //objectToDrag.SetParent(objectToReplace);
-                    //objectToReplace.GetComponent<Image>().enabled = false;
-                    //objectToReplace.GetComponent<DraggableUI>().OnThisOne = true;
-                    //currentObjectReplaced = objectToReplace;
-
-                    objectToReplace.GetComponent<UIMachine>().ChangeWorker(objectToDrag.gameObject);
+                    objectToReplace.GetComponent<UIMapDraggingContainer>().ReleaseDrag(objectToDrag.gameObject);
                 }
                 else
                 {
                     if (objectToDrag != null)
                     {
-                        //Vector2 newPosition = originalPosition;
-                        //newPosition.y += ScrollDistance.GetValue();
-
-                        //objectToDrag.position = newPosition;
-                        
-                        //objectToDrag.position = originalPosition;
                         objectToDrag.localPosition = originalPosition;
                     }
-                    //else
-                    //{
-                    //    dragging = true;
-                    //}
-                    //else
-                    //{
-                    //    Reset();
-                    //}
                 }
 
                 if (objectToDragImage != null)
@@ -121,7 +95,6 @@ public class UIElementDragger : MonoBehaviour
 
                 objectToDrag = null;
                 dragging = false;
-                //RefreshUIEvent.Raise();
                 ScrollDistance.SetValue(0);
             }
 
@@ -142,7 +115,6 @@ public class UIElementDragger : MonoBehaviour
                     dragging = true;
                     objectToDrag.SetAsLastSibling();
 
-                    //originalPosition = objectToDrag.position;
                     originalPosition = objectToDrag.localPosition;
 
                     objectToDragImage = objectToDrag.GetComponent<Image>();
@@ -151,29 +123,19 @@ public class UIElementDragger : MonoBehaviour
             }
             else if (finger.phase == TouchPhase.Ended || finger.phase == TouchPhase.Canceled)
             {
-               Reset();
+                Reset();
 
                 Transform objectToReplace = GetDraggableLandingTransformUnderMouse();
 
                 if (objectToReplace != null && objectToDrag != null)
                 {
                     objectToDrag.position = objectToReplace.position;
-                    //objectToDrag.SetParent(objectToReplace);
-                    //objectToReplace.GetComponent<Image>().enabled = false;
-                    //objectToReplace.GetComponent<DraggableUI>().OnThisOne = true;
-                    //currentObjectReplaced = objectToReplace;
-                    objectToReplace.GetComponent<UIMachine>().ChangeWorker(objectToDrag.gameObject);
+                    objectToReplace.GetComponent<UIMapDraggingContainer>().ReleaseDrag(objectToDrag.gameObject);
                 }
                 else
                 {
                     if (objectToDrag != null)
                     {
-                        //Vector2 newPosition = originalPosition;
-                        //newPosition.y += ScrollDistance.GetValue();
-
-                        //objectToDrag.position = newPosition;
-                        //objectToDrag.position = originalPosition;
-
                         objectToDrag.localPosition = originalPosition;
                     }
 
@@ -184,7 +146,6 @@ public class UIElementDragger : MonoBehaviour
 
                 objectToDrag = null;
                 dragging = false;
-                //RefreshUIEvent.Raise();
 
                 ScrollDistance.SetValue(0);
             }
@@ -225,16 +186,13 @@ public class UIElementDragger : MonoBehaviour
                 if (swipeDelta.y > 0)
                 {
                     ScrollDown.Raise();
-                    //Debug.Log("swipeDelta.y: " + swipeDelta.y);
                 }
-                else if(swipeDelta.y < 0)
+                else if (swipeDelta.y < 0)
                 {
                     ScrollUp.Raise();
-                    //Debug.Log("swipeDelta.y: " + swipeDelta.y);
-
                 }
 
-                 Reset();
+                Reset();
             }
         }
     }
@@ -265,10 +223,8 @@ public class UIElementDragger : MonoBehaviour
         if ((clickedObject) && (clickedObject.GetComponent<WorkerUIIcon>() == null))
             return null;
 
-        //if(clickedObject != null && clickedObject.tag == DRAGGABLE_TAG)
         if (clickedObject != null && clickedObject.GetComponent<WorkerUIIcon>().UIDraggableType.draggable)
         {
-            //clickedObject.transform.SetParent(parentWorkerObject);
             clickedObject.transform.parent.parent.SetAsLastSibling();
 
             return clickedObject.transform;
@@ -281,10 +237,9 @@ public class UIElementDragger : MonoBehaviour
     {
         GameObject clickedObject = GetObjectUnderMouse();
 
-        if (clickedObject.GetComponent<UIMachine>() == null)
+        if (clickedObject.GetComponent<UIMapDraggingContainer>() == null)
             return null;
 
-        //if (clickedObject != null && clickedObject.tag == LANDING_DRAGGABLE_TAG)
         if (clickedObject != null)
         {
             return clickedObject.transform;
@@ -296,7 +251,7 @@ public class UIElementDragger : MonoBehaviour
     private void Reset()
     {
 
-       swipeDelta = Vector2.zero;
+        swipeDelta = Vector2.zero;
     }
 
 }

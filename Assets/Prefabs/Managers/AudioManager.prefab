@@ -80,6 +80,27 @@ MonoBehaviour:
     looping: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - soundName: Swish
+    clip: {fileID: 8300000, guid: fec7975bf879e6a46a4716216ca2f642, type: 3}
+    volume: 0.35
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: machine1
+    clip: {fileID: 8300000, guid: cee0fb5177f4f7b4e946a22fc0ddba2f, type: 3}
+    volume: 0.04
+    pitch: 1
+    looping: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - soundName: machine2
+    clip: {fileID: 8300000, guid: 15463d15806d605498685ca687ccf48e, type: 3}
+    volume: 0.03
+    pitch: 1
+    looping: 1
+    playOnAwake: 0
+    source: {fileID: 0}
   buttonsSounds:
   - soundName: Select B
     clip: {fileID: 8300000, guid: 9cf7d1e77cc3adc4fa86872c7bae8cd0, type: 3}

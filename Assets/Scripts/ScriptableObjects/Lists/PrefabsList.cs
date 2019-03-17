@@ -7,6 +7,7 @@ public class PrefabReference
 {
     public int referenceID = 0;
     public GameObject prefab = null;
+    public Sprite UIRepresentation;
 }
 
 [CreateAssetMenu(fileName = "New Prefabs list", menuName = "ElMasna3/Lists/Prefabs")]
@@ -20,6 +21,17 @@ public class PrefabsList : ScriptableObject
         {
             if (prefabs[i].referenceID == id)
                 return prefabs[i].prefab;
+        }
+
+        return null;
+    }
+
+    public Sprite GetSpriteByID(int id)
+    {
+        for (int i = 0; i < prefabs.Length; i++)
+        {
+            if (prefabs[i].referenceID == id)
+                return prefabs[i].UIRepresentation;
         }
 
         return null;

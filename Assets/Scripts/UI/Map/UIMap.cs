@@ -44,7 +44,6 @@ public class UIMap : MonoBehaviour
         else
         {
             float Height = FloorUIParent.rect.height;
-            //FloorUIParent.GetComponent<VerticalLayoutGroup>().spacing = Height;
             int iMin = FloorUIParent.childCount;
 
             for (int i = listOfFloors.Items.Count - 1; i >= iMin; i--)
