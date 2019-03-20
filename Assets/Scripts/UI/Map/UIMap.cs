@@ -20,10 +20,18 @@ public class UIMap : MonoBehaviour
     public float scrollSpeed;
     public FloatField scrollDistance;
 
+    private float localYStart;
+    private float localYEnd;
+
     private void OnEnable()
     {
         UIOn.Raise();
         FillInMap();
+
+        localYStart = FloorUIParent.localPosition.y;
+        localYEnd = FloorUIParent.localPosition.y + (FloorUIParent.rect.height * (FloorUIParent.childCount - 1));
+
+        Debug.Log("Start " + localYStart + "\nEnd " + localYEnd);
     }
 
     private void OnDisable()
@@ -33,7 +41,7 @@ public class UIMap : MonoBehaviour
 
     public void FillInMap()
     {
-        if(FloorUIParent.childCount >= listOfFloors.Items.Count)
+        if (FloorUIParent.childCount >= listOfFloors.Items.Count)
         {
             var children = FloorUIParent.GetComponentsInChildren<UIFloor>();
             for (int i = 0; i < children.Length; i++)
@@ -57,24 +65,30 @@ public class UIMap : MonoBehaviour
                 fCompo.UpdateFloor();
             }
         }
-        
+
 
     }
 
     public void OnScrollUp()
     {
-        var x = FloorUIParent.localPosition;
-        x.y -= scrollSpeed;
-        FloorUIParent.localPosition = x;
+        var positionLocal = FloorUIParent.localPosition;
+        positionLocal.y -= scrollSpeed;
+        positionLocal.y = Mathf.Clamp(positionLocal.y, -localYEnd, localYStart);
+
+        //Debug.Log("scroll up: " + positionLocal.y);
+        FloorUIParent.localPosition = positionLocal;
 
         scrollDistance.AddValue(-scrollSpeed);
     }
 
     public void OnScrollDown()
     {
-        var x = FloorUIParent.localPosition;
-        x.y += scrollSpeed;
-        FloorUIParent.localPosition = x;
+        var positionLocal = FloorUIParent.localPosition;
+        positionLocal.y += scrollSpeed;
+        positionLocal.y = Mathf.Clamp(positionLocal.y, -localYEnd, localYStart);
+
+        //Debug.Log("scroll down: " + positionLocal.y);
+        FloorUIParent.localPosition = positionLocal;
 
         scrollDistance.AddValue(scrollSpeed);
     }

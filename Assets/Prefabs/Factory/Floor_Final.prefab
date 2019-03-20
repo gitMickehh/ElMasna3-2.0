@@ -495,9 +495,10 @@ MonoBehaviour:
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   savingFloor:
     rooms: []
+    breakRoomWorkersIDs: 
     floorOrder: 0
   cameraProperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
-  heightToAddToCamera: 45
+  heightToAddToCamera: 55
   workRooms:
   - Door: {fileID: 6928572773426465534}
     machinePlaces:
@@ -518,14 +519,19 @@ MonoBehaviour:
   breakRoom:
   - position: {fileID: 2721241160755284200}
     worker: {fileID: 0}
+    breakObject: 0
   - position: {fileID: 8534805706718922366}
     worker: {fileID: 0}
+    breakObject: 0
   - position: {fileID: 2080179726155393483}
     worker: {fileID: 0}
+    breakObject: 0
   - position: {fileID: 8446683345059044304}
     worker: {fileID: 0}
+    breakObject: 0
   - position: {fileID: 1621455735970318860}
     worker: {fileID: 0}
+    breakObject: 0
   WorkersHolder: {fileID: 516371051559589594}
   EmptyMachineVFX: {fileID: 3882214859167106375, guid: 2aa6d527385c7c243aa81e89a6e7455b,
     type: 3}

@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MouseInput: 1
   RefreshUIEvent: {fileID: 0}
+  ListOfWorkerIcons: {fileID: 11400000, guid: 8fb715bff76653f4f9d735737ada6404, type: 2}
   scrollThresholdPercentage: 15
   ScrollUp: {fileID: 11400000, guid: e230eb0dc91114b4fb3742b542065bda, type: 2}
   ScrollDown: {fileID: 11400000, guid: d30b9598c5bb9924cb28711bd8fc3a5f, type: 2}

@@ -148,7 +148,7 @@ public class SaveGameManager : MonoBehaviour
                     }
                 }
 
-                Debug.Log("worker" + i + ": " + retrievedJson);
+                //Debug.Log("worker" + i + ": " + retrievedJson);
                 worker.GetComponent<Worker>().LoadWorkerData(workerData);
             }
         }

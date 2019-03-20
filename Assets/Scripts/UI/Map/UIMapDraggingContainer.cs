@@ -19,37 +19,48 @@ public class UIMapDraggingContainer : MonoBehaviour
 
     [Attributes.GreyOut]
     public GameObject workerImage;
+    public WorkerUIIcon myWorkerImage
+    {
+        get
+        {
+            return workerImage.GetComponent<WorkerUIIcon>();
+        }
+    }
     UIFloor myFloor;
 
-    private void OnEnable()
+    private void Start()
     {
         myFloor = GetComponentInParent<UIFloor>();
     }
 
-    public void ReleaseDrag(GameObject w)
+    public void ReleaseDrag(GameObject workerUIGameObject)
     {
-        var iconWorker = w.GetComponent<WorkerUIIcon>();
+        var iconWorker = workerUIGameObject.GetComponent<WorkerUIIcon>();
         Worker workerComponent = myFloor.listOfWorkers.GetWorkerById(iconWorker.workerID);
-        SeekRoom workerSeeker = w.GetComponent<SeekRoom>();
+        SeekRoom workerSeeker = workerUIGameObject.GetComponent<SeekRoom>();
         Floor floor = myFloor.realFloor;
 
         if (type == UIDraggingType.MACHINE)
         {
-            if (iconWorker.machine != null)
+            if (iconWorker.container != null)
             {
                 if (workerImage != null)
                 {
-                    //other machine has worker
-
+                    //if worker was on another machine and I had a worker
+                    //then swap workers
+                    WorkerUIIcon temp = iconWorker.container.myWorkerImage;
+                    iconWorker.container.workerImage = workerImage;
+                    
                 }
                 else
                 {
-                    iconWorker.machine.workerImage = null;
+                    //if worker is already on another machine and I have no workers
+                    iconWorker.container.workerImage = null;
+                    workerImage = workerUIGameObject;
                 }
             }
 
-            workerImage = w;
-            iconWorker.machine = this;
+            iconWorker.container = this;
 
             machineReference.ChangeWorker(myFloor.listOfWorkers.GetWorkerById(iconWorker.workerID));
         }
@@ -57,9 +68,15 @@ public class UIMapDraggingContainer : MonoBehaviour
         {
             int breakRoomIndex = floor.GetBreakRoomIndex(waypoint);
 
+
             floor.breakRoom[breakRoomIndex].worker = workerComponent;
             workerSeeker.SwitchRoom(waypoint);
         }
     }
 
+    //public void Copy(UIMapDraggingContainer other)
+    //{
+    //    workerImage = other.workerImage;
+    //    waypoint
+    //}
 }

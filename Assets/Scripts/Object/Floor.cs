@@ -127,6 +127,7 @@ public class Floor : MonoBehaviour
                 breakRoom[i].worker = w.GetComponent<Worker>();
                 //breakRoom[i].worker.SetState(WorkerState.InBreak);
                 breakRoom[i].worker.SetBreak(breakRoom[i].breakObject);
+                breakRoom[i].worker.gameObject.GetComponent<SeekRoom>().wayPointCurrent = breakRoom[i].position;
             }
         }
 

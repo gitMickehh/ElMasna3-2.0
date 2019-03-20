@@ -24,6 +24,8 @@ public class Machine : MonoBehaviour
     [Header("Machine Scheme")]
     public MachineScheme scheme;
     public Slider machineTimeSlider;
+    public Image machineCircularTimer;
+    public bool circular;
     private float timeOfCycle;
     private float runningTime = 0;
 
@@ -61,12 +63,15 @@ public class Machine : MonoBehaviour
             {
                 runningTime = 0;
                 var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
-                gm.DepositMoney(scheme.moneyInCycle,scheme.moneyCurrency);
+                gm.DepositMoney(scheme.moneyInCycle, scheme.moneyCurrency);
             }
             else
             {
                 runningTime += Time.deltaTime;
-                machineTimeSlider.value = 1 - (runningTime / timeOfCycle);
+                if (circular)
+                    machineCircularTimer.fillAmount = 1 - (runningTime / timeOfCycle);
+                else
+                    machineTimeSlider.value = 1 - (runningTime / timeOfCycle);
             }
 
         }
@@ -114,6 +119,10 @@ public class Machine : MonoBehaviour
             if (CurrentWorker != null)
             {
                 w.currentMachine.CurrentWorker = CurrentWorker;
+                if (parentFloor.floorOrder != w.currentMachine.parentFloor.floorOrder)
+                {
+                    w.transform.SetParent(parentFloor.WorkersHolder);
+                }
             }
             else
             {
@@ -121,11 +130,6 @@ public class Machine : MonoBehaviour
                 w.currentMachine.IsWorking = false;
                 w.currentMachine.SliderToggle();
             }
-        }
-
-        if (parentFloor.floorOrder != w.currentMachine.parentFloor.floorOrder)
-        {
-            w.transform.SetParent(parentFloor.WorkersHolder);
         }
 
         w.currentMachine = this;
@@ -162,7 +166,10 @@ public class Machine : MonoBehaviour
 
     public void SliderToggle()
     {
-        machineTimeSlider.gameObject.SetActive(IsWorking);
+        if (circular)
+            machineCircularTimer.gameObject.SetActive(IsWorking);
+        else
+            machineTimeSlider.gameObject.SetActive(IsWorking);
     }
 
     private void OnDrawGizmosSelected()

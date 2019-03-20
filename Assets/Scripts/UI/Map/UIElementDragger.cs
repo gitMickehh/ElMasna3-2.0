@@ -8,6 +8,7 @@ public class UIElementDragger : MonoBehaviour
 {
     public bool MouseInput;
     public GameEvent RefreshUIEvent;
+    public WorkerUIIconList ListOfWorkerIcons;
 
     [Header("Map Scroll Space")]
     [Range(0, 100)]
@@ -60,6 +61,7 @@ public class UIElementDragger : MonoBehaviour
 
                     objectToDragImage = objectToDrag.GetComponent<Image>();
                     objectToDragImage.raycastTarget = false;
+                    ListOfWorkerIcons.DisableRaycastExcept(objectToDrag.GetComponent<WorkerUIIcon>().workerID);
 
                 }
                 else
@@ -96,6 +98,7 @@ public class UIElementDragger : MonoBehaviour
                 objectToDrag = null;
                 dragging = false;
                 ScrollDistance.SetValue(0);
+                ListOfWorkerIcons.EnableRaycastTargets();
             }
 
         }

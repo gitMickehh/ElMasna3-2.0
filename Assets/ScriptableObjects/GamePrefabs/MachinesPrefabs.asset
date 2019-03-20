@@ -28,11 +28,11 @@ MonoBehaviour:
   - referenceID: 4
     prefab: {fileID: 4166432995667429784, guid: 450c76eca1152774aadab815e0835cd2,
       type: 3}
-    UIRepresentation: {fileID: 21300010, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    UIRepresentation: {fileID: 21300002, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 5
     prefab: {fileID: 4166432995667429784, guid: caf5e397c173a4643b0aaa0b93c314c9,
       type: 3}
-    UIRepresentation: {fileID: 21300008, guid: 71981db3fa2e1d94188c715073c9791d, type: 3}
+    UIRepresentation: {fileID: 21300014, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 6
     prefab: {fileID: 4166432995667429784, guid: 984dfc37a001f7d4dacdd70381d24ff9,
       type: 3}

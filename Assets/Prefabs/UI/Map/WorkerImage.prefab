@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -621.5, y: 145.50003}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 185, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7460727004857958715
@@ -89,4 +89,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIDraggableType: {fileID: 11400000, guid: 16f9a9c16736f9b4fb29f34310d4ddd1, type: 2}
   workerID: 0
-  machine: {fileID: 0}
+  container: {fileID: 0}
+  listOfWIcons: {fileID: 11400000, guid: 8fb715bff76653f4f9d735737ada6404, type: 2}
