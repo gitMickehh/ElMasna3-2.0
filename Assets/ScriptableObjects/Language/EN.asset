@@ -36,5 +36,6 @@ MonoBehaviour:
   NotEnoughMoney: You don't have enough resources
   AreYouSureYouWantToRestartTheGame: Are you sure you want to restart the game and
     delete your save file
+  DoYouWantToStartTheParty: Do you want to start a party
   ExeclamationMark: '!'
   WelcomeText: Welcome to your factory

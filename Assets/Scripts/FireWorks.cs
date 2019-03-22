@@ -12,7 +12,6 @@ public class FireWorks : MonoBehaviour
         for(int i = 0; i< fireWorksLocations.Count; i++)
         {
             GameObject fireWorksCopy = Instantiate(fireWorks, fireWorksLocations[i]);
-
         }
     }
 }

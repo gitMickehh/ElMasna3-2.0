@@ -49,6 +49,9 @@ public class LanguageProfile : ScriptableObject
     public string NotEnoughMoney;
     [TextArea]
     public string AreYouSureYouWantToRestartTheGame;
+    [TextArea]
+    public string DoYouWantToStartTheParty;
+
 
     [Header("Tutorial Statements")]
     public string ExeclamationMark;

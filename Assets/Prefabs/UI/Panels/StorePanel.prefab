@@ -276,6 +276,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8428356793609657116}
+        m_MethodName: PartyOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &8428356793156197182
@@ -585,6 +596,7 @@ MonoBehaviour:
   PartyCostText: {fileID: 8428356793157927999}
   MachineStorePage: {fileID: 8428356793156197182}
   ToPlaceMachine: {fileID: 11400000, guid: b17dc6887e5208a4d854590c5dddbaf0, type: 2}
+  StartParty: {fileID: 11400000, guid: b5dbfa010594ec04988113c763f25d5a, type: 2}
   gameManager: {fileID: 0}
   currentCheck: {fileID: 11400000, guid: 43ffc5741ea77c84abff8eb0a22610ad, type: 2}
 --- !u!114 &8428356793609657123

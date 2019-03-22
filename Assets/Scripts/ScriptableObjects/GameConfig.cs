@@ -39,6 +39,7 @@ public class GameConfig : ScriptableObject {
     public Sprite[] icons;
 
     [Header("Party")]
+    public float PartyCost = 500;
     public float happinessPercentage;
 
     public void SetColorField(Color c)

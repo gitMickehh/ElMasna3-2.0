@@ -282,6 +282,7 @@ public class GameManager : MonoBehaviour
     public void PartyHandling()
     {
         workerList.AddPartyHappiness(GameConfigFile.happinessPercentage);
+        WithdrawMoney(GameConfigFile.PartyCost,Currency.HappyMoney);
     }
 
     public void PayForMachine()
