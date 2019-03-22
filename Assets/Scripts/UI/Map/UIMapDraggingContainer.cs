@@ -12,10 +12,14 @@ public enum UIDraggingType
 public class UIMapDraggingContainer : MonoBehaviour
 {
     public UIDraggingType type;
+    public FloorList floorList;
+
     [Header("Machine")]
     public Machine machineReference;
     [Header("Waypoint")]
     public WayPoint waypoint;
+
+
 
     [Attributes.GreyOut]
     public GameObject workerImage;
@@ -37,40 +41,47 @@ public class UIMapDraggingContainer : MonoBehaviour
     {
         var iconWorker = workerUIGameObject.GetComponent<WorkerUIIcon>();
         Worker workerComponent = myFloor.listOfWorkers.GetWorkerById(iconWorker.workerID);
-        SeekRoom workerSeeker = workerUIGameObject.GetComponent<SeekRoom>();
+        SeekRoom workerSeeker = workerComponent.GetComponent<SeekRoom>();
         Floor floor = myFloor.realFloor;
+
+        iconWorker.GiveContainerRef(this);
 
         if (type == UIDraggingType.MACHINE)
         {
-            if (iconWorker.container != null)
+            if(workerComponent.currentMachine == null)
             {
-                if (workerImage != null)
+                //the worker was not on a machine and was on a break
+
+                WayPoint oldWayPoint = workerSeeker.wayPointCurrent;
+                int breakRoomIndex = floor.GetBreakRoomIndex(waypoint);
+
+                if (breakRoomIndex == -1)
                 {
-                    //if worker was on another machine and I had a worker
-                    //then swap workers
-                    WorkerUIIcon temp = iconWorker.container.myWorkerImage;
-                    iconWorker.container.workerImage = workerImage;
-                    
+                    //the break room is not on this floor
+                    Floor floorWithBreakRoom = floorList.GetFloorWithWayPoint(oldWayPoint);
+                    breakRoomIndex = floorWithBreakRoom.GetBreakRoomIndex(oldWayPoint);
+                    floorWithBreakRoom.breakRoom[breakRoomIndex].worker = null;
                 }
                 else
                 {
-                    //if worker is already on another machine and I have no workers
-                    iconWorker.container.workerImage = null;
-                    workerImage = workerUIGameObject;
+                    floor.breakRoom[breakRoomIndex].worker = null;
                 }
             }
-
-            iconWorker.container = this;
-
+            
             machineReference.ChangeWorker(myFloor.listOfWorkers.GetWorkerById(iconWorker.workerID));
         }
         else if (type == UIDraggingType.BREAKWAYPOINT)
         {
             int breakRoomIndex = floor.GetBreakRoomIndex(waypoint);
+            Debug.Log("Floor "+floor.floorOrder + " Waypoint Index: "+ breakRoomIndex);
 
-
+            workerComponent.currentMachine.CurrentWorker = null;
+            workerComponent.currentMachine = null;
             floor.breakRoom[breakRoomIndex].worker = workerComponent;
+            workerComponent.transform.SetParent(floor.WorkersHolder);
+            
             workerSeeker.SwitchRoom(waypoint);
+            workerComponent.SetBreak(floor.breakRoom[breakRoomIndex].breakObject);
         }
     }
 

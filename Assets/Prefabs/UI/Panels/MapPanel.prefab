@@ -195,6 +195,7 @@ MonoBehaviour:
   FloorUIPanel: {fileID: 4685143658640849351, guid: dba3a738e9d1fe3428dd35b9a5a8ed97,
     type: 3}
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
+  iconsList: {fileID: 11400000, guid: 8fb715bff76653f4f9d735737ada6404, type: 2}
   scrollSpeed: 10
   scrollDistance: {fileID: 11400000, guid: 4f99eb9f7cd5f754ba040204b0d8d3eb, type: 2}
 --- !u!114 &469586060480580058

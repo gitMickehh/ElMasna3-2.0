@@ -42,6 +42,11 @@ public class FloorList : RuntimeList<Floor>
         }
     }
     
+    public Floor GetFloorWithWayPoint(WayPoint wp)
+    {
+        return Items.First<Floor>(x => x.GetBreakRoomIndex(wp) != -1);
+    }
+
     public Machine GetFirstAvailableMachine()
     {
         SortFloorList();

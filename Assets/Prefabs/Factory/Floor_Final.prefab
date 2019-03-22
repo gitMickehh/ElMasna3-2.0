@@ -1322,6 +1322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakRoomAssets
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6b0c31c422f08f4bb1debc544f1c794, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6b0c31c422f08f4bb1debc544f1c794, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.452487

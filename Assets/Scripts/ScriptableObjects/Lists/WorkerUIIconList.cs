@@ -6,6 +6,20 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "New Workers Icons List", menuName = "ElMasna3/UI/Workers Icons RT List")]
 public class WorkerUIIconList : RuntimeList<WorkerUIIcon>
 {
+    public WorkerList workersList;
+
+    public override void Add(WorkerUIIcon t)
+    {
+        if(!Items.Contains(t))
+            base.Add(t);
+    }
+
+    public override void Remove(WorkerUIIcon t)
+    {
+        if(Items.Contains(t))
+            base.Remove(t);
+    }
+
     public WorkerUIIcon GetWorkerIconByID(int id)
     {
         for (int i = 0; i < Items.Count; i++)

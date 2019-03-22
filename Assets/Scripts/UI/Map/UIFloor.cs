@@ -17,7 +17,6 @@ public class UIFloor : MonoBehaviour
     public WorkerList listOfWorkers;
     public GameObject WorkerImage;
 
-    private List<WorkerUIIcon> workersInMyFloor = new List<WorkerUIIcon>();
 
     [Header("Data")]
     [Attributes.GreyOut]
@@ -47,6 +46,9 @@ public class UIFloor : MonoBehaviour
         }
     }
 
+    // ERROR: Give the instantaited workers Icons the reference to theri CoNTAINER
+
+
     public void UpdateFloor()
     {
         for (int i = 0; i < realFloor.workRooms.Length; i++)
@@ -67,11 +69,14 @@ public class UIFloor : MonoBehaviour
 
                         if (NewWorkerIcon == null)
                         {
-                            Debug.Log("Instantating with ID " + workerId);
+                            //Debug.Log("Instantating with ID " + workerId);
                             NewWorkerIcon = Instantiate(WorkerImage, WorkerMapSpawn).GetComponent<WorkerUIIcon>();
                             NewWorkerIcon.workerID = workerId;
                             NewWorkerIcon.transform.name = "UI" + m[i].machinePlaces[j].machine.CurrentWorker.GetComponent<Worker>().FullName;
                         }
+
+                        NewWorkerIcon.container = rooms[i].Machines[j];
+                        NewWorkerIcon.container.workerImage = NewWorkerIcon.gameObject;
 
                         NewWorkerIcon.transform.SetParent(rooms[i].Machines[j].gameObject.transform);
                         NewWorkerIcon.transform.localPosition = new Vector2();
@@ -104,6 +109,9 @@ public class UIFloor : MonoBehaviour
 
                 //Debug.Log("break room " + i + ": "+ breakRoom.Machines[i].transform.localPosition);
                 //NewWorkerIcon.transform.localPosition = breakRoom.Machines[i].transform.localPosition;
+                NewWorkerIcon.container = breakRoom.Machines[i];
+                NewWorkerIcon.container.workerImage = NewWorkerIcon.gameObject;
+
                 NewWorkerIcon.transform.SetParent(breakRoom.Machines[i].transform);
                 NewWorkerIcon.transform.localPosition = new Vector2();
                 breakRoom.Machines[i].workerImage = NewWorkerIcon.gameObject;

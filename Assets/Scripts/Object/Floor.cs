@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Floor : MonoBehaviour
@@ -196,7 +197,7 @@ public class Floor : MonoBehaviour
     {
         for (int i = 0; i < breakRoom.Length; i++)
         {
-            if(breakRoom[i].position == wp)
+            if (breakRoom[i].position == wp)
             {
                 return i;
             }

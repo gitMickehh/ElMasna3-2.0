@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WorkerCustomization : MonoBehaviour
 {
@@ -263,18 +264,18 @@ public class WorkerCustomization : MonoBehaviour
         if (cData[0] >= 0)
         {
             //HeadItem.myself.FillData(cData.HeadItem);
-
-            CustomizationItem headItem = HeadItems.Items.Find(delegate (CustomizationItem c)
-            {
-                if (c.id == cData[0])
-                {
-                    return c.item;
-                }
-                else
-                {
-                    return false;
-                }
-            });
+            CustomizationItem headItem = HeadItems.Items.FirstOrDefault(x => x.id == cData[0]); ;
+            //CustomizationItem headItem = HeadItems.Items.Find(delegate (CustomizationItem c)
+            //{
+            //    if (c.id == cData[0])
+            //    {
+            //        return c.item;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //});
 
             if (headItem.item != null)
             {
@@ -289,21 +290,27 @@ public class WorkerCustomization : MonoBehaviour
         if (cData[1] >= 0)
         {
             //FaceItem.myself.FillData(cData.FaceItem);
-            var faceItem = FaceItems.Items.Find(delegate (CustomizationItem c)
-            {
-                if (c.id == cData[1])
-                {
-                    return c.item;
-                }
-                else
-                {
-                    Debug.LogWarning("No Face Items found with ID (" + cData[1] + ").");
-                    return false;
-                }
-            });
+            var faceItem = FaceItems.Items.FirstOrDefault(x => x.id == cData[1]);
+            //var faceItem = FaceItems.Items.Find(delegate (CustomizationItem c)
+            //{
+            //    if (c.id == cData[1])
+            //    {
+            //        return c.item;
+            //    }
+            //    else
+            //    {
+            //        Debug.LogWarning("No Face Items found with ID (" + cData[1] + ").");
+            //        return false;
+            //    }
+            //});
+
             if (faceItem != null)
             {
                 FaceItem.loadObject(faceItem, HeadPlace);
+            }
+            else
+            {
+                Debug.LogWarning("No Face Items found with ID (" + cData[1] + ").");
             }
         }
 
@@ -311,20 +318,26 @@ public class WorkerCustomization : MonoBehaviour
         {
             //BodyItem.myself.FillData(cData.BodyItem);
 
-            var BodyObj = BodyItems.Items.Find(delegate (CustomizationItem c)
-            {
-                if (c.id == cData[2])
-                    return c.item;
-                else
-                {
-                    Debug.LogWarning("No Body Items found with ID (" + cData[2] + ").");
-                    return false;
-                }
-            });
+            var BodyObj = BodyItems.Items.FirstOrDefault(x => x.id == cData[2]);
+            //var BodyObj = BodyItems.Items.Find(delegate (CustomizationItem c)
+            //{
+            //    if (c.id == cData[2])
+            //        return c.item;
+            //    else
+            //    {
+            //        Debug.LogWarning("No Body Items found with ID (" + cData[2] + ").");
+            //        return false;
+            //    }
+            //    
+            //});
 
             if (BodyObj != null)
             {
                 BodyItem.loadObject(BodyObj, BodyPlace);
+            }
+            else
+            {
+                Debug.LogWarning("No Body Items found with ID (" + cData[2] + ").");
             }
         }
 

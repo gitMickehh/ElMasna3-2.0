@@ -15,6 +15,7 @@ public class UIMap : MonoBehaviour
 
     [Header("Floors")]
     public FloorList listOfFloors;
+    public WorkerUIIconList iconsList;
 
     [Header("Scroll")]
     public float scrollSpeed;
@@ -23,15 +24,18 @@ public class UIMap : MonoBehaviour
     private float localYStart;
     private float localYEnd;
 
-    private void OnEnable()
+    private void Start()
     {
-        UIOn.Raise();
+        iconsList.Items.Clear();
         FillInMap();
-
         localYStart = FloorUIParent.localPosition.y;
         localYEnd = FloorUIParent.localPosition.y + (FloorUIParent.rect.height * (FloorUIParent.childCount - 1));
 
-        Debug.Log("Start " + localYStart + "\nEnd " + localYEnd);
+    }
+
+    private void OnEnable()
+    {
+        UIOn.Raise();
     }
 
     private void OnDisable()

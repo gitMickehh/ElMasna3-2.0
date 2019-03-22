@@ -118,7 +118,16 @@ public class Machine : MonoBehaviour
         {
             if (CurrentWorker != null)
             {
-                w.currentMachine.CurrentWorker = CurrentWorker;
+                //switching workers
+                Debug.Log("Switching WORKERS");
+
+                var otherMachine = w.currentMachine;
+
+                otherMachine.CurrentWorker = CurrentWorker;
+                CurrentWorker.GetComponent<Worker>().currentMachine = otherMachine;
+
+                CurrentWorker.GetComponent<SeekRoom>().SwitchRoom(otherMachine.GetComponentInParent<WayPoint>());
+
                 if (parentFloor.floorOrder != w.currentMachine.parentFloor.floorOrder)
                 {
                     w.transform.SetParent(parentFloor.WorkersHolder);
@@ -126,8 +135,8 @@ public class Machine : MonoBehaviour
             }
             else
             {
-                w.currentMachine.CurrentWorker = null;
                 w.currentMachine.IsWorking = false;
+                w.currentMachine.CurrentWorker = null;
                 w.currentMachine.SliderToggle();
             }
         }
@@ -139,7 +148,7 @@ public class Machine : MonoBehaviour
         w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
 
         IsWorking = true;
-        w.currentMachine.SliderToggle();
+        SliderToggle();
     }
 
     public void SetWorker(Worker w)
