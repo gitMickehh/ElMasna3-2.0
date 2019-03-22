@@ -116,7 +116,6 @@ public class StorePanel : MonoBehaviour
         modalPanel.Choice(message, new UnityAction(PartyPayAccept), myCancelAction, gameManager.GameConfigFile.icons[1]);
     }
 
-
     public void PartyPayAccept()
     {
         StartParty.Raise();
