@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7460727004857958715}
   - component: {fileID: 7460727004857958708}
   - component: {fileID: 7460727004857958711}
+  - component: {fileID: 3544286478658513220}
   m_Layer: 5
   m_Name: WorkerImage
   m_TagString: UIDragable
@@ -91,3 +92,22 @@ MonoBehaviour:
   workerID: 0
   container: {fileID: 0}
   listOfWIcons: {fileID: 11400000, guid: 8fb715bff76653f4f9d735737ada6404, type: 2}
+--- !u!95 &3544286478658513220
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460727004857958710}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb7cb5731ad356040ab3c32e33a0c660, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

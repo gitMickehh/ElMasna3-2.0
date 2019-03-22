@@ -38,6 +38,11 @@ public class WorkerUIIcon : MonoBehaviour
         container = other.container;
     }
 
+    public void AnimatorTrigger()
+    {
+        GetComponent<Animator>().SetTrigger("Interact");
+    }
+
     /// <summary>
     /// if there is a container already, it swaps with the other workerUIIcon.
     /// it also places the icon by its transform.
@@ -52,13 +57,18 @@ public class WorkerUIIcon : MonoBehaviour
         else
         {
             //new container is not empty
+
+
             Debug.Log("Switching Containers");
             GameObject temp = newContainer.workerImage;
+            var otherWorkerIcon = temp.GetComponent<WorkerUIIcon>();
+
             container.workerImage = temp;
-            temp.GetComponent<WorkerUIIcon>().container = container;
+            otherWorkerIcon.container = container;
 
             temp.transform.SetParent(container.transform);
             temp.transform.localPosition = new Vector2();
+            otherWorkerIcon.AnimatorTrigger();
 
             newContainer.workerImage = gameObject;
         }
@@ -66,6 +76,7 @@ public class WorkerUIIcon : MonoBehaviour
         container = newContainer;
         transform.SetParent(container.transform);
         transform.localPosition = new Vector2();
+        AnimatorTrigger();
     }
 }
 

@@ -223,12 +223,17 @@ public class UIElementDragger : MonoBehaviour
     {
         GameObject clickedObject = GetObjectUnderMouse();
 
-        if ((clickedObject) && (clickedObject.GetComponent<WorkerUIIcon>() == null))
+        var workerIconComponent = clickedObject.GetComponent<WorkerUIIcon>();
+
+        if ((clickedObject) && (workerIconComponent == null))
             return null;
 
-        if (clickedObject != null && clickedObject.GetComponent<WorkerUIIcon>().UIDraggableType.draggable)
+        if (clickedObject != null && workerIconComponent.UIDraggableType.draggable)
         {
+            //.parent.parent to control the whole UI room
+
             clickedObject.transform.parent.parent.SetAsLastSibling();
+            workerIconComponent.AnimatorTrigger();
 
             return clickedObject.transform;
         }
