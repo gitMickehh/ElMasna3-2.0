@@ -19,7 +19,7 @@ public class UIElementDragger : MonoBehaviour
     [Header("Scroll")]
     public GameEvent ScrollUp;
     public GameEvent ScrollDown;
-    public FloatField ScrollDistance;
+    //public FloatField ScrollDistance;
 
     private Touch finger;
 
@@ -61,7 +61,9 @@ public class UIElementDragger : MonoBehaviour
 
                     objectToDragImage = objectToDrag.GetComponent<Image>();
                     objectToDragImage.raycastTarget = false;
-                    ListOfWorkerIcons.DisableRaycastExcept(objectToDrag.GetComponent<WorkerUIIcon>().workerID);
+
+                    if (GetComponent<WorkerUIIcon>() != null)
+                        ListOfWorkerIcons.DisableRaycastExcept(objectToDrag.GetComponent<WorkerUIIcon>().workerID);
 
                 }
                 else
@@ -97,7 +99,7 @@ public class UIElementDragger : MonoBehaviour
 
                 objectToDrag = null;
                 dragging = false;
-                ScrollDistance.SetValue(0);
+                //ScrollDistance.SetValue(0);
                 ListOfWorkerIcons.EnableRaycastTargets();
             }
 
@@ -122,6 +124,10 @@ public class UIElementDragger : MonoBehaviour
 
                     objectToDragImage = objectToDrag.GetComponent<Image>();
                     objectToDragImage.raycastTarget = false;
+
+                    if (GetComponent<WorkerUIIcon>() != null)
+                        ListOfWorkerIcons.DisableRaycastExcept(objectToDrag.GetComponent<WorkerUIIcon>().workerID);
+
                 }
             }
             else if (finger.phase == TouchPhase.Ended || finger.phase == TouchPhase.Canceled)
@@ -150,7 +156,8 @@ public class UIElementDragger : MonoBehaviour
                 objectToDrag = null;
                 dragging = false;
 
-                ScrollDistance.SetValue(0);
+                //ScrollDistance.SetValue(0);
+                ListOfWorkerIcons.EnableRaycastTargets();
             }
 
         }

@@ -127,9 +127,9 @@ public class Worker : MonoBehaviour
                 workerAnimator.SetBool("Working", false);
                 break;
 
-            //case WorkerState.Working:
-            //    workerAnimator.SetBool("Working", true);
-            //    break;
+            case WorkerState.Working:
+                workerAnimator.SetBool("Working", true);
+                break;
 
             case WorkerState.Winning:
                 //workerAnimator.SetBool("Working", false);
@@ -139,7 +139,8 @@ public class Worker : MonoBehaviour
             //case WorkerState.Walking:
             //    workerAnimator.SetBool("Walking", true);
             //    break;
-
+            default:
+                break;
         }
     }
 
@@ -169,11 +170,6 @@ public class Worker : MonoBehaviour
         //SetWorking(false);
     }
 
-    public void SetState(WorkerState state)
-    {
-        workerState = state;
-        //do stuff
-    }
 
     public SerializableWorker GetWorkerData()
     {

@@ -153,6 +153,7 @@ public class Machine : MonoBehaviour
         w.currentMachine = this;
         CurrentWorker = w.gameObject;
 
+        CurrentWorker.GetComponent<Worker>().SetWorkerState(WorkerState.Working);
         WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
         w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
 

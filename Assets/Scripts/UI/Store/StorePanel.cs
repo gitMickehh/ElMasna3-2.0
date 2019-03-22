@@ -24,6 +24,7 @@ public class StorePanel : MonoBehaviour
     [Header("Game Manager")]
     [Attributes.GreyOut]
     public GameManager gameManager;
+    public FloatField currentCheck;
 
     //Modal Panel
     private ModalPanel modalPanel;
@@ -58,7 +59,16 @@ public class StorePanel : MonoBehaviour
         UIobjectToBuy = sObject;
         ObjectToBuy.gameObjectReference = UIobjectToBuy.ReferencePrefab;
 
-        modalPanel.Choice("Would you buy this?",myYesAction,myCancelAction);
+        LanguageProfile lang = gameManager.GameConfigFile.CurrentLanguageProfile;
+        string[] qs = new string[]
+        {
+            lang.YouWillPay,
+            UIobjectToBuy.itemCost.ToString()
+        };
+
+        string message = lang.GetQuestion(qs);
+
+        modalPanel.Choice(message,myYesAction,myCancelAction);
     }
     
     public void ConfirmBuy()
@@ -69,6 +79,7 @@ public class StorePanel : MonoBehaviour
             //so if the player quits before this they don't lose their money
             //gameManager.WithdrawMoney(UIobjectToBuy.itemCost, UIobjectToBuy.currency);
             ToPlaceMachine.Raise();
+            currentCheck.SetValue(UIobjectToBuy.itemCost);
             MachineStorePage.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }

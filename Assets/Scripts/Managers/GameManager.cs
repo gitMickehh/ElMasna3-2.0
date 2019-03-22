@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
     public GameEvent BuildSuccess;
     public GameEvent BuildFailure;
 
-    [Header("Selected Worker")]
+    [Header("Live Objects")]
     public WorkerField SelectedWorker;
+    public FloatField machineCheck;
 
     [Header("Time")]
     [GreyOut]
@@ -281,5 +282,11 @@ public class GameManager : MonoBehaviour
     public void PartyHandling()
     {
         workerList.AddPartyHappiness(GameConfigFile.happinessPercentage);
+    }
+
+    public void PayForMachine()
+    {
+        WithdrawMoney(machineCheck.GetValue(),Currency.RealMoney);
+        machineCheck.SetValue(0);
     }
 }

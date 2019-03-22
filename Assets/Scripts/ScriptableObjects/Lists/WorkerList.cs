@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "New Workers List", menuName = "ElMasna3/Lists/Workers RT List")]
 public class WorkerList : RuntimeList<Worker>
@@ -20,7 +21,12 @@ public class WorkerList : RuntimeList<Worker>
 
     public int GetNewId()
     {
-        return Items.Count + 1;
+        Items = Items.OrderBy(x => x.ID).ToList();
+
+        if (Items.Count == 0)
+            return Items.Count + 1;
+        else
+            return Items.Last().ID + 1;
     }
 
     public void AddPartyHappiness(float happinessPercentage)

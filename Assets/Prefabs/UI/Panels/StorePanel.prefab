@@ -586,6 +586,7 @@ MonoBehaviour:
   MachineStorePage: {fileID: 8428356793156197182}
   ToPlaceMachine: {fileID: 11400000, guid: b17dc6887e5208a4d854590c5dddbaf0, type: 2}
   gameManager: {fileID: 0}
+  currentCheck: {fileID: 11400000, guid: 43ffc5741ea77c84abff8eb0a22610ad, type: 2}
 --- !u!114 &8428356793609657123
 MonoBehaviour:
   m_ObjectHideFlags: 0
