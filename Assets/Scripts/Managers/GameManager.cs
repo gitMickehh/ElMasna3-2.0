@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TimeManagerUPDATE timer;
 
+    [Header("Events")]
+    public GameEvent closeUIPanel;
+
     //Modal Panel
     private ModalPanel modalPanel;
     private UnityAction BuildFloorAction;
@@ -202,6 +205,7 @@ public class GameManager : MonoBehaviour
 
     public void HireConfirmation()
     {
+        Debug.Log("Hire Confirmation");
         if (SelectedWorker.worker == null)
             return;
 
@@ -225,7 +229,6 @@ public class GameManager : MonoBehaviour
 
     private void HireWorker()
     {
-
         if(!CheckBalance(GameConfigFile.HiringCost,Currency.RealMoney))
         {
             modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney);
@@ -271,6 +274,8 @@ public class GameManager : MonoBehaviour
         worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
 
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
+
+        closeUIPanel.Raise();
     }
 
     public void PartyHandling()

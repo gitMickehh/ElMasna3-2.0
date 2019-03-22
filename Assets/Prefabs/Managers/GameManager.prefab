@@ -60,6 +60,7 @@ MonoBehaviour:
   DifferenceInDays: 0
   timer: {fileID: 0}
   workerList: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
+  closeUIPanel: {fileID: 11400000, guid: 4965a9fa4c1f1214aa34476d68988576, type: 2}
 --- !u!114 &7227205324660242775
 MonoBehaviour:
   m_ObjectHideFlags: 0

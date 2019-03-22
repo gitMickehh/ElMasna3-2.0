@@ -7,4 +7,9 @@ public class WayPoint : MonoBehaviour
     public Transform doorPosition;
 
     public Transform WayPointTransform;
+
+    public Floor ParentFloor
+    {
+        get { return GetComponentInParent<Floor>(); }
+    }
 }

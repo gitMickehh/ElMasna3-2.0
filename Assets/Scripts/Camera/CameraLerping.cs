@@ -75,6 +75,7 @@ public class CameraLerping : MonoBehaviour
 
         camControlScript.TraverseVertical(!atOrientation);
         StartCoroutine(Lerping());
+        AudioManager.instance.Play("Swish");
     }
 
     private IEnumerator Lerping()

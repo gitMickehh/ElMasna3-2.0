@@ -311,6 +311,7 @@ MonoBehaviour:
     worker: {fileID: 0}
   - position: {fileID: 3650326729979409561}
     worker: {fileID: 0}
+  numberOfWorkers: 0
 --- !u!114 &3089834056314970051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orintation Gear
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 29a5b3ec482a555408cae354880da731, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29a5b3ec482a555408cae354880da731, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -831,6 +836,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: f5b5b6feeed417d4cb1f0c07ddf6357e, type: 3}
       propertyPath: m_Name
       value: Orintation Assets
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f5b5b6feeed417d4cb1f0c07ddf6357e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5b5b6feeed417d4cb1f0c07ddf6357e, type: 3}
       propertyPath: m_LocalPosition.x

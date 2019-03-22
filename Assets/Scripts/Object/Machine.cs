@@ -24,6 +24,8 @@ public class Machine : MonoBehaviour
     [Header("Machine Scheme")]
     public MachineScheme scheme;
     public Slider machineTimeSlider;
+    public Image machineCircularTimer;
+    public bool circular;
     private float timeOfCycle;
     private float runningTime = 0;
     [SerializeField]
@@ -70,12 +72,15 @@ public class Machine : MonoBehaviour
             {
                 runningTime = 0;
                 var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
-                gm.DepositMoney(scheme.moneyInCycle,scheme.moneyCurrency);
+                gm.DepositMoney(scheme.moneyInCycle, scheme.moneyCurrency);
             }
             else
             {
                 runningTime += Time.deltaTime;
-                machineTimeSlider.value = 1 - (runningTime / timeOfCycle);
+                if (circular)
+                    machineCircularTimer.fillAmount = 1 - (runningTime / timeOfCycle);
+                else
+                    machineTimeSlider.value = 1 - (runningTime / timeOfCycle);
             }
 
         }
@@ -122,19 +127,27 @@ public class Machine : MonoBehaviour
         {
             if (CurrentWorker != null)
             {
-                w.currentMachine.CurrentWorker = CurrentWorker;
+                //switching workers
+                Debug.Log("Switching WORKERS");
+
+                var otherMachine = w.currentMachine;
+
+                otherMachine.CurrentWorker = CurrentWorker;
+                CurrentWorker.GetComponent<Worker>().currentMachine = otherMachine;
+
+                CurrentWorker.GetComponent<SeekRoom>().SwitchRoom(otherMachine.GetComponentInParent<WayPoint>());
+
+                if (parentFloor.floorOrder != w.currentMachine.parentFloor.floorOrder)
+                {
+                    w.transform.SetParent(parentFloor.WorkersHolder);
+                }
             }
             else
             {
-                w.currentMachine.CurrentWorker = null;
                 w.currentMachine.IsWorking = false;
+                w.currentMachine.CurrentWorker = null;
                 w.currentMachine.SliderToggle();
             }
-        }
-
-        if (parentFloor.floorOrder != w.currentMachine.parentFloor.floorOrder)
-        {
-            w.transform.SetParent(parentFloor.WorkersHolder);
         }
 
         w.currentMachine = this;
@@ -144,7 +157,7 @@ public class Machine : MonoBehaviour
         w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
 
         IsWorking = true;
-        w.currentMachine.SliderToggle();
+        SliderToggle();
     }
 
     public void SetWorker(Worker w)
@@ -171,7 +184,10 @@ public class Machine : MonoBehaviour
 
     public void SliderToggle()
     {
-        machineTimeSlider.gameObject.SetActive(IsWorking);
+        if (circular)
+            machineCircularTimer.gameObject.SetActive(IsWorking);
+        else
+            machineTimeSlider.gameObject.SetActive(IsWorking);
         machineAnimator.SetBool("IsWorking", IsWorking);
     }
 

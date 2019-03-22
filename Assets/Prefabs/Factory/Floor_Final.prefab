@@ -561,7 +561,7 @@ MonoBehaviour:
     breakRoomWorkersIDs: 
     floorOrder: 0
   cameraProperties: {fileID: 11400000, guid: 1431de8e4f82aaf4e88ea60fa6364492, type: 2}
-  heightToAddToCamera: 45
+  heightToAddToCamera: 55
   workRooms:
   - Door: {fileID: 6928572773426465534}
     machinePlaces:
@@ -1525,6 +1525,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c6b0c31c422f08f4bb1debc544f1c794, type: 3}
       propertyPath: m_Name
       value: BreakRoomAssets
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6b0c31c422f08f4bb1debc544f1c794, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6b0c31c422f08f4bb1debc544f1c794, type: 3}
       propertyPath: m_LocalPosition.x

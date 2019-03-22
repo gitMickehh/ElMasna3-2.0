@@ -65,7 +65,9 @@ public class StorePanel : MonoBehaviour
     {
         if (gameManager.CheckBalance(UIobjectToBuy.itemCost, UIobjectToBuy.currency))
         {
-            gameManager.WithdrawMoney(UIobjectToBuy.itemCost, UIobjectToBuy.currency);
+            //withdraw the money when you actually place the machine 
+            //so if the player quits before this they don't lose their money
+            //gameManager.WithdrawMoney(UIobjectToBuy.itemCost, UIobjectToBuy.currency);
             ToPlaceMachine.Raise();
             MachineStorePage.gameObject.SetActive(false);
             gameObject.SetActive(false);

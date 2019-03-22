@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Floor : MonoBehaviour
@@ -127,6 +128,7 @@ public class Floor : MonoBehaviour
                 breakRoom[i].worker = w.GetComponent<Worker>();
                 //breakRoom[i].worker.SetState(WorkerState.InBreak);
                 breakRoom[i].worker.SetBreak(breakRoom[i].breakObject);
+                breakRoom[i].worker.gameObject.GetComponent<SeekRoom>().wayPointCurrent = breakRoom[i].position;
             }
         }
 
@@ -189,5 +191,19 @@ public class Floor : MonoBehaviour
         m.parentFloor = this;
 
         workRooms[roomNumber].machinePlaces[machinePosition].machinePosition.GetComponent<WayPoint>().WayPointTransform = m.workerPosition;
+    }
+
+    public int GetBreakRoomIndex(WayPoint wp)
+    {
+        for (int i = 0; i < breakRoom.Length; i++)
+        {
+            if (breakRoom[i].position == wp)
+            {
+                return i;
+            }
+        }
+
+        Debug.LogWarning("No WayPoint like this in here :)");
+        return -1;
     }
 }

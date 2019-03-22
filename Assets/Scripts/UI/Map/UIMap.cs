@@ -15,15 +15,27 @@ public class UIMap : MonoBehaviour
 
     [Header("Floors")]
     public FloorList listOfFloors;
+    public WorkerUIIconList iconsList;
 
     [Header("Scroll")]
     public float scrollSpeed;
     public FloatField scrollDistance;
 
+    private float localYStart;
+    private float localYEnd;
+
+    private void Start()
+    {
+        iconsList.Items.Clear();
+        FillInMap();
+        localYStart = FloorUIParent.localPosition.y;
+        localYEnd = FloorUIParent.localPosition.y + (FloorUIParent.rect.height * (FloorUIParent.childCount - 1));
+
+    }
+
     private void OnEnable()
     {
         UIOn.Raise();
-        FillInMap();
     }
 
     private void OnDisable()
@@ -33,7 +45,7 @@ public class UIMap : MonoBehaviour
 
     public void FillInMap()
     {
-        if(FloorUIParent.childCount >= listOfFloors.Items.Count)
+        if (FloorUIParent.childCount >= listOfFloors.Items.Count)
         {
             var children = FloorUIParent.GetComponentsInChildren<UIFloor>();
             for (int i = 0; i < children.Length; i++)
@@ -44,7 +56,6 @@ public class UIMap : MonoBehaviour
         else
         {
             float Height = FloorUIParent.rect.height;
-            //FloorUIParent.GetComponent<VerticalLayoutGroup>().spacing = Height;
             int iMin = FloorUIParent.childCount;
 
             for (int i = listOfFloors.Items.Count - 1; i >= iMin; i--)
@@ -58,24 +69,30 @@ public class UIMap : MonoBehaviour
                 fCompo.UpdateFloor();
             }
         }
-        
+
 
     }
 
     public void OnScrollUp()
     {
-        var x = FloorUIParent.localPosition;
-        x.y -= scrollSpeed;
-        FloorUIParent.localPosition = x;
+        var positionLocal = FloorUIParent.localPosition;
+        positionLocal.y -= scrollSpeed;
+        positionLocal.y = Mathf.Clamp(positionLocal.y, -localYEnd, localYStart);
+
+        //Debug.Log("scroll up: " + positionLocal.y);
+        FloorUIParent.localPosition = positionLocal;
 
         scrollDistance.AddValue(-scrollSpeed);
     }
 
     public void OnScrollDown()
     {
-        var x = FloorUIParent.localPosition;
-        x.y += scrollSpeed;
-        FloorUIParent.localPosition = x;
+        var positionLocal = FloorUIParent.localPosition;
+        positionLocal.y += scrollSpeed;
+        positionLocal.y = Mathf.Clamp(positionLocal.y, -localYEnd, localYStart);
+
+        //Debug.Log("scroll down: " + positionLocal.y);
+        FloorUIParent.localPosition = positionLocal;
 
         scrollDistance.AddValue(scrollSpeed);
     }

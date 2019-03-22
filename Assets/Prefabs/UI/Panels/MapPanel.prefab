@@ -192,10 +192,10 @@ MonoBehaviour:
   UIOn: {fileID: 11400000, guid: 3b172fe06d01ff7458c53adc4041ffb0, type: 2}
   UIOff: {fileID: 11400000, guid: 52d072e0a34515b45bfe93b8adb175b7, type: 2}
   FloorUIParent: {fileID: 4822444951645099690}
-  FloorUIPanel: {fileID: 4842384455837854442, guid: b2adaf6f4a8038b42be5bc31e30deef5,
+  FloorUIPanel: {fileID: 4685143658640849351, guid: dba3a738e9d1fe3428dd35b9a5a8ed97,
     type: 3}
-  parentWorkerObject: {fileID: 0}
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
+  iconsList: {fileID: 11400000, guid: 8fb715bff76653f4f9d735737ada6404, type: 2}
   scrollSpeed: 10
   scrollDistance: {fileID: 11400000, guid: 4f99eb9f7cd5f754ba040204b0d8d3eb, type: 2}
 --- !u!114 &469586060480580058

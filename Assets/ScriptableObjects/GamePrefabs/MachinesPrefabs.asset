@@ -16,18 +16,24 @@ MonoBehaviour:
   - referenceID: 1
     prefab: {fileID: 4166432995667429784, guid: ab1df2d96ff4596429678afecb91e064,
       type: 3}
+    UIRepresentation: {fileID: 21300016, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 2
     prefab: {fileID: 4166432995667429784, guid: ae37845a3a77ab846bc65273f00c1ff5,
       type: 3}
+    UIRepresentation: {fileID: 21300004, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 3
     prefab: {fileID: 4166432995667429784, guid: 705e59d2efa62b04a8f953f9e74a96a5,
       type: 3}
+    UIRepresentation: {fileID: 21300020, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 4
     prefab: {fileID: 4166432995667429784, guid: 450c76eca1152774aadab815e0835cd2,
       type: 3}
+    UIRepresentation: {fileID: 21300002, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 5
     prefab: {fileID: 4166432995667429784, guid: caf5e397c173a4643b0aaa0b93c314c9,
       type: 3}
+    UIRepresentation: {fileID: 21300014, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 6
     prefab: {fileID: 4166432995667429784, guid: 984dfc37a001f7d4dacdd70381d24ff9,
       type: 3}
+    UIRepresentation: {fileID: 21300018, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}

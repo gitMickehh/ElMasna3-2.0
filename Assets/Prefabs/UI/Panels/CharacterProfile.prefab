@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
+  gameManager: {fileID: 11400000, guid: 5f3ec13a0350a2f42afa600adae1ba34, type: 2}
   CharacterName: {fileID: 1912785870278805558}
   CharacterLevel: {fileID: 1536340666628880410}
   CharacterHappienss: {fileID: 8181725898689556401}
@@ -483,8 +484,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 4978685f5898724499b7d63637ce3543, type: 2}
-        m_MethodName: Raise
+      - m_Target: {fileID: 6646586057021964207}
+        m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
