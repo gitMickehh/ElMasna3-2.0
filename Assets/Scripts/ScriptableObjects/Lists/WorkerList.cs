@@ -22,4 +22,16 @@ public class WorkerList : RuntimeList<Worker>
     {
         return Items.Count + 1;
     }
+
+    public void AddPartyHappiness(float happinessPercentage)
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            if (!Items[i].inOrientation)
+            {
+                Items[i].AddHappiness(happinessPercentage);
+                Items[i].workerAnimator.SetTrigger("Winning");
+            }
+        }
+    }
 }

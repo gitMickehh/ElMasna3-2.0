@@ -38,6 +38,9 @@ public class GameConfig : ScriptableObject {
     [Header("Modal Panel Icons")]
     public Sprite[] icons;
 
+    [Header("Party")]
+    public float happinessPercentage;
+
     public void SetColorField(Color c)
     {
         uniformColor.SetValue(c);
