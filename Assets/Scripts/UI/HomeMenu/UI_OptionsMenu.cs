@@ -23,7 +23,7 @@ public class UI_OptionsMenu : MonoBehaviour
 
     public void ClearSaveQuestion()
     {
-        string s = gameConfigFile.CurrentLanguageProfile.AreYouSure + gameConfigFile.CurrentLanguageProfile.QuestionMark;
+        string s = gameConfigFile.CurrentLanguageProfile.AreYouSureYouWantToRestartTheGame + gameConfigFile.CurrentLanguageProfile.QuestionMark;
         modalPanel.Choice(s, clearSaveAction);
     }
 
@@ -35,5 +35,6 @@ public class UI_OptionsMenu : MonoBehaviour
     private void ClearSaves()
     {
         PlayerPrefs.DeleteAll();
+        FindObjectOfType<LevelLoader>().LoadLevel(1);
     }
 }

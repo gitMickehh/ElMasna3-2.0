@@ -34,5 +34,7 @@ MonoBehaviour:
   NoPlaceForWorkers: You do not have a place for new workers
   YouWillPay: 'You will pay '
   NotEnoughMoney: You don't have enough resources
+  AreYouSureYouWantToRestartTheGame: Are you sure you want to restart the game and
+    delete your save file
   ExeclamationMark: '!'
   WelcomeText: Welcome to your factory
