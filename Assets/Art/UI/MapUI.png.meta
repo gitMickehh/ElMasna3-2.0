@@ -5,14 +5,17 @@ TextureImporter:
     21300000: Room_Variation1
     21300002: MachineR1_Ic
     21300004: MachineL2_Ic
-    21300006: WorkerIcon2
-    21300008: WorkerIcon1
+    21300006: WorkerIcon_W
+    21300008: WorkerIcon_Tall
     21300010: Room_Variation2
-    21300012: WorkerIcon3
+    21300012: WorkerIcon_Short
     21300014: MachineR2_Ic
     21300016: MachineL1_Ic
     21300018: MachineR3_Ic
     21300020: MachineL3_Ic
+    21300022: BreakIcon1
+    21300024: BreakIcon2
+    21300026: BreakIcon3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -177,13 +180,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WorkerIcon2
+      name: WorkerIcon_W
       rect:
         serializedVersion: 2
-        x: 4756
-        y: 2667
-        width: 449
-        height: 578
+        x: 4750
+        y: 2632
+        width: 483
+        height: 653
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,13 +200,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WorkerIcon1
+      name: WorkerIcon_Tall
       rect:
         serializedVersion: 2
-        x: 5499
-        y: 2667
-        width: 449
-        height: 605
+        x: 4457
+        y: 3565
+        width: 546
+        height: 732
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,12 +240,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WorkerIcon3
+      name: WorkerIcon_Short
       rect:
         serializedVersion: 2
-        x: 5221
+        x: 5225
         y: 1705
-        width: 446
+        width: 442
         height: 590
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -336,6 +339,66 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: BreakIcon1
+      rect:
+        serializedVersion: 2
+        x: 5732
+        y: 2761
+        width: 269
+        height: 526
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08abad3961f159547b02cb225aed43c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BreakIcon2
+      rect:
+        serializedVersion: 2
+        x: 4319
+        y: 2128
+        width: 360
+        height: 415
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae844df632b120243a4847791ec0950d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BreakIcon3
+      rect:
+        serializedVersion: 2
+        x: 4544
+        y: 1229
+        width: 273
+        height: 397
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659f7678118d0de4ab49fde850041664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -344,7 +407,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+  spritePackingTag: elements
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 

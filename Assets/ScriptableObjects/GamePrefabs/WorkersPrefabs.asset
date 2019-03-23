@@ -15,7 +15,10 @@ MonoBehaviour:
   prefabs:
   - referenceID: 1
     prefab: {fileID: 1595664551687248, guid: 29644c7d0003648458ed6cf58ef2fb42, type: 3}
+    UIRepresentation: {fileID: 21300008, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 2
     prefab: {fileID: 1595664551687248, guid: a8efe36adf218d644b4151ccb7b14093, type: 3}
+    UIRepresentation: {fileID: 21300006, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}
   - referenceID: 3
     prefab: {fileID: 1595664551687248, guid: 66bf44ba840e0c5429201e25fbf62a33, type: 3}
+    UIRepresentation: {fileID: 21300012, guid: b82a4bff5691b7844b3348eacde1353f, type: 3}

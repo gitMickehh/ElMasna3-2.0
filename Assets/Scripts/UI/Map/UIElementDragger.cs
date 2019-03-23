@@ -229,8 +229,7 @@ public class UIElementDragger : MonoBehaviour
     private Transform GetDraggableTransformUnderMouse()
     {
         GameObject clickedObject = GetObjectUnderMouse();
-
-        var workerIconComponent = clickedObject.GetComponent<WorkerUIIcon>();
+        WorkerUIIcon workerIconComponent = clickedObject.GetComponent<WorkerUIIcon>();
 
         if ((clickedObject) && (workerIconComponent == null))
             return null;

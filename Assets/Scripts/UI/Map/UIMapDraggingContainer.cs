@@ -75,8 +75,12 @@ public class UIMapDraggingContainer : MonoBehaviour
             int breakRoomIndex = floor.GetBreakRoomIndex(waypoint);
             Debug.Log("Floor "+floor.floorOrder + " Waypoint Index: "+ breakRoomIndex);
 
-            workerComponent.currentMachine.CurrentWorker = null;
-            workerComponent.currentMachine = null;
+            if(workerComponent.currentMachine != null)
+            {
+                workerComponent.currentMachine.CurrentWorker = null;
+                workerComponent.currentMachine = null;
+            }
+            
             floor.breakRoom[breakRoomIndex].worker = workerComponent;
             workerComponent.transform.SetParent(floor.WorkersHolder);
             
