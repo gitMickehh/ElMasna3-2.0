@@ -140,6 +140,7 @@ public class ModalPanel : MonoBehaviour
         }
 
         yesButton.gameObject.SetActive(true);
+        cancelButton.gameObject.SetActive(false);
 
     }
 

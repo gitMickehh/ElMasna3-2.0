@@ -95,6 +95,7 @@ MonoBehaviour:
   skinnedMeshRenderers: []
   customization: {fileID: 0}
   UICameraPosition: {fileID: 450730375257086663}
+  workerAnimator: {fileID: 0}
 --- !u!114 &3110651056955183985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPointCurrent: {fileID: 0}
-  speed: 1
+  speed: 3
   targetPos: {fileID: 0}
   walking: 0
   arrived: 0
@@ -560,6 +561,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
       propertyPath: m_Controller
       value: 
@@ -588,6 +593,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 100026, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -597,10 +606,6 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100052, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
@@ -617,10 +622,6 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100040, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 7317f951532c23a48ad0029fa20536af, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}

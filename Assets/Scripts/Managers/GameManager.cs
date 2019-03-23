@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
                 return false;
             }
         }
-        else
+        else if (currency == Currency.HappyMoney)
         {
             if (money <= HappyMoney.GetValue())
             {
@@ -140,6 +140,8 @@ public class GameManager : MonoBehaviour
                 return false;
             }
         }
+
+        return false;
     }
 
     public void DepositMoney(float money, Currency currency)
@@ -155,6 +157,8 @@ public class GameManager : MonoBehaviour
         {
             HappyMoney.AddValue(money);
         }
+
+        AudioManager.instance.Play("MoneyIn");
     }
 
     public void StartNewDay()
@@ -261,8 +265,8 @@ public class GameManager : MonoBehaviour
             }
 
             //send worker to empty break room
-            worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(emptyWaypoint);
-            worker.transform.SetParent(emptyWaypoint.GetComponentInParent<Floor>().WorkersHolder);
+            worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(emptyWaypoint, emptyWaypoint.GetComponentInParent<Floor>().WorkersHolder);
+            //worker.transform.SetParent(emptyWaypoint.GetComponentInParent<Floor>().WorkersHolder);
             var bR = emptyWaypoint.GetComponentInParent<Floor>().GetBreakRoomPlace(emptyWaypoint);
             bR.worker = worker;
         }
@@ -270,9 +274,9 @@ public class GameManager : MonoBehaviour
         {
             //send worker to empty machine
             machine.SetWorker(worker);
-            worker.transform.SetParent(machine.parentFloor.WorkersHolder);
+            //worker.transform.SetParent(machine.parentFloor.WorkersHolder);
             WayPoint wayPointTarget = machine.gameObject.GetComponentInParent<WayPoint>();
-            worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
+            worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget, machine.parentFloor.WorkersHolder);
         }
         
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
