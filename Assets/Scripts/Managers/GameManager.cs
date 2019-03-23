@@ -228,9 +228,9 @@ public class GameManager : MonoBehaviour
         modalPanel.Choice(message, new UnityAction(HireWorker), GameConfigFile.icons[0]);
     }
 
-    private void HireWorker()
+    public void HireWorker()
     {
-        if(!CheckBalance(GameConfigFile.HiringCost,Currency.RealMoney))
+        if (!CheckBalance(GameConfigFile.HiringCost, Currency.RealMoney))
         {
             modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney);
             return;
@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("No room for the worker");
             return;
         }
+
 
         var worker = SelectedWorker.worker;
         worker.inOrientation = false;
@@ -264,30 +265,43 @@ public class GameManager : MonoBehaviour
             worker.transform.SetParent(emptyWaypoint.GetComponentInParent<Floor>().WorkersHolder);
             var bR = emptyWaypoint.GetComponentInParent<Floor>().GetBreakRoomPlace(emptyWaypoint);
             bR.worker = worker;
-
-            return;
         }
-
-        //send worker to empty machine
-        machine.SetWorker(worker);
-        worker.transform.SetParent(machine.parentFloor.WorkersHolder);
-        WayPoint wayPointTarget = machine.gameObject.GetComponentInParent<WayPoint>();
-        worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
-
+        else
+        {
+            //send worker to empty machine
+            machine.SetWorker(worker);
+            worker.transform.SetParent(machine.parentFloor.WorkersHolder);
+            WayPoint wayPointTarget = machine.gameObject.GetComponentInParent<WayPoint>();
+            worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
+        }
+        
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
-
         closeUIPanel.Raise();
     }
 
     public void PartyHandling()
     {
         workerList.AddPartyHappiness(GameConfigFile.happinessPercentage);
-        WithdrawMoney(GameConfigFile.PartyCost,Currency.HappyMoney);
+        WithdrawMoney(GameConfigFile.PartyCost, Currency.HappyMoney);
     }
 
     public void PayForMachine()
     {
-        WithdrawMoney(machineCheck.GetValue(),Currency.RealMoney);
+        WithdrawMoney(machineCheck.GetValue(), Currency.RealMoney);
         machineCheck.SetValue(0);
+    }
+
+    public void LoadFactoryData(FactoryData data)
+    {
+        FactoryMoney.SetValue(data.realMoney);
+        HappyMoney.SetValue(data.happyMoney);
+        GameConfigFile.FloorCost = data.floorBuildCost;
+        GameConfigFile.PartyCost = data.partyCost;
+        GameConfigFile.SetColorField(data.uniformColor);
+    }
+
+    public FactoryData GetSaveData()
+    {
+        return new FactoryData(FactoryMoney.GetValue(), HappyMoney.GetValue(), GameConfigFile.PartyCost, GameConfigFile.HiringCost, GameConfigFile.FloorCost);
     }
 }

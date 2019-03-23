@@ -12,4 +12,11 @@ public class NewGameData : ScriptableObject
     public float PartyCost = 500;
     public float WorkerHireCost = 100;
     public Color basicUniformColor = Color.green;
+
+
+    public FactoryData GetNewGameData()
+    {
+        return new FactoryData(RealMoney,HappyMoney, PartyCost,WorkerHireCost,FloorCost);
+    }
+
 }

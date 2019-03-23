@@ -26,7 +26,7 @@ public class RaycastingByTouch : MonoBehaviour
         //if(touch)
         if(Input.touchCount == 1)
         {
-            Debug.Log("touchCount == 1 is true");
+            //Debug.Log("touchCount == 1 is true");
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(vector2Touch.vector2);

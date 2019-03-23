@@ -27,15 +27,20 @@ public class UIMap : MonoBehaviour
     private void Start()
     {
         iconsList.Items.Clear();
-        FillInMap();
-        localYStart = FloorUIParent.localPosition.y;
-        localYEnd = FloorUIParent.localPosition.y + (FloorUIParent.rect.height * (FloorUIParent.childCount - 1));
-
     }
 
     private void OnEnable()
     {
         UIOn.Raise();
+        StartCoroutine(onEnableWait());
+    }
+
+    private IEnumerator onEnableWait()
+    {
+        yield return new WaitForEndOfFrame();
+        FillInMap();
+        localYStart = FloorUIParent.localPosition.y;
+        localYEnd = FloorUIParent.localPosition.y + (FloorUIParent.rect.height * (FloorUIParent.childCount - 1));
     }
 
     private void OnDisable()

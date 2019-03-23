@@ -186,49 +186,62 @@ public class SaveGameManager : MonoBehaviour
 
     private void SaveFactoryData()
     {
-        PlayerPrefs.SetFloat("RealMoney", gManager.FactoryMoney.GetValue());
-        PlayerPrefs.SetFloat("HappyMoney", gManager.HappyMoney.GetValue());
-        PlayerPrefs.SetFloat("FloorCost", gManager.GameConfigFile.FloorCost);
+        //PlayerPrefs.SetFloat("RealMoney", gManager.FactoryMoney.GetValue());
+        //PlayerPrefs.SetFloat("HappyMoney", gManager.HappyMoney.GetValue());
+        //PlayerPrefs.SetFloat("FloorCost", gManager.GameConfigFile.FloorCost);
 
-        string jsonColor = JsonUtility.ToJson(GameConfigFile.uniformColor.GetValue());
-        PlayerPrefs.SetString("UniformColor", jsonColor);
+        //string jsonColor = JsonUtility.ToJson(GameConfigFile.uniformColor.GetValue());
+        //PlayerPrefs.SetString("UniformColor", jsonColor);
 
-        Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
-            "\n" + gManager.HappyMoney.GetValue() + " Happy Money." +
-            "\n" + jsonColor + " Uniform Color.");
+        //Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
+        //    "\n" + gManager.HappyMoney.GetValue() + " Happy Money." +
+        //    "\n" + jsonColor + " Uniform Color.");
+
+        string jsonString = JsonUtility.ToJson(gManager.GetSaveData());
+        PlayerPrefs.SetString("FactoryData", jsonString);
+        Debug.Log(jsonString);
     }
 
     private void LoadFactoryData()
     {
-        //use FactoryData() instead
-
-        if (PlayerPrefs.HasKey("RealMoney"))
-            gManager.FactoryMoney.SetValue(PlayerPrefs.GetFloat("RealMoney"));
-        else
-            gManager.FactoryMoney.SetValue(newGameConfig.RealMoney);
-
-        if (PlayerPrefs.HasKey("HappyMoney"))
-            gManager.HappyMoney.SetValue(PlayerPrefs.GetFloat("HappyMoney"));
-        else
-            gManager.HappyMoney.SetValue(newGameConfig.HappyMoney);
-
-        if (PlayerPrefs.HasKey("FloorCost"))
-            gManager.GameConfigFile.FloorCost = PlayerPrefs.GetFloat("FloorCost");
-        else
-            gManager.GameConfigFile.FloorCost = newGameConfig.FloorCost;
-
-        if (PlayerPrefs.HasKey("PartyCost"))
-            gManager.GameConfigFile.PartyCost = PlayerPrefs.GetFloat("PartyCost");
-        else
-            gManager.GameConfigFile.PartyCost = newGameConfig.PartyCost;
-
-        if (PlayerPrefs.HasKey("UniformColor"))
+        if (PlayerPrefs.HasKey("FactoryData"))
         {
-            Color c = JsonUtility.FromJson<Color>(PlayerPrefs.GetString("UniformColor"));
-            GameConfigFile.SetColorField(c);
+            var factoryData = JsonUtility.FromJson<FactoryData>(PlayerPrefs.GetString("FactoryData"));
+            gManager.LoadFactoryData(factoryData);
         }
         else
-            GameConfigFile.SetColorField(newGameConfig.basicUniformColor);
+        {
+            Debug.LogWarning("No Factory Data saved before");
+            gManager.LoadFactoryData(newGameConfig.GetNewGameData());
+        }
+
+        //if (PlayerPrefs.HasKey("RealMoney"))
+        //    gManager.FactoryMoney.SetValue(PlayerPrefs.GetFloat("RealMoney"));
+        //else
+        //    gManager.FactoryMoney.SetValue(newGameConfig.RealMoney);
+
+        //if (PlayerPrefs.HasKey("HappyMoney"))
+        //    gManager.HappyMoney.SetValue(PlayerPrefs.GetFloat("HappyMoney"));
+        //else
+        //    gManager.HappyMoney.SetValue(newGameConfig.HappyMoney);
+
+        //if (PlayerPrefs.HasKey("FloorCost"))
+        //    gManager.GameConfigFile.FloorCost = PlayerPrefs.GetFloat("FloorCost");
+        //else
+        //    gManager.GameConfigFile.FloorCost = newGameConfig.FloorCost;
+
+        //if (PlayerPrefs.HasKey("PartyCost"))
+        //    gManager.GameConfigFile.PartyCost = PlayerPrefs.GetFloat("PartyCost");
+        //else
+        //    gManager.GameConfigFile.PartyCost = newGameConfig.PartyCost;
+
+        //if (PlayerPrefs.HasKey("UniformColor"))
+        //{
+        //    Color c = JsonUtility.FromJson<Color>(PlayerPrefs.GetString("UniformColor"));
+        //    GameConfigFile.SetColorField(c);
+        //}
+        //else
+        //    GameConfigFile.SetColorField(newGameConfig.basicUniformColor);
 
     }
 

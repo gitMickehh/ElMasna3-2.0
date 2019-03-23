@@ -46,9 +46,6 @@ public class UIFloor : MonoBehaviour
         }
     }
 
-    // ERROR: Give the instantaited workers Icons the reference to theri CoNTAINER
-
-
     public void UpdateFloor()
     {
         for (int i = 0; i < realFloor.workRooms.Length; i++)
@@ -82,6 +79,8 @@ public class UIFloor : MonoBehaviour
                         NewWorkerIcon.transform.localPosition = new Vector2();
                         //workersInMyFloor.Add(wImage.GetComponent<WorkerUIIcon>());
                     }
+
+                    rooms[i].Machines[j].gameObject.SetActive(true);
                 }
                 else
                 {

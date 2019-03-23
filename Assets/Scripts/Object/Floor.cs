@@ -203,7 +203,7 @@ public class Floor : MonoBehaviour
             }
         }
 
-        Debug.LogWarning("No WayPoint like this in here :)");
+        Debug.LogWarning("No WayPoint like this in Floor " + floorOrder);
         return -1;
     }
 }

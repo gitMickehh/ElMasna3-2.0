@@ -42,11 +42,6 @@ public class Machine : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //machineAnimator = GetComponentInChildren<Animator>();
-    }
-
     private void OnEnable()
     {
         machineID = listOfMahcines.GetNewId();
@@ -134,12 +129,19 @@ public class Machine : MonoBehaviour
 
                 otherMachine.CurrentWorker = CurrentWorker;
                 CurrentWorker.GetComponent<Worker>().currentMachine = otherMachine;
+                //CurrentWorker.GetComponent<SeekRoom>().SwitchRoom(otherMachine.GetComponentInParent<WayPoint>());
 
-                CurrentWorker.GetComponent<SeekRoom>().SwitchRoom(otherMachine.GetComponentInParent<WayPoint>());
 
-                if (parentFloor.floorOrder != w.currentMachine.parentFloor.floorOrder)
+                if (parentFloor.floorOrder != otherMachine.parentFloor.floorOrder)
                 {
-                    w.transform.SetParent(parentFloor.WorkersHolder);
+                    //w.transform.SetParent(parentFloor.WorkersHolder);
+                    //CurrentWorker.transform.SetParent(otherMachine.parentFloor.WorkersHolder);
+                    CurrentWorker.GetComponent<SeekRoom>().SwitchRoom(otherMachine.GetComponentInParent<WayPoint>(), otherMachine.parentFloor.WorkersHolder);
+
+                }
+                else
+                {
+                    CurrentWorker.GetComponent<SeekRoom>().SwitchRoom(otherMachine.GetComponentInParent<WayPoint>());
                 }
             }
             else
@@ -153,9 +155,10 @@ public class Machine : MonoBehaviour
         w.currentMachine = this;
         CurrentWorker = w.gameObject;
 
+
         CurrentWorker.GetComponent<Worker>().SetWorkerState(WorkerState.Working);
         WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
-        w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget);
+        w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget,parentFloor.WorkersHolder);
 
         IsWorking = true;
         SliderToggle();

@@ -29,6 +29,8 @@ public class SeekRoom : MonoBehaviour
     WayPoint targetWayPoint;
     Worker worker;
 
+    Transform newParent;
+
     void Awake()
     {
         myBody = GetComponent<Rigidbody>();
@@ -43,6 +45,16 @@ public class SeekRoom : MonoBehaviour
 
         Walk(transform, door1);
 
+    }
+
+    public void SwitchRoom(WayPoint wayPointTarget, Transform newParent)
+    {
+        Transform door1 = wayPointCurrent.doorPosition;
+
+        targetWayPoint = wayPointTarget;
+
+        Walk(transform, door1);
+        this.newParent = newParent;
     }
 
     public void Walk(Transform startPos, Transform endPos)
@@ -82,6 +94,7 @@ public class SeekRoom : MonoBehaviour
                 transform.forward = targetWayPoint.doorPosition.forward;
 
                 Walk(targetWayPoint.doorPosition, targetWayPoint.WayPointTransform);
+                transform.SetParent(newParent);
 
                 arrived = true;
             }
