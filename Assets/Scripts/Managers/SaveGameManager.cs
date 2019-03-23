@@ -14,6 +14,7 @@ public class SaveGameManager : MonoBehaviour
 
     [Header("Game Config File")]
     public GameConfig GameConfigFile;
+    public NewGameData newGameConfig;
 
     OrientationBuilding orientation;
     GameManager gManager;
@@ -199,20 +200,35 @@ public class SaveGameManager : MonoBehaviour
 
     private void LoadFactoryData()
     {
+        //use FactoryData() instead
+
         if (PlayerPrefs.HasKey("RealMoney"))
             gManager.FactoryMoney.SetValue(PlayerPrefs.GetFloat("RealMoney"));
+        else
+            gManager.FactoryMoney.SetValue(newGameConfig.RealMoney);
 
         if (PlayerPrefs.HasKey("HappyMoney"))
             gManager.HappyMoney.SetValue(PlayerPrefs.GetFloat("HappyMoney"));
+        else
+            gManager.HappyMoney.SetValue(newGameConfig.HappyMoney);
 
         if (PlayerPrefs.HasKey("FloorCost"))
             gManager.GameConfigFile.FloorCost = PlayerPrefs.GetFloat("FloorCost");
+        else
+            gManager.GameConfigFile.FloorCost = newGameConfig.FloorCost;
+
+        if (PlayerPrefs.HasKey("PartyCost"))
+            gManager.GameConfigFile.PartyCost = PlayerPrefs.GetFloat("PartyCost");
+        else
+            gManager.GameConfigFile.PartyCost = newGameConfig.PartyCost;
 
         if (PlayerPrefs.HasKey("UniformColor"))
         {
             Color c = JsonUtility.FromJson<Color>(PlayerPrefs.GetString("UniformColor"));
             GameConfigFile.SetColorField(c);
         }
+        else
+            GameConfigFile.SetColorField(newGameConfig.basicUniformColor);
 
     }
 

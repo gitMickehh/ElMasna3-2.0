@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5485074364071836629}
   - component: {fileID: 3435174726119491179}
   - component: {fileID: 1211562720}
+  - component: {fileID: 5259534989425710617}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -77,7 +78,6 @@ MonoBehaviour:
   scrollThresholdPercentage: 15
   ScrollUp: {fileID: 11400000, guid: e230eb0dc91114b4fb3742b542065bda, type: 2}
   ScrollDown: {fileID: 11400000, guid: d30b9598c5bb9924cb28711bd8fc3a5f, type: 2}
-  ScrollDistance: {fileID: 11400000, guid: 4f99eb9f7cd5f754ba040204b0d8d3eb, type: 2}
   dragging: 0
 --- !u!114 &3435174726119491179
 MonoBehaviour:
@@ -132,6 +132,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 3b172fe06d01ff7458c53adc4041ffb0, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5485074364071836629}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2857179868289705496}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &5259534989425710617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857179868289705497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 9e10df1088f39b0428bf25fa8c76bc08, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

@@ -26,7 +26,7 @@ public class UIMoney : MonoBehaviour
         realMoneyText.text = realMoney.GetValue().ToString();
 
         realMoneyText.GetComponent<RectTransform>().sizeDelta =
-            new Vector2((realMoneyText.fontSize * (realMoneyText.text.Length-1)) + moneyIconSize, realMoneyText.GetComponent<RectTransform>().rect.height);
+            new Vector2((realMoneyText.fontSize * (realMoneyText.text.Length)) + moneyIconSize, realMoneyText.GetComponent<RectTransform>().rect.height);
     }
 
     public void OnHappyMoneyChanged()
@@ -34,6 +34,6 @@ public class UIMoney : MonoBehaviour
         happyMoneyText.text = happyMoney.GetValue().ToString();
 
         happyMoneyText.GetComponent<RectTransform>().sizeDelta =
-            new Vector2((happyMoneyText.fontSize * (happyMoneyText.text.Length-1))+ moneyIconSize, happyMoneyText.GetComponent<RectTransform>().rect.height);
+            new Vector2((happyMoneyText.fontSize * (happyMoneyText.text.Length))+ moneyIconSize, happyMoneyText.GetComponent<RectTransform>().rect.height);
     }
 }

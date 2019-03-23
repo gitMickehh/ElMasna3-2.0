@@ -56,11 +56,12 @@ MonoBehaviour:
   BuildSuccess: {fileID: 11400000, guid: 1900118c697dd66498c86bada6b28050, type: 2}
   BuildFailure: {fileID: 11400000, guid: 9f08995bb6ca4894f9481133ce81d159, type: 2}
   SelectedWorker: {fileID: 11400000, guid: 4ae7918a1fc64cf418df5e66e8964d29, type: 2}
+  machineCheck: {fileID: 11400000, guid: 43ffc5741ea77c84abff8eb0a22610ad, type: 2}
   DayInMonth: 0
   DifferenceInDays: 0
   timer: {fileID: 0}
-  workerList: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   closeUIPanel: {fileID: 11400000, guid: 4965a9fa4c1f1214aa34476d68988576, type: 2}
+  workerList: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
 --- !u!114 &7227205324660242775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +138,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 81fea3cb723b8324bb323da515755efe, type: 2}
         m_MethodName: DestroyAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5851844109672730316}
+        m_MethodName: PayForMachine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
