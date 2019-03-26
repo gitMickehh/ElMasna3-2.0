@@ -240,6 +240,7 @@ public class UIElementDragger : MonoBehaviour
 
             clickedObject.transform.parent.parent.SetAsLastSibling();
             workerIconComponent.AnimatorTrigger();
+            AudioManager.instance.Play("GrabUI");
 
             return clickedObject.transform;
         }
@@ -264,9 +265,7 @@ public class UIElementDragger : MonoBehaviour
 
     private void Reset()
     {
-
         swipeDelta = Vector2.zero;
     }
-
 }
 

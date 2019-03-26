@@ -108,6 +108,13 @@ MonoBehaviour:
     looping: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - soundName: GrabUI
+    clip: {fileID: 8300000, guid: 19dadd1cd74721446aabda7cb1a7270e, type: 3}
+    volume: 0.375
+    pitch: 1
+    looping: 0
+    playOnAwake: 0
+    source: {fileID: 0}
   buttonsSounds:
   - soundName: Select B
     clip: {fileID: 8300000, guid: 9cf7d1e77cc3adc4fa86872c7bae8cd0, type: 3}

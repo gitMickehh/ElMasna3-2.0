@@ -6,7 +6,6 @@ using System.Linq;
 [CreateAssetMenu(fileName = "New Workers List", menuName = "ElMasna3/Lists/Workers RT List")]
 public class WorkerList : RuntimeList<Worker>
 {
-
     public Worker GetWorkerById(int id)
     {
         for (int i = 0; i < Items.Count; i++)
@@ -39,5 +38,20 @@ public class WorkerList : RuntimeList<Worker>
                 Items[i].workerAnimator.SetTrigger("Winning");
             }
         }
+    }
+
+    public int GetNumberOfHiredWorkers()
+    {
+        return Items.Count(x => !x.inOrientation);
+    }
+
+    public int GetNumberOfWorkersInOrientation()
+    {
+        return Items.Count(x => x.inOrientation);
+    }
+
+    public List<Worker> WorkersInOrientation()
+    {
+        return Items.FindAll(x=>x.inOrientation);
     }
 }

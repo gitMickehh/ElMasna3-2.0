@@ -82,9 +82,9 @@ public class UIMapDraggingContainer : MonoBehaviour
             }
             
             floor.breakRoom[breakRoomIndex].worker = workerComponent;
-            workerComponent.transform.SetParent(floor.WorkersHolder);
+            //workerComponent.transform.SetParent(floor.WorkersHolder);
             
-            workerSeeker.SwitchRoom(waypoint);
+            workerSeeker.SwitchRoom(waypoint, floor.WorkersHolder);
             workerComponent.SetBreak(floor.breakRoom[breakRoomIndex].breakObject);
         }
     }
