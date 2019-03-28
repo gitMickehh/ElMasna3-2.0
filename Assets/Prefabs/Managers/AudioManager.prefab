@@ -110,7 +110,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: GrabUI
     clip: {fileID: 8300000, guid: 19dadd1cd74721446aabda7cb1a7270e, type: 3}
-    volume: 0.375
+    volume: 0.475
     pitch: 1
     looping: 0
     playOnAwake: 0

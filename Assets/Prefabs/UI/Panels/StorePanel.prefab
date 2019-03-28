@@ -248,7 +248,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.37398952, g: 0.29739234, b: 0.38679248, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5188679, g: 0.46257564, b: 0.49613768, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -589,11 +589,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273f57d2e56ac2a48b88a9633fff7b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gManagerField: {fileID: 11400000, guid: 5f3ec13a0350a2f42afa600adae1ba34, type: 2}
   ObjectToBuy: {fileID: 11400000, guid: d68c18be2e4ae2444a6ee302be85423d, type: 2}
   storeScheme: {fileID: 11400000, guid: e455e1e708be417489fdf3030ea1bb1a, type: 2}
   storeItemHolder: {fileID: 1796949197592921627, guid: 6279e7357a0a2f641b4c69c5b8bf8c2a,
     type: 3}
   PartyCostText: {fileID: 8428356793157927999}
+  partyButton: {fileID: 8428356792983294428}
   MachineStorePage: {fileID: 8428356793156197182}
   ToPlaceMachine: {fileID: 11400000, guid: b17dc6887e5208a4d854590c5dddbaf0, type: 2}
   StartParty: {fileID: 11400000, guid: b5dbfa010594ec04988113c763f25d5a, type: 2}

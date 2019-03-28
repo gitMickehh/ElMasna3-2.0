@@ -34,8 +34,8 @@ public class UICharacterProfile : MonoBehaviour
     [Header("Animator")]
     public Animator animator;
 
-    [Header("Events")]
-    public GameEvent HireSelectedWorker;
+    //[Header("Events")]
+    //public GameEvent HireSelectedWorker;
 
     //Modal Panel Options
     private ModalPanel modalPanel;

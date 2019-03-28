@@ -211,8 +211,12 @@ public class GameManager : MonoBehaviour
     public void HireConfirmation()
     {
         Debug.Log("Hire Confirmation");
+
         if (SelectedWorker.worker == null)
+        {
+            Debug.LogWarning("Selected worker is null.");
             return;
+        }
 
         LanguageProfile lang = GameConfigFile.CurrentLanguageProfile;
         string[] qs = new string[] {
@@ -236,7 +240,7 @@ public class GameManager : MonoBehaviour
     {
         if (!CheckBalance(GameConfigFile.HiringCost, Currency.RealMoney))
         {
-            modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney);
+            modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney,GameConfigFile.icons[0]);
             return;
         }
 

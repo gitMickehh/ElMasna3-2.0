@@ -73,9 +73,9 @@ public class Machine : MonoBehaviour
             {
                 runningTime += Time.deltaTime;
                 if (circular)
-                    machineCircularTimer.fillAmount = 1 - (runningTime / timeOfCycle);
+                    machineCircularTimer.fillAmount = (runningTime / timeOfCycle);
                 else
-                    machineTimeSlider.value = 1 - (runningTime / timeOfCycle);
+                    machineTimeSlider.value = (runningTime / timeOfCycle);
             }
 
         }
