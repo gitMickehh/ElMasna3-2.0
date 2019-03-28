@@ -22,6 +22,7 @@ public class UIFloor : MonoBehaviour
     [Attributes.GreyOut]
     public Floor realFloor;
     public PrefabsList machinesPrefabsList;
+    public PrefabsList WorkersPrefabsList;
     public WorkerUIIconList workerUIIconsList;
 
     [Header("Rooms")]
@@ -69,6 +70,7 @@ public class UIFloor : MonoBehaviour
                             //Debug.Log("Instantating with ID " + workerId);
                             NewWorkerIcon = Instantiate(WorkerImage, WorkerMapSpawn).GetComponent<WorkerUIIcon>();
                             NewWorkerIcon.workerID = workerId;
+                            NewWorkerIcon.GetComponent<Image>().sprite = WorkersPrefabsList.GetSpriteByID(m[i].machinePlaces[j].machine.CurrentWorker.GetComponent<Worker>().modelID);
                             NewWorkerIcon.transform.name = "UI" + m[i].machinePlaces[j].machine.CurrentWorker.GetComponent<Worker>().FullName;
                         }
 
@@ -103,6 +105,7 @@ public class UIFloor : MonoBehaviour
                 {
                     NewWorkerIcon = Instantiate(WorkerImage, WorkerMapSpawn).GetComponent<WorkerUIIcon>();
                     NewWorkerIcon.workerID = wID;
+                    NewWorkerIcon.GetComponent<Image>().sprite = WorkersPrefabsList.GetSpriteByID(realFloor.breakRoom[i].worker.modelID);
                     NewWorkerIcon.transform.name = "UI" + realFloor.breakRoom[i].worker.FullName;
                 }
 
