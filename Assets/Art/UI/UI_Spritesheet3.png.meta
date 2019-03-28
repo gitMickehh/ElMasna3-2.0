@@ -10,6 +10,7 @@ TextureImporter:
     21300010: TutorialMan
     21300012: RestartButton
     21300014: Panel2
+    21300016: TouchIndicator
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -122,7 +123,7 @@ TextureImporter:
         width: 776
         height: 1430
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,7 +143,7 @@ TextureImporter:
         width: 450
         height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,7 +163,7 @@ TextureImporter:
         width: 450
         height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -182,7 +183,7 @@ TextureImporter:
         width: 934
         height: 697
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,7 +203,7 @@ TextureImporter:
         width: 565
         height: 565
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,7 +223,7 @@ TextureImporter:
         width: 352
         height: 469
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -242,7 +243,7 @@ TextureImporter:
         width: 880
         height: 880
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,13 +263,33 @@ TextureImporter:
         width: 5720
         height: 3934
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 8c100017bc539c44291ff06796dc40e1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TouchIndicator
+      rect:
+        serializedVersion: 2
+        x: 6067
+        y: 3864
+        width: 636
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2ae984bee1860d48b5dde49de2e4807
       vertices: []
       indices: 
       edges: []

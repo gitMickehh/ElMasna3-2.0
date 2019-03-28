@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49c3f5838627054d95e8eb7247353bb, type: 3}
-  m_Name: NewGameData
+  m_Script: {fileID: 11500000, guid: cf160e56760c3c740856e9098b6192b0, type: 3}
+  m_Name: MapButtonPressed
   m_EditorClassIdentifier: 
-  RealMoney: 180
-  HappyMoney: 10
-  FloorCost: 300
-  PartyCost: 500
-  WorkerHireCost: 100
-  basicUniformColor: {r: 0, g: 1, b: 0, a: 1}
+  listeners: []
