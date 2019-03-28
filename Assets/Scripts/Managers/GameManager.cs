@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour
         BuildFloorAction = new UnityAction(ConfirmBuildFloor);
     }
 
+    private void Update()
+    {
+        workerList.DecreaseHappiness();
+    }
+
     IEnumerator lateStart()
     {
         yield return new WaitForEndOfFrame();

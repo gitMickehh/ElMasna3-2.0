@@ -40,4 +40,15 @@ public class WorkerList : RuntimeList<Worker>
             }
         }
     }
+
+    public void DecreaseHappiness()
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            if (!Items[i].inOrientation)
+            {
+                Items[i].MinusHappiness();
+            }
+        }
+    }
 }
