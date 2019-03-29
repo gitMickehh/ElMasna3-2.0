@@ -33,9 +33,9 @@ public class TutorialManager : MonoBehaviour
     public List<GameObject> multiplePointers;
     private Animator pointerAniamtor;
     public List<string> pointerAnimatorSteps;
+    private bool movingPointerInCode;
 
     [Header("Tutorial Steps")]
-    [Attributes.GreyOut]
     public int tutorialStage = 0;
     public float waitTimeBetweenTuts = 1.5f;
     [SerializeField]
@@ -88,12 +88,27 @@ public class TutorialManager : MonoBehaviour
         //setting up stuff
         StoreButton.interactable = false;
         MapButtom.interactable = false;
+        OrientationButton.interactable = false;
         multiplePointers = new List<GameObject>();
 
         //hypothetical number of steps
         tutorialStepsDone = new bool[20];
 
         //starting the first step.. maybe change this later to let the save manager do it
+        StartingPoint(tutorialStage);
+    }
+
+    public void StartingPoint(int tutorialStepSaved)
+    {
+        tutorialStage = tutorialStepSaved;
+        for (int i = 0; i < tutorialStepSaved; i++)
+        {
+            tutorialStepsDone[i] = true;
+        }
+
+        //depending on the step, unlock all the buttons and turn them interactable
+
+        StopAllCoroutines();
         StartCoroutine(WaitTime(tutorialStage));
     }
 
@@ -173,6 +188,7 @@ public class TutorialManager : MonoBehaviour
             //var myListener = gameObject.AddComponent<GameEventListener>();
             //myListener.Event = OrientationButtonPressEvent;
             //myListener.Response.AddListener(new UnityAction(NextStep));
+            OrientationButton.interactable = true;
             OrientationButton.onClick.AddListener(new UnityAction(OrientationButtonPressEvent.Raise));
 
             pointerAniamtor.SetTrigger(pointerAnimatorSteps[0]);
@@ -358,6 +374,7 @@ public class TutorialManager : MonoBehaviour
         {
             //points at a worker in the map and tells the player to drag the worker to the machine
             UIMap map = FindObjectOfType<UIMap>();
+            UIFloor floor = map.GetComponentInChildren<UIFloor>();
 
             if (map != null)
             {
@@ -365,15 +382,34 @@ public class TutorialManager : MonoBehaviour
                 var workerTransform = workerIcon.GetComponent<RectTransform>();
 
                 nonAnimatedPointer.SetActive(true);
+                nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
 
                 nonAnimatedPointer.transform.SetParent(workerTransform);
                 nonAnimatedPointer.transform.localPosition = new Vector3(0, 0, 0);
                 nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, 145);
                 nonAnimatedPointer.transform.SetParent(parentToPointers);
-                nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
+
+                UIMapDraggingContainer machinePosition = null;
+                for (int i = 0; i < floor.rooms.Length; i++)
+                {
+                    int j = 0;
+                    while (j < floor.rooms[i].Machines.Length && machinePosition == null)
+                    {
+                        if (floor.rooms[i].Machines[j].machineReference != null)
+                            machinePosition = floor.rooms[i].Machines[j];
+                        else
+                            j++;
+                    }
+                }
+
+                if (machinePosition == null)
+                {
+                    Debug.LogError("map machine is null");
+                    return;
+                }
 
                 //start coroutine(machine position as given)
-
+                StartCoroutine(pointFromWorkerToMachine(machinePosition));
 
                 tutorialStepsDone[10] = true;
             }
@@ -382,6 +418,39 @@ public class TutorialManager : MonoBehaviour
                 Debug.LogWarning("UIMap is null.\n couldn't find an object of type <UIMap> in Scene");
             }
         }
+    }
+    private IEnumerator pointFromWorkerToMachine(UIMapDraggingContainer machine)
+    {
+        Vector2 originalPointerPos = nonAnimatedPointer.transform.position;
+
+        nonAnimatedPointer.transform.SetParent(machine.transform);
+        nonAnimatedPointer.transform.localPosition = new Vector3(0, 0, 0);
+        Vector2 machineRealPos = nonAnimatedPointer.transform.position;
+        nonAnimatedPointer.transform.SetParent(parentToPointers);
+
+        nonAnimatedPointer.transform.position = originalPointerPos;
+
+        float t = 0;
+
+        movingPointerInCode = true;
+        while (movingPointerInCode && machine.workerImage == null)
+        {
+
+            if (t <= 1f)
+            {
+                t += Time.deltaTime;
+                nonAnimatedPointer.transform.position = Vector2.Lerp(nonAnimatedPointer.transform.position, machineRealPos, t/2f);
+            }
+            else
+            {
+                t = 0;
+                nonAnimatedPointer.transform.position = originalPointerPos;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        WorkerMovedInMap();
     }
 
     //events
@@ -467,10 +536,14 @@ public class TutorialManager : MonoBehaviour
             NextStep();
         }
     }
-    public void WorkerMovedInMap()
+    private void WorkerMovedInMap()
     {
         if (tutorialStepsDone[10] && !tutorialStepsDone[11])
         {
+            UIMap map = FindObjectOfType<UIMap>();
+            map.gameObject.SetActive(false);
+            movingPointerInCode = false;
+            nonAnimatedPointer.SetActive(false);
             NextStep();
         }
     }

@@ -3701,7 +3701,7 @@ MonoBehaviour:
   - SwipeHorizontal
   - SwipeVertical
   tutorialStage: 0
-  waitTimeBetweenTuts: 0.9
+  waitTimeBetweenTuts: 0.75
   tutorialStepsDone: 
   OrientationButtonPressEvent: {fileID: 11400000, guid: 791f03b757f84da47a774d9b98443ab4,
     type: 2}
