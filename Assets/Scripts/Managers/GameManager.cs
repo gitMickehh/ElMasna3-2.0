@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent closeUIPanel;
+    public GameEvent workerIsHired;
 
     //Modal Panel
     private ModalPanel modalPanel;
@@ -287,7 +288,7 @@ public class GameManager : MonoBehaviour
             WayPoint wayPointTarget = machine.gameObject.GetComponentInParent<WayPoint>();
             worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget, machine.parentFloor.WorkersHolder);
         }
-        
+        workerIsHired.Raise();
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
         closeUIPanel.Raise();
     }
