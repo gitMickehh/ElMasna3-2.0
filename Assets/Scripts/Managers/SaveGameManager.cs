@@ -28,6 +28,10 @@ public class SaveGameManager : MonoBehaviour
 
     private bool loadedAll;
 
+    [Header("Events")]
+    public GameEvent workerIsHired;
+    public GameEvent machinePlacesOff;
+
     private void Start()
     {
         loadedAll = false;
@@ -152,6 +156,7 @@ public class SaveGameManager : MonoBehaviour
                 //Debug.Log("worker" + i + ": " + retrievedJson);
                 worker.GetComponent<Worker>().LoadWorkerData(workerData);
             }
+
         }
         else
         {
@@ -255,6 +260,9 @@ public class SaveGameManager : MonoBehaviour
         LoadTime();
 
         loadedAll = true;
+
+        workerIsHired.Raise();
+        machinePlacesOff.Raise();
     }
 
     private void SaveAll()

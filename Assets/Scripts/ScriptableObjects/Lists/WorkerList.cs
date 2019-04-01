@@ -54,4 +54,15 @@ public class WorkerList : RuntimeList<Worker>
     {
         return Items.FindAll(x=>x.inOrientation);
     }
+
+    public void DecreaseHappiness()
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            if (!Items[i].inOrientation)
+            {
+                Items[i].MinusHappiness();
+            }
+        }
+    }
 }

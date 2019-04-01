@@ -105,6 +105,13 @@ public class Worker : MonoBehaviour
             + "\n level: " + level;
     }
 
+    public void MinusHappiness()
+    {
+        happyMeter = (happyMeter - (0.003f / happyDefense));
+
+        happyMeter = Mathf.Clamp(happyMeter, 0, 100);
+    }
+
     public void AddHappiness(float percentage)
     {
         happyMeter = Mathf.Clamp(happyMeter + percentage, 0, 100);

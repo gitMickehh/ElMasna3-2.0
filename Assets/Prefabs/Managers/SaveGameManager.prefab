@@ -47,6 +47,8 @@ MonoBehaviour:
   listOfWorkers: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   GameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
   newGameConfig: {fileID: 11400000, guid: 06e98f26cc3d3fe4881d78ec390303bd, type: 2}
-  save: 1
+  save: 0
   load: 1
-  focusSave: 1
+  focusSave: 0
+  workerIsHired: {fileID: 11400000, guid: 281817cb70727c848abc20340820bc3d, type: 2}
+  machinePlacesOff: {fileID: 11400000, guid: ab683533d21a55543ac14e0efcb86261, type: 2}
