@@ -22,6 +22,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Lists")]
     public WorkerList workersList;
     public EmptyMachinePlaceList listofEmptyMachines;
+    public MachineList listOfMachines;
 
     [Header("Language")]
     public LanguageProfile lang;
@@ -72,7 +73,6 @@ public class TutorialManager : MonoBehaviour
     [Attributes.GreyOut]
     List<Worker> workersInOrientation;
     Coroutine cycleThroughWorkersCoroutine;
-    //public GameEvent switchCameraView;
 
     private void Start()
     {
@@ -92,7 +92,7 @@ public class TutorialManager : MonoBehaviour
         multiplePointers = new List<GameObject>();
 
         //hypothetical number of steps
-        tutorialStepsDone = new bool[20];
+        tutorialStepsDone = new bool[11];
 
         //starting the first step.. maybe change this later to let the save manager do it
         StartingPoint(tutorialStage);
@@ -148,6 +148,9 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 9:
                 PointAtWorkerInMap();
+                break;
+            case 10:
+                PointAtStoreForBlueMachine();
                 break;
             default:
                 Debug.LogWarning("Case " + i + " Not Implemeneted yet");
@@ -298,7 +301,7 @@ public class TutorialManager : MonoBehaviour
 
     private void PointAtStoreButton()
     {
-        if (!tutorialStepsDone[5])
+        if (!tutorialStepsDone[5] || !tutorialStepsDone[11])
         {
             StoreButton.interactable = true;
 
@@ -453,6 +456,18 @@ public class TutorialManager : MonoBehaviour
         WorkerMovedInMap();
     }
 
+    private void PointAtStoreForBlueMachine()
+    {
+        if (!tutorialStepsDone[11])
+        {
+            //making the machine finish first cycle NOW
+            Machine machine = listOfMachines.Items[0];
+            machine.FinishCycleNow();
+            PointAtStoreButton();
+
+            tutorialStepsDone[11] = true;
+        }
+    }
     //events
     public void SwipedHorizontal()
     {
@@ -506,11 +521,20 @@ public class TutorialManager : MonoBehaviour
             nonAnimatedPointer.SetActive(false);
             tutorialStepsDone[6] = true;
         }
+        else if (tutorialStepsDone[11])
+        {
+            nonAnimatedPointer.SetActive(false);
+            tutorialStepsDone[6] = true;
+            //var store = FindObjectOfType<StorePanel>();
+            //Debug.Log("Store name: "+store.name);
+        }
     }
     public void BoughtMachineWaitingToPlaceIt()
     {
         if (tutorialStepsDone[6] && !tutorialStepsDone[7])
         {
+            var floor = FindObjectOfType<Floor>();
+            floor.transform.localRotation = Quaternion.Euler(0, 75, 0);
             NextStep();
         }
     }

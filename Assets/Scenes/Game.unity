@@ -3691,6 +3691,7 @@ MonoBehaviour:
   workersList: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   listofEmptyMachines: {fileID: 11400000, guid: 81fea3cb723b8324bb323da515755efe,
     type: 2}
+  listOfMachines: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}
   lang: {fileID: 11400000, guid: 360fc7d4c727ed24e809dd1e06f366cc, type: 2}
   parentToPointers: {fileID: 168440257}
   animatedPointer: {fileID: 520335020}

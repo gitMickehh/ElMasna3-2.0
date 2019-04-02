@@ -116,6 +116,13 @@ public class Machine : MonoBehaviour
         runningTime = timerValue;
     }
 
+    public void FinishCycleNow()
+    {
+        runningTime = 0;
+        var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
+        gm.DepositMoney(scheme.moneyInCycle, scheme.moneyCurrency);
+    }
+
     public void ChangeWorker(Worker w)
     {
         if (w.currentMachine != null)

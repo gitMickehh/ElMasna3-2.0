@@ -70,7 +70,6 @@ public class StorePanel : MonoBehaviour
                 MachinesButtons.Add(sIComponent);
 
                 MachinesButtons[i].FillInObject(storeScheme.Machines[i], storeScheme.RealMoneyIcon, this);
-
             }
         }
 
