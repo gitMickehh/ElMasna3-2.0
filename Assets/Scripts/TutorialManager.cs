@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    //Welcome player.
-    //Introduce Swiping Left/Right (Horizontal) Rotating Floor
     public GameObjectField gameManagerField;
     private GameManager gManager;
 
@@ -28,6 +26,7 @@ public class TutorialManager : MonoBehaviour
     public LanguageProfile lang;
 
     [Header("Pointer")]
+    #region pointer
     public Transform parentToPointers;
     public GameObject animatedPointer;
     public GameObject nonAnimatedPointer;
@@ -35,22 +34,28 @@ public class TutorialManager : MonoBehaviour
     private Animator pointerAniamtor;
     public List<string> pointerAnimatorSteps;
     private bool movingPointerInCode;
+    #endregion
 
     [Header("Tutorial Steps")]
+    #region tutorial
     public int tutorialStage = 0;
     public float waitTimeBetweenTuts = 1.5f;
     [SerializeField]
     private bool[] tutorialStepsDone;
+    #endregion
 
     [Tooltip("To add these events on the corresponding buttons")]
     [Header("Events")]
+    #region events
     public GameEvent OrientationButtonPressEvent;
     public GameEvent HireButtonPressEvent;
     public GameEvent StoreButtonPress;
     public GameEvent MapButtonPress;
+    #endregion
 
     //needed objects
     [Header("Buttons")]
+    #region runtimeObejcts
     [SerializeField]
     [Attributes.GreyOut]
     private Button OrientationButton;
@@ -63,8 +68,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     [Attributes.GreyOut]
     private Button MapButtom;
+    #endregion
 
     [Header("OrientationWorkers")]
+    #region orientationWorkers
     [SerializeField]
     float averageWorkerWidth = -15f; //x
     [SerializeField]
@@ -73,6 +80,8 @@ public class TutorialManager : MonoBehaviour
     [Attributes.GreyOut]
     List<Worker> workersInOrientation;
     Coroutine cycleThroughWorkersCoroutine;
+
+    public List<System.Action> tutorialList;
 
     private void Start()
     {
@@ -90,12 +99,28 @@ public class TutorialManager : MonoBehaviour
         MapButtom.interactable = false;
         OrientationButton.interactable = false;
         multiplePointers = new List<GameObject>();
+        tutorialStepsDone = new bool[20];   //hypothetical number of steps
+        TutorialDictionaryFill();
 
         //hypothetical number of steps
         tutorialStepsDone = new bool[11];
 
         //starting the first step.. maybe change this later to let the save manager do it
         StartingPoint(tutorialStage);
+    }
+
+    private void TutorialDictionaryFill()
+    {
+        tutorialList.Add(SwipeHorizontal);
+        tutorialList.Add(OrientationButtonTut);
+        tutorialList.Add(OrientationWorkerTouch);
+        tutorialList.Add(PointAtHireButton);
+        tutorialList.Add(BackToFactoryButton);
+        tutorialList.Add(PointAtStoreButton);
+        tutorialList.Add(SwipeVertical);
+        tutorialList.Add(PointAtEmptyMachinePlace);
+        tutorialList.Add(PointAtMapButton);
+        tutorialList.Add(PointAtWorkerInMap);
     }
 
     public void StartingPoint(int tutorialStepSaved)
@@ -116,6 +141,14 @@ public class TutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTimeBetweenTuts);
 
+        if (!tutorialStepsDone[i])
+        {
+            tutorialList[i]();
+            tutorialStepsDone[i] = true;
+        }
+
+        #region old switch
+        /*
         switch (i)
         {
             case 0:
@@ -156,6 +189,8 @@ public class TutorialManager : MonoBehaviour
                 Debug.LogWarning("Case " + i + " Not Implemeneted yet");
                 break;
         }
+        */
+        #endregion
     }
 
     //call this after every tutorial is done
@@ -172,46 +207,29 @@ public class TutorialManager : MonoBehaviour
     {
         //0
         //show player to swipe Horizontally
-
-        if (!tutorialStepsDone[0])
-        {
-            tutorialStepsDone[0] = true;
-            animatedPointer.SetActive(true);
-            pointerAniamtor.SetTrigger(pointerAnimatorSteps[1]);
-        }
+        animatedPointer.SetActive(true);
+        pointerAniamtor.SetTrigger(pointerAnimatorSteps[1]);
     }
 
     private void OrientationButtonTut()
     {
         //point at Orientation Button
+        //OrientationButtonPressEvent = new GameEvent();
+        //var myListener = gameObject.AddComponent<GameEventListener>();
+        //myListener.Event = OrientationButtonPressEvent;
+        //myListener.Response.AddListener(new UnityAction(NextStep));
+        OrientationButton.interactable = true;
+        OrientationButton.onClick.AddListener(new UnityAction(OrientationButtonPressEvent.Raise));
 
-        if (!tutorialStepsDone[1])
-        {
-            //OrientationButtonPressEvent = new GameEvent();
-            //var myListener = gameObject.AddComponent<GameEventListener>();
-            //myListener.Event = OrientationButtonPressEvent;
-            //myListener.Response.AddListener(new UnityAction(NextStep));
-            OrientationButton.interactable = true;
-            OrientationButton.onClick.AddListener(new UnityAction(OrientationButtonPressEvent.Raise));
+        pointerAniamtor.SetTrigger(pointerAnimatorSteps[0]);
+        animatedPointer.SetActive(false);
+        nonAnimatedPointer.SetActive(true);
 
-            pointerAniamtor.SetTrigger(pointerAnimatorSteps[0]);
-            animatedPointer.SetActive(false);
-            nonAnimatedPointer.SetActive(true);
+        var rectt = OrientationButton.GetComponent<RectTransform>();
 
-            var rectt = OrientationButton.GetComponent<RectTransform>();
-
-            nonAnimatedPointer.transform.SetParent(rectt);
-            nonAnimatedPointer.transform.localPosition = new Vector3(-rectt.sizeDelta.x, 0, 0);
-            nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
-
-            tutorialStepsDone[1] = true;
-        }
-    }
-
-    private void IntroduceZoom()
-    {
-        //show pinch
-
+        nonAnimatedPointer.transform.SetParent(rectt);
+        nonAnimatedPointer.transform.localPosition = new Vector3(-rectt.sizeDelta.x, 0, 0);
+        nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
     }
 
     #region PointAtWorkersInOrientation
@@ -219,24 +237,19 @@ public class TutorialManager : MonoBehaviour
     private void OrientationWorkerTouch()
     {
         //show the player that they can touch workers to get their profiles
+        //point at all workers
+        workersInOrientation = workersList.WorkersInOrientation();
 
-        if (!tutorialStepsDone[2])
+        if (workersInOrientation == null)
         {
-            //point at all workers
-            workersInOrientation = workersList.WorkersInOrientation();
+            Debug.LogError("No workers are in orientation?.. this is a mistake");
+        }
+        else
+        {
+            nonAnimatedPointer.transform.SetParent(parentToPointers);
+            //nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
+            cycleThroughWorkersCoroutine = StartCoroutine(CycleThroughWorkers());
 
-            if (workersInOrientation == null)
-            {
-                Debug.LogError("No workers are in orientation?.. this is a mistake");
-            }
-            else
-            {
-                nonAnimatedPointer.transform.SetParent(parentToPointers);
-                //nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
-                cycleThroughWorkersCoroutine = StartCoroutine(CycleThroughWorkers());
-
-                tutorialStepsDone[2] = true;
-            }
         }
     }
 
@@ -263,40 +276,32 @@ public class TutorialManager : MonoBehaviour
     //point at button of Hiring Worker
     private void PointAtHireButton()
     {
-        if (!tutorialStepsDone[3])
-        {
-            HireButton = GameObject.Find("HireButton").GetComponent<Button>();
-            var rectHireButton = HireButton.GetComponent<RectTransform>();
-            nonAnimatedPointer.SetActive(true);
+        HireButton = GameObject.Find("HireButton").GetComponent<Button>();
+        var rectHireButton = HireButton.GetComponent<RectTransform>();
+        nonAnimatedPointer.SetActive(true);
 
-            nonAnimatedPointer.transform.SetParent(rectHireButton);
-            nonAnimatedPointer.transform.localPosition = new Vector3(-rectHireButton.sizeDelta.x, rectHireButton.sizeDelta.y, 0);
-            nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
+        nonAnimatedPointer.transform.SetParent(rectHireButton);
+        nonAnimatedPointer.transform.localPosition = new Vector3(-rectHireButton.sizeDelta.x, rectHireButton.sizeDelta.y, 0);
+        nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
 
-            tutorialStepsDone[3] = true;
-        }
     }
 
     private void BackToFactoryButton()
     {
         //point at Orientation Button
 
-        if (!tutorialStepsDone[4])
-        {
-            //OrientationButton.onClick.AddListener(new UnityAction(OrientationButtonPressEvent.Raise));
+        //OrientationButton.onClick.AddListener(new UnityAction(OrientationButtonPressEvent.Raise));
 
-            pointerAniamtor.SetTrigger(pointerAnimatorSteps[0]);
-            animatedPointer.SetActive(false);
-            nonAnimatedPointer.SetActive(true);
+        pointerAniamtor.SetTrigger(pointerAnimatorSteps[0]);
+        animatedPointer.SetActive(false);
+        nonAnimatedPointer.SetActive(true);
 
-            var rectt = OrientationButton.GetComponent<RectTransform>();
+        var rectt = OrientationButton.GetComponent<RectTransform>();
 
-            nonAnimatedPointer.transform.SetParent(rectt);
-            nonAnimatedPointer.transform.localPosition = new Vector3(-rectt.sizeDelta.x, 0, 0);
-            nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
+        nonAnimatedPointer.transform.SetParent(rectt);
+        nonAnimatedPointer.transform.localPosition = new Vector3(-rectt.sizeDelta.x, 0, 0);
+        nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
 
-            tutorialStepsDone[4] = true;
-        }
     }
 
     private void PointAtStoreButton()
@@ -305,121 +310,98 @@ public class TutorialManager : MonoBehaviour
         {
             StoreButton.interactable = true;
 
-            var rectHireButton = StoreButton.GetComponent<RectTransform>();
-            StoreButton.onClick.AddListener(new UnityAction(StoreButtonPress.Raise));
+        var rectHireButton = StoreButton.GetComponent<RectTransform>();
+        StoreButton.onClick.AddListener(new UnityAction(StoreButtonPress.Raise));
 
-            nonAnimatedPointer.SetActive(true);
-            nonAnimatedPointer.transform.SetParent(rectHireButton);
-            nonAnimatedPointer.transform.localPosition = new Vector3(-rectHireButton.sizeDelta.x, rectHireButton.sizeDelta.y, 0);
-            nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
-
-            tutorialStepsDone[5] = true;
-        }
+        nonAnimatedPointer.SetActive(true);
+        nonAnimatedPointer.transform.SetParent(rectHireButton);
+        nonAnimatedPointer.transform.localPosition = new Vector3(-rectHireButton.sizeDelta.x, rectHireButton.sizeDelta.y, 0);
+        nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
     }
 
     private void SwipeVertical()
     {
-        if (!tutorialStepsDone[7])
-        {
-            animatedPointer.SetActive(true);
-            pointerAniamtor.SetTrigger(pointerAnimatorSteps[2]);
+        animatedPointer.SetActive(true);
+        pointerAniamtor.SetTrigger(pointerAnimatorSteps[2]);
 
-            tutorialStepsDone[7] = true;
-        }
     }
 
     private void PointAtEmptyMachinePlace()
     {
-        if (!tutorialStepsDone[8])
-        {
-            animatedPointer.SetActive(false);
-            nonAnimatedPointer.SetActive(true);
+        animatedPointer.SetActive(false);
+        nonAnimatedPointer.SetActive(true);
 
-            var emptyMachinePlace = listofEmptyMachines.Items[4];
-            //raycast from place to camera, if it is not in view, swipe to find it
+        var emptyMachinePlace = listofEmptyMachines.Items[4];
+        //raycast from place to camera, if it is not in view, swipe to find it
 
-            var requiredPos = emptyMachinePlace.transform.position;
-            Vector2 onScreenPos = Camera.main.WorldToScreenPoint(requiredPos);
+        var requiredPos = emptyMachinePlace.transform.position;
+        Vector2 onScreenPos = Camera.main.WorldToScreenPoint(requiredPos);
 
-            onScreenPos.x += averageWorkerWidth;
-            onScreenPos.y += averageWorkerHeight;
+        onScreenPos.x += averageWorkerWidth;
+        onScreenPos.y += averageWorkerHeight;
 
-            nonAnimatedPointer.transform.position = onScreenPos;
-
-            tutorialStepsDone[8] = true;
-        }
+        nonAnimatedPointer.transform.position = onScreenPos;
     }
 
     private void PointAtMapButton()
     {
-        if (!tutorialStepsDone[9])
-        {
-            animatedPointer.SetActive(false);
-            MapButtom.interactable = true;
+        animatedPointer.SetActive(false);
+        MapButtom.interactable = true;
 
-            var rectHireButton = MapButtom.GetComponent<RectTransform>();
-            MapButtom.onClick.AddListener(new UnityAction(MapButtonPress.Raise));
+        var rectHireButton = MapButtom.GetComponent<RectTransform>();
+        MapButtom.onClick.AddListener(new UnityAction(MapButtonPress.Raise));
 
-            nonAnimatedPointer.SetActive(true);
-            nonAnimatedPointer.transform.SetParent(rectHireButton);
-            nonAnimatedPointer.transform.localPosition = new Vector3(-rectHireButton.sizeDelta.x, rectHireButton.sizeDelta.y, 0);
-            nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
-
-            tutorialStepsDone[5] = true;
-
-            tutorialStepsDone[9] = true;
-        }
+        nonAnimatedPointer.SetActive(true);
+        nonAnimatedPointer.transform.SetParent(rectHireButton);
+        nonAnimatedPointer.transform.localPosition = new Vector3(-rectHireButton.sizeDelta.x, rectHireButton.sizeDelta.y, 0);
+        nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
     }
 
     private void PointAtWorkerInMap()
     {
-        if (!tutorialStepsDone[10])
+        //points at a worker in the map and tells the player to drag the worker to the machine
+        UIMap map = FindObjectOfType<UIMap>();
+        UIFloor floor = map.GetComponentInChildren<UIFloor>();
+
+        if (map != null)
         {
-            //points at a worker in the map and tells the player to drag the worker to the machine
-            UIMap map = FindObjectOfType<UIMap>();
-            UIFloor floor = map.GetComponentInChildren<UIFloor>();
+            var workerIcon = map.iconsList.Items[0];
+            var workerTransform = workerIcon.GetComponent<RectTransform>();
 
-            if (map != null)
+            nonAnimatedPointer.SetActive(true);
+            nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
+
+            nonAnimatedPointer.transform.SetParent(workerTransform);
+            nonAnimatedPointer.transform.localPosition = new Vector3(0, 0, 0);
+            nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, 145);
+            nonAnimatedPointer.transform.SetParent(parentToPointers);
+
+            UIMapDraggingContainer machinePosition = null;
+            for (int i = 0; i < floor.rooms.Length; i++)
             {
-                var workerIcon = map.iconsList.Items[0];
-                var workerTransform = workerIcon.GetComponent<RectTransform>();
-
-                nonAnimatedPointer.SetActive(true);
-                nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
-
-                nonAnimatedPointer.transform.SetParent(workerTransform);
-                nonAnimatedPointer.transform.localPosition = new Vector3(0, 0, 0);
-                nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, 145);
-                nonAnimatedPointer.transform.SetParent(parentToPointers);
-
-                UIMapDraggingContainer machinePosition = null;
-                for (int i = 0; i < floor.rooms.Length; i++)
+                int j = 0;
+                while (j < floor.rooms[i].Machines.Length && machinePosition == null)
                 {
-                    int j = 0;
-                    while (j < floor.rooms[i].Machines.Length && machinePosition == null)
-                    {
-                        if (floor.rooms[i].Machines[j].machineReference != null)
-                            machinePosition = floor.rooms[i].Machines[j];
-                        else
-                            j++;
-                    }
+                    if (floor.rooms[i].Machines[j].machineReference != null)
+                        machinePosition = floor.rooms[i].Machines[j];
+                    else
+                        j++;
                 }
-
-                if (machinePosition == null)
-                {
-                    Debug.LogError("map machine is null");
-                    return;
-                }
-
-                //start coroutine(machine position as given)
-                StartCoroutine(pointFromWorkerToMachine(machinePosition));
-
-                tutorialStepsDone[10] = true;
             }
-            else
+
+            if (machinePosition == null)
             {
-                Debug.LogWarning("UIMap is null.\n couldn't find an object of type <UIMap> in Scene");
+                Debug.LogError("map machine is null");
+                return;
             }
+
+            //start coroutine(machine position as given)
+            StartCoroutine(pointFromWorkerToMachine(machinePosition));
+
+        }
+        else
+        {
+            Debug.LogWarning("UIMap is null.\n couldn't find an object of type <UIMap> in Scene");
         }
     }
     private IEnumerator pointFromWorkerToMachine(UIMapDraggingContainer machine)
@@ -442,7 +424,7 @@ public class TutorialManager : MonoBehaviour
             if (t <= 1f)
             {
                 t += Time.deltaTime;
-                nonAnimatedPointer.transform.position = Vector2.Lerp(nonAnimatedPointer.transform.position, machineRealPos, t/2f);
+                nonAnimatedPointer.transform.position = Vector2.Lerp(nonAnimatedPointer.transform.position, machineRealPos, t / 2f);
             }
             else
             {
@@ -499,14 +481,6 @@ public class TutorialManager : MonoBehaviour
             NextStep();
         }
     }
-    //IEnumerator WaitToRaiseEvent()
-    //{
-    //    while (tutorialStepsDone[3] && !tutorialStepsDone[4])
-    //    {
-    //        yield return new WaitForSeconds(1f);
-    //    }
-    //    switchCameraView.Raise();
-    //}
     public void PressedBackFromOrientationButton()
     {
         if (tutorialStepsDone[4] && !tutorialStepsDone[5])
@@ -571,4 +545,5 @@ public class TutorialManager : MonoBehaviour
             NextStep();
         }
     }
+
 }
