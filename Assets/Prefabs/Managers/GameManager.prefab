@@ -63,6 +63,8 @@ MonoBehaviour:
   closeUIPanel: {fileID: 11400000, guid: 4965a9fa4c1f1214aa34476d68988576, type: 2}
   workerIsHired: {fileID: 11400000, guid: 281817cb70727c848abc20340820bc3d, type: 2}
   workerList: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
+  timeBetweenSaves: 60
+  SaveGameEvent: {fileID: 11400000, guid: 110e53633e0bf2d4fbb26b6ec7760810, type: 2}
 --- !u!114 &7227205324660242775
 MonoBehaviour:
   m_ObjectHideFlags: 0

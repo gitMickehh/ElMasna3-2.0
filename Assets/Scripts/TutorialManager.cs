@@ -11,6 +11,8 @@ public class TutorialManager : MonoBehaviour
     public GameObjectField gameManagerField;
     private GameManager gManager;
 
+    public static int StepCount = 11;
+
     [Header("Input Manager")]
     [SerializeField]
     [Attributes.GreyOut]
@@ -74,7 +76,7 @@ public class TutorialManager : MonoBehaviour
     List<Worker> workersInOrientation;
     Coroutine cycleThroughWorkersCoroutine;
 
-    private void Start()
+    private void Awake()
     {
         //All things in humanity
         pointerAniamtor = animatedPointer.GetComponent<Animator>();
@@ -92,7 +94,7 @@ public class TutorialManager : MonoBehaviour
         multiplePointers = new List<GameObject>();
 
         //hypothetical number of steps
-        tutorialStepsDone = new bool[11];
+        tutorialStepsDone = new bool[12];
 
         //starting the first step.. maybe change this later to let the save manager do it
         StartingPoint(tutorialStage);
@@ -525,6 +527,7 @@ public class TutorialManager : MonoBehaviour
         {
             nonAnimatedPointer.SetActive(false);
             tutorialStepsDone[6] = true;
+            NextStep();
             //var store = FindObjectOfType<StorePanel>();
             //Debug.Log("Store name: "+store.name);
         }
@@ -547,10 +550,11 @@ public class TutorialManager : MonoBehaviour
     }
     public void PlacedMachineInFloor()
     {
-        if (tutorialStepsDone[8] && !tutorialStepsDone[9])
-        {
-            NextStep();
-        }
+            if (tutorialStepsDone[8] && !tutorialStepsDone[9])
+            {
+                NextStep();
+            }
+        
     }
     public void PressedMapButton()
     {

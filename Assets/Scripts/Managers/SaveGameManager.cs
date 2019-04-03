@@ -32,6 +32,10 @@ public class SaveGameManager : MonoBehaviour
     public GameEvent workerIsHired;
     public GameEvent machinePlacesOff;
 
+    [Header("Tutorial")]
+    public GameObject Tutorial;
+    private TutorialManager tutorialManager;
+
     private void Start()
     {
         loadedAll = false;
@@ -57,7 +61,7 @@ public class SaveGameManager : MonoBehaviour
         //#endif
     }
 
-    private void SaveFloors()
+    public void SaveFloors()
     {
         listOfFloors.SortFloorList();
 
@@ -108,7 +112,7 @@ public class SaveGameManager : MonoBehaviour
 
     }
 
-    private void SaveWorkers()
+    public void SaveWorkers()
     {
         for (int i = 0; i < listOfWorkers.Items.Count; i++)
         {
@@ -146,7 +150,7 @@ public class SaveGameManager : MonoBehaviour
                             worker.transform.localRotation = new Quaternion();
                             orientation.WorkersPositions[j].worker = worker.GetComponent<Worker>();
 
-                            WayPoint orWaypoint= orientation.WorkersPositions[j].position.GetComponent<WayPoint>();
+                            WayPoint orWaypoint = orientation.WorkersPositions[j].position.GetComponent<WayPoint>();
                             orientation.WorkersPositions[j].worker.GetComponent<SeekRoom>().wayPointCurrent = orWaypoint;
                             break;
                         }
@@ -164,7 +168,7 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
-    private void SaveTime()
+    public void SaveTime()
     {
         var gTime = gManager.GetGameTime();
         var timeString = JsonUtility.ToJson(gTime);
@@ -189,22 +193,16 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
-    private void SaveFactoryData()
+    public void SaveFactoryData()
     {
-        //PlayerPrefs.SetFloat("RealMoney", gManager.FactoryMoney.GetValue());
-        //PlayerPrefs.SetFloat("HappyMoney", gManager.HappyMoney.GetValue());
-        //PlayerPrefs.SetFloat("FloorCost", gManager.GameConfigFile.FloorCost);
-
-        //string jsonColor = JsonUtility.ToJson(GameConfigFile.uniformColor.GetValue());
-        //PlayerPrefs.SetString("UniformColor", jsonColor);
-
-        //Debug.Log("Saved " + gManager.FactoryMoney.GetValue() + " Factory Money." +
-        //    "\n" + gManager.HappyMoney.GetValue() + " Happy Money." +
-        //    "\n" + jsonColor + " Uniform Color.");
-
         string jsonString = JsonUtility.ToJson(gManager.GetSaveData());
         PlayerPrefs.SetString("FactoryData", jsonString);
         Debug.Log(jsonString);
+
+        if(tutorialManager)
+        {
+            PlayerPrefs.SetInt("TutorialStep", tutorialManager.tutorialStage);
+        }
     }
 
     private void LoadFactoryData()
@@ -218,36 +216,26 @@ public class SaveGameManager : MonoBehaviour
         {
             Debug.LogWarning("No Factory Data saved before");
             gManager.LoadFactoryData(newGameConfig.GetNewGameData());
+
         }
 
-        //if (PlayerPrefs.HasKey("RealMoney"))
-        //    gManager.FactoryMoney.SetValue(PlayerPrefs.GetFloat("RealMoney"));
-        //else
-        //    gManager.FactoryMoney.SetValue(newGameConfig.RealMoney);
+        if (PlayerPrefs.HasKey("TutorialStep"))
+        {
+            if (PlayerPrefs.GetInt("TutorialStep") >= TutorialManager.StepCount)
+            {
+                Debug.Log("Tutorial is done");
+                return;
+            }
 
-        //if (PlayerPrefs.HasKey("HappyMoney"))
-        //    gManager.HappyMoney.SetValue(PlayerPrefs.GetFloat("HappyMoney"));
-        //else
-        //    gManager.HappyMoney.SetValue(newGameConfig.HappyMoney);
-
-        //if (PlayerPrefs.HasKey("FloorCost"))
-        //    gManager.GameConfigFile.FloorCost = PlayerPrefs.GetFloat("FloorCost");
-        //else
-        //    gManager.GameConfigFile.FloorCost = newGameConfig.FloorCost;
-
-        //if (PlayerPrefs.HasKey("PartyCost"))
-        //    gManager.GameConfigFile.PartyCost = PlayerPrefs.GetFloat("PartyCost");
-        //else
-        //    gManager.GameConfigFile.PartyCost = newGameConfig.PartyCost;
-
-        //if (PlayerPrefs.HasKey("UniformColor"))
-        //{
-        //    Color c = JsonUtility.FromJson<Color>(PlayerPrefs.GetString("UniformColor"));
-        //    GameConfigFile.SetColorField(c);
-        //}
-        //else
-        //    GameConfigFile.SetColorField(newGameConfig.basicUniformColor);
-
+            var tutObject = Instantiate(Tutorial);
+            tutorialManager = tutObject.GetComponent<TutorialManager>();
+            tutorialManager.StartingPoint(PlayerPrefs.GetInt("TutorialStep")); 
+        }
+        else
+        {
+            var tutObject = Instantiate(Tutorial);
+            tutorialManager = tutObject.GetComponent<TutorialManager>();
+        }
     }
 
     private void LoadAll()
@@ -265,7 +253,7 @@ public class SaveGameManager : MonoBehaviour
         machinePlacesOff.Raise();
     }
 
-    private void SaveAll()
+    public void SaveAll()
     {
         if (!loadedAll)
             return;

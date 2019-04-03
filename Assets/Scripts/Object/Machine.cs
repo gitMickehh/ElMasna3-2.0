@@ -81,6 +81,20 @@ public class Machine : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// It brings the amount of money it gained during the time off of the game, the input is in seconds.
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public float GetMoneyMissed(float time)
+    {
+        float result = 0;
+        float totalTime = scheme.timeOfCycle;
+
+
+        return result;
+    }
+
     public SerializableMachine GetSerializableMachine()
     {
         SerializableMachine sm;

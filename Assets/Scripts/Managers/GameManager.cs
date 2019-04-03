@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("Live Objects")]
     public WorkerField SelectedWorker;
     public FloatField machineCheck;
+    public MachineList machineList;
 
     [Header("Time")]
     [GreyOut]
@@ -41,9 +42,15 @@ public class GameManager : MonoBehaviour
 
     public WorkerList workerList;
 
+    [Header("Save Game Events")]
+    public float timeBetweenSaves = 60f;
+    private float timerToSavegame;
+    public GameEvent SaveGameEvent;
+
     private void OnEnable()
     {
         gameManagerField.gameObjectReference = gameObject;
+        
     }
 
     private void OnDisable()
@@ -55,12 +62,23 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(lateStart());
         modalPanel = ModalPanel.Instance();
+        timerToSavegame = 0;
 
         BuildFloorAction = new UnityAction(ConfirmBuildFloor);
     }
 
     private void Update()
     {
+        if(timerToSavegame >= timeBetweenSaves)
+        {
+            timerToSavegame = 0;
+            SaveGameEvent.Raise();
+        }
+        else
+        {
+            timerToSavegame += Time.deltaTime;
+        }
+
         workerList.DecreaseHappiness();
     }
 
@@ -116,13 +134,15 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public bool WithdrawMoney(float money, Currency currency)
+    public bool WithdrawMoney(float money, Currency currency, bool soundOn = true)
     {
         if (currency == Currency.RealMoney)
         {
             if (money <= FactoryMoney.GetValue())
             {
-                AudioManager.instance.Play("Ka-Ching");
+                if(soundOn)
+                    AudioManager.instance.Play("Ka-Ching");
+
                 FactoryMoney.AddValue(-money);
                 return true;
             }
@@ -136,7 +156,9 @@ public class GameManager : MonoBehaviour
         {
             if (money <= HappyMoney.GetValue())
             {
-                AudioManager.instance.Play("Ka-Ching");
+                if(soundOn)
+                    AudioManager.instance.Play("Ka-Ching");
+
                 HappyMoney.AddValue(-money);
                 return true;
             }
@@ -150,7 +172,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void DepositMoney(float money, Currency currency)
+    public void DepositMoney(float money, Currency currency, bool soundOn = true)
     {
         if (money < 0)
             return;
@@ -164,7 +186,8 @@ public class GameManager : MonoBehaviour
             HappyMoney.AddValue(money);
         }
 
-        AudioManager.instance.Play("MoneyIn");
+        if(soundOn)
+            AudioManager.instance.Play("MoneyIn");
     }
 
     public void StartNewDay()
