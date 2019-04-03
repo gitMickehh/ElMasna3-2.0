@@ -82,16 +82,31 @@ public class Machine : MonoBehaviour
     }
 
     /// <summary>
-    /// It brings the amount of money it gained during the time off of the game, the input is in seconds.
+    /// It brings the amount of money it gained during the time off of the game, the input is in seconds. It also sets the time of the machine
     /// </summary>
     /// <param name="time"></param>
     /// <returns></returns>
-    public float GetMoneyMissed(float time)
+    public float GetMoneyMissedAndSetNew(float time)
     {
         float result = 0;
-        float totalTime = scheme.timeOfCycle;
 
+        float cyclesFraction = time / scheme.timeOfCycle;
+        int numberOfCycles = Mathf.FloorToInt(cyclesFraction);
 
+        //setting remaining time
+        float remainingTime = (cyclesFraction - numberOfCycles) * scheme.timeOfCycle;
+        remainingTime += runningTime;
+
+        if (remainingTime / scheme.timeOfCycle >= 1)
+        {
+            //give money of the new cycle also
+            numberOfCycles += (Mathf.FloorToInt(remainingTime / scheme.timeOfCycle));
+            remainingTime -= (Mathf.FloorToInt(remainingTime / scheme.timeOfCycle) * scheme.timeOfCycle);
+        }
+
+        runningTime = remainingTime;
+
+        result = numberOfCycles * scheme.moneyInCycle;
         return result;
     }
 
@@ -179,7 +194,7 @@ public class Machine : MonoBehaviour
 
         CurrentWorker.GetComponent<Worker>().SetWorkerState(WorkerState.Working);
         WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
-        w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget,parentFloor.WorkersHolder);
+        w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget, parentFloor.WorkersHolder);
 
         IsWorking = true;
         SliderToggle();
