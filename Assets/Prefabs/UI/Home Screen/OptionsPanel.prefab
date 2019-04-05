@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
+  activeSounds: {fileID: 11400000, guid: d16109e92dc40684fa7b2897712a4101, type: 2}
+  saveHome: {fileID: 0}
   LanguagesList: {fileID: 11400000, guid: fdb7e7ca571aef541bf8bdf7d0755046, type: 2}
   sound: {fileID: 202965226745485602}
   soundFx: {fileID: 6448391713219947251}
@@ -505,7 +507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 305.3, y: -85.25}
+  m_AnchoredPosition: {x: 101.76666, y: -85.25}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960453029796781286
@@ -1588,7 +1590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 101.76666, y: -85.25}
+  m_AnchoredPosition: {x: 305.3, y: -85.25}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960453031280063155

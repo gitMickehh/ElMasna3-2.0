@@ -8,6 +8,7 @@ public class SaveHome : MonoBehaviour
 
     [Header("Game Config File")]
     public GameConfig GameConfigFile;
+    public ActiveSounds activeSounds;
 
     //#if UNITY_EDITOR
     [Header("Editor Options")]
@@ -23,6 +24,13 @@ public class SaveHome : MonoBehaviour
     private void Start()
     {
         loadedAll = false;
+        StartCoroutine(LateStart());
+        
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
 
         //#if UNITY_EDITOR
         if (load)
@@ -34,23 +42,67 @@ public class SaveHome : MonoBehaviour
         //#endif
     }
 
+
     private void SaveSounds()
     {
+        string soundOn = activeSounds.soundIsOn.ToString();
+        string soundFXOn = activeSounds.soundFxIsOn.ToString();
 
+        PlayerPrefs.SetString("soundOn", soundOn);
+        PlayerPrefs.SetString("soundFXOn", soundFXOn);
     }
 
     private void LoadSounds()
     {
+        if (PlayerPrefs.HasKey("soundOn"))
+        {
+            string soundOn = (PlayerPrefs.GetString("soundOn"));
+            if(soundOn != "")
+            {
+                bool sound = bool.Parse(soundOn);
 
+                if(sound)
+                    uI_OptionsMenu.sound.isOn = true;
+                else
+                    uI_OptionsMenu.sound.isOn = false;
+
+                activeSounds.soundIsOn = sound;
+                Debug.Log("SoundIsOn: " + sound);
+                uI_OptionsMenu.CheckSoundState(Sounds.Sound.ToString());
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Game Sound not saved!");
+        }
+
+        if (PlayerPrefs.HasKey("soundFXOn"))
+        {
+            string soundFXOn = (PlayerPrefs.GetString("soundFXOn"));
+            if (soundFXOn != "")
+            {
+                bool soundFx = bool.Parse(soundFXOn);
+
+                if (soundFx)
+                    uI_OptionsMenu.soundFx.isOn = true;
+                else
+                    uI_OptionsMenu.soundFx.isOn = false;
+
+                activeSounds.soundFxIsOn = soundFx;
+                Debug.Log("soundFxIsOn: " + soundFx);
+
+                uI_OptionsMenu.CheckSoundState(Sounds.SoundFX.ToString());
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Game SoundFXs not saved!");
+        }
     }
 
     private void SaveLanguage()
     {
         var cLanguage = GameConfigFile.CurrentLanguageProfile.name;
-        //var languageString = JsonUtility.ToJson(cLanguage);
-
-        //Debug.Log(languageString);
-        //PlayerPrefs.SetString("language", languageString);
 
         Debug.Log(cLanguage);
         PlayerPrefs.SetString("language", cLanguage);
@@ -60,7 +112,7 @@ public class SaveHome : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("language"))
         {
-            string languageString = /*JsonUtility.FromJson<string>*/(PlayerPrefs.GetString("language"));
+            string languageString = (PlayerPrefs.GetString("language"));
             Debug.Log("languageString: " + languageString);
 
             if (languageString != "")
@@ -84,52 +136,54 @@ public class SaveHome : MonoBehaviour
         Debug.Log("Loading all");
 
         LoadLanguage();
+        LoadSounds();
         loadedAll = true;
     }
 
-    private void SaveAll()
+    public void SaveAll()
     {
         Debug.Log("Saving all");
         if (!loadedAll)
             return;
 
         SaveLanguage();
+        SaveSounds();
 
     }
 
    
 
-    private void OnApplicationQuit()
-    {
-        Debug.Log("OnApplicationQuit");
-        //#if UNITY_EDITOR
-        if (save)
-        {
-            //#endif
-            Debug.Log("loadedAll: " + loadedAll);
-            if (loadedAll)
-                SaveAll();
-            //#if UNITY_EDITOR
-        }
-        //#endif
-    }
+    //private void OnApplicationQuit()
+    //{
+    //    Debug.Log("OnApplicationQuit");
+    //    //#if UNITY_EDITOR
+    //    if (save)
+    //    {
+    //        //#endif
+    //        Debug.Log("loadedAll: " + loadedAll);
+    //        if (loadedAll)
+    //            SaveAll();
+    //        //#if UNITY_EDITOR
+    //    }
+    //    //#endif
+    //}
 
-    private void OnApplicationFocus(bool focus)
-    {
-        if (!focusSave)
-            return;
+    //private void OnApplicationFocus(bool focus)
+    //{
+    //    if (!focusSave)
+    //        return;
 
-        if (!focus)
-        {
-            //#if UNITY_EDITOR
-            if (save)
-            {
-                //#endif
-                if (loadedAll)
-                    SaveAll();
-                //#if UNITY_EDITOR
-            }
-            //#endif
-        }
-    }
+    //    if (!focus)
+    //    {
+    //        //#if UNITY_EDITOR
+    //        if (save)
+    //        {
+    //            //#endif
+    //            if (loadedAll)
+    //                SaveAll();
+    //            //#if UNITY_EDITOR
+    //        }
+    //        //#endif
+    //    }
+    //}
 }

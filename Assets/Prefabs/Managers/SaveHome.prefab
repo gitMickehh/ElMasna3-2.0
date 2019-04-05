@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameConfigFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
+  activeSounds: {fileID: 11400000, guid: d16109e92dc40684fa7b2897712a4101, type: 2}
   save: 1
   load: 1
   focusSave: 0

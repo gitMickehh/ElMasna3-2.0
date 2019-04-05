@@ -12,6 +12,9 @@ public enum Languages
 public class UI_OptionsMenu : MonoBehaviour
 {
     public GameConfig gameConfigFile;
+    public ActiveSounds activeSounds;
+    
+    public SaveHome saveHome;
 
     //Modal Panel
     private ModalPanel modalPanel;
@@ -31,6 +34,7 @@ public class UI_OptionsMenu : MonoBehaviour
     {
         toggles = languagesGroup.GetComponentsInChildren<Toggle>().ToList<Toggle>();
     }
+
     private void Start()
     {
         modalPanel = ModalPanel.Instance();
@@ -94,6 +98,8 @@ public class UI_OptionsMenu : MonoBehaviour
         if (toggles.Contains(activeToggle))
             ChangeLanguage(toggles.IndexOf(activeToggle));
 
+        saveHome.SaveAll();
+
     }
     public void CheckSoundState(string soundStr)
     {
@@ -105,6 +111,8 @@ public class UI_OptionsMenu : MonoBehaviour
                 else if (!sound.isOn)
                     AudioManager.instance.StopSound("Theme Song");
 
+                activeSounds.soundIsOn = sound.isOn;
+
                 break;
 
             case "SoundFX":
@@ -113,7 +121,10 @@ public class UI_OptionsMenu : MonoBehaviour
                 else if (!soundFx.isOn)
                     AudioManager.instance.StopFXSounds();
 
+                activeSounds.soundFxIsOn = soundFx.isOn;
                 break;
         }
+
+        saveHome.SaveAll();
     }
 }

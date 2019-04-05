@@ -85,12 +85,14 @@ public class AudioManager : MonoBehaviour {
     {
         Sound s = buttonsSounds[randomButton];
 
+        if (!s.soundIsOn)
+            return;
+
         if (s == null)
         {
             Debug.LogWarning("button index is not included in the manager, Please check if it is a typo.");
             return;
         }
-
         s.source.Play();
 
         //next buton sound
@@ -121,6 +123,12 @@ public class AudioManager : MonoBehaviour {
             s[i].soundIsOn = false;
         }
 
+        for (int i = 0; i < buttonsSounds.Length; i++)
+        {
+            buttonsSounds[i].source.Stop();
+            buttonsSounds[i].soundIsOn = false;
+        }
+
     }
 
     public void PlayFXSounds()
@@ -130,7 +138,11 @@ public class AudioManager : MonoBehaviour {
         for (int i = 0; i < s.Length; i++)
         {
             s[i].soundIsOn = true;
-            s[i].source.Play();
+        }
+
+        for (int i = 0; i < buttonsSounds.Length; i++)
+        {
+            buttonsSounds[i].soundIsOn = true;
         }
 
     }
