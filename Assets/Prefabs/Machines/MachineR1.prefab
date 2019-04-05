@@ -88,9 +88,9 @@ MonoBehaviour:
   workerPosition: {fileID: 4166432996256539999}
   scheme: {fileID: 11400000, guid: f7465f48ce5ec564eb26abc034b3c15d, type: 2}
   machineTimeSlider: {fileID: 1595565464608985927}
-  machineAnimator: {fileID: 0}
   machineCircularTimer: {fileID: 7321913700058121973}
   circular: 1
+  machineAnimator: {fileID: 0}
 --- !u!1 &4166432996256539992
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +133,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: MachineCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6388742293376252739, guid: e401d5c7a51c43a4b98aafe851b3188a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 483d6c805b1b8d84f85b311d535b0ce4,
+        type: 3}
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,36 +244,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3103367883306381041, guid: e401d5c7a51c43a4b98aafe851b3188a,
+    - target: {fileID: 5212070364274313552, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
-      propertyPath: m_Value
-      value: 0.725
-      objectReference: {fileID: 0}
-    - target: {fileID: 6774332945001005271, guid: e401d5c7a51c43a4b98aafe851b3188a,
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 483d6c805b1b8d84f85b311d535b0ce4,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6774332945001005271, guid: e401d5c7a51c43a4b98aafe851b3188a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8241155859450566640, guid: e401d5c7a51c43a4b98aafe851b3188a,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.13725491
-      objectReference: {fileID: 0}
-    - target: {fileID: 8241155859450566640, guid: e401d5c7a51c43a4b98aafe851b3188a,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.36078432
-      objectReference: {fileID: 0}
-    - target: {fileID: 8241155859450566640, guid: e401d5c7a51c43a4b98aafe851b3188a,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.5882353
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e401d5c7a51c43a4b98aafe851b3188a, type: 3}
 --- !u!224 &313550389215732959 stripped

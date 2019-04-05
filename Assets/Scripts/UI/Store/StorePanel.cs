@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class StorePanel : MonoBehaviour
 {
+    public GameObjectField gManagerField;
+
     [Header("Holder")]
     public GameObjectField ObjectToBuy;
     UIStoreObject UIobjectToBuy;
@@ -16,7 +18,9 @@ public class StorePanel : MonoBehaviour
     [Header("UI")]
     public GameObject storeItemHolder;
     public Text PartyCostText;
+    public Button partyButton;
     public GameObject MachineStorePage;
+    public List<UIStoreObject> MachinesButtons;
 
     [Header("Events")]
     public GameEvent ToPlaceMachine;
@@ -34,23 +38,60 @@ public class StorePanel : MonoBehaviour
 
     public void Start()
     {
-        FillInMachines();
-        gameManager = FindObjectOfType<GameManager>();
         PartyCostText.text = gameManager.GameConfigFile.PartyCost.ToString();
 
         modalPanel = ModalPanel.Instance();
 
         BuyMachineAction = new UnityAction(ConfirmBuy);
         myCancelAction = new UnityAction(CancelBuy);
-
     }
 
-    private void FillInMachines()
+    private void OnEnable()
     {
+        if(gManagerField != null)
+            gameManager = gManagerField.gameObjectReference.GetComponent<GameManager>();
+
+        partyButton.interactable = gameManager.CheckBalance(gameManager.GameConfigFile.PartyCost, Currency.HappyMoney);
+
+        UpdateMachinesButtons();
+    }
+
+    private void UpdateMachinesButtons()
+    {
+        if(MachinesButtons.Count < storeScheme.Machines.Length)
+        {
+            MachinesButtons = new List<UIStoreObject>(storeScheme.Machines.Length);
+
+            for (int i = 0; i < storeScheme.Machines.Length; i++)
+            {
+                var sI = Instantiate(storeItemHolder, MachineStorePage.transform);
+                var sIComponent = sI.GetComponent<UIStoreObject>();
+
+                MachinesButtons.Add(sIComponent);
+
+                MachinesButtons[i].FillInObject(storeScheme.Machines[i], storeScheme.RealMoneyIcon, this);
+            }
+        }
+
         for (int i = 0; i < storeScheme.Machines.Length; i++)
         {
-            var sI = Instantiate(storeItemHolder, MachineStorePage.transform);
-            sI.GetComponent<UIStoreObject>().FillInObject(storeScheme.Machines[i], storeScheme.RealMoneyIcon, this);
+            MachinesButtons[i].GetComponentInChildren<Button>().interactable = gameManager.CheckBalance((MachinesButtons[i].itemCost), MachinesButtons[i].currency);
+
+            if (MachinesButtons[i].GetComponentInChildren<Button>().interactable)
+            {
+                //you can buy this
+                MachinesButtons[i].itemCostText.color = Color.black;
+                MachinesButtons[i].itemImage.color = Color.white;
+                MachinesButtons[i].currencyImage.color = Color.white;
+            }
+            else
+            {
+                //you can not buy this
+                MachinesButtons[i].itemCostText.color = Color.grey;
+                MachinesButtons[i].itemImage.color = Color.grey;
+                MachinesButtons[i].currencyImage.color = Color.grey;
+            }
+
         }
 
         MachineStorePage.SetActive(false);
@@ -70,9 +111,9 @@ public class StorePanel : MonoBehaviour
 
         string message = lang.GetQuestion(qs);
 
-        modalPanel.Choice(message,BuyMachineAction,myCancelAction);
+        modalPanel.Choice(message, BuyMachineAction, myCancelAction);
     }
-    
+
     public void ConfirmBuy()
     {
         if (gameManager.CheckBalance(UIobjectToBuy.itemCost, UIobjectToBuy.currency))
@@ -97,9 +138,9 @@ public class StorePanel : MonoBehaviour
     {
         LanguageProfile lang = gameManager.GameConfigFile.CurrentLanguageProfile;
 
-        if (!gameManager.CheckBalance(gameManager.GameConfigFile.PartyCost,Currency.HappyMoney))
+        if (!gameManager.CheckBalance(gameManager.GameConfigFile.PartyCost, Currency.HappyMoney))
         {
-            modalPanel.Message(lang.NotEnoughMoney,gameManager.GameConfigFile.icons[1]);
+            modalPanel.Message(lang.NotEnoughMoney, gameManager.GameConfigFile.icons[1]);
             return;
         }
 
@@ -111,7 +152,7 @@ public class StorePanel : MonoBehaviour
             PartyCostText.text
         };
 
-        string message =  lang.GetStatement(Statement);
+        string message = lang.GetStatement(Statement);
 
         modalPanel.Choice(message, new UnityAction(PartyPayAccept), myCancelAction, gameManager.GameConfigFile.icons[1]);
     }

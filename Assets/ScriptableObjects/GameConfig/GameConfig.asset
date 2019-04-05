@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777f98815de920748969b2aade9a668d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  CurrentLanguageProfile: {fileID: 11400000, guid: 360fc7d4c727ed24e809dd1e06f366cc,
+  CurrentLanguageProfile: {fileID: 11400000, guid: 0b0fb08bcd649e24593eac7f10e3771f,
     type: 2}
   dayOfTheWeek: 0
   FactoryMoney: {fileID: 11400000, guid: f31364cfb312c8f429c29cf3161ef599, type: 2}
@@ -28,4 +28,5 @@ MonoBehaviour:
   icons:
   - {fileID: 21300002, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
   - {fileID: 21300000, guid: 483d6c805b1b8d84f85b311d535b0ce4, type: 3}
+  PartyCost: 500
   happinessPercentage: 30

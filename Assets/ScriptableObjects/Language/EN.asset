@@ -37,5 +37,6 @@ MonoBehaviour:
   AreYouSureYouWantToRestartTheGame: Are you sure you want to restart the game and
     delete your save file
   DoYouWantToStartTheParty: Do you want to start a party
+  DoYouWantToBuildANewFloor: Do you want to build a new floor
   ExeclamationMark: '!'
   WelcomeText: Welcome to your factory

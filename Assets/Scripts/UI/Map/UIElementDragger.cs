@@ -229,10 +229,15 @@ public class UIElementDragger : MonoBehaviour
     private Transform GetDraggableTransformUnderMouse()
     {
         GameObject clickedObject = GetObjectUnderMouse();
-        WorkerUIIcon workerIconComponent = clickedObject.GetComponent<WorkerUIIcon>();
+        WorkerUIIcon workerIconComponent = null;
 
-        if ((clickedObject) && (workerIconComponent == null))
+        if (clickedObject)
+            workerIconComponent = clickedObject.GetComponent<WorkerUIIcon>();
+    
+        if (!clickedObject || !workerIconComponent)
+        {
             return null;
+        }
 
         if (clickedObject != null && workerIconComponent.UIDraggableType.draggable)
         {
@@ -240,6 +245,7 @@ public class UIElementDragger : MonoBehaviour
 
             clickedObject.transform.parent.parent.SetAsLastSibling();
             workerIconComponent.AnimatorTrigger();
+            AudioManager.instance.Play("GrabUI");
 
             return clickedObject.transform;
         }
@@ -264,9 +270,7 @@ public class UIElementDragger : MonoBehaviour
 
     private void Reset()
     {
-
         swipeDelta = Vector2.zero;
     }
-
 }
 

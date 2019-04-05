@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("Live Objects")]
     public WorkerField SelectedWorker;
     public FloatField machineCheck;
+    public MachineList machineList;
 
     [Header("Time")]
     [GreyOut]
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent closeUIPanel;
+    public GameEvent workerIsHired;
 
     //Modal Panel
     private ModalPanel modalPanel;
@@ -40,9 +42,15 @@ public class GameManager : MonoBehaviour
 
     public WorkerList workerList;
 
+    [Header("Save Game Events")]
+    public float timeBetweenSaves = 60f;
+    private float timerToSavegame;
+    public GameEvent SaveGameEvent;
+
     private void OnEnable()
     {
         gameManagerField.gameObjectReference = gameObject;
+        
     }
 
     private void OnDisable()
@@ -54,12 +62,23 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(lateStart());
         modalPanel = ModalPanel.Instance();
+        timerToSavegame = 0;
 
         BuildFloorAction = new UnityAction(ConfirmBuildFloor);
     }
 
     private void Update()
     {
+        if(timerToSavegame >= timeBetweenSaves)
+        {
+            timerToSavegame = 0;
+            SaveGameEvent.Raise();
+        }
+        else
+        {
+            timerToSavegame += Time.deltaTime;
+        }
+
         workerList.DecreaseHappiness();
     }
 
@@ -115,13 +134,15 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public bool WithdrawMoney(float money, Currency currency)
+    public bool WithdrawMoney(float money, Currency currency, bool soundOn = true)
     {
         if (currency == Currency.RealMoney)
         {
             if (money <= FactoryMoney.GetValue())
             {
-                AudioManager.instance.Play("Ka-Ching");
+                if(soundOn)
+                    AudioManager.instance.Play("Ka-Ching");
+
                 FactoryMoney.AddValue(-money);
                 return true;
             }
@@ -135,7 +156,9 @@ public class GameManager : MonoBehaviour
         {
             if (money <= HappyMoney.GetValue())
             {
-                AudioManager.instance.Play("Ka-Ching");
+                if(soundOn)
+                    AudioManager.instance.Play("Ka-Ching");
+
                 HappyMoney.AddValue(-money);
                 return true;
             }
@@ -149,7 +172,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void DepositMoney(float money, Currency currency)
+    public void DepositMoney(float money, Currency currency, bool soundOn = true)
     {
         if (money < 0)
             return;
@@ -163,7 +186,8 @@ public class GameManager : MonoBehaviour
             HappyMoney.AddValue(money);
         }
 
-        AudioManager.instance.Play("MoneyIn");
+        if(soundOn)
+            AudioManager.instance.Play("MoneyIn");
     }
 
     public void StartNewDay()
@@ -197,27 +221,40 @@ public class GameManager : MonoBehaviour
             timer.StartDay.Raise();
 
         timer.GameDay = (Day)(((int)savedDay + days) % 7);
-        //Debug.Log("Difference in days: " + DifferenceInDays + ", It was " + savedDay +
-        //    "\n Today: " + GameDay);
 
-        //Debug.Log("Last timer: " + LastTimeTimer);
+        //we do not count in Delta Hours (Hour means day in game) because an hour is a full cycle
+        //it is not very dynamic if we want to change that in the game, but for now it does the deed
 
         var deltaMinute = Mathf.Abs(lastTime.Minute - timeNow.Minute) * 60;
         var deltaSeconds = Mathf.Abs(lastTime.Second - timeNow.Second) + deltaMinute;
 
-        //Debug.Log("time difference: " + deltaSeconds + " seconds.");
+        var previousTimeInSeconds = deltaSeconds + LastTimeTimer;
+        
+        timer.LoadTimer(previousTimeInSeconds % timer.GetWholeDayInSeconds());
 
-        //Debug.Log("Time now:\n" + timeNow);
-        //Debug.Log("last time:\n" + lastTime);
+        //a day is one hour (60 minutes)
+        var totalTimePassed = previousTimeInSeconds + days * 60;
+        AddMoneyOfOfflineTime(totalTimePassed);
+    }
 
-        timer.LoadTimer((deltaSeconds + LastTimeTimer) % timer.GetWholeDayInSeconds());
+    private void AddMoneyOfOfflineTime(float t)
+    {
+        var rMoney = machineList.GetPastCyclesMoneyByCurrency(t, Currency.RealMoney);
+        DepositMoney(rMoney,Currency.RealMoney,false);
+
+        var hMoney = machineList.GetPastCyclesMoneyByCurrency(t, Currency.HappyMoney);
+        DepositMoney(hMoney, Currency.HappyMoney, false);
     }
 
     public void HireConfirmation()
     {
         Debug.Log("Hire Confirmation");
+
         if (SelectedWorker.worker == null)
+        {
+            Debug.LogWarning("Selected worker is null.");
             return;
+        }
 
         LanguageProfile lang = GameConfigFile.CurrentLanguageProfile;
         string[] qs = new string[] {
@@ -241,7 +278,7 @@ public class GameManager : MonoBehaviour
     {
         if (!CheckBalance(GameConfigFile.HiringCost, Currency.RealMoney))
         {
-            modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney);
+            modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney,GameConfigFile.icons[0]);
             return;
         }
 
@@ -283,7 +320,7 @@ public class GameManager : MonoBehaviour
             WayPoint wayPointTarget = machine.gameObject.GetComponentInParent<WayPoint>();
             worker.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget, machine.parentFloor.WorkersHolder);
         }
-        
+        workerIsHired.Raise();
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
         closeUIPanel.Raise();
     }

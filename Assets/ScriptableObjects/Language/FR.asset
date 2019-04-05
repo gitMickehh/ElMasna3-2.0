@@ -37,5 +37,6 @@ MonoBehaviour:
   AreYouSureYouWantToRestartTheGame: "\xCAtes-vous s\xFBr de vouloir red\xE9marrer
     le jeu et supprimer votre fichier de sauvegarde"
   DoYouWantToStartTheParty: "Voulez-vous commencer une f\xEAte"
+  DoYouWantToBuildANewFloor: Voulez-vous construire un nouveau sol
   ExeclamationMark: '!'
   WelcomeText: Bienvenue dans votre usine

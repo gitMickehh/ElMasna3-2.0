@@ -57,11 +57,15 @@ MonoBehaviour:
   BuildFailure: {fileID: 11400000, guid: 9f08995bb6ca4894f9481133ce81d159, type: 2}
   SelectedWorker: {fileID: 11400000, guid: 4ae7918a1fc64cf418df5e66e8964d29, type: 2}
   machineCheck: {fileID: 11400000, guid: 43ffc5741ea77c84abff8eb0a22610ad, type: 2}
+  machineList: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}
   DayInMonth: 0
   DifferenceInDays: 0
   timer: {fileID: 0}
   closeUIPanel: {fileID: 11400000, guid: 4965a9fa4c1f1214aa34476d68988576, type: 2}
+  workerIsHired: {fileID: 11400000, guid: 281817cb70727c848abc20340820bc3d, type: 2}
   workerList: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
+  timeBetweenSaves: 60
+  SaveGameEvent: {fileID: 11400000, guid: 110e53633e0bf2d4fbb26b6ec7760810, type: 2}
 --- !u!114 &7227205324660242775
 MonoBehaviour:
   m_ObjectHideFlags: 0

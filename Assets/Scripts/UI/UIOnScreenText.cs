@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIMoney : MonoBehaviour
+public class UIOnScreenText : MonoBehaviour
 {
     public FloatField realMoney;
     public FloatField happyMoney;

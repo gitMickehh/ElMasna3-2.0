@@ -73,12 +73,41 @@ public class Machine : MonoBehaviour
             {
                 runningTime += Time.deltaTime;
                 if (circular)
-                    machineCircularTimer.fillAmount = 1 - (runningTime / timeOfCycle);
+                    machineCircularTimer.fillAmount = (runningTime / timeOfCycle);
                 else
-                    machineTimeSlider.value = 1 - (runningTime / timeOfCycle);
+                    machineTimeSlider.value = (runningTime / timeOfCycle);
             }
 
         }
+    }
+
+    /// <summary>
+    /// It brings the amount of money it gained during the time off of the game, the input is in seconds. It also sets the time of the machine
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public float GetMoneyMissedAndSetNew(float time)
+    {
+        float result = 0;
+
+        float cyclesFraction = time / scheme.timeOfCycle;
+        int numberOfCycles = Mathf.FloorToInt(cyclesFraction);
+
+        //setting remaining time
+        float remainingTime = (cyclesFraction - numberOfCycles) * scheme.timeOfCycle;
+        remainingTime += runningTime;
+
+        if (remainingTime / scheme.timeOfCycle >= 1)
+        {
+            //give money of the new cycle also
+            numberOfCycles += (Mathf.FloorToInt(remainingTime / scheme.timeOfCycle));
+            remainingTime -= (Mathf.FloorToInt(remainingTime / scheme.timeOfCycle) * scheme.timeOfCycle);
+        }
+
+        runningTime = remainingTime;
+
+        result = numberOfCycles * scheme.moneyInCycle;
+        return result;
     }
 
     public SerializableMachine GetSerializableMachine()
@@ -114,6 +143,13 @@ public class Machine : MonoBehaviour
     public void SetTimer(float timerValue)
     {
         runningTime = timerValue;
+    }
+
+    public void FinishCycleNow()
+    {
+        runningTime = 0;
+        var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
+        gm.DepositMoney(scheme.moneyInCycle, scheme.moneyCurrency);
     }
 
     public void ChangeWorker(Worker w)
@@ -158,7 +194,7 @@ public class Machine : MonoBehaviour
 
         CurrentWorker.GetComponent<Worker>().SetWorkerState(WorkerState.Working);
         WayPoint wayPointTarget = gameObject.GetComponentInParent<WayPoint>();
-        w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget,parentFloor.WorkersHolder);
+        w.gameObject.GetComponent<SeekRoom>().SwitchRoom(wayPointTarget, parentFloor.WorkersHolder);
 
         IsWorking = true;
         SliderToggle();
