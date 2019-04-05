@@ -2,6 +2,8 @@
 using System;
 using UnityEngine;
 
+public enum Sounds { Sound, SoundFX}
+
 public class AudioManager : MonoBehaviour {
 
     //singleton
@@ -68,7 +70,7 @@ public class AudioManager : MonoBehaviour {
 
     public void Play(string soundName)
     {
-        Sound s = Array.Find(sounds, sound => sound.soundName == soundName);
+        Sound s = Array.Find(sounds, sound => (sound.soundName == soundName)&&(sound.soundIsOn));
 
         if(s == null)
         {
@@ -93,6 +95,44 @@ public class AudioManager : MonoBehaviour {
 
         //next buton sound
         randomButton = UnityEngine.Random.Range(0, lengthOfButtons);
+    }
+
+    public void StopSound(string soundName)
+    {
+        Sound s = Array.Find(sounds, sound => sound.soundName == soundName);
+
+        if (s == null)
+        {
+            Debug.LogWarning(soundName + " is not included in the manager, Please check if it is a typo.");
+            return;
+        }
+
+        s.source.Stop();
+    }
+
+    public void StopFXSounds()
+    {
+        Sound[] s = Array.FindAll(sounds, sound => sound.soundName != "Theme Song");
+
+        Debug.Log(s.Length);
+        for (int i = 0; i < s.Length; i++)
+        {
+            s[i].source.Stop();
+            s[i].soundIsOn = false;
+        }
+
+    }
+
+    public void PlayFXSounds()
+    {
+        Sound[] s = Array.FindAll(sounds, sound => sound.soundName != "Theme Song");
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            s[i].soundIsOn = true;
+            s[i].source.Play();
+        }
+
     }
 
 }
