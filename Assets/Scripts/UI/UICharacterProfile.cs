@@ -19,6 +19,7 @@ public class UICharacterProfile : MonoBehaviour
     public GameObject InFactoryButtons;
 
     bool opened;
+    Coroutine updatingCoroutine;
 
     [Header("Camera")]
     public GameObject CameraPrefab;
@@ -73,6 +74,8 @@ public class UICharacterProfile : MonoBehaviour
         UICamera.transform.SetParent(w.UICameraPosition);
         UICamera.transform.localPosition = new Vector3();
         UICamera.transform.rotation = new Quaternion();
+
+        updatingCoroutine = StartCoroutine(updateWhileOpened(w));
     }
 
     public void ClosePanel()
@@ -82,6 +85,16 @@ public class UICharacterProfile : MonoBehaviour
             animator.SetTrigger("TriggerUI");
             opened = false;
             SelectedWorkerRefernce.worker = null;
+            StopCoroutine(updatingCoroutine);
+        }
+    }
+
+    private IEnumerator updateWhileOpened(Worker w)
+    {
+        while(true)
+        {
+            CharacterHappienss.value = (w.happyMeter / 100.0f);
+            yield return new WaitForFixedUpdate();
         }
     }
 
