@@ -112,6 +112,8 @@ MonoBehaviour:
   HeadBone: {fileID: 8568460192939277284}
   HeadPlace: {fileID: 8568460192939763598}
   BodyPlace: {fileID: 8568460192939763584}
+  SaveGameCustomization: {fileID: 11400000, guid: b2ab26a3f40624f45b8a1aeb8c97b13c,
+    type: 2}
   CustomizaitonSchemes: {fileID: 11400000, guid: 9b8b8744a248cc1418e81ddec5b0c171,
     type: 2}
   HeadItem: {fileID: 7484317031217701444}

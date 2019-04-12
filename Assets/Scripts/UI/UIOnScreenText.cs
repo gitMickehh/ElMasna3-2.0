@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIOnScreenText : MonoBehaviour
 {
+    public GameConfig configFile;
+
     public FloatField realMoney;
     public FloatField happyMoney;
 
@@ -13,6 +15,8 @@ public class UIOnScreenText : MonoBehaviour
 
     [Attributes.GreyOut]
     public float moneyIconSize;
+
+    public Button buildFloorButton;
 
     private void Start()
     {
@@ -27,6 +31,15 @@ public class UIOnScreenText : MonoBehaviour
 
         realMoneyText.GetComponent<RectTransform>().sizeDelta =
             new Vector2((realMoneyText.fontSize * (realMoneyText.text.Length)) + moneyIconSize, realMoneyText.GetComponent<RectTransform>().rect.height);
+
+        if(configFile.FloorCost <= realMoney.GetValue())
+        {
+            buildFloorButton.interactable = true;
+        }
+        else
+        {
+            buildFloorButton.interactable = false;
+        }
     }
 
     public void OnHappyMoneyChanged()

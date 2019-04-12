@@ -12,6 +12,8 @@ public class WorkerCustomization : MonoBehaviour
     public Transform BodyPlace;
     private bool dirty;
 
+    public GameEvent SaveGameCustomization;
+
     [Header("Customization Scheme")]
     //public GameObject CustomizaitonPrefab;
     [Tooltip("Use Gender Specific List.\n0) Head\n1) Face.\n2) Body.")]
@@ -175,6 +177,7 @@ public class WorkerCustomization : MonoBehaviour
             GetComponent<Worker>().AddHappiness(BodyItem.myself.happyAdd);
         }
 
+        SaveGameCustomization.Raise();
         dirty = false;
     }
 
