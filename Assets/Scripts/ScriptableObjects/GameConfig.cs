@@ -17,6 +17,9 @@ public class GameConfig : ScriptableObject {
     [Header("Dates")]
     public Day dayOfTheWeek;
 
+    [Header("Workers Data")]
+    public float timeToDecreaseHappiness = 1;
+
     [Header("Wallet")]
     public FloatField FactoryMoney;
     public FloatField HappyMoney;

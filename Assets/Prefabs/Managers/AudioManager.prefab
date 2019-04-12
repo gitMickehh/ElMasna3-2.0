@@ -51,6 +51,7 @@ MonoBehaviour:
     pitch: 1
     looping: 1
     playOnAwake: 1
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: Select B
     clip: {fileID: 8300000, guid: f5b519c859871a041a2cb778ad487e43, type: 3}
@@ -58,6 +59,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: ThemeSong2
     clip: {fileID: 8300000, guid: 05e433b218d744e4984e8a953aeac78d, type: 3}
@@ -65,6 +67,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: Ka-Ching
     clip: {fileID: 8300000, guid: 3f1214fda7e2aac44ae0834332d3d676, type: 3}
@@ -72,6 +75,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: Notify
     clip: {fileID: 8300000, guid: f5b519c859871a041a2cb778ad487e43, type: 3}
@@ -79,6 +83,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: Swish
     clip: {fileID: 8300000, guid: fec7975bf879e6a46a4716216ca2f642, type: 3}
@@ -86,6 +91,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: machine1
     clip: {fileID: 8300000, guid: cee0fb5177f4f7b4e946a22fc0ddba2f, type: 3}
@@ -93,13 +99,15 @@ MonoBehaviour:
     pitch: 1
     looping: 1
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
-  - soundName: machine2
-    clip: {fileID: 8300000, guid: 15463d15806d605498685ca687ccf48e, type: 3}
+  - soundName: machineDone
+    clip: {fileID: 8300000, guid: 74354192b9a20744c95c664921708b29, type: 3}
     volume: 0.03
     pitch: 1
     looping: 1
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: MoneyIn
     clip: {fileID: 8300000, guid: 694121df80f2c7c448f1c38a7bcdbe56, type: 3}
@@ -107,6 +115,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: GrabUI
     clip: {fileID: 8300000, guid: 19dadd1cd74721446aabda7cb1a7270e, type: 3}
@@ -114,6 +123,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   buttonsSounds:
   - soundName: Select B
@@ -122,6 +132,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: Select B2
     clip: {fileID: 8300000, guid: 58856a830a503bf48b60faa518ce4248, type: 3}
@@ -129,6 +140,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
   - soundName: Select B3
     clip: {fileID: 8300000, guid: d9af101e21156ca4ca638d58c25e62f0, type: 3}
@@ -136,6 +148,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     playOnAwake: 0
+    soundIsOn: 1
     source: {fileID: 0}
 --- !u!114 &7479792392087905266
 MonoBehaviour:

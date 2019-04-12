@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
     public GameObjectField gameManagerField;
     private GameManager gManager;
 
-    public static int StepCount = 11;
+    public static int StepCount = 12;
 
     [Header("Input Manager")]
     [SerializeField]
@@ -76,6 +76,11 @@ public class TutorialManager : MonoBehaviour
     List<Worker> workersInOrientation;
     Coroutine cycleThroughWorkersCoroutine;
 
+    [Header("Machine pressing")]
+    public LayerMask MachineLayerMask;
+    public float rayLength = 100;
+    public Vector2Field vector2Touch;
+
     private void Awake()
     {
         //All things in humanity
@@ -94,7 +99,7 @@ public class TutorialManager : MonoBehaviour
         multiplePointers = new List<GameObject>();
 
         //hypothetical number of steps
-        tutorialStepsDone = new bool[12];
+        tutorialStepsDone = new bool[13];
 
         //starting the first step.. maybe change this later to let the save manager do it
         StartingPoint(tutorialStage);
@@ -109,6 +114,21 @@ public class TutorialManager : MonoBehaviour
         }
 
         //depending on the step, unlock all the buttons and turn them interactable
+        if(tutorialStepSaved >= 8)
+        {
+            StoreButton.interactable = true;
+            MapButtom.interactable = true;
+            OrientationButton.interactable = true;
+        }
+        else if(tutorialStepSaved >= 6)
+        {
+            StoreButton.interactable = true;
+            OrientationButton.interactable = true;
+        }
+        else if(tutorialStepSaved >= 2)
+        {
+            OrientationButton.interactable = true;
+        }
 
         StopAllCoroutines();
         StartCoroutine(WaitTime(tutorialStage));
@@ -152,10 +172,17 @@ public class TutorialManager : MonoBehaviour
                 PointAtWorkerInMap();
                 break;
             case 10:
-                PointAtStoreForBlueMachine();
+                PointAtMachineToGather();
+                break;
+            case 11:
+                //PointAtStoreForBlueMachine();
+                //break;
+            case 12:
+                Destroy(gameObject);
                 break;
             default:
-                Debug.LogWarning("Case " + i + " Not Implemeneted yet");
+                Debug.LogWarning("Case " + i + " Not Implemeneted yet. Destroying myself.");
+                Destroy(gameObject);
                 break;
         }
     }
@@ -233,6 +260,7 @@ public class TutorialManager : MonoBehaviour
             }
             else
             {
+                nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
                 nonAnimatedPointer.transform.SetParent(parentToPointers);
                 //nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
                 cycleThroughWorkersCoroutine = StartCoroutine(CycleThroughWorkers());
@@ -352,6 +380,28 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    private void PointAtMachineToGather()
+    {
+        if (tutorialStepsDone[11])
+            return;
+
+        Machine m = listOfMachines.Items[0];
+
+        if (m != null)
+        {
+            nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
+            nonAnimatedPointer.transform.SetParent(parentToPointers);
+            nonAnimatedPointer.transform.position = Camera.main.WorldToScreenPoint(m.transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("no machine found");
+            return;
+        }
+
+        tutorialStepsDone[11] = true;
+    }
+
     private void PointAtMapButton()
     {
         if (!tutorialStepsDone[9])
@@ -366,8 +416,6 @@ public class TutorialManager : MonoBehaviour
             nonAnimatedPointer.transform.SetParent(rectHireButton);
             nonAnimatedPointer.transform.localPosition = new Vector3(-rectHireButton.sizeDelta.x, rectHireButton.sizeDelta.y, 0);
             nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
-
-            tutorialStepsDone[5] = true;
 
             tutorialStepsDone[9] = true;
         }
@@ -460,14 +508,14 @@ public class TutorialManager : MonoBehaviour
 
     private void PointAtStoreForBlueMachine()
     {
-        if (!tutorialStepsDone[11])
+        if (!tutorialStepsDone[12])
         {
             //making the machine finish first cycle NOW
             Machine machine = listOfMachines.Items[0];
             machine.FinishCycleNow();
             PointAtStoreButton();
 
-            tutorialStepsDone[11] = true;
+            tutorialStepsDone[12] = true;
         }
     }
     //events
@@ -495,6 +543,20 @@ public class TutorialManager : MonoBehaviour
         }
     }
     public void PressedHireWorkerButton()
+    {
+        if (tutorialStepsDone[3] && !tutorialStepsDone[4])
+        {
+            StartCoroutine(AddNewActionToTheYesButton());
+        }
+    }
+
+    private IEnumerator AddNewActionToTheYesButton()
+    {
+        yield return new WaitForEndOfFrame();
+        ModalPanel.Instance().AddToYesButton(new UnityAction(HiredWorkerHere));
+    }
+
+    public void HiredWorkerHere()
     {
         if (tutorialStepsDone[3] && !tutorialStepsDone[4])
         {
@@ -556,6 +618,34 @@ public class TutorialManager : MonoBehaviour
             }
         
     }
+    public void PressedMachine()
+    {
+        //call this on tap
+        if (tutorialStepsDone[11] && !tutorialStepsDone[12])
+        {
+            if (Input.touchCount == 1)
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(vector2Touch.vector2);
+
+                if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
+                {
+                    NextStep();
+                }
+            }
+            else
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
+                {
+                    NextStep();
+                }
+            }
+
+        }
+    }
     public void PressedMapButton()
     {
         if (tutorialStepsDone[9] && !tutorialStepsDone[10])
@@ -572,6 +662,10 @@ public class TutorialManager : MonoBehaviour
             map.gameObject.SetActive(false);
             movingPointerInCode = false;
             nonAnimatedPointer.SetActive(false);
+
+            Machine m = listOfMachines.Items[0];
+            m.FinishCycleNow();
+
             NextStep();
         }
     }

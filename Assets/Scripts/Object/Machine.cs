@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//public enum MachineState
+//{
+//    IDLE,
+//    WORKING,
+//    ONHOLD
+//}
+
 public class Machine : MonoBehaviour
 {
     [Attributes.GreyOut]
     public Floor parentFloor;
     public GameObjectField gameManagerObject;
+    public GameObject machineDoneObject;
 
     [Header("Machine")]
     public int machineID;
@@ -15,6 +23,8 @@ public class Machine : MonoBehaviour
     public MachineList listOfMahcines;
     [Attributes.GreyOut]
     public bool IsWorking;
+    private bool isWaiting;
+    //public MachineState machineState;
 
     [Header("Worker")]
     public GameObject CurrentWorker;
@@ -23,6 +33,8 @@ public class Machine : MonoBehaviour
     //Machine Work
     [Header("Machine Scheme")]
     public MachineScheme scheme;
+
+    [Header("Timing")]
     public Slider machineTimeSlider;
     public Image machineCircularTimer;
     public bool circular;
@@ -30,6 +42,7 @@ public class Machine : MonoBehaviour
     private float runningTime = 0;
     [SerializeField]
     private Animator machineAnimator;
+    private Animator machineUIAnimation;
 
     public int CurrentWorkerID
     {
@@ -51,6 +64,13 @@ public class Machine : MonoBehaviour
         timeOfCycle = scheme.timeOfCycle;
 
         machineAnimator = GetComponentInChildren<Animator>();
+        machineUIAnimation = GetComponentInChildren<LookAtCamera>().GetComponent<Animator>();
+
+        if (circular)
+            machineCircularTimer.fillAmount = 0;
+        else
+            machineTimeSlider.value = 0;
+
         SliderToggle();
     }
 
@@ -61,13 +81,11 @@ public class Machine : MonoBehaviour
 
     private void Update()
     {
-        if (IsWorking)
+        if (IsWorking && !isWaiting)
         {
             if (runningTime >= timeOfCycle)
             {
-                runningTime = 0;
-                var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
-                gm.DepositMoney(scheme.moneyInCycle, scheme.moneyCurrency);
+                FinishCycle();
             }
             else
             {
@@ -77,7 +95,6 @@ public class Machine : MonoBehaviour
                 else
                     machineTimeSlider.value = (runningTime / timeOfCycle);
             }
-
         }
     }
 
@@ -143,13 +160,63 @@ public class Machine : MonoBehaviour
     public void SetTimer(float timerValue)
     {
         runningTime = timerValue;
+        StartCycle();
+    }
+
+    private void FinishCycle()
+    {
+        isWaiting = true;
+        machineDoneObject.SetActive(true);
+        machineUIAnimation.SetTrigger("Done");
+
+        if (circular)
+            machineCircularTimer.fillAmount = 1;
+        else
+            machineTimeSlider.value = 1;
+
+        IsWorking = false;
+        SliderToggle();
+
+        //machineState = MachineState.ONHOLD;
+    }
+
+    private void GatherMoney()
+    {
+        ReturnMoney();
+        runningTime = 0;
+
+        if (CurrentWorker != null)
+            IsWorking = true;
+
+        SliderToggle();
+    }
+
+    private void StartCycle()
+    {
+        machineDoneObject.SetActive(false);
+        machineUIAnimation.SetTrigger("Done");
+        runningTime = 0;
+        isWaiting = false;
+        //machineState = MachineState.WORKING;
+    }
+
+    public void ClickMachine()
+    {
+        if(isWaiting)
+        {
+            GatherMoney();
+            StartCycle();
+        }
+        else
+        {
+            //show machine details
+            Debug.Log("machine details");
+        }
     }
 
     public void FinishCycleNow()
     {
-        runningTime = 0;
-        var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
-        gm.DepositMoney(scheme.moneyInCycle, scheme.moneyCurrency);
+        FinishCycle();
     }
 
     public void ChangeWorker(Worker w)
@@ -222,12 +289,36 @@ public class Machine : MonoBehaviour
         runningTime = timerValue;
     }
 
+    private void ReturnMoney()
+    {
+        var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
+
+        float money = GetReturnedMoney();
+        
+
+        gm.DepositMoney(money, scheme.moneyCurrency);
+    }
+
+    public float GetReturnedMoney()
+    {
+        float money = scheme.moneyInCycle;
+        var worker = CurrentWorker.GetComponent<Worker>();
+
+        money = (worker.happyMeter / 100) * money;
+
+        return money;
+    }
+
     public void SliderToggle()
     {
-        if (circular)
-            machineCircularTimer.gameObject.SetActive(IsWorking);
-        else
-            machineTimeSlider.gameObject.SetActive(IsWorking);
+        if(IsWorking)
+        {
+            if (circular)
+                machineCircularTimer.gameObject.SetActive(IsWorking);
+            else
+                machineTimeSlider.gameObject.SetActive(IsWorking);
+        }
+
         machineAnimator.SetBool("IsWorking", IsWorking);
     }
 

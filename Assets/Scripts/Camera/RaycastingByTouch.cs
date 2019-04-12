@@ -24,10 +24,8 @@ public class RaycastingByTouch : MonoBehaviour
     public void RaycastingFromScreenPoint()
     {
         //if(touch)
-        if(Input.touchCount == 1)
+        if (Input.touchCount == 1)
         {
-            //Debug.Log("touchCount == 1 is true");
-
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(vector2Touch.vector2);
 
@@ -40,6 +38,9 @@ public class RaycastingByTouch : MonoBehaviour
             else if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
             {
                 Debug.Log("Machine " + hit.collider.name);
+                Machine m = hit.collider.gameObject.GetComponent<Machine>();
+                m.ClickMachine();
+
             }
             else if (Physics.Raycast(ray, out hit, rayLength, VFXEmptyMachineLayerMask))
             {
@@ -47,31 +48,32 @@ public class RaycastingByTouch : MonoBehaviour
                 hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
             }
         }
+#if UNITY_EDITOR
         else
         {
-            if (Input.GetMouseButtonUp(0))
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast(ray, out hit, rayLength, WorkerLayerMask))
-                {
-                    Debug.Log("Worker " + hit.collider.name);
-                    clickedWorker.worker = hit.collider.gameObject.GetComponent<Worker>();
-                    ClickedOnWorker.Raise();
-                }
-                else if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
-                {
-                    Debug.Log("Machine " + hit.collider.name);
-                }
-                else if (Physics.Raycast(ray, out hit, rayLength, VFXEmptyMachineLayerMask))
-                {
-                    Debug.Log("Empty Machine " + hit.collider.name);
-                    hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
-                }
-
+                Debug.Log("Worker " + hit.collider.name);
+                clickedWorker.worker = hit.collider.gameObject.GetComponent<Worker>();
+                ClickedOnWorker.Raise();
             }
+            else if (Physics.Raycast(ray, out hit, rayLength, MachineLayerMask))
+            {
+                Debug.Log("Machine " + hit.collider.name);
+                Machine m = hit.collider.gameObject.GetComponent<Machine>();
+                m.ClickMachine();
+            }
+            else if (Physics.Raycast(ray, out hit, rayLength, VFXEmptyMachineLayerMask))
+            {
+                Debug.Log("Empty Machine " + hit.collider.name);
+                hit.collider.gameObject.GetComponent<EmptyMachinePlace>().PlaceMachine(machineHeld.gameObjectReference);
+            }
+
         }
+#endif
     }
 
     private void OnDisable()

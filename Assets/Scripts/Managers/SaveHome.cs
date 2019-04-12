@@ -151,39 +151,37 @@ public class SaveHome : MonoBehaviour
 
     }
 
-   
 
-    //private void OnApplicationQuit()
-    //{
-    //    Debug.Log("OnApplicationQuit");
-    //    //#if UNITY_EDITOR
-    //    if (save)
-    //    {
-    //        //#endif
-    //        Debug.Log("loadedAll: " + loadedAll);
-    //        if (loadedAll)
-    //            SaveAll();
-    //        //#if UNITY_EDITOR
-    //    }
-    //    //#endif
-    //}
+    private void OnApplicationQuit()
+    {
+        //#if UNITY_EDITOR
+        if (save)
+        {
+            //#endif
+            Debug.Log("loadedAll: " + loadedAll);
+            if (loadedAll)
+                SaveAll();
+            //#if UNITY_EDITOR
+        }
+        //#endif
+    }
 
-    //private void OnApplicationFocus(bool focus)
-    //{
-    //    if (!focusSave)
-    //        return;
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focusSave)
+            return;
 
-    //    if (!focus)
-    //    {
-    //        //#if UNITY_EDITOR
-    //        if (save)
-    //        {
-    //            //#endif
-    //            if (loadedAll)
-    //                SaveAll();
-    //            //#if UNITY_EDITOR
-    //        }
-    //        //#endif
-    //    }
-    //}
+        if (!focus)
+        {
+            //#if UNITY_EDITOR
+            if (save)
+            {
+                //#endif
+                if (loadedAll)
+                    SaveAll();
+                //#if UNITY_EDITOR
+            }
+            //#endif
+        }
+    }
 }

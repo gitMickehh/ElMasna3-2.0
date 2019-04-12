@@ -63,6 +63,9 @@ public class SaveGameManager : MonoBehaviour
 
     public void SaveFloors()
     {
+        if (!save)
+            return;
+
         listOfFloors.SortFloorList();
 
         for (int i = 0; i < listOfFloors.Items.Count; i++)
@@ -114,6 +117,9 @@ public class SaveGameManager : MonoBehaviour
 
     public void SaveWorkers()
     {
+        if (!save)
+            return;
+
         for (int i = 0; i < listOfWorkers.Items.Count; i++)
         {
             string workerJson = JsonUtility.ToJson(listOfWorkers.Items[i].GetWorkerData());
@@ -170,6 +176,9 @@ public class SaveGameManager : MonoBehaviour
 
     public void SaveTime()
     {
+        if (!save)
+            return;
+
         var gTime = gManager.GetGameTime();
         var timeString = JsonUtility.ToJson(gTime);
 
@@ -195,6 +204,9 @@ public class SaveGameManager : MonoBehaviour
 
     public void SaveFactoryData()
     {
+        if (!save)
+            return;
+
         string jsonString = JsonUtility.ToJson(gManager.GetSaveData());
         PlayerPrefs.SetString("FactoryData", jsonString);
         Debug.Log(jsonString);
@@ -256,6 +268,9 @@ public class SaveGameManager : MonoBehaviour
     public void SaveAll()
     {
         if (!loadedAll)
+            return;
+
+        if (!save)
             return;
 
         SaveFloors();

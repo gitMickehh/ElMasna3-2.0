@@ -144,6 +144,11 @@ public class ModalPanel : MonoBehaviour
 
     }
 
+    public void AddToYesButton(UnityAction yesButtonAction)
+    {
+        yesButton.onClick.AddListener(yesButtonAction);
+    }
+
     void RaiseButtonSound()
     {
         ButtonSoundEvent.Raise();

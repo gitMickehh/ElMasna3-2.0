@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 3728202600110306593}
   - component: {fileID: 3728202600110306594}
   - component: {fileID: 3728202600110306597}
+  - component: {fileID: 4704312199774970201}
   m_Layer: 5
   m_Name: IntroductionTutorial
   m_TagString: Untagged
@@ -249,6 +250,11 @@ MonoBehaviour:
   averageWorkerWidth: -15
   averageWorkerHeight: 50
   workersInOrientation: []
+  MachineLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  rayLength: 100
+  vector2Touch: {fileID: 11400000, guid: 2efaff9c481ce4f4981dd0dadfdabdb2, type: 2}
 --- !u!114 &3728202600110306618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,6 +574,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3728202600110306616}
         m_MethodName: PressedMapButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &4704312199774970201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3728202600110306613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: cca75e130d7b6134aba7a1c72577549f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3728202600110306616}
+        m_MethodName: PressedMachine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

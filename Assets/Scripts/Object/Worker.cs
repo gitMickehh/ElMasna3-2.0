@@ -108,7 +108,6 @@ public class Worker : MonoBehaviour
     public void MinusHappiness()
     {
         happyMeter = (happyMeter - (0.003f / happyDefense));
-
         happyMeter = Mathf.Clamp(happyMeter, 0, 100);
     }
 

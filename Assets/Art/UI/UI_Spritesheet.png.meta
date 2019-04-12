@@ -25,6 +25,7 @@ TextureImporter:
     21300040: Happy_5
     21300042: HealthIcon
     21300044: SliderKnob
+    21300046: Btn_Options_MainGame
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -564,6 +565,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 397e158887989804dbcb71512d2700d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Btn_Options_MainGame
+      rect:
+        serializedVersion: 2
+        x: 4598
+        y: 3752
+        width: 497
+        height: 545
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c86268544b82554a8bf4fff974a2999
       vertices: []
       indices: 
       edges: []

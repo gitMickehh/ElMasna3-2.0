@@ -10,17 +10,19 @@ public class FactoryData
     public float partyCost;
     public float workerHireCost;
     public float floorBuildCost;
+    public float timeOfHappinessDecrease;
     public Color uniformColor;
 
     public int languageProfile;
 
-    public FactoryData(float realMon = 250, float happyMon = 10, float party = 500, float workerHire = 100, float floorBuilding = 300)
+    public FactoryData(float realMon = 250, float happyMon = 10, float party = 500, float workerHire = 100, float floorBuilding = 300, float timeDecreaseHappiness = 1)
     {
         realMoney = realMon;
         happyMoney = happyMon;
         partyCost = party;
         workerHireCost = workerHire;
         floorBuildCost = floorBuilding;
+        timeOfHappinessDecrease = timeDecreaseHappiness;
 
         uniformColor = Color.blue;
     }

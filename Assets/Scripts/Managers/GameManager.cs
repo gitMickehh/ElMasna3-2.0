@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
     public GameEvent closeUIPanel;
     public GameEvent workerIsHired;
 
+    //worker mods
+    private float timerOfWorkersHappiness = 0;
+
     //Modal Panel
     private ModalPanel modalPanel;
     private UnityAction BuildFloorAction;
@@ -79,7 +82,14 @@ public class GameManager : MonoBehaviour
             timerToSavegame += Time.deltaTime;
         }
 
-        workerList.DecreaseHappiness();
+        if (timerOfWorkersHappiness >= GameConfigFile.timeToDecreaseHappiness)
+        {
+            workerList.DecreaseHappiness();
+        }
+        else
+        {
+            timerOfWorkersHappiness += Time.deltaTime;
+        }
     }
 
     IEnumerator lateStart()
@@ -87,6 +97,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         timer = FindObjectOfType<TimeManagerUPDATE>();
+    }
+
+    public void SaveGameTimerReset()
+    {
+        timerToSavegame = 0;
     }
 
     public void BuildFloorButton()
@@ -344,6 +359,7 @@ public class GameManager : MonoBehaviour
         GameConfigFile.FloorCost = data.floorBuildCost;
         GameConfigFile.PartyCost = data.partyCost;
         GameConfigFile.SetColorField(data.uniformColor);
+        GameConfigFile.timeToDecreaseHappiness = data.timeOfHappinessDecrease;
     }
 
     public FactoryData GetSaveData()
