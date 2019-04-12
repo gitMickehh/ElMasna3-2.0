@@ -304,7 +304,7 @@ public class Machine : MonoBehaviour
         float money = scheme.moneyInCycle;
         var worker = CurrentWorker.GetComponent<Worker>();
         money = Mathf.RoundToInt((worker.happyMeter / 100) * money);
-        money = Mathf.Clamp(money,30, scheme.moneyInCycle);
+        money = Mathf.Clamp(money, scheme.minimumMoneyGain, scheme.moneyInCycle);
         return money;
     }
 
