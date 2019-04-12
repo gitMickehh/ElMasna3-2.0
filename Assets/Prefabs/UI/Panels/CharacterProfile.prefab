@@ -351,7 +351,7 @@ MonoBehaviour:
   SelectedWorkerRefernce: {fileID: 11400000, guid: 4ae7918a1fc64cf418df5e66e8964d29,
     type: 2}
   animator: {fileID: 7667979216697220321}
-  HireSelectedWorker: {fileID: 11400000, guid: 4978685f5898724499b7d63637ce3543, type: 2}
+  floorList: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
 --- !u!114 &3358421552676107443
 MonoBehaviour:
   m_ObjectHideFlags: 0
