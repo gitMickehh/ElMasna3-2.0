@@ -21,6 +21,7 @@ public class CustomizationItem
     public Sprite UIicon;
     public CustomizationType type;
     public float price;
+    public bool isHair;
 
     public void FillData(CustomizationItem cItem)
     {
@@ -29,6 +30,7 @@ public class CustomizationItem
         UIicon = cItem.UIicon;
         price = cItem.price;
         type = cItem.type;
+        isHair = cItem.isHair;
     }
 
 }
