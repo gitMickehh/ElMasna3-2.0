@@ -35,6 +35,14 @@ public class MachineList : RuntimeList<Machine>
         return total;
     }
 
+    public void CalculateMachinesTimePassed(float t)
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            Items[i].CalculateMissingTime(t);
+        }
+    }
+
     public int GetNewId()
     {
         return Items.Count + 1;

@@ -9,7 +9,7 @@ public class TutorialManager : MonoBehaviour
     //Welcome player.
     //Introduce Swiping Left/Right (Horizontal) Rotating Floor
     public GameObjectField gameManagerField;
-    private GameManager gManager;
+    //private GameManager gManager;
 
     public static int StepCount = 12;
 
@@ -90,7 +90,7 @@ public class TutorialManager : MonoBehaviour
         MapButtom = GameObject.Find("MapButton").GetComponent<Button>();
         gameInputManager = FindObjectOfType<InputManager>();
         cameraTap = FindObjectOfType<RaycastingByTouch>();
-        gManager = gameManagerField.gameObjectReference.GetComponent<GameManager>();
+        //gManager = gameManagerField.gameObjectReference.GetComponent<GameManager>();
 
         //setting up stuff
         StoreButton.interactable = false;

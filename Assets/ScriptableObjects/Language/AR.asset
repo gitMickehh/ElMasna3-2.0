@@ -29,7 +29,7 @@ MonoBehaviour:
   LastNames: {fileID: 11400000, guid: d900c00ac80567a4e98c046367060194, type: 2}
   LeftToRight: 0
   QuestionMark: "\u061F"
-  HireWorker: "\uFEE6\uFEF4\uFECB"
+  HireWorker: "\uFED2\uFEC7\uFEED"
   GiveWorkerBreak: "\uFEF0\uFEDF\uFE8D \uFE94\uFEA3\uFE8D\uFEAD \uFEF2\uFEC4\uFECB\uFE8D "
   AreYouSure: "\uFEAA\uFEDB\uFE84\uFE98\uFEE3 \uFE96\uFEE7\uFE83 \uFEDE\uFEEB"
   NoPlaceForWorkers: "\uFEA9\uFEAA\uFE9F \uFEDD\uFE8E\uFEE4\uFECC\uFEDF \uFEE5\uFE8E\uFEDC\uFEE3

@@ -249,7 +249,12 @@ public class GameManager : MonoBehaviour
 
         //a day is one hour (60 minutes)
         var totalTimePassed = previousTimeInSeconds + days * 60;
-        AddMoneyOfOfflineTime(totalTimePassed);
+        //AddMoneyOfOfflineTime(totalTimePassed);
+        CalculateTimeOfMachines(totalTimePassed);
+    }
+    private void CalculateTimeOfMachines(float t)
+    {
+        machineList.CalculateMachinesTimePassed(t);
     }
 
     private void AddMoneyOfOfflineTime(float t)

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: L2
   m_EditorClassIdentifier: 
   moneyInCycle: 150
+  minimumMoneyGain: 75
   timeOfCycle: 35
   moneyCurrency: 0

@@ -303,10 +303,34 @@ public class Machine : MonoBehaviour
     {
         float money = scheme.moneyInCycle;
         var worker = CurrentWorker.GetComponent<Worker>();
-
-        money = (worker.happyMeter / 100) * money;
-
+        money = Mathf.RoundToInt((worker.happyMeter / 100) * money);
+        money = Mathf.Clamp(money,30, scheme.moneyInCycle);
         return money;
+    }
+
+    public void CalculateMissingTime(float t)
+    {
+        float cyclesFraction = t / scheme.timeOfCycle;
+        int numberOfCycles = Mathf.FloorToInt(cyclesFraction);
+
+        if(numberOfCycles >= 1)
+        {
+            FinishCycle();
+            return;
+        }
+
+        //setting remaining time
+        float remainingTime = (cyclesFraction - numberOfCycles) * scheme.timeOfCycle;
+        remainingTime += runningTime;
+
+        if (remainingTime / scheme.timeOfCycle >= 1)
+        {
+            //give money of the new cycle also
+            numberOfCycles += (Mathf.FloorToInt(remainingTime / scheme.timeOfCycle));
+            remainingTime -= (Mathf.FloorToInt(remainingTime / scheme.timeOfCycle) * scheme.timeOfCycle);
+        }
+
+        runningTime = remainingTime;
     }
 
     public void SliderToggle()

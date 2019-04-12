@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777f98815de920748969b2aade9a668d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  CurrentLanguageProfile: {fileID: 11400000, guid: 0b0fb08bcd649e24593eac7f10e3771f,
+  CurrentLanguageProfile: {fileID: 11400000, guid: 360fc7d4c727ed24e809dd1e06f366cc,
     type: 2}
   dayOfTheWeek: 0
+  timeToDecreaseHappiness: 2
   FactoryMoney: {fileID: 11400000, guid: f31364cfb312c8f429c29cf3161ef599, type: 2}
   HappyMoney: {fileID: 11400000, guid: acc8faa4f589fea4f813164409026aea, type: 2}
-  FloorCost: 500
+  FloorCost: 300
   HiringCost: 100
   FloorPrefab: {fileID: 4143921381608493496, guid: d1b2dd82bdad47543a74bedd51cd9672,
     type: 3}

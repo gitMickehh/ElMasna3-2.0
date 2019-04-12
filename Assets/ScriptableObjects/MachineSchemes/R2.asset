@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: R2
   m_EditorClassIdentifier: 
   moneyInCycle: 240
+  minimumMoneyGain: 120
   timeOfCycle: 30
   moneyCurrency: 1
