@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5537c1ac417c123479e709f391fba6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configFile: {fileID: 0}
+  configFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
   realMoney: {fileID: 11400000, guid: f31364cfb312c8f429c29cf3161ef599, type: 2}
   happyMoney: {fileID: 11400000, guid: acc8faa4f589fea4f813164409026aea, type: 2}
   realMoneyText: {fileID: 3413456304735950063}

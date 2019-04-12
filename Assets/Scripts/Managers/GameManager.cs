@@ -106,8 +106,16 @@ public class GameManager : MonoBehaviour
 
     public void BuildFloorButton()
     {
-        string question = GameConfigFile.CurrentLanguageProfile.AreYouSure + " " + GameConfigFile.FloorCost.ToString("0") + " " + GameConfigFile.CurrentLanguageProfile.QuestionMark;
-        modalPanel.Choice(question, BuildFloorAction);
+        var lang = GameConfigFile.CurrentLanguageProfile;
+        string q = lang.GetQuestion(lang.DoYouWantToBuildANewFloor);
+
+        string[] s = new string[] {
+            q,
+            lang.YouWillPay,
+            GameConfigFile.FloorCost.ToString()
+        };
+
+        modalPanel.Choice(lang.GetStatement(s), BuildFloorAction);
     }
 
     private void ConfirmBuildFloor()
