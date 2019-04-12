@@ -17,6 +17,7 @@ public class UICharacterProfile : MonoBehaviour
     public Slider CharacterHealth;
     public GameObject InOrientationButtons;
     public GameObject InFactoryButtons;
+    public Button GiveBreakButton;
 
     bool opened;
     Coroutine updatingCoroutine;

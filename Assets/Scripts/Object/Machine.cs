@@ -177,6 +177,7 @@ public class Machine : MonoBehaviour
         IsWorking = false;
         SliderToggle();
 
+        AudioManager.instance.Play("machineDone");
         //machineState = MachineState.ONHOLD;
     }
 

@@ -344,6 +344,7 @@ MonoBehaviour:
   CharacterHealth: {fileID: 5964006499105289813}
   InOrientationButtons: {fileID: 6237358979743126542}
   InFactoryButtons: {fileID: 1626003163585989594}
+  GiveBreakButton: {fileID: 2296782505466523376}
   CameraPrefab: {fileID: 5041679232849917349, guid: d31e170b85d17514594b651126398221,
     type: 3}
   UICamera: {fileID: 0}
