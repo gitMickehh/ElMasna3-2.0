@@ -9,6 +9,13 @@ public enum CustomizationType
     BODY
 }
 
+public enum CustomizationTier
+{
+    TIER1,
+    TIER2,
+    TIER3
+}
+
 [System.Serializable]
 public class CustomizationItem
 {
@@ -22,6 +29,7 @@ public class CustomizationItem
     public CustomizationType type;
     public float price;
     public bool isHair;
+    public CustomizationTier tier;
 
     public void FillData(CustomizationItem cItem)
     {
@@ -31,6 +39,7 @@ public class CustomizationItem
         price = cItem.price;
         type = cItem.type;
         isHair = cItem.isHair;
+        tier = cItem.tier;
     }
 
 }

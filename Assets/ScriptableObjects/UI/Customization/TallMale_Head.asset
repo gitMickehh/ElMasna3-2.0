@@ -20,6 +20,7 @@ MonoBehaviour:
     type: 0
     price: 60
     isHair: 0
+    tier: 0
   - id: 1
     happyAdd: 60
     item: {fileID: 100000, guid: 8d18f74160c14bf4e9da1faccae793f6, type: 3}
@@ -27,6 +28,7 @@ MonoBehaviour:
     type: 0
     price: 160
     isHair: 0
+    tier: 0
   - id: 2
     happyAdd: 65
     item: {fileID: 100000, guid: 22814508951639a4689f67e13934e782, type: 3}
@@ -34,6 +36,7 @@ MonoBehaviour:
     type: 0
     price: 160
     isHair: 1
+    tier: 0
   - id: 3
     happyAdd: 65
     item: {fileID: 100000, guid: e75b9005009ac154985a4aaf435c3bd8, type: 3}
@@ -41,6 +44,7 @@ MonoBehaviour:
     type: 0
     price: 160
     isHair: 1
+    tier: 0
   - id: 4
     happyAdd: 20
     item: {fileID: 100000, guid: 2ba734577a526c843a26751b4669be72, type: 3}
@@ -48,6 +52,7 @@ MonoBehaviour:
     type: 0
     price: 40
     isHair: 0
+    tier: 0
   - id: 5
     happyAdd: 40
     item: {fileID: 100000, guid: 5703860ad41950d4a957d4958d950281, type: 3}
@@ -55,6 +60,7 @@ MonoBehaviour:
     type: 0
     price: 80
     isHair: 0
+    tier: 0
   - id: 6
     happyAdd: 40
     item: {fileID: 100000, guid: b4c90ea8d3850ba4b8653e4071e0a055, type: 3}
@@ -62,6 +68,7 @@ MonoBehaviour:
     type: 0
     price: 80
     isHair: 0
+    tier: 0
   - id: 7
     happyAdd: 50
     item: {fileID: 100000, guid: 3584c4d623feb784d968a1face3c427e, type: 3}
@@ -69,6 +76,7 @@ MonoBehaviour:
     type: 0
     price: 120
     isHair: 0
+    tier: 2
   - id: 8
     happyAdd: 60
     item: {fileID: 100000, guid: 08d27f1a0a6861f429c6b82268ac55ec, type: 3}
@@ -76,6 +84,7 @@ MonoBehaviour:
     type: 0
     price: 150
     isHair: 0
+    tier: 1
   - id: 9
     happyAdd: 40
     item: {fileID: 100000, guid: 4b8fcd508861e7747b5020e8423279d8, type: 3}
@@ -83,6 +92,7 @@ MonoBehaviour:
     type: 0
     price: 80
     isHair: 0
+    tier: 1
   - id: 10
     happyAdd: 60
     item: {fileID: 100000, guid: 37732760918c68b42ae6a043d1447314, type: 3}
@@ -90,6 +100,7 @@ MonoBehaviour:
     type: 0
     price: 160
     isHair: 0
+    tier: 2
   - id: 11
     happyAdd: 60
     item: {fileID: 100000, guid: e375b9098e109ce408d80997f23b2a52, type: 3}
@@ -97,3 +108,4 @@ MonoBehaviour:
     type: 0
     price: 160
     isHair: 0
+    tier: 0

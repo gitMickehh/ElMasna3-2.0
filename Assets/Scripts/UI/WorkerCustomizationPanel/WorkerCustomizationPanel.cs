@@ -82,13 +82,15 @@ public class WorkerCustomizationPanel : MonoBehaviour
     {
 
         List<GameObject> listOfObjectsCreated = new List<GameObject>();
+        float happyMoney = gameManager.gameObjectReference.GetComponent<GameManager>().HappyMoney.GetValue();
+        var workerTier = gameConfigFile.GetTier(workerSelected.worker.level);
 
         for (int i = 0; i < items.Count; i++)
         {
             var item = Instantiate(storeItem, panel);
             var uiItem = item.GetComponent<UICustomizationObject>();
 
-            uiItem.FillInObject(items[i], this);
+            uiItem.FillInObject(items[i], this, happyMoney, workerTier);
 
             listOfObjectsCreated.Add(item);
         }

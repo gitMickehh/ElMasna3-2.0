@@ -45,6 +45,31 @@ public class GameConfig : ScriptableObject {
     public float PartyCost = 500;
     public float happinessPercentage;
 
+    [Header("Customization Items Tiers")]
+    public int tier1;
+    public int tier2;
+    public int tier3;
+
+    public CustomizationTier GetTier(int level)
+    {
+        CustomizationTier tier;
+
+        if(level >= tier3)
+        {
+            tier = CustomizationTier.TIER3;
+        }
+        else if(level >= tier2)
+        {
+            tier = CustomizationTier.TIER2;
+        }
+        else
+        {
+            tier = CustomizationTier.TIER1;
+        }
+
+        return tier;
+    }
+
     public void SetColorField(Color c)
     {
         uniformColor.SetValue(c);

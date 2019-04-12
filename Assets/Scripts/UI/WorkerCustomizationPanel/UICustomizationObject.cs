@@ -9,6 +9,7 @@ public class UICustomizationObject : MonoBehaviour
     public Image itemImage;
     public Text itemCostText;
     public float itemCost;
+    public Image currencyImage;
 
     [Header("InGame")]
     [Attributes.GreyOut]
@@ -28,7 +29,7 @@ public class UICustomizationObject : MonoBehaviour
         customiztionPanel.SetDirty(true);
     }
 
-    public void FillInObject(CustomizationItem sItem, WorkerCustomizationPanel c)
+    public void FillInObject(CustomizationItem sItem, WorkerCustomizationPanel c, float money, CustomizationTier tierOfWorker)
     {
         myItem = sItem;
 
@@ -38,5 +39,36 @@ public class UICustomizationObject : MonoBehaviour
 
         ReferencePrefab = sItem.item;
         customiztionPanel = c;
+
+        bool show = false;
+        switch (sItem.tier)
+        {
+            case CustomizationTier.TIER1:
+                show = true;
+                break;
+            case CustomizationTier.TIER2:
+                if (tierOfWorker == CustomizationTier.TIER2 || tierOfWorker == CustomizationTier.TIER3)
+                    show = true;
+                break;
+            case CustomizationTier.TIER3:
+                if (tierOfWorker == CustomizationTier.TIER3)
+                    show = true;
+                break;
+            default:
+                break;
+        }
+
+        if(money >= sItem.price && show)
+        {
+            itemImage.GetComponent<Button>().interactable = true;
+            currencyImage.color = Color.white;
+            itemCostText.color = Color.black;
+        }
+        else
+        {
+            itemImage.GetComponent<Button>().interactable = false;
+            currencyImage.color = Color.grey;
+            itemCostText.color = Color.grey;
+        }
     }
 }
