@@ -27,6 +27,6 @@ public class OpenURL : MonoBehaviour
 
     public void OpenNameURL(string name)
     {
-        Application.OpenURL(teamURL[name]);
+        Application.OpenURL("http://"+teamURL[name]);
     }
 }

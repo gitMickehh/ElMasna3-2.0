@@ -30,6 +30,8 @@ public class Machine : MonoBehaviour
     public GameObject CurrentWorker;
     public Transform workerPosition;
 
+    private DisplayManager displayManager;
+
     //Machine Work
     [Header("Machine Scheme")]
     public MachineScheme scheme;
@@ -55,6 +57,10 @@ public class Machine : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        displayManager = DisplayManager.Instance();
+    }
     private void OnEnable()
     {
         machineID = listOfMahcines.GetNewId();
@@ -188,6 +194,7 @@ public class Machine : MonoBehaviour
         if (CurrentWorker != null)
             IsWorking = true;
 
+        displayManager.DisplayMoneyCollected(this);
         SliderToggle();
     }
 
