@@ -386,7 +386,7 @@ public class TutorialManager : MonoBehaviour
             return;
 
         Machine m = listOfMachines.Items[0];
-
+        nonAnimatedPointer.SetActive(true);
         if (m != null)
         {
             nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");

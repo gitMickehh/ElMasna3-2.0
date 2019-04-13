@@ -15,7 +15,6 @@ public class WorkerCustomization : MonoBehaviour
     public GameEvent SaveGameCustomization;
 
     [Header("Customization Scheme")]
-    //public GameObject CustomizaitonPrefab;
     [Tooltip("Use Gender Specific List.\n0) Head\n1) Face.\n2) Body.")]
     public ScriptableObjectsList CustomizaitonSchemes;
 
@@ -34,14 +33,14 @@ public class WorkerCustomization : MonoBehaviour
         get { return (CustomizationPanelScheme)CustomizaitonSchemes.ListElements[2]; }
     }
 
+    [Header("Basic Hair")]
+    public GameObject basicHair;
+
     [Header("Customization Items")]
     public CustomizationObject HeadItem;
     public CustomizationObject FaceItem;
     public CustomizationObject BodyItem;
 
-    //private GameObject previewHead;
-    //private GameObject previewFace;
-    //private GameObject previewBody;
     private CustomizationItem previewHeadInfo;
     private CustomizationItem previewFaceInfo;
     private CustomizationItem previewBodyInfo;
@@ -181,11 +180,6 @@ public class WorkerCustomization : MonoBehaviour
         dirty = false;
     }
 
-    //public WorkerCustomizationSerializable GetCustomizationData()
-    //{
-    //    return new WorkerCustomizationSerializable(HeadItem.myself, FaceItem.myself, BodyItem.myself);
-    //}
-
     public int[] GetCustomizationDataArray()
     {
         int[] arr = new int[3];
@@ -197,89 +191,11 @@ public class WorkerCustomization : MonoBehaviour
         return arr;
     }
 
-    //public void LoadCustomizationData(WorkerCustomizationSerializable cData)
-    //{
-    //    if (cData.HeadItem.id >= 0)
-    //    {
-    //        HeadItem.myself.FillData(cData.HeadItem);
-    //        var headObj = HeadItems.Items.Find(delegate (CustomizationItem c)
-    //        {
-    //            if (c.id == HeadItem.myself.id)
-    //                return c.item;
-    //            else
-    //            {
-    //                Debug.LogWarning("No Items found with that ID");
-    //                return false;
-    //            }
-    //        });
-    //        if (headObj != null)
-    //        {
-    //            var headPiece = Instantiate(headObj.item, HeadPlace);
-    //            HeadItem.myself.item = headPiece;
-    //        }
-    //    }
-
-    //    if (cData.FaceItem.id >= 0)
-    //    {
-    //        FaceItem.myself.FillData(cData.FaceItem);
-    //        var FaceObj = FaceItems.Items.Find(delegate (CustomizationItem c)
-    //        {
-    //            if (c.id == FaceItem.myself.id)
-    //                return c.item;
-    //            else
-    //            {
-    //                Debug.LogWarning("No Items found with that ID");
-    //                return false;
-    //            }
-    //        });
-    //        if (FaceObj != null)
-    //        {
-    //            var facePiece = Instantiate(FaceObj.item, HeadPlace);
-    //            FaceItem.myself.item = facePiece;
-    //        }
-    //    }
-
-    //    if (cData.BodyItem.id >= 0)
-    //    {
-    //        BodyItem.myself.FillData(cData.BodyItem);
-    //        var BodyObj = BodyItems.Items.Find(delegate (CustomizationItem c)
-    //        {
-    //            if (c.id == BodyItem.myself.id)
-    //                return c.item;
-    //            else
-    //            {
-    //                Debug.LogWarning("No Items found with that ID");
-    //                return false;
-    //            }
-    //        });
-
-    //        if (BodyObj != null)
-    //        {
-    //            var BodyPiece = Instantiate(BodyObj.item, BodyPlace);
-    //            FaceItem.myself.item = BodyPiece;
-    //        }
-    //    }
-
-    //}
-
     public void LoadCustomizationData(int[] cData)
     {
         if (cData[0] >= 0)
         {
-            //HeadItem.myself.FillData(cData.HeadItem);
             CustomizationItem headItem = HeadItems.Items.FirstOrDefault(x => x.id == cData[0]); ;
-            //CustomizationItem headItem = HeadItems.Items.Find(delegate (CustomizationItem c)
-            //{
-            //    if (c.id == cData[0])
-            //    {
-            //        return c.item;
-            //    }
-            //    else
-            //    {
-            //        return false;
-            //    }
-            //});
-
             if (headItem.item != null)
             {
                 HeadItem.loadObject(headItem, HeadPlace);
@@ -292,21 +208,7 @@ public class WorkerCustomization : MonoBehaviour
 
         if (cData[1] >= 0)
         {
-            //FaceItem.myself.FillData(cData.FaceItem);
             var faceItem = FaceItems.Items.FirstOrDefault(x => x.id == cData[1]);
-            //var faceItem = FaceItems.Items.Find(delegate (CustomizationItem c)
-            //{
-            //    if (c.id == cData[1])
-            //    {
-            //        return c.item;
-            //    }
-            //    else
-            //    {
-            //        Debug.LogWarning("No Face Items found with ID (" + cData[1] + ").");
-            //        return false;
-            //    }
-            //});
-
             if (faceItem != null)
             {
                 FaceItem.loadObject(faceItem, HeadPlace);
@@ -319,21 +221,7 @@ public class WorkerCustomization : MonoBehaviour
 
         if (cData[2] >= 0)
         {
-            //BodyItem.myself.FillData(cData.BodyItem);
-
             var BodyObj = BodyItems.Items.FirstOrDefault(x => x.id == cData[2]);
-            //var BodyObj = BodyItems.Items.Find(delegate (CustomizationItem c)
-            //{
-            //    if (c.id == cData[2])
-            //        return c.item;
-            //    else
-            //    {
-            //        Debug.LogWarning("No Body Items found with ID (" + cData[2] + ").");
-            //        return false;
-            //    }
-            //    
-            //});
-
             if (BodyObj != null)
             {
                 BodyItem.loadObject(BodyObj, BodyPlace);

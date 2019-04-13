@@ -19,21 +19,29 @@ MonoBehaviour:
     UIicon: {fileID: 21300058, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 2
     price: 80
+    isHair: 0
+    tier: 0
   - id: 1
     happyAdd: 40
     item: {fileID: 100000, guid: 40dfe4c7a6f44a14099cdb4a7d7c2a28, type: 3}
     UIicon: {fileID: 21300018, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 2
     price: 80
+    isHair: 0
+    tier: 1
   - id: 2
     happyAdd: 50
     item: {fileID: 100000, guid: 1fb4648bbe7b2d54a819888615bca6d1, type: 3}
     UIicon: {fileID: 21300016, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 2
     price: 120
+    isHair: 0
+    tier: 0
   - id: 3
     happyAdd: 50
     item: {fileID: 100000, guid: 37fda5c2025bca147ae53d74aaba228b, type: 3}
     UIicon: {fileID: 21300014, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 2
     price: 120
+    isHair: 0
+    tier: 2

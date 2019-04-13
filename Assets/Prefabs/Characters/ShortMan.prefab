@@ -116,6 +116,7 @@ MonoBehaviour:
     type: 2}
   CustomizaitonSchemes: {fileID: 11400000, guid: 9b8b8744a248cc1418e81ddec5b0c171,
     type: 2}
+  basicHair: {fileID: 848942069964549292}
   HeadItem: {fileID: 8652327434931834910}
   FaceItem: {fileID: 69084301171026940}
   BodyItem: {fileID: 7364563587036065225}
@@ -188,6 +189,7 @@ MonoBehaviour:
     UIicon: {fileID: 0}
     type: 1
     price: 0
+    isHair: 0
 --- !u!1 &3676909573709818929
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +270,7 @@ MonoBehaviour:
     UIicon: {fileID: 0}
     type: 2
     price: 0
+    isHair: 0
 --- !u!1 &4984101598810732431
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +322,7 @@ MonoBehaviour:
     UIicon: {fileID: 0}
     type: 0
     price: 0
+    isHair: 0
 --- !u!1001 &848942069964515852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -380,6 +384,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f549cd2d30ca25243bba7e9ec11830bd, type: 3}
+--- !u!1 &848942069964549292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: f549cd2d30ca25243bba7e9ec11830bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 848942069964515852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &848942069964124300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f549cd2d30ca25243bba7e9ec11830bd,
