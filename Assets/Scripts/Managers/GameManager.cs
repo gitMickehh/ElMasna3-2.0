@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         if (timerOfWorkersHappiness >= GameConfigFile.timeToDecreaseHappiness)
         {
-            workerList.DecreaseHappiness();
+            workerList.UpdateWorkers();
         }
         else
         {
@@ -351,6 +351,7 @@ public class GameManager : MonoBehaviour
         workerIsHired.Raise();
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
         closeUIPanel.Raise();
+        SaveGameEvent.Raise();
     }
 
     public void PartyHandling()

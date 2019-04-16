@@ -89,14 +89,6 @@ public class Worker : MonoBehaviour
     {
         Debug.Log(transform.name + " leveled Up!");
         level++;
-
-        //if (coolDownTime != 0.1)
-        //{
-        //    coolDownTime -= decreaseCoolDownTimeBy;
-        //}
-
-        ////when adding machine class 
-        //workingSpeed += increaseWorkingSpeedBy;
     }
 
     public override string ToString()
@@ -105,10 +97,26 @@ public class Worker : MonoBehaviour
             + "\n level: " + level;
     }
 
-    public void MinusHappiness()
+    public void ModifyHappiness()
     {
-        happyMeter = (happyMeter - (0.003f / happyDefense));
+        switch (workerState)
+        {
+            case WorkerState.Working:
+            happyMeter = (happyMeter - 0.5f);
+                break;
+            case WorkerState.InBreak:
+                happyMeter = (happyMeter + 4);
+                break;
+            default:
+                break;
+        }
+
         happyMeter = Mathf.Clamp(happyMeter, 0, 100);
+    }
+
+    public void ModifyExperience()
+    {
+
     }
 
     public void AddHappiness(float percentage)
