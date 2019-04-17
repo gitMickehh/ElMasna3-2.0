@@ -187,6 +187,64 @@ public class Machine : MonoBehaviour
         //machineState = MachineState.ONHOLD;
     }
 
+    RectTransform rectTransform;
+    Vector3 moneyImagePos;
+
+    private void DisplayMoneyCollected()
+    {
+        if (scheme.moneyCurrency == Currency.RealMoney)
+        {
+            displayManager.displayTextOrigin = displayManager.displayRealMoneyText;
+            moneyImagePos = displayManager.realMoneyPos.position;
+        }
+
+        else if (scheme.moneyCurrency == Currency.HappyMoney)
+        {
+            displayManager.displayTextOrigin = displayManager.displayHappyMoneyText;
+            moneyImagePos = displayManager.happyMoneyPos.position;
+        }
+
+        Vector3 startPos = Camera.main.WorldToScreenPoint(transform.position);
+        Text displayText = Instantiate(displayManager.displayTextOrigin, displayManager.displayTextOrigin.transform.parent);
+        displayText.transform.position = startPos;
+
+
+        if (displayText)
+        {
+            displayManager.DisplayMessage("+" + GetReturnedMoney().ToString(), displayText);
+            rectTransform = displayText.GetComponent<RectTransform>();
+            rectTransform.gameObject.SetActive(true);
+
+            SetLerping(rectTransform.position, moneyImagePos, rectTransform);
+        }
+    }
+
+    float currentTime = 0; 
+    float normalizedValue;
+
+    public void SetLerping(Vector3 start, Vector3 target, RectTransform rectTransform)
+    {
+        currentTime = 0;
+        normalizedValue = 0;
+        StartCoroutine(StartLerping(start, target, rectTransform));
+    }
+
+    public IEnumerator StartLerping(Vector3 start, Vector3 target, RectTransform rectTransform)
+    {
+        yield return new WaitForSeconds(displayManager.displayTime);
+
+        while (currentTime <= displayManager.timeOfTravel)
+        {
+            currentTime += Time.deltaTime;
+            normalizedValue = currentTime / displayManager.timeOfTravel; // we normalize our time 
+
+            rectTransform.position = Vector3.Lerp(start, target, normalizedValue);
+            yield return null;
+        }
+        Destroy(rectTransform.gameObject);
+    }
+
+
     private void GatherMoney()
     {
         ReturnMoney();
@@ -195,7 +253,7 @@ public class Machine : MonoBehaviour
         if (CurrentWorker != null)
             IsWorking = true;
 
-        displayManager.DisplayMoneyCollected(this);
+        DisplayMoneyCollected();
         SliderToggle();
     }
 
