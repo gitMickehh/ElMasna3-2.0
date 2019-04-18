@@ -103,9 +103,9 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: machineDone
     clip: {fileID: 8300000, guid: 74354192b9a20744c95c664921708b29, type: 3}
-    volume: 0.03
+    volume: 0.07
     pitch: 1
-    looping: 1
+    looping: 0
     playOnAwake: 0
     soundIsOn: 1
     source: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   buttonsSounds:
   - soundName: Select B
     clip: {fileID: 8300000, guid: 9cf7d1e77cc3adc4fa86872c7bae8cd0, type: 3}
-    volume: 0.8
+    volume: 0.7
     pitch: 1
     looping: 0
     playOnAwake: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: Select B2
     clip: {fileID: 8300000, guid: 58856a830a503bf48b60faa518ce4248, type: 3}
-    volume: 0.826
+    volume: 0.7
     pitch: 1
     looping: 0
     playOnAwake: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: Select B3
     clip: {fileID: 8300000, guid: d9af101e21156ca4ca638d58c25e62f0, type: 3}
-    volume: 0.832
+    volume: 0.7
     pitch: 1
     looping: 0
     playOnAwake: 0

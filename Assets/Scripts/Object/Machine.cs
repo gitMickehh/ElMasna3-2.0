@@ -25,6 +25,8 @@ public class Machine : MonoBehaviour
     public bool IsWorking;
     private bool isWaiting;
     //public MachineState machineState;
+    //if the worker is removed from the machine after it finished the time.
+    private float moneyReturning;
 
     [Header("Worker")]
     public GameObject CurrentWorker;
@@ -227,6 +229,19 @@ public class Machine : MonoBehaviour
         FinishCycle();
     }
 
+    public Worker RemoveWorker()
+    {
+        Worker myWorker;
+
+        IsWorking = false;
+        myWorker = CurrentWorker.GetComponent<Worker>();
+        CurrentWorker = null;
+        SliderToggle();
+
+        return myWorker;
+
+    }
+
     public void ChangeWorker(Worker w)
     {
         if (w.currentMachine != null)
@@ -257,9 +272,7 @@ public class Machine : MonoBehaviour
             }
             else
             {
-                w.currentMachine.IsWorking = false;
-                w.currentMachine.CurrentWorker = null;
-                w.currentMachine.SliderToggle();
+                w.currentMachine.RemoveWorker();
             }
         }
 

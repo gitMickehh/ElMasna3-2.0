@@ -12,13 +12,15 @@ public class SerializableMachine
     public int workerID;
 
     public float runningTime;
+    public float returningMoney;
 
-    public SerializableMachine(bool exists = false, int mchId = -1, int modelID = 1, int wId = -1, float currentTime = 0)
+    public SerializableMachine(bool exists = false, int mchId = -1, int modelID = 1, int wId = -1, float currentTime = 0, float retMoney = 0)
     {
         machineExists = exists;
         machineID = mchId;
         machineModelID = modelID;
         workerID = wId;
         runningTime = currentTime;
+        returningMoney = retMoney;
     }
 }
