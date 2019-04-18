@@ -24,8 +24,7 @@ public class GameManager : MonoBehaviour
     public MachineList machineList;
 
     [Header("Time")]
-    [GreyOut]
-    public int DayInMonth = 0;
+    public IntField DayInMonth;
     [GreyOut]
     public int DifferenceInDays = 0;
     [GreyOut]
@@ -59,6 +58,7 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         gameManagerField.gameObjectReference = null;
+        DayInMonth.SetValue(1);
     }
 
     private void Start()
@@ -222,7 +222,7 @@ public class GameManager : MonoBehaviour
     {
 
         DateClass dateNow = new DateClass(System.DateTime.Now);
-        return new GameTime(timer.GetRunningTime(), timer.GameDay, DayInMonth, dateNow);
+        return new GameTime(timer.GetRunningTime(), timer.GameDay, DayInMonth.GetValue(), dateNow);
     }
 
     public void LoadTime(GameTime gt)
@@ -244,6 +244,7 @@ public class GameManager : MonoBehaviour
             timer.StartDay.Raise();
 
         timer.GameDay = (Day)(((int)savedDay + days) % 7);
+        DayInMonth.SetValue(gt.numberOfDays + days);
 
         //we do not count in Delta Hours (Hour means day in game) because an hour is a full cycle
         //it is not very dynamic if we want to change that in the game, but for now it does the deed
@@ -263,6 +264,15 @@ public class GameManager : MonoBehaviour
     private void CalculateTimeOfMachines(float t)
     {
         machineList.CalculateMachinesTimePassed(t);
+    }
+
+    public void CheckSalary()
+    {
+        if(DayInMonth.GetValue() >= 30)
+        {
+            //pay the salary Raise
+            DayInMonth.SetValue(1);
+        }
     }
 
     private void AddMoneyOfOfflineTime(float t)

@@ -7,11 +7,13 @@ public class UIOnScreenText : MonoBehaviour
 {
     public GameConfig configFile;
 
+    public IntField dayNumber;
     public FloatField realMoney;
     public FloatField happyMoney;
 
     public Text realMoneyText;
     public Text happyMoneyText;
+    public Text dayNumberText;
 
     [Attributes.GreyOut]
     public float moneyIconSize;
@@ -23,6 +25,7 @@ public class UIOnScreenText : MonoBehaviour
         moneyIconSize = realMoneyText.GetComponentInChildren<Image>().rectTransform.rect.width;
         OnRealMoneyChanged();
         OnHappyMoneyChanged();
+        OnUpdateDayNumber();
     }
 
     public void OnRealMoneyChanged()
@@ -48,5 +51,10 @@ public class UIOnScreenText : MonoBehaviour
 
         happyMoneyText.GetComponent<RectTransform>().sizeDelta =
             new Vector2((happyMoneyText.fontSize * (happyMoneyText.text.Length))+ moneyIconSize, happyMoneyText.GetComponent<RectTransform>().rect.height);
+    }
+
+    public void OnUpdateDayNumber()
+    {
+        dayNumberText.text = dayNumber.GetValue().ToString();
     }
 }
