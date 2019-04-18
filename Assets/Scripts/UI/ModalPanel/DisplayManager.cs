@@ -6,18 +6,14 @@ using UnityEngine.UI;
 
 public class DisplayManager : MonoBehaviour
 {
-    public Text displayText;
+    public Text displayTextOrigin;
     public Text displayRealMoneyText;
     public Text displayHappyMoneyText;
 
     public float displayTime;
     public float fadeTime;
 
-    public float timeOfTravel; //time after object reach a target place 
-    float currentTime = 0; // actual floting time 
-    float normalizedValue;
-
-    RectTransform rectTransform;
+    public float timeOfTravel;
 
     private IEnumerator fadeAlpha;
 
@@ -37,82 +33,30 @@ public class DisplayManager : MonoBehaviour
         return displayManager;
     }
 
-    public void DisplayMessage(string message)
+    public void DisplayMessage(string message, Text displayText)
     {
         displayText.gameObject.SetActive(true);
         displayText.text = message;
-        SetAlpha();
+        SetAlpha(displayText);
     }
 
     public Transform realMoneyPos;
     public Transform happyMoneyPos;
     [SerializeField]
-    Vector3 moneyImagePos;
 
-    public void DisplayMoneyCollected(Machine machine)
-    {
-        if (machine.scheme.moneyCurrency == Currency.RealMoney)
-        {
-            displayText = displayRealMoneyText;
-            moneyImagePos = realMoneyPos.position;// Camera.main.ScreenToWorldPoint(realMoneyPos.position);
-        }
-
-        else if (machine.scheme.moneyCurrency == Currency.HappyMoney)
-        {
-            displayText = displayHappyMoneyText;
-            moneyImagePos = happyMoneyPos.position;// Camera.main.ScreenToWorldPoint(happyMoneyPos.position);
-        }
-
-        Vector3 startPos = Camera.main.WorldToScreenPoint(machine.transform.position);
-        displayText.transform.position = startPos;
-       // moneyImagePos = RectTransformUtility.WorldToScreenPoint(null, moneyImagePos);
-
-
-        if (displayText)
-        {
-            DisplayMessage("+" + machine.GetReturnedMoney().ToString());
-            rectTransform = displayText.GetComponent<RectTransform>();
-            rectTransform.gameObject.SetActive(true);
-
-            SetLerping(rectTransform.position, moneyImagePos);
-        }
-    }
-
-    void SetAlpha()
+    void SetAlpha(Text displayText)
     {
         if(fadeAlpha != null)
         {
             StopCoroutine(fadeAlpha);
         }
 
-        fadeAlpha = FadeAlpha();
+        fadeAlpha = FadeAlpha(displayText);
         StartCoroutine(fadeAlpha);
 
     }
 
-    void SetLerping(Vector3 start, Vector3 target)
-    {
-        currentTime = 0;
-        normalizedValue = 0;
-        StartCoroutine(StartLerping(start, target));
-    }
-
-    IEnumerator StartLerping(Vector3 start, Vector3 target)
-    {
-        yield return new WaitForSeconds(displayTime);
-
-        while (currentTime <= timeOfTravel)
-        {
-            currentTime += Time.deltaTime;
-            normalizedValue = currentTime / timeOfTravel; // we normalize our time 
-
-            rectTransform./*anchored*/position = Vector3.Lerp(start, target, normalizedValue);
-            yield return null;
-        }
-        rectTransform.gameObject.SetActive(false);
-    }
-
-    IEnumerator FadeAlpha()
+    IEnumerator FadeAlpha(Text displayText)
     {
         Color resetColor = displayText.color;
         resetColor.a = 1;
