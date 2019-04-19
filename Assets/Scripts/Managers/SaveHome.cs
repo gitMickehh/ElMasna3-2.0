@@ -104,7 +104,7 @@ public class SaveHome : MonoBehaviour
     {
         var cLanguage = GameConfigFile.CurrentLanguageProfile.name;
 
-        Debug.Log(cLanguage);
+        //Debug.Log(cLanguage);
         PlayerPrefs.SetString("language", cLanguage);
     }
 
@@ -142,7 +142,7 @@ public class SaveHome : MonoBehaviour
 
     public void SaveAll()
     {
-        Debug.Log("Saving all");
+        //Debug.Log("Saving all");
         if (!loadedAll)
             return;
 
@@ -158,7 +158,7 @@ public class SaveHome : MonoBehaviour
         if (save)
         {
             //#endif
-            Debug.Log("loadedAll: " + loadedAll);
+            //Debug.Log("loadedAll: " + loadedAll);
             if (loadedAll)
                 SaveAll();
             //#if UNITY_EDITOR

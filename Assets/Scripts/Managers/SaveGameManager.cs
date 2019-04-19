@@ -23,6 +23,7 @@ public class SaveGameManager : MonoBehaviour
     [Header("Editor Options")]
     public bool save;
     public bool load;
+    public bool debug;
     public bool focusSave;
     //#endif
 
@@ -73,7 +74,9 @@ public class SaveGameManager : MonoBehaviour
             listOfFloors.Items[i].FillSerializableFloor();
 
             string floorJson = JsonUtility.ToJson(listOfFloors.Items[i].savingFloor);
-            Debug.Log(floorJson);
+
+            if(debug)
+                Debug.Log(floorJson);
 
             PlayerPrefs.SetString("floor" + i, floorJson);
         }
@@ -123,7 +126,9 @@ public class SaveGameManager : MonoBehaviour
         for (int i = 0; i < listOfWorkers.Items.Count; i++)
         {
             string workerJson = JsonUtility.ToJson(listOfWorkers.Items[i].GetWorkerData());
-            Debug.Log(workerJson);
+
+            if (debug)
+                Debug.Log(workerJson);
 
             PlayerPrefs.SetString("worker" + i, workerJson);
         }
@@ -182,7 +187,9 @@ public class SaveGameManager : MonoBehaviour
         var gTime = gManager.GetGameTime();
         var timeString = JsonUtility.ToJson(gTime);
 
-        Debug.Log(timeString);
+        if (debug)
+            Debug.Log(timeString);
+
         PlayerPrefs.SetString("time", timeString);
     }
 
@@ -209,9 +216,11 @@ public class SaveGameManager : MonoBehaviour
 
         string jsonString = JsonUtility.ToJson(gManager.GetSaveData());
         PlayerPrefs.SetString("FactoryData", jsonString);
-        Debug.Log(jsonString);
 
-        if(tutorialManager)
+        if (debug)
+            Debug.Log(jsonString);
+
+        if (tutorialManager)
         {
             PlayerPrefs.SetInt("TutorialStep", tutorialManager.tutorialStage);
         }

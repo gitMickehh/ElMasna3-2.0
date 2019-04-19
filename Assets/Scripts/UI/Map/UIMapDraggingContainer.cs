@@ -18,9 +18,7 @@ public class UIMapDraggingContainer : MonoBehaviour
     public Machine machineReference;
     [Header("Waypoint")]
     public WayPoint waypoint;
-
-
-
+    
     [Attributes.GreyOut]
     public GameObject workerImage;
     public WorkerUIIcon myWorkerImage
@@ -73,10 +71,11 @@ public class UIMapDraggingContainer : MonoBehaviour
         else if (type == UIDraggingType.BREAKWAYPOINT)
         {
             int breakRoomIndex = floor.GetBreakRoomIndex(waypoint);
-            Debug.Log("Floor "+floor.floorOrder + " Waypoint Index: "+ breakRoomIndex);
+            //Debug.Log("Floor "+floor.floorOrder + " Waypoint Index: "+ breakRoomIndex);
 
             if(workerComponent.currentMachine != null)
             {
+                //Debug.Log("hi");
                 workerComponent.currentMachine.CurrentWorker = null;
                 workerComponent.currentMachine = null;
             }
