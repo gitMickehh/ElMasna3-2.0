@@ -175,7 +175,7 @@ public class Machine : MonoBehaviour
     {
         isWaiting = true;
         machineDoneObject.SetActive(true);
-        machineUIAnimation.SetTrigger("Done");
+        machineUIAnimation.SetBool("Done", isWaiting);
 
         if (circular)
             machineCircularTimer.fillAmount = 1;
@@ -221,7 +221,7 @@ public class Machine : MonoBehaviour
         }
     }
 
-    float currentTime = 0; 
+    float currentTime = 0;
     float normalizedValue;
 
     public void SetLerping(Vector3 start, Vector3 target, RectTransform rectTransform)
@@ -262,15 +262,15 @@ public class Machine : MonoBehaviour
     private void StartCycle()
     {
         machineDoneObject.SetActive(false);
-        machineUIAnimation.SetTrigger("Done");
         runningTime = 0;
         isWaiting = false;
+        machineUIAnimation.SetBool("Done", isWaiting);
         //machineState = MachineState.WORKING;
     }
 
     public void ClickMachine()
     {
-        if(isWaiting)
+        if (isWaiting)
         {
             GatherMoney();
             StartCycle();
@@ -293,6 +293,7 @@ public class Machine : MonoBehaviour
 
         IsWorking = false;
         myWorker = CurrentWorker.GetComponent<Worker>();
+        myWorker.currentMachine = null;
         CurrentWorker = null;
         SliderToggle();
 
@@ -373,7 +374,7 @@ public class Machine : MonoBehaviour
         var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
 
         float money = GetReturnedMoney();
-        
+
 
         gm.DepositMoney(money, scheme.moneyCurrency);
     }
@@ -392,7 +393,7 @@ public class Machine : MonoBehaviour
         float cyclesFraction = t / scheme.timeOfCycle;
         int numberOfCycles = Mathf.FloorToInt(cyclesFraction);
 
-        if(numberOfCycles >= 1)
+        if (numberOfCycles >= 1)
         {
             FinishCycle();
             return;
@@ -414,14 +415,13 @@ public class Machine : MonoBehaviour
 
     public void SliderToggle()
     {
-        if(IsWorking)
-        {
-            if (circular)
-                machineCircularTimer.gameObject.SetActive(IsWorking);
-            else
-                machineTimeSlider.gameObject.SetActive(IsWorking);
-        }
+        if (circular)
+            machineCircularTimer.gameObject.SetActive(IsWorking || isWaiting);
+        else
+            machineTimeSlider.gameObject.SetActive(IsWorking || isWaiting);
 
+
+        machineUIAnimation.SetBool("Done", isWaiting);
         machineAnimator.SetBool("IsWorking", IsWorking);
     }
 

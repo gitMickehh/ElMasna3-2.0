@@ -160,6 +160,8 @@ public class Worker : MonoBehaviour
 
     public void SetBreak(BreakObject breakObject)
     {
+        workerState = WorkerState.InBreak;
+
         switch (breakObject)
         {
             case BreakObject.Sit:
@@ -176,6 +178,10 @@ public class Worker : MonoBehaviour
     public void SetWorking(bool state)
     {
         workerAnimator.SetBool("Working", state);
+        if (state)
+            workerState = WorkerState.Working;
+        else
+            workerState = WorkerState.InBreak;
     }
 
     public void SetWalking(bool state)

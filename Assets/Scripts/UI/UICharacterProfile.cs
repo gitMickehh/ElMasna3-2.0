@@ -70,6 +70,11 @@ public class UICharacterProfile : MonoBehaviour
         {
             InFactoryButtons.SetActive(true);
             InOrientationButtons.SetActive(false);
+
+            if (w.workerState == WorkerState.InBreak)
+                GiveBreakButton.interactable = false;
+            else
+                GiveBreakButton.interactable = true;
         }
 
         UICamera.transform.SetParent(w.UICameraPosition);
@@ -145,10 +150,14 @@ public class UICharacterProfile : MonoBehaviour
 
         if (SelectedWorkerRefernce.worker.currentMachine != null)
         {
-            SelectedWorkerRefernce.worker.currentMachine.CurrentWorker = null;
-            SelectedWorkerRefernce.worker.currentMachine = null;
+            //SelectedWorkerRefernce.worker.currentMachine.CurrentWorker = null;
+            //SelectedWorkerRefernce.worker.currentMachine = null;
+            SelectedWorkerRefernce.worker.currentMachine.RemoveWorker();
         }
+
         SelectedWorkerRefernce.worker.SetWorking(false);
+
+        floor.breakRoom[breakRoomIndex].worker = SelectedWorkerRefernce.worker; 
         SelectedWorkerRefernce.worker.SetBreak(floor.breakRoom[breakRoomIndex].breakObject);
     }
 
