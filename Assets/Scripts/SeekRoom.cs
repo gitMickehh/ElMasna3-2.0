@@ -110,7 +110,9 @@ public class SeekRoom : MonoBehaviour
             arrived = false;
             rotateOnce = true;
             worker.SetWalking(false);
-            worker.transform.forward = -worker.currentMachine.transform.forward;
+
+            if(worker.currentMachine != null)
+                worker.transform.forward = -worker.currentMachine.transform.forward;
         }
     }
 
