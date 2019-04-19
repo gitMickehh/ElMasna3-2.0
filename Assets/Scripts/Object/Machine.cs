@@ -23,7 +23,7 @@ public class Machine : MonoBehaviour
     public MachineList listOfMahcines;
     [Attributes.GreyOut]
     public bool IsWorking;
-    private bool isWaiting;
+    public bool isWaiting;
     //public MachineState machineState;
 
     [Header("Worker")]

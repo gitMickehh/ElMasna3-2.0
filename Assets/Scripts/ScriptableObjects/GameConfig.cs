@@ -19,6 +19,7 @@ public class GameConfig : ScriptableObject {
 
     [Header("Workers Data")]
     public float timeToDecreaseHappiness = 1;
+    public float timeToDecreaseExperience = 1;
 
     [Header("Wallet")]
     public FloatField FactoryMoney;

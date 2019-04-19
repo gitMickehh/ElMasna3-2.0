@@ -14,6 +14,7 @@ public class UICharacterProfile : MonoBehaviour
     public Text CharacterName;
     public Text CharacterLevel;
     public Slider CharacterHappienss;
+    public Slider CharacterExperience;
     public Slider CharacterHealth;
     public GameObject InOrientationButtons;
     public GameObject InFactoryButtons;
@@ -60,6 +61,7 @@ public class UICharacterProfile : MonoBehaviour
         CharacterName.text = w.FullName;
         CharacterLevel.text = w.level.ToString();
         CharacterHappienss.value = (w.happyMeter / 100.0f);
+        CharacterExperience.value = (w.currentExperience / w.maxExperience);
 
         if (w.inOrientation)
         {
@@ -95,6 +97,11 @@ public class UICharacterProfile : MonoBehaviour
         while(true)
         {
             CharacterHappienss.value = (w.happyMeter / 100.0f);
+            CharacterExperience.value = (w.currentExperience / w.maxExperience);
+
+            if (w.level.ToString() != CharacterLevel.text)
+                CharacterLevel.text = w.level.ToString();
+
             yield return new WaitForFixedUpdate();
         }
     }

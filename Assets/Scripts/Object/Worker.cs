@@ -37,6 +37,10 @@ public class Worker : MonoBehaviour
     public float happyMeter;
     public float happyDefense;
 
+    [Header("Experience")]
+    public float currentExperience;
+    public float maxExperience;
+
     [Header("Model")]
     [HideInInspector]
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
@@ -81,6 +85,8 @@ public class Worker : MonoBehaviour
         happyMeter = 100;
         happyDefense = Random.Range(0.0f,1.0f);
         level = 0;
+        maxExperience = 50;
+        currentExperience = 0;
 
         transform.name = FullName;
     }
@@ -116,7 +122,15 @@ public class Worker : MonoBehaviour
 
     public void ModifyExperience()
     {
+        if(currentMachine.IsWorking && !currentMachine.isWaiting)
+            currentExperience++;
 
+        if(currentExperience >= maxExperience)
+        {
+            LevelUp();
+            currentExperience = 0;
+            maxExperience = level * 50 + 50;
+        }
     }
 
     public void AddHappiness(float percentage)
@@ -196,7 +210,7 @@ public class Worker : MonoBehaviour
 
         sw.AddCustomization(customization.GetCustomizationDataArray());
         //sw.AddCustomization(customization.GetCustomizationData());
-
+        sw.currentExperience = currentExperience;
         return sw;
     }
 
@@ -218,6 +232,9 @@ public class Worker : MonoBehaviour
         happyDefense = wData.happinessDefense;
 
         customization.LoadCustomizationData(wData.CustomizationDataIDs);
+
+        currentExperience = wData.currentExperience;
+        maxExperience = level * 50 + 50;
 
         transform.name = FullName;
     }
