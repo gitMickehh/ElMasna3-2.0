@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     //worker mods
     private float timerOfWorkersHappiness = 0;
+    private float timerOfWorkersExperience = 0;
 
     //Modal Panel
     private ModalPanel modalPanel;
@@ -84,11 +85,22 @@ public class GameManager : MonoBehaviour
 
         if (timerOfWorkersHappiness >= GameConfigFile.timeToDecreaseHappiness)
         {
+            timerOfWorkersHappiness = 0;
             workerList.UpdateWorkers();
         }
         else
         {
             timerOfWorkersHappiness += Time.deltaTime;
+        }
+
+        if (timerOfWorkersExperience >= GameConfigFile.timeToDecreaseExperience)
+        {
+            timerOfWorkersExperience = 0;
+            workerList.UpdateWorkersExperience();
+        }
+        else
+        {
+            timerOfWorkersExperience += Time.deltaTime;
         }
     }
 

@@ -62,8 +62,17 @@ public class WorkerList : RuntimeList<Worker>
             if (!Items[i].inOrientation)
             {
                 Items[i].ModifyHappiness();
-                Items[i].ModifyExperience();
+                Items[i].ModifyHealth();
             }
+        }
+    }
+
+    public void UpdateWorkersExperience()
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            if (!Items[i].inOrientation && !(Items[i].workerState == WorkerState.InBreak))
+                Items[i].ModifyExperience();
         }
     }
 }

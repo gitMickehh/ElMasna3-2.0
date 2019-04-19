@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: SlowDangler
   no: 2
+  rate: 0.2
+  start: 50
   Description: Takes long breaks and works a little
   medicalIcon: {fileID: 0}

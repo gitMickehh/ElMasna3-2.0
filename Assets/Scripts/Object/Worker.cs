@@ -37,6 +37,12 @@ public class Worker : MonoBehaviour
     public float happyMeter;
     public float happyDefense;
 
+    public float healthMeter;
+
+    [Header("Experience")]
+    public float currentExperience;
+    public float maxExperience;
+
     [Header("Model")]
     [HideInInspector]
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
@@ -79,8 +85,12 @@ public class Worker : MonoBehaviour
         medical = WorkerStats.RandomizeMedicalTraits();
 
         happyMeter = 100;
+        healthMeter = medical.start;
+
         happyDefense = Random.Range(0.0f,1.0f);
         level = 0;
+        maxExperience = 50;
+        currentExperience = 0;
 
         transform.name = FullName;
     }
@@ -114,9 +124,34 @@ public class Worker : MonoBehaviour
         happyMeter = Mathf.Clamp(happyMeter, 0, 100);
     }
 
+    public void ModifyHealth()
+    {
+        switch (workerState)
+        {
+            case WorkerState.Working:
+                healthMeter = (healthMeter - medical.rate);
+                break;
+            case WorkerState.InBreak:
+                healthMeter = (healthMeter + 2* medical.rate);
+                break;
+            default:
+                break;
+        }
+
+        healthMeter = Mathf.Clamp(healthMeter, 0, 100);
+    }
+
     public void ModifyExperience()
     {
+        if(currentMachine != null && currentMachine.IsWorking && !currentMachine.isWaiting)
+            currentExperience++;
 
+        if(currentExperience >= maxExperience)
+        {
+            LevelUp();
+            currentExperience = 0;
+            maxExperience = level * 50 + 50;
+        }
     }
 
     public void AddHappiness(float percentage)
@@ -202,7 +237,8 @@ public class Worker : MonoBehaviour
 
         sw.AddCustomization(customization.GetCustomizationDataArray());
         //sw.AddCustomization(customization.GetCustomizationData());
-
+        sw.currentExperience = currentExperience;
+        sw.currentHealth = healthMeter;
         return sw;
     }
 
@@ -223,7 +259,12 @@ public class Worker : MonoBehaviour
         happyMeter = wData.happiness;
         happyDefense = wData.happinessDefense;
 
+        healthMeter = wData.currentHealth;
+
         customization.LoadCustomizationData(wData.CustomizationDataIDs);
+
+        currentExperience = wData.currentExperience;
+        maxExperience = level * 50 + 50;
 
         transform.name = FullName;
     }

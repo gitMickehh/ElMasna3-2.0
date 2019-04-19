@@ -23,7 +23,7 @@ public class Machine : MonoBehaviour
     public MachineList listOfMahcines;
     [Attributes.GreyOut]
     public bool IsWorking;
-    private bool isWaiting;
+    public bool isWaiting;
     //public MachineState machineState;
     //if the worker is removed from the machine after it finished the time.
     private float moneyReturning;
