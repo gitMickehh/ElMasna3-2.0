@@ -37,6 +37,8 @@ public class Worker : MonoBehaviour
     public float happyMeter;
     public float happyDefense;
 
+    public float healthMeter;
+
     [Header("Experience")]
     public float currentExperience;
     public float maxExperience;
@@ -83,6 +85,8 @@ public class Worker : MonoBehaviour
         medical = WorkerStats.RandomizeMedicalTraits();
 
         happyMeter = 100;
+        healthMeter = medical.start;
+
         happyDefense = Random.Range(0.0f,1.0f);
         level = 0;
         maxExperience = 50;
@@ -120,9 +124,26 @@ public class Worker : MonoBehaviour
         happyMeter = Mathf.Clamp(happyMeter, 0, 100);
     }
 
+    public void ModifyHealth()
+    {
+        switch (workerState)
+        {
+            case WorkerState.Working:
+                healthMeter = (healthMeter - medical.rate);
+                break;
+            case WorkerState.InBreak:
+                healthMeter = (healthMeter + 2* medical.rate);
+                break;
+            default:
+                break;
+        }
+
+        healthMeter = Mathf.Clamp(healthMeter, 0, 100);
+    }
+
     public void ModifyExperience()
     {
-        if(currentMachine.IsWorking && !currentMachine.isWaiting)
+        if(currentMachine != null && currentMachine.IsWorking && !currentMachine.isWaiting)
             currentExperience++;
 
         if(currentExperience >= maxExperience)
@@ -211,6 +232,7 @@ public class Worker : MonoBehaviour
         sw.AddCustomization(customization.GetCustomizationDataArray());
         //sw.AddCustomization(customization.GetCustomizationData());
         sw.currentExperience = currentExperience;
+        sw.currentHealth = healthMeter;
         return sw;
     }
 
@@ -230,6 +252,8 @@ public class Worker : MonoBehaviour
 
         happyMeter = wData.happiness;
         happyDefense = wData.happinessDefense;
+
+        healthMeter = wData.currentHealth;
 
         customization.LoadCustomizationData(wData.CustomizationDataIDs);
 

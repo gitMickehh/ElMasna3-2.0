@@ -21,6 +21,7 @@ public class SerializableWorker
     public float happiness;
     public float happinessDefense;
 
+    public float currentHealth;
     public float currentExperience;
     //public WorkerCustomizationSerializable CustomizationData;
     public int[] CustomizationDataIDs;
@@ -42,12 +43,13 @@ public class SerializableWorker
         happinessDefense = 0.2f;
 
         currentExperience = 0;
+        currentHealth = 0;
 
         //CustomizationData = new WorkerCustomizationSerializable();
         CustomizationDataIDs = new int[3] {-1,-1,-1};
     }
 
-    public SerializableWorker(int id, string name, Gender g = Gender.MALE, bool orientation = true, int model_id = 1, int lvl = 1, int emotionT = 1, int medicalT = 1, float happyMeter = 0.5f, float happyDef = 0.2f, int machID = -1, float cExp= 0)
+    public SerializableWorker(int id, string name, Gender g = Gender.MALE, bool orientation = true, int model_id = 1, int lvl = 1, int emotionT = 1, int medicalT = 1, float happyMeter = 0.5f, float happyDef = 0.2f, int machID = -1, float cExp= 0, float cHealth = 0)
     {
         WorkerID = id;
         modelID = model_id;
@@ -62,6 +64,7 @@ public class SerializableWorker
         medicalTrait = medicalT;
         happiness = happyMeter;
         currentExperience = cExp;
+        currentHealth = cHealth;
 
         happinessDefense = happyDef;
         CustomizationDataIDs = new int[3] { -1, -1, -1 };

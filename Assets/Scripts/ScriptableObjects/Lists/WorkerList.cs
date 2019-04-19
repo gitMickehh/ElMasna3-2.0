@@ -60,7 +60,10 @@ public class WorkerList : RuntimeList<Worker>
         for (int i = 0; i < Items.Count; i++)
         {
             if (!Items[i].inOrientation)
+            {
                 Items[i].ModifyHappiness();
+                Items[i].ModifyHealth();
+            }
         }
     }
 

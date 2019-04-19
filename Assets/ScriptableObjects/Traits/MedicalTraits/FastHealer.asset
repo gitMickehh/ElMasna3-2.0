@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Fast Healer
   no: 1
+  rate: 0.4
+  start: 100
   Description: Takes a very short break and likes to work!
   medicalIcon: {fileID: 0}

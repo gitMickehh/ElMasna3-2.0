@@ -62,6 +62,7 @@ public class UICharacterProfile : MonoBehaviour
         CharacterLevel.text = w.level.ToString();
         CharacterHappienss.value = (w.happyMeter / 100.0f);
         CharacterExperience.value = (w.currentExperience / w.maxExperience);
+        CharacterHealth.value = (w.healthMeter / 100.0f);
 
         if (w.inOrientation)
         {
@@ -98,6 +99,7 @@ public class UICharacterProfile : MonoBehaviour
         {
             CharacterHappienss.value = (w.happyMeter / 100.0f);
             CharacterExperience.value = (w.currentExperience / w.maxExperience);
+            CharacterHealth.value = (w.healthMeter / 100.0f);
 
             if (w.level.ToString() != CharacterLevel.text)
                 CharacterLevel.text = w.level.ToString();
