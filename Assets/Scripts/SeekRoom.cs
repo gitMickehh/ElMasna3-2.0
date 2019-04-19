@@ -77,7 +77,7 @@ public class SeekRoom : MonoBehaviour
                 rotateOnce = false;
             }
 
-            if (distance > 3)
+            if (distance > 1)
             {
                 float step = speed * Time.deltaTime; // calculate distance to move
                 transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
@@ -110,6 +110,7 @@ public class SeekRoom : MonoBehaviour
             arrived = false;
             rotateOnce = true;
             worker.SetWalking(false);
+            worker.transform.forward = -worker.currentMachine.transform.forward;
         }
     }
 
