@@ -80,7 +80,7 @@ public class StorePanel : MonoBehaviour
             if (MachinesButtons[i].GetComponentInChildren<Button>().interactable)
             {
                 //you can buy this
-                MachinesButtons[i].itemCostText.color = Color.black;
+                MachinesButtons[i].itemCostText.color = Color.white;
                 MachinesButtons[i].itemImage.color = Color.white;
                 MachinesButtons[i].currencyImage.color = Color.white;
             }
