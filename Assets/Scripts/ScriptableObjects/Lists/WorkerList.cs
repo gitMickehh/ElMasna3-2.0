@@ -75,4 +75,21 @@ public class WorkerList : RuntimeList<Worker>
                 Items[i].ModifyExperience();
         }
     }
+
+    public float CalculateAverageHappiness()
+    {
+        float happinessSum = 0;
+        int workersNo = 0;
+        for(int i = 0; i < Items.Count; i++)
+        {
+            if (!Items[i].inOrientation)
+            {
+                workersNo++;
+                happinessSum += Items[i].happyMeter;
+            }
+        }
+        Debug.Log("happinessSum: " + happinessSum + " workersNo: " + workersNo);
+        Debug.Log("(happinessSum / (float)workersNo): " + (happinessSum / (float)workersNo));
+        return (happinessSum / (float)workersNo);
+    }
 }

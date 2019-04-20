@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public FloorList listOfFloors;
     public GameEvent BuildSuccess;
     public GameEvent BuildFailure;
+    public GameEvent RateFactory;
 
     [Header("Live Objects")]
     public WorkerField SelectedWorker;
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour
     private float timerToSavegame;
     public GameEvent SaveGameEvent;
 
+    public IntField starsCount;
+
     private void OnEnable()
     {
         gameManagerField.gameObjectReference = gameObject;
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
         timerToSavegame = 0;
 
         BuildFloorAction = new UnityAction(ConfirmBuildFloor);
+        
     }
 
     private void Update()
@@ -374,6 +379,16 @@ public class GameManager : MonoBehaviour
         WithdrawMoney(GameConfigFile.HiringCost, Currency.RealMoney);
         closeUIPanel.Raise();
         SaveGameEvent.Raise();
+    }
+
+    public void CalculateStars()
+    {
+        float happiness01 = workerList.CalculateAverageHappiness()/100.0f;
+        Debug.Log("happiness01: "+ happiness01);
+        starsCount.SetValue((int)(happiness01 * 5));
+
+
+        RateFactory.Raise();
     }
 
     public void PartyHandling()

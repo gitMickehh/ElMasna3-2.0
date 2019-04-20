@@ -52,9 +52,12 @@ MonoBehaviour:
   newGameConfig: {fileID: 11400000, guid: 06e98f26cc3d3fe4881d78ec390303bd, type: 2}
   save: 1
   load: 1
-  focusSave: 1
+  debug: 0
+  focusSave: 0
   workerIsHired: {fileID: 11400000, guid: 281817cb70727c848abc20340820bc3d, type: 2}
   machinePlacesOff: {fileID: 11400000, guid: ab683533d21a55543ac14e0efcb86261, type: 2}
+  CalculatingAvgHappiness: {fileID: 11400000, guid: 7e60fa362dca8bf4a9d526a2cf8180bd,
+    type: 2}
   Tutorial: {fileID: 3728202600110306613, guid: c7ffc47e61c43714ab68928eef76ee4a,
     type: 3}
 --- !u!114 &4293630776868590356

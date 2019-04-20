@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2621501752037479223}
   - component: {fileID: 7567521343868059217}
   - component: {fileID: 8039295024511250575}
+  - component: {fileID: 595316306}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MonoBehaviour:
   listOfFloors: {fileID: 11400000, guid: 956ce315d0e308e4ba403a445ea506d8, type: 2}
   BuildSuccess: {fileID: 11400000, guid: 1900118c697dd66498c86bada6b28050, type: 2}
   BuildFailure: {fileID: 11400000, guid: 9f08995bb6ca4894f9481133ce81d159, type: 2}
+  RateFactory: {fileID: 11400000, guid: 0a112700e2f308a4f9dc0566559392bf, type: 2}
   SelectedWorker: {fileID: 11400000, guid: 4ae7918a1fc64cf418df5e66e8964d29, type: 2}
   machineCheck: {fileID: 11400000, guid: 43ffc5741ea77c84abff8eb0a22610ad, type: 2}
   machineList: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}
@@ -68,6 +70,7 @@ MonoBehaviour:
   workerList: {fileID: 11400000, guid: 2514af2aec480364e8eb5444579ae30a, type: 2}
   timeBetweenSaves: 60
   SaveGameEvent: {fileID: 11400000, guid: 110e53633e0bf2d4fbb26b6ec7760810, type: 2}
+  starsCount: {fileID: 11400000, guid: 57b6dac73a00b4c428a85b989f1a63ea, type: 2}
 --- !u!114 &7227205324660242775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +274,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5851844109672730316}
         m_MethodName: CheckSalary
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &595316306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851844109672730317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 7e60fa362dca8bf4a9d526a2cf8180bd, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5851844109672730316}
+        m_MethodName: CalculateStars
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -32,6 +32,7 @@ public class SaveGameManager : MonoBehaviour
     [Header("Events")]
     public GameEvent workerIsHired;
     public GameEvent machinePlacesOff;
+    public GameEvent CalculatingAvgHappiness;
 
     [Header("Tutorial")]
     public GameObject Tutorial;
@@ -272,6 +273,7 @@ public class SaveGameManager : MonoBehaviour
 
         workerIsHired.Raise();
         machinePlacesOff.Raise();
+        CalculatingAvgHappiness.Raise();
     }
 
     public void SaveAll()
