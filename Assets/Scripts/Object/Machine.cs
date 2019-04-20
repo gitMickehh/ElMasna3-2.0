@@ -213,7 +213,7 @@ public class Machine : MonoBehaviour
 
         if (displayText)
         {
-            displayManager.DisplayMessage("+" + GetReturnedMoney().ToString(), displayText);
+            displayManager.DisplayMessage("+" + moneyReturning.ToString(), displayText);
             rectTransform = displayText.GetComponent<RectTransform>();
             rectTransform.gameObject.SetActive(true);
 
@@ -293,6 +293,10 @@ public class Machine : MonoBehaviour
 
         IsWorking = false;
         myWorker = CurrentWorker.GetComponent<Worker>();
+
+        if(isWaiting)
+            moneyReturning = GetReturnedMoney();
+
         myWorker.currentMachine = null;
         CurrentWorker = null;
         SliderToggle();
@@ -372,9 +376,16 @@ public class Machine : MonoBehaviour
     private void ReturnMoney()
     {
         var gm = gameManagerObject.gameObjectReference.GetComponent<GameManager>();
+        float money;
 
-        float money = GetReturnedMoney();
-
+        if (CurrentWorker == null)
+        {
+            money = moneyReturning;
+        }
+        else
+        {
+            money = GetReturnedMoney();
+        }
 
         gm.DepositMoney(money, scheme.moneyCurrency);
     }
@@ -385,6 +396,7 @@ public class Machine : MonoBehaviour
         var worker = CurrentWorker.GetComponent<Worker>();
         money = Mathf.RoundToInt((worker.happyMeter / 100) * money);
         money = Mathf.Clamp(money, scheme.minimumMoneyGain, scheme.moneyInCycle);
+        moneyReturning = money;
         return money;
     }
 

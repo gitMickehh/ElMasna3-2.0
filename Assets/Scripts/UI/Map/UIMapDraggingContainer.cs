@@ -76,8 +76,7 @@ public class UIMapDraggingContainer : MonoBehaviour
             if(workerComponent.currentMachine != null)
             {
                 //Debug.Log("hi");
-                workerComponent.currentMachine.CurrentWorker = null;
-                workerComponent.currentMachine = null;
+                workerComponent = workerComponent.currentMachine.RemoveWorker();
             }
             
             floor.breakRoom[breakRoomIndex].worker = workerComponent;
