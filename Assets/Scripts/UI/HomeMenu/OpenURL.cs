@@ -9,6 +9,11 @@ public class OpenURL : MonoBehaviour
     public StringField asmaaURL;
     public StringField marwaURL;
     public StringField noreenURL;
+    public StringField kareemURL;
+    public StringField itiURL;
+    public StringField gizURL;
+    public StringField volkerURL;
+    public StringField frankURL;
 
     Dictionary<string, string> teamURL;
     
@@ -20,7 +25,12 @@ public class OpenURL : MonoBehaviour
             { "Safwa", safwaURL.value },
             { "Asmaa", asmaaURL.value },
             { "Marwa", marwaURL.value },
-            { "Noreen", noreenURL.value }
+            { "Noreen", noreenURL.value },
+            { "Kareem", kareemURL.value },
+            { "ITI", itiURL.value },
+            { "GIZ", gizURL.value },
+            { "Volker", volkerURL.value },
+            { "Frank", frankURL.value },
 
         };
     }
