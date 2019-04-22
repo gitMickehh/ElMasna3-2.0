@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         gameManagerField.gameObjectReference = gameObject;
-        
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     private void OnDisable()
@@ -258,7 +258,7 @@ public class GameManager : MonoBehaviour
         DifferenceInDays = days;
 
         if (days > 0)
-            timer.StartDay.Raise();
+            StartNewDay();
 
         timer.GameDay = (Day)(((int)savedDay + days) % 7);
         DayInMonth.SetValue(gt.numberOfDays + days);

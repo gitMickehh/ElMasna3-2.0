@@ -26,6 +26,8 @@ public class Machine : MonoBehaviour
     public bool isWaiting;
     //public MachineState machineState;
     //if the worker is removed from the machine after it finished the time.
+    [SerializeField]
+    [Attributes.GreyOut]
     private float moneyReturning;
 
     [Header("Worker")]
