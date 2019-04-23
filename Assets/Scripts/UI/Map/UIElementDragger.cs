@@ -107,12 +107,12 @@ public class UIElementDragger : MonoBehaviour
 
         if (Input.touchCount == 1)
         {
-            startTouch = Input.touches[0].position;
-
+            //startTouch = Input.touches[0].position;
             finger = Input.touches[0];
 
             if (finger.phase == TouchPhase.Began)
             {
+                startTouch = Input.touches[0].position;
                 objectToDrag = GetDraggableTransformUnderMouse();
 
                 if (objectToDrag != null)
@@ -128,6 +128,10 @@ public class UIElementDragger : MonoBehaviour
                     if (GetComponent<WorkerUIIcon>() != null)
                         ListOfWorkerIcons.DisableRaycastExcept(objectToDrag.GetComponent<WorkerUIIcon>().workerID);
 
+                }
+                else
+                {
+                    dragging = true;
                 }
             }
             else if (finger.phase == TouchPhase.Ended || finger.phase == TouchPhase.Canceled)
@@ -155,11 +159,9 @@ public class UIElementDragger : MonoBehaviour
 
                 objectToDrag = null;
                 dragging = false;
-
                 //ScrollDistance.SetValue(0);
                 ListOfWorkerIcons.EnableRaycastTargets();
             }
-
         }
 
         if (dragging)
@@ -185,13 +187,17 @@ public class UIElementDragger : MonoBehaviour
                     ScrollUp.Raise();
                 }
             }
-
             else
             {
                 if (Input.touchCount == 1)
-                    swipeDelta = Input.touches[0].position - startTouch;
-                else if (Input.GetMouseButton(0))
+                {
+                    swipeDelta = finger.position - startTouch;
+
+                }
+                else if (MouseInput && Input.GetMouseButton(0))
+                {
                     swipeDelta = (Vector2)Input.mousePosition - startTouch;
+                }
 
                 if (swipeDelta.y > 0)
                 {

@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2581c77d08fbe40b5a8f5cf971d850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseInput: 1
+  MouseInput: 0
   RefreshUIEvent: {fileID: 0}
   ListOfWorkerIcons: {fileID: 11400000, guid: 8fb715bff76653f4f9d735737ada6404, type: 2}
   scrollThresholdPercentage: 15
