@@ -329,11 +329,17 @@ public class GameManager : MonoBehaviour
         modalPanel.Choice(message, new UnityAction(HireWorker), GameConfigFile.icons[0]);
     }
 
+    private IEnumerator NotEnoughMoneyModalPanel()
+    {
+        yield return new WaitForEndOfFrame();
+        modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney, GameConfigFile.icons[0]);
+    }
+
     public void HireWorker()
     {
         if (!CheckBalance(GameConfigFile.HiringCost, Currency.RealMoney))
         {
-            modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney,GameConfigFile.icons[0]);
+            StartCoroutine(NotEnoughMoneyModalPanel());
             return;
         }
 

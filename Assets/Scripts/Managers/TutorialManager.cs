@@ -389,7 +389,7 @@ public class TutorialManager : MonoBehaviour
         nonAnimatedPointer.SetActive(true);
         if (m != null)
         {
-            nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("Off");
+            nonAnimatedPointer.GetComponentInChildren<Animator>().SetTrigger("On");
             nonAnimatedPointer.transform.SetParent(parentToPointers);
             nonAnimatedPointer.transform.position = Camera.main.WorldToScreenPoint(m.transform.position);
         }
@@ -599,7 +599,8 @@ public class TutorialManager : MonoBehaviour
         if (tutorialStepsDone[6] && !tutorialStepsDone[7])
         {
             var floor = FindObjectOfType<Floor>();
-            floor.transform.localRotation = Quaternion.Euler(0, 75, 0);
+            //floor.transform.localRotation = Quaternion.Euler(0, 75, 0);
+            floor.GetComponent<ControlledRotator>().ResetView();
             NextStep();
         }
     }
