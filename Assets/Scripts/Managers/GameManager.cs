@@ -148,6 +148,8 @@ public class GameManager : MonoBehaviour
             f.transform.position = position;
 
             BuildSuccess.Raise();
+
+            GameConfigFile.UpdateFloorBuildingCost(listOfFloors.Items.Count);
         }
         else
         {
@@ -335,11 +337,16 @@ public class GameManager : MonoBehaviour
         modalPanel.Message(GameConfigFile.CurrentLanguageProfile.NotEnoughMoney, GameConfigFile.icons[0]);
     }
 
+    public void NotEnoughMoneyPanelShow()
+    {
+        StartCoroutine(NotEnoughMoneyModalPanel());
+    }
+
     public void HireWorker()
     {
         if (!CheckBalance(GameConfigFile.HiringCost, Currency.RealMoney))
         {
-            StartCoroutine(NotEnoughMoneyModalPanel());
+            NotEnoughMoneyPanelShow();
             return;
         }
 

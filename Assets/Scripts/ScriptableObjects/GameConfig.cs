@@ -26,6 +26,7 @@ public class GameConfig : ScriptableObject {
     public FloatField HappyMoney;
 
     [Header("Costs")]
+    public float FloorBaseCost = 300;
     public float FloorCost;
     public float HiringCost = 100.0f;
 
@@ -75,6 +76,14 @@ public class GameConfig : ScriptableObject {
     {
         uniformColor.SetValue(c);
         uniformMaterial.color = c;
+    }
+
+    public void UpdateFloorBuildingCost(int floorCount)
+    {
+        if (floorCount <= 0)
+            floorCount = 1;
+
+        FloorCost = FloorBaseCost * floorCount;
     }
 
     //[Header("Player")]

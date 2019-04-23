@@ -19,6 +19,7 @@ public class UIOnScreenText : MonoBehaviour
     public float moneyIconSize;
 
     public Button buildFloorButton;
+    public Text buildFloorCost;
 
     private void Start()
     {
@@ -35,14 +36,19 @@ public class UIOnScreenText : MonoBehaviour
         realMoneyText.GetComponent<RectTransform>().sizeDelta =
             new Vector2((realMoneyText.fontSize * (realMoneyText.text.Length)) + moneyIconSize, realMoneyText.GetComponent<RectTransform>().rect.height);
 
-        if(configFile.FloorCost <= realMoney.GetValue())
+
+        if (configFile.FloorCost <= realMoney.GetValue())
         {
             buildFloorButton.interactable = true;
+            buildFloorCost.color = Color.white;
         }
         else
         {
             buildFloorButton.interactable = false;
+            buildFloorCost.color = Color.grey;
         }
+
+        buildFloorCost.text = configFile.FloorCost.ToString();
     }
 
     public void OnHappyMoneyChanged()

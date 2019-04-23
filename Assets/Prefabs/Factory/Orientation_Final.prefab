@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2649474703415513954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 6, z: 6}
+  m_LocalPosition: {x: 8.62, y: 6, z: 7.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5797834470099721948}
@@ -328,6 +328,7 @@ MonoBehaviour:
   listOfMes: {fileID: 11400000, guid: 25ca98e2c0d49074fb850707e8e7a5e1, type: 2}
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   torqueMultiplyer: 0.3
+  YRotation: 0
 --- !u!114 &4302413996104572912
 MonoBehaviour:
   m_ObjectHideFlags: 0

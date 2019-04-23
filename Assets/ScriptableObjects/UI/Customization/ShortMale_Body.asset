@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87a157d7bebe243b7e2de42dcba333, type: 3}
-  m_Name: TallMale_Body
+  m_Name: ShortMale_Body
   m_EditorClassIdentifier: 
   Items:
   - id: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
     tier: 0
   - id: 1
     happyAdd: 20
-    item: {fileID: 100000, guid: 1e03ef2f2760e204ea43fba3db677f43, type: 3}
+    item: {fileID: 100000, guid: 8c4320cfc89ae7f4cb6eb682a056eb2c, type: 3}
     UIicon: {fileID: 21300020, guid: 10fee98d4555ec341a16c2a1310d9ea7, type: 3}
     type: 2
     price: 40

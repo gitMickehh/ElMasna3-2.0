@@ -92,6 +92,9 @@ MonoBehaviour:
   workerState: 0
   happyMeter: 0
   happyDefense: 0
+  healthMeter: 0
+  currentExperience: 0
+  maxExperience: 0
   skinnedMeshRenderers: []
   customization: {fileID: 0}
   UICameraPosition: {fileID: 450730375257086663}
@@ -114,7 +117,7 @@ MonoBehaviour:
   BodyPlace: {fileID: 5092740306229412799}
   SaveGameCustomization: {fileID: 11400000, guid: b2ab26a3f40624f45b8a1aeb8c97b13c,
     type: 2}
-  CustomizaitonSchemes: {fileID: 11400000, guid: 9b8b8744a248cc1418e81ddec5b0c171,
+  CustomizaitonSchemes: {fileID: 11400000, guid: 160f8524633c3064894e4b7eadc7c619,
     type: 2}
   basicHair: {fileID: 848942069964549292}
   HeadItem: {fileID: 8652327434931834910}
@@ -190,6 +193,7 @@ MonoBehaviour:
     type: 1
     price: 0
     isHair: 0
+    tier: 0
 --- !u!1 &3676909573709818929
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +275,7 @@ MonoBehaviour:
     type: 2
     price: 0
     isHair: 0
+    tier: 0
 --- !u!1 &4984101598810732431
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +328,7 @@ MonoBehaviour:
     type: 0
     price: 0
     isHair: 0
+    tier: 0
 --- !u!1001 &848942069964515852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -561,6 +567,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: ad5f4769c55d81d4c89f5e0e1423a3f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.031403106
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: ad5f4769c55d81d4c89f5e0e1423a3f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.023219625
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: ad5f4769c55d81d4c89f5e0e1423a3f9, type: 3}
       propertyPath: m_Controller
       value: 
@@ -612,6 +626,14 @@ PrefabInstance:
     - target: {fileID: 100008, guid: ad5f4769c55d81d4c89f5e0e1423a3f9, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: ad5f4769c55d81d4c89f5e0e1423a3f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.019601466
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: ad5f4769c55d81d4c89f5e0e1423a3f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7642306
       objectReference: {fileID: 0}
     - target: {fileID: 100040, guid: ad5f4769c55d81d4c89f5e0e1423a3f9, type: 3}
       propertyPath: m_Layer

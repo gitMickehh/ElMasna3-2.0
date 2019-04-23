@@ -111,6 +111,8 @@ public class SaveGameManager : MonoBehaviour
                     JsonUtility.FromJson<SerializableFloor>(retrievedJson);
                 floor.GetComponent<Floor>().LoadFloor();
             }
+
+            GameConfigFile.UpdateFloorBuildingCost(floorCount);
         }
         else
         {
