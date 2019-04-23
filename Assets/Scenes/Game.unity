@@ -739,6 +739,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9979e8d8abb61e147885271eaae68005, type: 3}
+--- !u!1 &1110469906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4674383436709665445, guid: 5edd88834e7b48f4e8a496827c7e146c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355442424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1110469907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110469906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e8592ac9a9f1744adef406c4673ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: f66ad35ee363c6949ab63f496ff17174, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1110469912}
+        m_MethodName: ResetView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1110469912 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3089834056314970051, guid: 5edd88834e7b48f4e8a496827c7e146c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355442424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110469906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b613723c75cf54c8835762c831b8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1296953554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -774,7 +821,7 @@ PrefabInstance:
     - target: {fileID: 4143921381608493499, guid: d1b2dd82bdad47543a74bedd51cd9672,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.42261827
       objectReference: {fileID: 0}
     - target: {fileID: 4143921381608493499, guid: d1b2dd82bdad47543a74bedd51cd9672,
         type: 3}
@@ -784,7 +831,7 @@ PrefabInstance:
     - target: {fileID: 4143921381608493499, guid: d1b2dd82bdad47543a74bedd51cd9672,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9063079
       objectReference: {fileID: 0}
     - target: {fileID: 4143921381608493499, guid: d1b2dd82bdad47543a74bedd51cd9672,
         type: 3}
@@ -799,7 +846,7 @@ PrefabInstance:
     - target: {fileID: 4143921381608493499, guid: d1b2dd82bdad47543a74bedd51cd9672,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4143921381608493499, guid: d1b2dd82bdad47543a74bedd51cd9672,
         type: 3}

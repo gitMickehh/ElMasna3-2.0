@@ -92,4 +92,13 @@ public class WorkerList : RuntimeList<Worker>
         Debug.Log("(happinessSum / (float)workersNo): " + (happinessSum / (float)workersNo));
         return (happinessSum / (float)workersNo);
     }
+
+    public void CleanUp()
+    {
+        for (int i = Items.Count-1; i >= 0; i--)
+        {
+            if (Items[i].transform.parent == null)
+                Destroy(Items[i].gameObject);
+        }
+    }
 }

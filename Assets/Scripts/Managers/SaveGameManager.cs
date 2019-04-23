@@ -266,6 +266,7 @@ public class SaveGameManager : MonoBehaviour
 
         LoadWorkers();
         LoadFloors();
+        listOfWorkers.CleanUp();
         LoadFactoryData();
         LoadTime();
 

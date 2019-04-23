@@ -802,6 +802,7 @@ MonoBehaviour:
   listOfMes: {fileID: 11400000, guid: 25ca98e2c0d49074fb850707e8e7a5e1, type: 2}
   swipeMagnitude: {fileID: 11400000, guid: 56d10715b0543cf45a06975876c48467, type: 2}
   torqueMultiplyer: 0.3
+  YRotation: 50
 --- !u!114 &4143921381608493493
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class ControlledRotator : MonoBehaviour
     public FloatField swipeMagnitude;
     public float torqueMultiplyer;
 
+    [Header("Resting Position")]
+    public float YRotation;
+
     private void OnEnable()
     {
         listOfMes.Add(this);
@@ -25,6 +28,7 @@ public class ControlledRotator : MonoBehaviour
     private void Start()
     {
         myBody = GetComponent<Rigidbody>();
+        ResetView();
     }
 
     public void RotateRight()
@@ -55,6 +59,12 @@ public class ControlledRotator : MonoBehaviour
             return;
 
         myBody.angularVelocity = Vector3.zero;
+    }
+
+    public void ResetView()
+    {
+        StopRotation();
+        transform.rotation = Quaternion.Euler(0, YRotation, 0);
     }
 
 }
