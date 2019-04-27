@@ -33,10 +33,25 @@ public class ModalPanel : MonoBehaviour
         return modalPanel;
     }
 
+    private void CheckLanguague()
+    {
+        if(ConfigFile.CurrentLanguageProfile.LeftToRight)
+        {
+            //english, french, etc..
+            yesButton.transform.SetAsFirstSibling();
+        }
+        else
+        {
+            //arabic.
+            yesButton.transform.SetAsLastSibling();
+        }
+    }
+
     public void Choice(string question, UnityAction yesEvent, UnityAction cancelEvent)
     {
         UIOpenedEvent.Raise();
         modalPanelObject.SetActive(true);
+        CheckLanguague();
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(yesEvent);
@@ -60,6 +75,7 @@ public class ModalPanel : MonoBehaviour
     {
         UIOpenedEvent.Raise();
         modalPanelObject.SetActive(true);
+        CheckLanguague();
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(yesEvent);
@@ -91,6 +107,7 @@ public class ModalPanel : MonoBehaviour
     {
         UIOpenedEvent.Raise();
         modalPanelObject.SetActive(true);
+        CheckLanguague();
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(yesEvent);
@@ -123,6 +140,7 @@ public class ModalPanel : MonoBehaviour
         AudioManager.instance.Play("Notify");
         UIOpenedEvent.Raise();
         modalPanelObject.SetActive(true);
+        CheckLanguague();
 
         yesButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(RaiseButtonSound);
