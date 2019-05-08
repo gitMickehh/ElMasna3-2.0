@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dab52fdf1fdf4d93ec85465f80ec7, type: 3}
+  m_Name: Page_F6
+  m_EditorClassIdentifier: 
+  PageTitle: The Map
+  PageDescription: By pressing the map button, you open a representation of your factory
+    that you can use to move workers around the factory. It is your main tool for
+    moving your workers to different machines or giving them breaks or sending them
+    back to work after breaks.
+  PageImage: {fileID: 0}

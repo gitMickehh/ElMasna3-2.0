@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dab52fdf1fdf4d93ec85465f80ec7, type: 3}
+  m_Name: Page_F4
+  m_EditorClassIdentifier: 
+  PageTitle: Factory Currencies (Magenta)
+  PageDescription: You gain magenta coins from the blue machines, you can use these
+    coins to make your workers happier by buying each worker new clothes or making
+    a party for all of them.
+  PageImage: {fileID: 0}

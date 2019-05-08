@@ -33,6 +33,9 @@ public class LanguageProfile : ScriptableObject
     [Tooltip("This is true if the name is written from left to right")]
     public bool LeftToRight = true;
 
+    [Header("Guide Book")]
+    public GuideBook Manual;
+
     [Header("Modal Panel Statements")]
     public string QuestionMark;
     [TextArea]

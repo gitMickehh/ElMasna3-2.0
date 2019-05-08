@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dab52fdf1fdf4d93ec85465f80ec7, type: 3}
+  m_Name: Page_W2
+  m_EditorClassIdentifier: 
+  PageTitle: Hiring Workers
+  PageDescription: Each worker in the orientation can be hired by clicking on them
+    and pressing the Hire button. If you already have machines with no workers in
+    the factory, the worker will go straight to work. If not, they will go to the
+    first available break room spot to rest.
+  PageImage: {fileID: 0}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dab52fdf1fdf4d93ec85465f80ec7, type: 3}
+  m_Name: Page_M2
+  m_EditorClassIdentifier: 
+  PageTitle: Machine Revenue
+  PageDescription: The machine lights up when it's cycle is finished, you have to
+    collect the money by clicking on it. The revenue of the machine differs everytime
+    based on the happiness of the worker working on it. To get 100% of the machine's
+    revenue, your worker has to be at 100% of their happiness. To do that, you can
+    look at customizing the worker, giving the worker a break, or making a party for
+    all workers.
+  PageImage: {fileID: 0}
