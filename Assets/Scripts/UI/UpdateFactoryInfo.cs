@@ -14,7 +14,7 @@ public class UpdateFactoryInfo : MonoBehaviour
     
     public void UpdateWorkerNo()
     {
-        workerNoText.text = workerList.GetNumberOfHiredWorkers().ToString();
+        workerNoText.text = workerList.GetNumberOfHiredWorkers().ToString() + "/"+(floorList.Items.Count*10).ToString();
     }
 
     public void UpdateMachinesNo()
