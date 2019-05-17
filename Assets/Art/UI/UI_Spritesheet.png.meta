@@ -26,6 +26,7 @@ TextureImporter:
     21300042: HealthIcon
     21300044: SliderKnob
     21300046: Btn_Options_MainGame
+    21300048: Btn_GuideBook
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -71,7 +72,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -578,13 +579,33 @@ TextureImporter:
         width: 497
         height: 545
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 8c86268544b82554a8bf4fff974a2999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Btn_GuideBook
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 3728
+        width: 655
+        height: 690
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e5c892f2236fa24da92fc387a740228
       vertices: []
       indices: 
       edges: []
