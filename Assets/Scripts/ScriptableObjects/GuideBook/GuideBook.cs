@@ -14,4 +14,15 @@ public class GuideBookTab
 public class GuideBook : ScriptableObject
 {
     public GuideBookTab[] tabs;
+
+    public int GetTabIndex(GuideBookTab t)
+    {
+        for (int i = 0; i < tabs.Length; i++)
+        {
+            if (t.name == tabs[i].name)
+                return i;
+        }
+
+        return -1;
+    }
 }
