@@ -7,7 +7,7 @@ using System.Linq;
 
 public enum Languages
 {
-    EN, AR, FR
+    EN, AR, FR, GR
 }
 public class UI_OptionsMenu : MonoBehaviour
 {
