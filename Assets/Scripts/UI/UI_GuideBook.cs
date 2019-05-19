@@ -21,17 +21,19 @@ public class UI_GuideBook : MonoBehaviour
     public Text pageText;
     public Image pageImage;
 
-    private void Awake()
+    private void OnEnable()
     {
         book = configFile.CurrentLanguageProfile.Manual;
-    }
-
-    private void Start()
-    {
-        //StartCoroutine(TestFillPage());
         activeTab = 0;
         FillPageTitles(book.tabs[activeTab]);
     }
+
+    //private void Start()
+    //{
+    //    //StartCoroutine(TestFillPage());
+    //    activeTab = 0;
+    //    FillPageTitles(book.tabs[activeTab]);
+    //}
 
     //private IEnumerator TestFillPage()
     //{
@@ -80,6 +82,9 @@ public class UI_GuideBook : MonoBehaviour
     public void FillPage(int pageNumberInTab)
     {
         //This function will be added to the listener of each button responding to a page
+
+        if (currentTab.listOfPages[pageNumberInTab].PageImage != null)
+            pageImage.sprite = currentTab.listOfPages[pageNumberInTab].PageImage;
 
         pageText.text = currentTab.listOfPages[pageNumberInTab].PageDescription;
         SetSelectedButtonInactive(pageNumberInTab);

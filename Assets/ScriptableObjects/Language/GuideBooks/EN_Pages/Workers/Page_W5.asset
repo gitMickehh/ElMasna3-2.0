@@ -16,4 +16,4 @@ MonoBehaviour:
   PageDescription: Workers have a happiness meter and another one for health. As workers
     are on machines and doing their jobs, they get less happy and more tired. As the
     meters go down, so does their productivity and the factory's profit.
-  PageImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 3094bb078b250b2419ac6b9de23f00a8, type: 3}

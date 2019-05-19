@@ -16,4 +16,4 @@ MonoBehaviour:
   PageDescription: The more the workers are left on a machine, the more experience
     they gain. Eventually, they level up. You can also customize the workers based
     on their level.
-  PageImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: a6595d9c68fb4fa4b8e32611b16c84f0, type: 3}

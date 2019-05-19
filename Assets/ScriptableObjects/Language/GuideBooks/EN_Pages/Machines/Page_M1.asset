@@ -16,4 +16,4 @@ MonoBehaviour:
   PageDescription: Once you buy a machine, all the available spaces in your factory's
     floors light up. You can spin around and navigate to where you want to place the
     new machine then you can touch the available spot to place the machine.
-  PageImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 8625afd2cfb024d4a81a3454d600c7a6, type: 3}

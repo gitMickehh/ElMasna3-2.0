@@ -19,4 +19,4 @@ MonoBehaviour:
     revenue, your worker has to be at 100% of their happiness. To do that, you can
     look at customizing the worker, giving the worker a break, or making a party for
     all workers.
-  PageImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 60a4ea1605bcc934cb2860b93b93fc6d, type: 3}
