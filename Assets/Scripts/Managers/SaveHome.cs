@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Threading;
 using System.Globalization;
+
+public class State
+{
+    public CultureInfo Result { get; set; }
+}
 
 public class SaveHome : MonoBehaviour
 {
@@ -126,21 +132,32 @@ public class SaveHome : MonoBehaviour
                 Debug.Log("index: " + index);
                 uI_OptionsMenu.ChangeLanguage(index);
             }
-            //PlayerPrefs.DeleteKey("language");
         }
         else
         {
-            CultureInfo ci = CultureInfo.InstalledUICulture;
-            //CultureInfo ci = new CultureInfo("es-ES", false);
-           
-            //Debug.Log("Language installed: " + ci.TwoLetterISOLanguageName.ToUpper());
-            Debug.Log("Language displayed: " + ci.DisplayName);
-            Debug.Log("Language EnglishName: " + ci.EnglishName);
+            string currentLang;
+            switch(Application.systemLanguage)
+            {
+                case SystemLanguage.Arabic:
+                case SystemLanguage.English:
+                case SystemLanguage.French:
+                    currentLang = Application.systemLanguage.ToString().Substring(0, 2).ToUpper();
+                    break;
+                case SystemLanguage.German:
+                    currentLang = "GR";
+                    break;
 
-            if (Enum.IsDefined(typeof(Languages), ci.TwoLetterISOLanguageName.ToUpper()))
+                default:
+                    currentLang = "EN";
+                    break;
+            }
+
+            Debug.LogError("currentLang: " + currentLang);
+            
+            if (Enum.IsDefined(typeof(Languages), currentLang))
             {
                 int index;
-                index = (int)Enum.Parse(typeof(Languages), ci.TwoLetterISOLanguageName.ToUpper());
+                index = (int)Enum.Parse(typeof(Languages), currentLang);
                 uI_OptionsMenu.ChangeLanguage(index);
             }
             
