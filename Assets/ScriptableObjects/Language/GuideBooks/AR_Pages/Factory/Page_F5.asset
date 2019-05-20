@@ -30,4 +30,4 @@ MonoBehaviour:
   ImageDescription: 1
   DescriptionTextImage: {fileID: 21300004, guid: 351e5d5e261de6f46b62749d63dd324b,
     type: 3}
-  PageImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: ec5441d9dfa289340b49cef7bbe1e231, type: 3}

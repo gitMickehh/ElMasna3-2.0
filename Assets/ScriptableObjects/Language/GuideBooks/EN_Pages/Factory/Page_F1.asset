@@ -17,4 +17,6 @@ MonoBehaviour:
     factory around. You can zoom in by pinching the screen. To move between floors
     swipe up and down. If you want to stop the rotation of the building, tap twice
     on the screen.
-  PageImage: {fileID: 0}
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 26e42ae7127818b4a975a9a31eff2c59, type: 3}

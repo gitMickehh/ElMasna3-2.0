@@ -16,4 +16,6 @@ MonoBehaviour:
   PageDescription: You gain magenta coins from the blue machines, you can use these
     coins to make your workers happier by buying each worker new clothes or making
     a party for all of them.
-  PageImage: {fileID: 0}
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 3c89e367022644946baacaa5efbd9ccf, type: 3}

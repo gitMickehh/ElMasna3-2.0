@@ -18,4 +18,6 @@ MonoBehaviour:
     of it. Even if you are not playing the game, the game days pass in real time.
     So make sure to gather your machines revenue every once in a while to gain the
     most profit.
-  PageImage: {fileID: 0}
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 2c3d735fbe5f4884ab6fe5d452f9425c, type: 3}

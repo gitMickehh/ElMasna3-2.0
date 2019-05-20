@@ -17,4 +17,6 @@ MonoBehaviour:
     that you can use to move workers around the factory. It is your main tool for
     moving your workers to different machines or giving them breaks or sending them
     back to work after breaks.
-  PageImage: {fileID: 0}
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 61c6c44261faed544b10cb8fea49f1ea, type: 3}

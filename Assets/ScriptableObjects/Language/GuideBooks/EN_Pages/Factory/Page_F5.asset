@@ -18,4 +18,6 @@ MonoBehaviour:
     To build a new floor you have to pay using the yellow coins and press the "build
     new floor" button. The price of building a floor is written on the button as it
     gets more expensive with each new floor.
-  PageImage: {fileID: 0}
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: ec5441d9dfa289340b49cef7bbe1e231, type: 3}
