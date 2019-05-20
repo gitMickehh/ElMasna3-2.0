@@ -19,6 +19,7 @@ public class UI_GuideBook : MonoBehaviour
     public List<Button> Pages;
 
     public Text pageText;
+    public Image pageTextReplacer;
     public Image pageImage;
 
     private void OnEnable()
@@ -86,7 +87,21 @@ public class UI_GuideBook : MonoBehaviour
         if (currentTab.listOfPages[pageNumberInTab].PageImage != null)
             pageImage.sprite = currentTab.listOfPages[pageNumberInTab].PageImage;
 
-        pageText.text = currentTab.listOfPages[pageNumberInTab].PageDescription;
+        if(currentTab.listOfPages[pageNumberInTab].ImageDescription)
+        {
+            pageTextReplacer.gameObject.SetActive(true);
+            pageText.gameObject.SetActive(false);
+
+            pageTextReplacer.sprite = currentTab.listOfPages[pageNumberInTab].DescriptionTextImage;
+        }
+        else
+        {
+            pageText.gameObject.SetActive(true);
+            pageTextReplacer.gameObject.SetActive(false);
+
+            pageText.text = currentTab.listOfPages[pageNumberInTab].PageDescription;
+        }
+
         SetSelectedButtonInactive(pageNumberInTab);
     }
 

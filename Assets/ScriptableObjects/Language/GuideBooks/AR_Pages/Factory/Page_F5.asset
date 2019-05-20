@@ -27,4 +27,7 @@ MonoBehaviour:
     \uFEC2\uFED0\uFEC0\uFEDF\uFE8D\uFEED \u0621\uFE8D\uFEAE\uFED4\uFEBC\uFEDF\uFE8D\n.\uFEAA\uFEF3\uFEAA\uFE9F
     \uFEAD\uFEED\uFEA9 \uFEDE\uFEDB \uFECA\uFEE3 \u0621\uFE8E\uFEE8\uFE92\uFEDF\uFE8D
     \uFE94\uFED4\uFEE0\uFEDC\uFE97"
+  ImageDescription: 1
+  DescriptionTextImage: {fileID: 21300004, guid: 351e5d5e261de6f46b62749d63dd324b,
+    type: 3}
   PageImage: {fileID: 0}

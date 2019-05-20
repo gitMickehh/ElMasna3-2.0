@@ -25,4 +25,7 @@ MonoBehaviour:
     \uFE95\uFE8D\uFEAE\uFE98\uFED3 \uFEAA\uFECC\uFE91 \uFEDE\uFEE4\uFECC\uFEDF\uFE8D
     \uFEF0\uFEDF\uFE87 \uFEE2\uFEEC\uFE97\uFEA9\uFE8E\uFECB\uFE87 \uFEED\uFE83 \uFE94\uFEA3\uFE8D\uFEAD
     \uFE95\uFE8D\uFEAE\uFE98\uFED3 \uFEE2\uFEEC\uFE8B\uFE8E\uFEC4\uFECB\uFE8D"
+  ImageDescription: 1
+  DescriptionTextImage: {fileID: 21300006, guid: 351e5d5e261de6f46b62749d63dd324b,
+    type: 3}
   PageImage: {fileID: 0}

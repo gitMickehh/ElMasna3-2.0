@@ -10,6 +10,11 @@ public class GuideBookPage : ScriptableObject
     [TextArea(8,30)]
     public string PageDescription;
 
+    [Header("Foreign Language")]
+    [Tooltip("If the text is in a foreign language and you want to use images instead.")]
+    public bool ImageDescription;
+    public Sprite DescriptionTextImage;
+
     [Tooltip("All the same size plz. 1920*1080")]
     public Sprite PageImage;
 }
