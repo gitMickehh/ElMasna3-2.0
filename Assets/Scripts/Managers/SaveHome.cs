@@ -152,7 +152,7 @@ public class SaveHome : MonoBehaviour
                     break;
             }
 
-            Debug.LogError("currentLang: " + currentLang);
+            Debug.Log("currentLang: " + currentLang);
             
             if (Enum.IsDefined(typeof(Languages), currentLang))
             {
