@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Threading;
+using System.Globalization;
+
+public class State
+{
+    public CultureInfo Result { get; set; }
+}
 
 public class SaveHome : MonoBehaviour
 {
@@ -110,6 +117,8 @@ public class SaveHome : MonoBehaviour
 
     private void LoadLanguage()
     {
+        //PlayerPrefs.DeleteKey("language");
+
         if (PlayerPrefs.HasKey("language"))
         {
             string languageString = (PlayerPrefs.GetString("language"));
@@ -123,10 +132,35 @@ public class SaveHome : MonoBehaviour
                 Debug.Log("index: " + index);
                 uI_OptionsMenu.ChangeLanguage(index);
             }
-            //PlayerPrefs.DeleteKey("language");
         }
         else
         {
+            string currentLang;
+            switch(Application.systemLanguage)
+            {
+                case SystemLanguage.Arabic:
+                case SystemLanguage.English:
+                case SystemLanguage.French:
+                    currentLang = Application.systemLanguage.ToString().Substring(0, 2).ToUpper();
+                    break;
+                case SystemLanguage.German:
+                    currentLang = "GR";
+                    break;
+
+                default:
+                    currentLang = "EN";
+                    break;
+            }
+
+            Debug.Log("currentLang: " + currentLang);
+            
+            if (Enum.IsDefined(typeof(Languages), currentLang))
+            {
+                int index;
+                index = (int)Enum.Parse(typeof(Languages), currentLang);
+                uI_OptionsMenu.ChangeLanguage(index);
+            }
+            
             Debug.LogWarning("Language not saved!");
         }
     }
