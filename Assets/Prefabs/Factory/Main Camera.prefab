@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cdf253a85b7b7409f783974552b8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 100
+  rayLength: 30
   vector2Touch: {fileID: 11400000, guid: 2efaff9c481ce4f4981dd0dadfdabdb2, type: 2}
   WorkerLayerMask:
     serializedVersion: 2

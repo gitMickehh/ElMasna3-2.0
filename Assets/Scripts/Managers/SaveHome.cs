@@ -81,6 +81,7 @@ public class SaveHome : MonoBehaviour
         else
         {
             Debug.LogWarning("Game Sound not saved!");
+            uI_OptionsMenu.sound.isOn = true;
         }
 
         if (PlayerPrefs.HasKey("soundFXOn"))
@@ -104,6 +105,7 @@ public class SaveHome : MonoBehaviour
         else
         {
             Debug.LogWarning("Game SoundFXs not saved!");
+            uI_OptionsMenu.soundFx.isOn = true;
         }
     }
 
