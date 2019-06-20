@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dab52fdf1fdf4d93ec85465f80ec7, type: 3}
+  m_Name: Page_F5
+  m_EditorClassIdentifier: 
+  PageTitle: "Geb\xE4ude-Fu\xDFb\xF6den"
+  PageDescription: "Ihr Boden kann 10 Arbeiter haben, 5 sind auf Maschinen und 5 machen
+    Pause. Um die Kapazit\xE4t Ihrer Fabrik zu erh\xF6hen, k\xF6nnen Sie eine neue
+    Etage bauen. Um eine neue Etage zu bauen, m\xFCssen Sie mit den gelben M\xFCnzen
+    bezahlen und die Schaltfl\xE4che \"Neue Etage bauen\" dr\xFCcken. Der Preis f\xFCr
+    das Errichten einer Etage wird auf der Schaltfl\xE4che angegeben, da dieser mit
+    jeder neuen Etage teurer wird."
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: ec5441d9dfa289340b49cef7bbe1e231, type: 3}

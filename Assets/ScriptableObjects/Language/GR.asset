@@ -12,31 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dfe75f0480c6a46bb23fea0e4ef2a9, type: 3}
   m_Name: GR
   m_EditorClassIdentifier: 
-  GameName: L'Usine
+  GameName: Die Fabrik
   Language: German
   LanguageInitials: Gr
-  ConfirmationText: 
-  PlaceholderNameText: 
-  StartGame: 
-  QuitGame: 
-  Options: 
-  HowToPlay: 
-  Pause: 
+  ConfirmationText: "Bist du sicher, dass du auf Deutsch weitermachen m\xF6chtest?"
+  PlaceholderNameText: name
+  StartGame: Start
+  QuitGame: Quit
+  Options: Pause
+  HowToPlay: How To Play
+  Pause: pause
   MainFont: {fileID: 0}
   MaleNames: {fileID: 11400000, guid: dd566c96b22f1f64fbc873e3ce97acc0, type: 2}
   FemaleNames: {fileID: 11400000, guid: c39a6055d190e1b428b334aa2c9bba0c, type: 2}
   LastNames: {fileID: 11400000, guid: af91b072e9ed90242993a5fb9e619738, type: 2}
   LeftToRight: 1
-  Manual: {fileID: 11400000, guid: 7993d9c5e068ae0418ef8b0ef1ce329d, type: 2}
+  Manual: {fileID: 11400000, guid: e229f47652efe664e8d09cee5dd3e079, type: 2}
   QuestionMark: '?'
-  HireWorker: 
-  GiveWorkerBreak: 
-  AreYouSure: 
-  NoPlaceForWorkers: 
-  YouWillPay: 
-  NotEnoughMoney: 
-  AreYouSureYouWantToRestartTheGame: 
-  DoYouWantToStartTheParty: 
-  DoYouWantToBuildANewFloor: 
+  HireWorker: "M\xF6chten Sie einstellen"
+  GiveWorkerBreak: "G\xF6nnen Sie sich eine Pause"
+  AreYouSure: Bist du sicher
+  NoPlaceForWorkers: "Sie haben keinen Platz f\xFCr neue Arbeiter"
+  YouWillPay: Du wirst zahlen
+  NotEnoughMoney: Sie haben nicht genug Ressourcen
+  AreYouSureYouWantToRestartTheGame: "M\xF6chten Sie das Spiel wirklich neu starten
+    und Ihre gespeicherte Datei l\xF6schen"
+  DoYouWantToStartTheParty: "M\xF6chtest du eine Party gr\xFCnden"
+  DoYouWantToBuildANewFloor: "M\xF6chten Sie einen neuen Boden bauen"
   ExeclamationMark: '!'
-  WelcomeText: 
+  WelcomeText: Willkommen in Ihrer Fabrik

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dab52fdf1fdf4d93ec85465f80ec7, type: 3}
+  m_Name: Page_F1
+  m_EditorClassIdentifier: 
+  PageTitle: Navigation (Gesten)
+  PageDescription: "Ihre Fabrik kann sich drehen! Wischen Sie einfach nach links und
+    rechts, um die Fabrik umzudrehen. Sie k\xF6nnen den Bildschirm vergr\xF6\xDFern,
+    indem Sie ihn vergr\xF6\xDFern. Um sich zwischen den Etagen zu bewegen, streichen
+    Sie nach oben und unten. Wenn Sie die Drehung des Geb\xE4udes stoppen m\xF6chten,
+    tippen Sie zweimal auf den Bildschirm."
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
+  PageImage: {fileID: 21300000, guid: 26e42ae7127818b4a975a9a31eff2c59, type: 3}
