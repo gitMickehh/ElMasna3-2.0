@@ -81,6 +81,13 @@ public class TutorialManager : MonoBehaviour
     public float rayLength = 100;
     public Vector2Field vector2Touch;
 
+    [Space]
+    [Header("Voice Over")]
+    [Tooltip("For Language reference")]public GameConfig configFile;
+    bool arabic;
+    public List<AudioClip> AR_voiceOverClips;
+    public List<AudioClip> EN_voiceOverClips;
+
     private void Awake()
     {
         //All things in humanity
@@ -100,6 +107,13 @@ public class TutorialManager : MonoBehaviour
 
         //hypothetical number of steps
         tutorialStepsDone = new bool[13];
+
+
+        //check language for Voice over
+        if (configFile.CurrentLanguageProfile.LanguageInitials == "Ar")
+            arabic = true;
+        else
+            arabic = false;
 
         //starting the first step.. maybe change this later to let the save manager do it
         StartingPoint(tutorialStage);
@@ -187,6 +201,14 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    private void PlayVoiceOver(int i)
+    {
+        if(arabic)
+            AudioManager.instance.PlaySound(AR_voiceOverClips[i]);
+        else
+            AudioManager.instance.PlaySound(EN_voiceOverClips[i]);
+    }
+
     //call this after every tutorial is done
     private void NextStep()
     {
@@ -207,6 +229,9 @@ public class TutorialManager : MonoBehaviour
             tutorialStepsDone[0] = true;
             animatedPointer.SetActive(true);
             pointerAniamtor.SetTrigger(pointerAnimatorSteps[1]);
+
+            PlayVoiceOver(0);
+
         }
     }
 
@@ -234,6 +259,8 @@ public class TutorialManager : MonoBehaviour
             nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
 
             tutorialStepsDone[1] = true;
+
+            PlayVoiceOver(1);
         }
     }
 
@@ -344,6 +371,8 @@ public class TutorialManager : MonoBehaviour
             nonAnimatedPointer.transform.localRotation = Quaternion.Euler(0, 0, -145);
 
             tutorialStepsDone[5] = true;
+
+            PlayVoiceOver(2);
         }
     }
 
@@ -400,6 +429,8 @@ public class TutorialManager : MonoBehaviour
         }
 
         tutorialStepsDone[11] = true;
+
+        PlayVoiceOver(3);
     }
 
     private void PointAtMapButton()

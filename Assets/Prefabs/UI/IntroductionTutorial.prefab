@@ -255,6 +255,17 @@ MonoBehaviour:
     m_Bits: 1024
   rayLength: 100
   vector2Touch: {fileID: 11400000, guid: 2efaff9c481ce4f4981dd0dadfdabdb2, type: 2}
+  configFile: {fileID: 11400000, guid: 8f4a9cb07d5b534499d2c8fac5a40a1c, type: 2}
+  AR_voiceOverClips:
+  - {fileID: 8300000, guid: 0291dfe5215235c4d89f31f1182cca92, type: 3}
+  - {fileID: 8300000, guid: 66182a1c39337e04fa5c781fe4966c24, type: 3}
+  - {fileID: 8300000, guid: 98b1daf4c35efbd409d6bd143c79a16f, type: 3}
+  - {fileID: 8300000, guid: 6d6fef4b04dc4534cbcd684d7b211bba, type: 3}
+  EN_voiceOverClips:
+  - {fileID: 8300000, guid: 2baa44334c9e50e4a978cf4008e85938, type: 3}
+  - {fileID: 8300000, guid: aac7b5542aa2c704faa4c9653bc726e6, type: 3}
+  - {fileID: 8300000, guid: 43ae87f7dfec94e4cbd920d99f5d35a1, type: 3}
+  - {fileID: 8300000, guid: 7fb008bab37c0d84eb817954a781ba75, type: 3}
 --- !u!114 &3728202600110306618
 MonoBehaviour:
   m_ObjectHideFlags: 0
