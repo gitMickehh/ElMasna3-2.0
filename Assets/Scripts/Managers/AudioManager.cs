@@ -17,6 +17,13 @@ public class AudioManager : MonoBehaviour {
     private int lengthOfButtons;
     private int randomButton;
 
+    //for book
+    [Space]
+    [Header("Tutorial/Book Voice Over")]
+    [Range(0,1f)] public float VO_Volume;
+    [Range(0,3f)] public float VO_Pitch;
+    private AudioSource voiceOverReader;
+
     private void Awake()
     {
         if(instance == null)
@@ -66,6 +73,12 @@ public class AudioManager : MonoBehaviour {
 
         lengthOfButtons = buttonsSounds.Length;
         randomButton = UnityEngine.Random.Range(0,lengthOfButtons);
+
+        voiceOverReader = gameObject.AddComponent<AudioSource>();
+        voiceOverReader.volume = VO_Volume;
+        voiceOverReader.pitch = VO_Pitch;
+        voiceOverReader.loop = false;
+        voiceOverReader.playOnAwake = false;
     }
 
     public void Play(string soundName)
@@ -145,6 +158,13 @@ public class AudioManager : MonoBehaviour {
             buttonsSounds[i].soundIsOn = true;
         }
 
+    }
+
+    public void PlaySound(AudioClip VOClip)
+    {
+        voiceOverReader.Stop();
+        voiceOverReader.clip = VOClip;
+        voiceOverReader.Play();
     }
 
 }

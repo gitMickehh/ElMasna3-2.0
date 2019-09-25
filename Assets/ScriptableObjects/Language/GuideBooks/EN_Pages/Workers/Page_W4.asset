@@ -15,4 +15,7 @@ MonoBehaviour:
   PageTitle: Worker Customization
   PageDescription: You can buy clothes and customize each worker to increase their
     happiness. Items in the customization store unlock depending on the worker's level.
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
   PageImage: {fileID: 21300000, guid: 01d569f28db1d0f4481b511e1dc0388d, type: 3}
+  VO_Clip: {fileID: 8300000, guid: ae7118551859d324a9e906ef9866a1ea, type: 3}

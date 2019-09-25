@@ -50,7 +50,7 @@ MonoBehaviour:
     volume: 0.2
     pitch: 1
     looping: 1
-    playOnAwake: 1
+    playOnAwake: 0
     soundIsOn: 1
     source: {fileID: 0}
   - soundName: Select B
@@ -150,6 +150,8 @@ MonoBehaviour:
     playOnAwake: 0
     soundIsOn: 1
     source: {fileID: 0}
+  VO_Volume: 0.7
+  VO_Pitch: 1
 --- !u!114 &7479792392087905266
 MonoBehaviour:
   m_ObjectHideFlags: 0

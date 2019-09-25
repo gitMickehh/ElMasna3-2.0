@@ -17,4 +17,7 @@ MonoBehaviour:
     and pressing the Hire button. If you already have machines with no workers in
     the factory, the worker will go straight to work. If not, they will go to the
     first available break room spot to rest.
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
   PageImage: {fileID: 21300000, guid: b4898fbaa016f3746a1a1d1bd83a0cd7, type: 3}
+  VO_Clip: {fileID: 8300000, guid: c2a02a4e794c63243b9115914cef7886, type: 3}

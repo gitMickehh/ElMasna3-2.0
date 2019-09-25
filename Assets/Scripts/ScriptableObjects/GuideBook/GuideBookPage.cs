@@ -17,4 +17,9 @@ public class GuideBookPage : ScriptableObject
 
     [Tooltip("All the same size plz. 1920*1080")]
     public Sprite PageImage;
+
+    [Space]
+    [Tooltip("Voice Over")]
+    public AudioClip VO_Clip;
+
 }

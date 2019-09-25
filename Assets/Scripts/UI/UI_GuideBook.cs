@@ -18,15 +18,22 @@ public class UI_GuideBook : MonoBehaviour
     public List<Button> Tabs;
     public List<Button> Pages;
 
+    [Space]
+    [Header("UI Elements")]
     public Text pageText;
     public Image pageTextReplacer;
     public Image pageImage;
+    public Button play_VO_Button;
+
+    private UnityAction playVOButtonEvent;
+    private int selectedVOPage;
 
     private void OnEnable()
     {
         book = configFile.CurrentLanguageProfile.Manual;
         activeTab = 0;
         FillPageTitles(book.tabs[activeTab]);
+        playVOButtonEvent = new UnityAction(PlayClipFromSelected);
     }
 
     //private void Start()
@@ -102,7 +109,26 @@ public class UI_GuideBook : MonoBehaviour
             pageText.text = currentTab.listOfPages[pageNumberInTab].PageDescription;
         }
 
+        if(currentTab.listOfPages[pageNumberInTab].VO_Clip != null)
+        {
+            //if it has a voice over clip
+            play_VO_Button.gameObject.SetActive(true);
+            play_VO_Button.onClick.RemoveAllListeners();
+
+            selectedVOPage = pageNumberInTab;
+            play_VO_Button.onClick.AddListener(playVOButtonEvent);
+        }
+        else
+        {
+            play_VO_Button.gameObject.SetActive(false);
+        }
+
         SetSelectedButtonInactive(pageNumberInTab);
+    }
+
+    public void PlayClipFromSelected()
+    {
+        AudioManager.instance.PlaySound(currentTab.listOfPages[selectedVOPage].VO_Clip);
     }
 
     private void SetSelectedButtonInactive(int buttonNumber)
@@ -121,4 +147,7 @@ public class UI_GuideBook : MonoBehaviour
 
         Pages[buttonNumber].interactable = false;
     }
+
+
+
 }

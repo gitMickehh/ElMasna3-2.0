@@ -16,4 +16,7 @@ MonoBehaviour:
   PageDescription: Everyday in-game you get two to five new workers in the orientation
     building that is next to your factory! The workers are randomly generated, so
     whoever comes today might never come back again.
+  ImageDescription: 0
+  DescriptionTextImage: {fileID: 0}
   PageImage: {fileID: 21300000, guid: 2ddf7bbaf8e59dd46a8d667bf3598151, type: 3}
+  VO_Clip: {fileID: 8300000, guid: aac7b5542aa2c704faa4c9653bc726e6, type: 3}

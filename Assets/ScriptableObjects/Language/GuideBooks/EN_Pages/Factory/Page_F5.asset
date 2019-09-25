@@ -21,3 +21,4 @@ MonoBehaviour:
   ImageDescription: 0
   DescriptionTextImage: {fileID: 0}
   PageImage: {fileID: 21300000, guid: ec5441d9dfa289340b49cef7bbe1e231, type: 3}
+  VO_Clip: {fileID: 8300000, guid: 7ad00127cb2f64b4c85ace6e73300391, type: 3}
