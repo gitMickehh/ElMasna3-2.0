@@ -115,7 +115,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.4
+  bundleVersion: 0.5
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -152,9 +152,9 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.ElMasna3Team.ElMasna3
   buildNumber: {}
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 6
   AndroidMinSdkVersion: 19
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 28
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -237,10 +237,10 @@ PlayerSettings:
   clonedFromGUID: 56e7a2d3a00f33d44bdd161b773c35b5
   templatePackageId: com.unity.template.3d@1.0.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 7
+  AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/ITI/GIZ/ElMasna3 Information/ElMasna3.keystore
+  AndroidKeystoreName: E:/ITI/GIZ/ElMasna3 Information/ElMasna3.keystore
   AndroidKeyaliasName: elmasna3keystore
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
