@@ -320,6 +320,8 @@ MonoBehaviour:
   soundFx: {fileID: 6448391713219947251}
   languagesGroup: {fileID: 960453030405491266}
   toggles: []
+  changedLanguageInRuntime: {fileID: 11400000, guid: b4a85720642eb1f449a8cc5e28c46524,
+    type: 2}
 --- !u!1 &960453029597379931
 GameObject:
   m_ObjectHideFlags: 0

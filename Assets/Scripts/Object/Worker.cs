@@ -95,6 +95,12 @@ public class Worker : MonoBehaviour
         transform.name = FullName;
     }
 
+    public void GetNewName()
+    {
+        FullName = WorkerStats.RandomizeName(gender);
+        transform.name = FullName;
+    }
+
     public void LevelUp()
     {
         Debug.Log(transform.name + " leveled Up!");

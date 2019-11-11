@@ -30,6 +30,9 @@ public class UI_OptionsMenu : MonoBehaviour
     public ToggleGroup languagesGroup;
     public List <Toggle> toggles;
 
+    [Header("Language Event")]
+    public GameEvent changedLanguageInRuntime;
+
     private void OnEnable()
     {
         toggles = languagesGroup.GetComponentsInChildren<Toggle>().ToList<Toggle>();
@@ -68,7 +71,13 @@ public class UI_OptionsMenu : MonoBehaviour
 
     public void ChangeLanguage(int i)
     {
-        gameConfigFile.CurrentLanguageProfile = (LanguageProfile)LanguagesList.ListElements[i];
+        string LangIn = ((LanguageProfile)LanguagesList.ListElements[i]).LanguageInitials;
+
+        if (gameConfigFile.CurrentLanguageProfile.LanguageInitials != LangIn)
+        {
+            gameConfigFile.CurrentLanguageProfile = (LanguageProfile)LanguagesList.ListElements[i];
+            changedLanguageInRuntime.Raise();
+        }
     }
 
     private void ClearSaves()
