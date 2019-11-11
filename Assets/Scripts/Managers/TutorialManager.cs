@@ -87,6 +87,7 @@ public class TutorialManager : MonoBehaviour
     bool arabic;
     public List<AudioClip> AR_voiceOverClips;
     public List<AudioClip> EN_voiceOverClips;
+    int currentVoicOver = 0;
 
     private void Awake()
     {
@@ -201,8 +202,29 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public void ChangeLangugeNow()
+    {
+        if (configFile.CurrentLanguageProfile.LanguageInitials == "Ar")
+        {
+            if (arabic == true)
+                return;
+
+            arabic = true;
+        }
+        else
+        {
+            if (!arabic)
+                return;
+
+            arabic = false;
+        }
+
+        PlayVoiceOver(currentVoicOver);
+    }
+
     private void PlayVoiceOver(int i)
     {
+        currentVoicOver = i;
         if(arabic)
             AudioManager.instance.PlaySound(AR_voiceOverClips[i]);
         else

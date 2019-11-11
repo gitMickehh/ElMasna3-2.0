@@ -17,6 +17,9 @@ public class SaveHome : MonoBehaviour
     public GameConfig GameConfigFile;
     public ActiveSounds activeSounds;
 
+    [Header("Language Event")]
+    public GameEvent askForLanguage;
+
     //#if UNITY_EDITOR
     [Header("Editor Options")]
     public bool save;
@@ -27,6 +30,7 @@ public class SaveHome : MonoBehaviour
     public UI_OptionsMenu uI_OptionsMenu;
 
     public bool loadedAll;
+
 
     private void Start()
     {
@@ -74,14 +78,15 @@ public class SaveHome : MonoBehaviour
                     uI_OptionsMenu.sound.isOn = false;
 
                 activeSounds.soundIsOn = sound;
-                Debug.Log("SoundIsOn: " + sound);
+                //Debug.Log("SoundIsOn: " + sound);
                 uI_OptionsMenu.CheckSoundState(Sounds.Sound.ToString());
             }
         }
         else
         {
             Debug.LogWarning("Game Sound not saved!");
-            uI_OptionsMenu.sound.isOn = true;
+            //uI_OptionsMenu.sound.isOn = true;
+            uI_OptionsMenu.ChangeSoundState(true);
         }
 
         if (PlayerPrefs.HasKey("soundFXOn"))
@@ -97,7 +102,7 @@ public class SaveHome : MonoBehaviour
                     uI_OptionsMenu.soundFx.isOn = false;
 
                 activeSounds.soundFxIsOn = soundFx;
-                Debug.Log("soundFxIsOn: " + soundFx);
+                //Debug.Log("soundFxIsOn: " + soundFx);
 
                 uI_OptionsMenu.CheckSoundState(Sounds.SoundFX.ToString());
             }
@@ -105,7 +110,8 @@ public class SaveHome : MonoBehaviour
         else
         {
             Debug.LogWarning("Game SoundFXs not saved!");
-            uI_OptionsMenu.soundFx.isOn = true;
+            //uI_OptionsMenu.soundFx.isOn = true;
+            uI_OptionsMenu.ChangeSoundFXState(true);
         }
     }
 
@@ -124,37 +130,41 @@ public class SaveHome : MonoBehaviour
         if (PlayerPrefs.HasKey("language"))
         {
             string languageString = (PlayerPrefs.GetString("language"));
-            Debug.Log("languageString: " + languageString);
+            //Debug.Log("languageString: " + languageString);
 
             if (languageString != "")
             {
                 int index;
                 index = (int)Enum.Parse(typeof(Languages), languageString);
 
-                Debug.Log("index: " + index);
+                //Debug.Log("index: " + index);
                 uI_OptionsMenu.ChangeLanguage(index);
             }
         }
         else
         {
-            string currentLang;
-            switch(Application.systemLanguage)
+            //string currentLang;
+            #region languague automatic detection
+            //get language from user directly
+            /*
+            switch (Application.systemLanguage)
             {
                 case SystemLanguage.Arabic:
                 case SystemLanguage.English:
-                case SystemLanguage.French:
+                //case SystemLanguage.French:
                     currentLang = Application.systemLanguage.ToString().Substring(0, 2).ToUpper();
                     break;
-                case SystemLanguage.German:
-                    currentLang = "GR";
-                    break;
-
+                //case SystemLanguage.German:
+                //    currentLang = "GR";
+                //    break;
                 default:
                     currentLang = "EN";
                     break;
             }
+            
 
-            Debug.Log("currentLang: " + currentLang);
+
+            //Debug.Log("currentLang: " + currentLang);
             
             if (Enum.IsDefined(typeof(Languages), currentLang))
             {
@@ -162,14 +172,20 @@ public class SaveHome : MonoBehaviour
                 index = (int)Enum.Parse(typeof(Languages), currentLang);
                 uI_OptionsMenu.ChangeLanguage(index);
             }
-            
+            */
+            #endregion
+
+            //display language selection Option
+            uI_OptionsMenu.ChangeLanguage(1);
+            askForLanguage.Raise();
+
             Debug.LogWarning("Language not saved!");
         }
     }
 
     private void LoadAll()
     {
-        Debug.Log("Loading all");
+        //Debug.Log("Loading all");
 
         LoadLanguage();
         LoadSounds();

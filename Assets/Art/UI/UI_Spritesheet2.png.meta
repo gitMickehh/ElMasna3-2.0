@@ -187,10 +187,10 @@ TextureImporter:
       name: Btn_Play
       rect:
         serializedVersion: 2
-        x: 5115
-        y: 3189
-        width: 1137
-        height: 1063
+        x: 4944
+        y: 3041
+        width: 1388
+        height: 1383
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,7 +472,7 @@ TextureImporter:
         width: 1695
         height: 373
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

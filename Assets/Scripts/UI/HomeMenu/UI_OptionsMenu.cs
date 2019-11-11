@@ -101,6 +101,19 @@ public class UI_OptionsMenu : MonoBehaviour
         saveHome.SaveAll();
 
     }
+
+    public void ChangeSoundState(bool isOn)
+    {
+        sound.isOn = isOn;
+        CheckSoundState("Sound");
+    }
+
+    public void ChangeSoundFXState(bool isOn)
+    {
+        soundFx.isOn = isOn;
+        CheckSoundState("SoundFX");
+    }
+
     public void CheckSoundState(string soundStr)
     {
         switch (soundStr)
