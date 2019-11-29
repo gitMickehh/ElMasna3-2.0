@@ -397,7 +397,7 @@ public class GameManager : MonoBehaviour
     public void CalculateStars()
     {
         float happiness01 = workerList.CalculateAverageHappiness()/100.0f;
-        Debug.Log("happiness01: "+ happiness01);
+        //Debug.Log("happiness01: "+ happiness01);
         starsCount.SetValue((int)(happiness01 * 5));
 
 

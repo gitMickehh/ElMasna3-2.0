@@ -10,11 +10,11 @@ public class StarsAppearence : MonoBehaviour
 
     public void ShowingStars()
     {
-        Debug.Log("starsNo.GetValue(): " + starsNo.GetValue());
+        //Debug.Log("starsNo.GetValue(): " + starsNo.GetValue());
 
         for (int i = 0; i < starsNo.GetValue(); i++)
         {
-            Debug.Log("starsNo.GetValue(): " + starsNo.GetValue());
+            //Debug.Log("starsNo.GetValue(): " + starsNo.GetValue());
             GameObject starsCopy = Instantiate(stars, starsLocation[i]);
         }
     }

@@ -8,7 +8,7 @@ public enum WorkerState
     Working,
     InBreak,
     Winning,
-    Walking 
+    Walking
 }
 
 public class Worker : MonoBehaviour
@@ -57,9 +57,11 @@ public class Worker : MonoBehaviour
     public SpriteList EmotionsSprites;
     public GameObject EmotionCanvas;
     public UnityEngine.UI.Image emotionImage;
+    bool StableEmojiActive = false;
 
     //saving
-    public SerializableWorker WorkerData {
+    public SerializableWorker WorkerData
+    {
         get { return GetWorkerData(); }
     }
 
@@ -94,7 +96,7 @@ public class Worker : MonoBehaviour
         happyMeter = 100;
         healthMeter = medical.start;
 
-        happyDefense = Random.Range(0.0f,1.0f);
+        happyDefense = Random.Range(0.0f, 1.0f);
         level = 0;
         maxExperience = 50;
         currentExperience = 0;
@@ -125,10 +127,15 @@ public class Worker : MonoBehaviour
         switch (workerState)
         {
             case WorkerState.Working:
-            happyMeter = (happyMeter - 0.5f);
+                if (happyMeter == 0)
+                    break;
+                happyMeter = (happyMeter - 0.5f);
                 break;
             case WorkerState.InBreak:
+                if (happyMeter == 100)
+                    break;
                 happyMeter = (happyMeter + 4);
+                StableEmojiActive = false;
                 break;
             default:
                 break;
@@ -136,7 +143,23 @@ public class Worker : MonoBehaviour
 
         happyMeter = Mathf.Clamp(happyMeter, 0, 100);
 
-        if (happyMeter % 20 <= 1)
+        if (happyMeter == 0 && !StableEmojiActive)
+        {
+            StopAllCoroutines();
+            EmotionCanvas.SetActive(true);
+            emotionImage.sprite = EmotionsSprites.GetSprite(0);
+            EmotionCanvas.GetComponent<Animator>().SetTrigger("Changed");
+            StableEmojiActive = true;
+        }
+        else if (happyMeter == 100 && !StableEmojiActive)
+        {
+            StopAllCoroutines();
+            EmotionCanvas.SetActive(true);
+            emotionImage.sprite = EmotionsSprites.GetSprite(1);
+            EmotionCanvas.GetComponent<Animator>().SetTrigger("Changed");
+            StableEmojiActive = true;
+        }
+        else if (happyMeter % 20 <= 1 && !StableEmojiActive)
         {
             StartCoroutine(UpdateEmotionUI());
         }
@@ -150,7 +173,7 @@ public class Worker : MonoBehaviour
                 healthMeter = (healthMeter - medical.rate);
                 break;
             case WorkerState.InBreak:
-                healthMeter = (healthMeter + 2* medical.rate);
+                healthMeter = (healthMeter + 2 * medical.rate);
                 break;
             default:
                 break;
@@ -161,10 +184,10 @@ public class Worker : MonoBehaviour
 
     public void ModifyExperience()
     {
-        if(currentMachine != null && currentMachine.IsWorking && !currentMachine.isWaiting)
+        if (currentMachine != null && currentMachine.IsWorking && !currentMachine.isWaiting)
             currentExperience++;
 
-        if(currentExperience >= maxExperience)
+        if (currentExperience >= maxExperience)
         {
             LevelUp();
             currentExperience = 0;
@@ -182,8 +205,6 @@ public class Worker : MonoBehaviour
     {
         happyMeter = Mathf.Clamp(happyMeter - percentage, 0, 100);
         workerAnimator.SetFloat("Happiness", happyMeter / 100.0f);
-
-        
     }
 
     public void SetWorkerState(WorkerState state)
@@ -210,6 +231,8 @@ public class Worker : MonoBehaviour
             default:
                 break;
         }
+
+        StartCoroutine(UpdateEmotionUI());
     }
 
     public void SetBreak(BreakObject breakObject)
@@ -226,7 +249,9 @@ public class Worker : MonoBehaviour
                 workerAnimator.SetBool("Talking", true);
                 break;
 
-        }       
+        }
+
+        StartCoroutine(UpdateEmotionUI());
     }
 
     public void SetWorking(bool state)
@@ -249,7 +274,7 @@ public class Worker : MonoBehaviour
         SerializableWorker sw;
 
         if (currentMachine != null)
-            sw = new SerializableWorker(ID, FullName, gender, inOrientation,modelID, level, emotional.no, medical.no, happyMeter,happyDefense, currentMachine.machineID);
+            sw = new SerializableWorker(ID, FullName, gender, inOrientation, modelID, level, emotional.no, medical.no, happyMeter, happyDefense, currentMachine.machineID);
         else
             sw = new SerializableWorker(ID, FullName, gender, inOrientation, modelID, level, emotional.no, medical.no, happyMeter, happyDefense);
 
@@ -263,7 +288,7 @@ public class Worker : MonoBehaviour
     private IEnumerator UpdateEmotionUI()
     {
         EmotionCanvas.SetActive(true);
-        emotionImage.sprite = EmotionsSprites.GetSprite(happyMeter/100.0f);
+        emotionImage.sprite = EmotionsSprites.GetSprite(happyMeter / 100.0f);
         EmotionCanvas.GetComponent<Animator>().SetTrigger("Changed");
 
         yield return new WaitForSeconds(WorkerStats.EmotionUIOnTime);

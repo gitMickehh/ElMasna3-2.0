@@ -17,8 +17,8 @@ public class SpriteList : ScriptableObject
 
     private int GetIndex(float value)
     {
-        float index = value * (sprites.Count);
-        return Mathf.FloorToInt(index) - 1;
+        float index = value * (sprites.Count -1);
+        return Mathf.FloorToInt(index);
     }
 
 }

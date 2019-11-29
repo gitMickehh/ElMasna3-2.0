@@ -88,8 +88,8 @@ public class WorkerList : RuntimeList<Worker>
                 happinessSum += Items[i].happyMeter;
             }
         }
-        Debug.Log("happinessSum: " + happinessSum + " workersNo: " + workersNo);
-        Debug.Log("(happinessSum / (float)workersNo): " + (happinessSum / (float)workersNo));
+        //Debug.Log("happinessSum: " + happinessSum + " workersNo: " + workersNo);
+        //Debug.Log("(happinessSum / (float)workersNo): " + (happinessSum / (float)workersNo));
         return (happinessSum / (float)workersNo);
     }
 
