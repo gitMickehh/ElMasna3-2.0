@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.283574, y: 3.708284, z: 3.3493712}
-  m_Center: {x: 0.29474163, y: 1.7667325, z: -0.06918728}
+  m_Size: {x: 5.283574, y: 6.883698, z: 3.3493712}
+  m_Center: {x: 0.29474163, y: 3.3544395, z: -0.06918728}
 --- !u!54 &4166432995667429789
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,6 +85,8 @@ MonoBehaviour:
   machineModelID: 1
   listOfMahcines: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}
   IsWorking: 0
+  isWaiting: 0
+  moneyReturning: 0
   CurrentWorker: {fileID: 0}
   workerPosition: {fileID: 4166432996256539999}
   scheme: {fileID: 11400000, guid: a01534e4350b4a94eaf203bb58dddb15, type: 2}
@@ -147,7 +149,7 @@ PrefabInstance:
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.01
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}

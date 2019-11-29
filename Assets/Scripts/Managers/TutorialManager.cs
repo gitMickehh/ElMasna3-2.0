@@ -222,8 +222,27 @@ public class TutorialManager : MonoBehaviour
         PlayVoiceOver(currentVoicOver);
     }
 
+    public void CheckLanguge()
+    {
+        if (configFile.CurrentLanguageProfile.LanguageInitials == "Ar")
+        {
+            if (arabic == true)
+                return;
+
+            arabic = true;
+        }
+        else
+        {
+            if (!arabic)
+                return;
+
+            arabic = false;
+        }
+    }
+
     private void PlayVoiceOver(int i)
     {
+        CheckLanguge();
         currentVoicOver = i;
         if(arabic)
             AudioManager.instance.PlaySound(AR_voiceOverClips[i]);

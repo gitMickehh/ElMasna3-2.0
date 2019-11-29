@@ -42,6 +42,9 @@ public class WorkerInfo : ScriptableObject
     [Header("Particles")]
     public GameObject disappearingParticles;
 
+    [Header("Emotions UI")]
+    public float EmotionUIOnTime = 2f;
+
     public string RandomizeName(Gender g)
     {
         return gameConfigFile.CurrentLanguageProfile.GetRandomFullName(g);

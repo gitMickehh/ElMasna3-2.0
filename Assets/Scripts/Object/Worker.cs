@@ -53,6 +53,11 @@ public class Worker : MonoBehaviour
 
     public Animator workerAnimator;
 
+    [Header("Emotion UI")]
+    public SpriteList EmotionsSprites;
+    public GameObject EmotionCanvas;
+    public UnityEngine.UI.Image emotionImage;
+
     //saving
     public SerializableWorker WorkerData {
         get { return GetWorkerData(); }
@@ -63,6 +68,8 @@ public class Worker : MonoBehaviour
         skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         workerAnimator = GetComponentInChildren<Animator>();
         customization = GetComponent<WorkerCustomization>();
+
+        //StartCoroutine(UpdateEmotionUI());
     }
 
     private void OnEnable()
@@ -128,6 +135,11 @@ public class Worker : MonoBehaviour
         }
 
         happyMeter = Mathf.Clamp(happyMeter, 0, 100);
+
+        if (happyMeter % 20 <= 1)
+        {
+            StartCoroutine(UpdateEmotionUI());
+        }
     }
 
     public void ModifyHealth()
@@ -171,6 +183,7 @@ public class Worker : MonoBehaviour
         happyMeter = Mathf.Clamp(happyMeter - percentage, 0, 100);
         workerAnimator.SetFloat("Happiness", happyMeter / 100.0f);
 
+        
     }
 
     public void SetWorkerState(WorkerState state)
@@ -231,7 +244,6 @@ public class Worker : MonoBehaviour
         //SetWorking(false);
     }
 
-
     public SerializableWorker GetWorkerData()
     {
         SerializableWorker sw;
@@ -246,6 +258,16 @@ public class Worker : MonoBehaviour
         sw.currentExperience = currentExperience;
         sw.currentHealth = healthMeter;
         return sw;
+    }
+
+    private IEnumerator UpdateEmotionUI()
+    {
+        EmotionCanvas.SetActive(true);
+        emotionImage.sprite = EmotionsSprites.GetSprite(happyMeter/100.0f);
+        EmotionCanvas.GetComponent<Animator>().SetTrigger("Changed");
+
+        yield return new WaitForSeconds(WorkerStats.EmotionUIOnTime);
+        EmotionCanvas.SetActive(false);
     }
 
     public void LoadWorkerData(SerializableWorker wData)
@@ -273,5 +295,7 @@ public class Worker : MonoBehaviour
         maxExperience = level * 50 + 50;
 
         transform.name = FullName;
+
+        StartCoroutine(UpdateEmotionUI());
     }
 }

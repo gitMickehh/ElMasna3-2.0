@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.280619, y: 6.7374673, z: 4.223831}
-  m_Center: {x: 0.58858943, y: 3.2813241, z: 0.36804295}
+  m_Size: {x: 7.5687094, y: 8.293907, z: 4.921546}
+  m_Center: {x: 1.2326345, y: 4.0595446, z: 0.019185662}
 --- !u!54 &4166432995667429789
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,6 +85,8 @@ MonoBehaviour:
   machineModelID: 3
   listOfMahcines: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}
   IsWorking: 0
+  isWaiting: 0
+  moneyReturning: 0
   CurrentWorker: {fileID: 0}
   workerPosition: {fileID: 4166432996256539999}
   scheme: {fileID: 11400000, guid: 68dc547772db2164cbcf6c29a895d0a0, type: 2}

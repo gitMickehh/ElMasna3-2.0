@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.759529, y: 6.7374673, z: 2.5503607}
-  m_Center: {x: -1.2762733, y: 3.2813241, z: 0.05851531}
+  m_Size: {x: 7.2961216, y: 7.924811, z: 2.820211}
+  m_Center: {x: 0.8015771, y: 3.874996, z: 0.3013808}
 --- !u!54 &4166432995667429789
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,6 +85,8 @@ MonoBehaviour:
   machineModelID: 5
   listOfMahcines: {fileID: 11400000, guid: 5985cb3b14c28b442823dd9e34550fe6, type: 2}
   IsWorking: 0
+  isWaiting: 0
+  moneyReturning: 0
   CurrentWorker: {fileID: 0}
   workerPosition: {fileID: 4166432996256539999}
   scheme: {fileID: 11400000, guid: 5ae3c2c49e8c6c942be09dc131aa5ea3, type: 2}
@@ -153,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.01
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
@@ -198,12 +200,12 @@ PrefabInstance:
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.18
+      value: -2.57
       objectReference: {fileID: 0}
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.05
+      value: 5.97
       objectReference: {fileID: 0}
     - target: {fileID: 4137685014576945513, guid: e401d5c7a51c43a4b98aafe851b3188a,
         type: 3}
